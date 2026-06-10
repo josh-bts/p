@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zip Pouch Pro | ALPAKA — CRO Prototype</title>
+<style>
+@font-face{font-family:Montserrat;font-weight:500;font-style:normal;font-display:swap;
+  src:url("https://alpakagear.com/cdn/fonts/montserrat/montserrat_n5.07ef3781d9c78c8b93c98419da7ad4fbeebb6635.woff2") format("woff2")}
+@font-face{font-family:"Nunito Sans";font-weight:400;font-style:normal;font-display:swap;
+  src:url("https://alpakagear.com/cdn/fonts/nunito_sans/nunitosans_n4.0276fe080df0ca4e6a22d9cb55aed3ed5ba6b1da.woff2") format("woff2")}
+@font-face{font-family:"Nunito Sans";font-weight:700;font-style:normal;font-display:swap;
+  src:url("https://alpakagear.com/cdn/fonts/nunito_sans/nunitosans_n7.25d963ed46da26098ebeab731e90d8802d989fa5.woff2") format("woff2")}
+:root{--ink:#111;--body:#3a3a3a;--line:#e6e6e6;--bg:#fff;--soft:#f5f5f4;--star:#111}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Nunito Sans",sans-serif;color:var(--body);background:var(--bg);font-size:15px;line-height:1.55}
+h1,h2,h3,.btn,.eyebrow{font-family:Montserrat,sans-serif;font-weight:500;color:var(--ink)}
+.wrap{max-width:480px;margin:0 auto;padding:0 16px}
+header{border-bottom:1px solid var(--line);padding:14px 0;text-align:center}
+header img{height:34px;vertical-align:middle}
+.gallery{margin:0 -16px}
+.gallery .main{width:100%;display:block;background:var(--soft)}
+.thumbs{display:flex;gap:8px;padding:10px 16px 0}
+.thumbs img{width:64px;height:64px;object-fit:cover;border:1px solid var(--line);border-radius:4px;cursor:pointer;background:var(--soft)}
+.thumbs img.on{border-color:var(--ink)}
+.info{padding:18px 0 8px}
+h1{font-size:22px;letter-spacing:.06em;text-transform:uppercase}
+.rating{display:flex;align-items:center;gap:8px;margin:8px 0 4px;font-size:13.5px;color:var(--ink)}
+.stars{display:inline-block;position:relative;font-size:15px;letter-spacing:2px;color:#d6d2cb}
+.stars::before{content:"★★★★★"}
+.stars i{position:absolute;left:0;top:0;width:90%;overflow:hidden;color:var(--star);font-style:normal;white-space:nowrap}
+.stars i::before{content:"★★★★★"}
+.price{font-size:18px;color:var(--ink);font-weight:700;margin:4px 0 14px}
+.optlabel{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-bottom:8px}
+.optlabel span{color:#777;text-transform:none;letter-spacing:0}
+.swatches{display:flex;gap:14px;margin-bottom:6px}
+.sw{text-align:center;font-size:10.5px;color:#666;width:58px;cursor:pointer}
+.sw b{display:block;width:34px;height:34px;border-radius:50%;margin:0 auto 5px;border:2px solid transparent;outline:1px solid var(--line);outline-offset:2px}
+.sw.on b{outline-color:var(--ink)}
+.sw.out{opacity:.45}
+.sw.out em{display:block;font-style:normal;font-size:9.5px;letter-spacing:.04em;color:#999}
+.features{background:var(--soft);border-radius:8px;padding:16px;margin:18px 0}
+.features h3{font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.features ul{list-style:none}
+.features li{padding:5px 0 5px 26px;position:relative;font-size:14px;color:var(--ink)}
+.features li::before{content:"";position:absolute;left:2px;top:11px;width:14px;height:8px;border-left:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(-45deg) translateY(-2px)}
+.specchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.specchips span{font-size:11.5px;border:1px solid var(--line);background:#fff;border-radius:99px;padding:4px 10px;color:var(--body)}
+.btn{display:block;width:100%;background:var(--ink);color:#fff;text-align:center;border:0;border-radius:4px;padding:16px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.paylink{display:block;text-align:center;font-size:13px;color:#666;margin:12px 0 4px;text-decoration:underline;text-underline-offset:3px}
+.desc{padding:10px 0 4px;font-size:14.5px}
+.desc p{margin-bottom:10px}
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{font-family:Montserrat,sans-serif;font-weight:500;color:var(--ink);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;padding:15px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"+";font-size:16px;color:#888}
+details[open] summary::after{content:"–"}
+details .pad{padding:0 0 16px;font-size:14px}
+details ul{margin-left:18px}
+.cross{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:8px;padding:12px;margin:20px 0}
+.cross img{width:62px;height:62px;object-fit:cover;border-radius:4px;background:var(--soft)}
+.cross .t{flex:1;font-size:13px;color:var(--ink)}
+.cross .t small{display:block;color:#777;margin-top:2px}
+.cross a{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);border-radius:4px;padding:9px 12px;text-decoration:none;white-space:nowrap}
+.stickybar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;z-index:50}
+.stickybar.show{display:block}
+.stickybar .btn{padding:14px}
+footer{padding:26px 0 110px;text-align:center;font-size:12px;color:#999}
+@media(min-width:768px){.wrap{max-width:520px}}
+</style>
+</head>
+<body>
+<header>
+  <img src="https://alpakagear.com/cdn/shop/files/alpaka-logo-registered-transparent_adceca46-2e73-4526-868a-bd1e91b2644d.png?v=1613724215&width=300" alt="ALPAKA">
+</header>
+
+<div class="wrap">
+  <div class="gallery">
+    <img class="main" id="mainImg" src="https://cdn.shopify.com/s/files/1/0058/6514/4418/files/ZIPPOUCHPROVX42BLACK.jpg?v=1747208005&width=900" alt="Zip Pouch Pro — Black X-Pac VX21">
+  </div>
+  <div class="thumbs" id="thumbs">
+    <img class="on" src="https://cdn.shopify.com/s/files/1/0058/6514/4418/files/ZIPPOUCHPROVX42BLACK.jpg?v=1747208005&width=200" data-full="https://cdn.shopify.com/s/files/1/0058/6514/4418/files/ZIPPOUCHPROVX42BLACK.jpg?v=1747208005&width=900" alt="Zip Pouch Pro front">
+    <img src="https://cdn.shopify.com/s/files/1/0058/6514/4418/products/1.jpg?v=1747208006&width=200" data-full="https://cdn.shopify.com/s/files/1/0058/6514/4418/products/1.jpg?v=1747208006&width=900" alt="Zip Pouch Pro with cards">
+    <img src="https://cdn.shopify.com/s/files/1/0058/6514/4418/products/zippro_0009_2084.jpg?v=1747208006&width=200" data-full="https://cdn.shopify.com/s/files/1/0058/6514/4418/products/zippro_0009_2084.jpg?v=1747208006&width=900" alt="Zip Pouch Pro detail">
+    <img src="https://cdn.shopify.com/s/files/1/0058/6514/4418/products/zippro_0011_2082.jpg?v=1747208006&width=200" data-full="https://cdn.shopify.com/s/files/1/0058/6514/4418/products/zippro_0011_2082.jpg?v=1747208006&width=900" alt="Zip Pouch Pro open">
+    <img src="https://cdn.shopify.com/s/files/1/0058/6514/4418/files/ZIPPOUCHPROVX42GREEN.jpg?v=1747208006&width=200" data-full="https://cdn.shopify.com/s/files/1/0058/6514/4418/files/ZIPPOUCHPROVX42GREEN.jpg?v=1747208006&width=900" alt="Zip Pouch Pro dark green">
+  </div>
+
+  <div class="info">
+    <h1>Zip Pouch Pro</h1>
+    <div class="rating"><span class="stars"><i></i></span> 986 Reviews</div>
+    <div class="price">$39.00 USD</div>
+
+    <div class="optlabel">Color: <span id="colName">Black | X-Pac VX21</span></div>
+    <div class="swatches">
+      <div class="sw on" data-name="Black | X-Pac VX21"><b style="background:#1b1b1b"></b>Black</div>
+      <div class="sw" data-name="Dark Green | X-Pac VX21"><b style="background:#5a5f47"></b>Dark Green</div>
+      <div class="sw out" data-name="Slate Gray | X-Pac VX21"><b style="background:#9aa3ab"></b>Slate Gray<em>Sold out</em></div>
+      <div class="sw out" data-name="True Red | X-Pac VX21"><b style="background:#a33327"></b>True Red<em>Sold out</em></div>
+      <div class="sw" data-name="Hot Orange | X-Pac VX25"><b style="background:#cf5a28"></b>Hot Orange</div>
+    </div>
+
+    <div class="features">
+      <h3>Key Features</h3>
+      <ul>
+        <li>3 external slots for EDC gear — knife, torch, lighter, multitool</li>
+        <li>Fits 4–12 cards</li>
+        <li>RFID-blocking material</li>
+        <li>YKK AquaGuard&reg; zippers</li>
+        <li>Compatible with HUB Keychain</li>
+      </ul>
+      <div class="specchips">
+        <span>8.5 × 13 cm</span><span>40 g</span><span>X-Pac&reg; fabric</span><span>100% carbon-neutral fabric</span>
+      </div>
+    </div>
+
+    <button class="btn" id="atc">Add to Cart — $39.00</button>
+    <a class="paylink" href="#">More payment options — including Shop&nbsp;Pay</a>
+
+    <div class="desc">
+      <p>Stow your cards and cash quickly in a compact pouch. Designed for those who want to carry as little weight as possible, the Zip Pouch Pro has secure storage space for frequently used items such as credit cards and bank notes. With an extra pocket for coins or smaller items like your spare SIM card, you'll find room even for business cards too!</p>
+      <p>As a bonus, it comes with three external slots for additional space to carry a small torch, lighter, etc.</p>
+    </div>
+
+    <details>
+      <summary>Materials</summary>
+      <div class="pad"><ul>
+        <li>Exterior: X-Pac&reg; VX21 (Black, Dark Green, Slate Gray, True Red), X-Pac&reg; VX25 (Hot Orange)</li>
+        <li>100% carbon-neutral fabric</li>
+        <li>Interior: 210D Orange Ripstop Nylon lining (Black, Dark Green, Slate Gray); 200D Gray X-grid Ripstop Nylon (Orange, Red)</li>
+      </ul></div>
+    </details>
+    <details>
+      <summary>Dimensions</summary>
+      <div class="pad"><ul>
+        <li>Height: 8.5 cm (3.34")</li>
+        <li>Width: 13 cm (5.11")</li>
+        <li>Weight: 40 g</li>
+      </ul></div>
+    </details>
+    <details>
+      <summary>Shipping and Returns</summary>
+      <div class="pad">See alpakagear.com for the full shipping and returns &amp; warranty policies.</div>
+    </details>
+
+    <div class="cross">
+      <img src="https://cdn.shopify.com/s/files/1/0058/6514/4418/products/HUB-Keychain-01.jpg?v=1747208314&width=200" alt="HUB Keychain">
+      <div class="t">Goes well with<br><strong>HUB Keychain</strong><small>$29.00 USD</small></div>
+      <a href="#">Add</a>
+    </div>
+  </div>
+
+  <footer>CRO prototype by Burn the Ships — not affiliated with ALPAKA. Product content &copy; ALPAKA.</footer>
+</div>
+
+<div class="stickybar" id="sticky"><button class="btn">Add to Cart — $39.00</button></div>
+
+<script>
+const thumbs=document.querySelectorAll('#thumbs img'), main=document.getElementById('mainImg');
+thumbs.forEach(t=>t.addEventListener('click',()=>{thumbs.forEach(x=>x.classList.remove('on'));t.classList.add('on');main.src=t.dataset.full;}));
+document.querySelectorAll('.sw:not(.out)').forEach(s=>s.addEventListener('click',()=>{
+  document.querySelectorAll('.sw').forEach(x=>x.classList.remove('on'));s.classList.add('on');
+  document.getElementById('colName').textContent=s.dataset.name;
+}));
+const atc=document.getElementById('atc'), sticky=document.getElementById('sticky');
+new IntersectionObserver(e=>sticky.classList.toggle('show',!e[0].isIntersecting&&e[0].boundingClientRect.top<0)).observe(atc);
+</script>
+</body>
+</html>
