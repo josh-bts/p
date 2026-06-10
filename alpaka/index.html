@@ -129,10 +129,16 @@ details ul{margin-left:18px}
 .stickybar .inner{max-width:480px;margin:0 auto;display:flex;gap:10px;align-items:center}
 .stickybar .meta{font-size:11.5px;color:var(--ink);line-height:1.3;white-space:nowrap}
 .stickybar .btn{padding:13px;flex:1}
-@media(min-width:768px){.wrap{max-width:520px}}
+/* Desktop: render the mobile layout in a centered phone-width frame */
+@media(min-width:768px){
+  body{background:#e8e6e3}
+  .device{max-width:390px;margin:0 auto;background:#fff;box-shadow:0 0 48px rgba(0,0,0,.16);min-height:100vh}
+  .stickybar{width:100%;max-width:390px;left:50%;right:auto;transform:translateX(-50%)}
+}
 </style>
 </head>
 <body>
+<div class="device">
 <div class="announce">🦙 Now Landing: Traverse Backpack 30L 🦙</div>
 <header>
   <svg viewBox="0 0 24 24" aria-label="Menu"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -318,6 +324,7 @@ details ul{margin-left:18px}
     <div class="legal">© 2026 — ALPAKA<br>CRO prototype by Burn the Ships — not affiliated with ALPAKA. Product content © ALPAKA.</div>
   </div>
 </div>
+</div><!-- /device -->
 
 <div class="stickybar" id="sticky">
   <div class="inner">
@@ -334,7 +341,8 @@ document.querySelectorAll('div.sw:not(.out)').forEach(s=>s.addEventListener('cli
   document.getElementById('colName').textContent=s.dataset.name;
 }));
 const atc=document.getElementById('atc'), sticky=document.getElementById('sticky');
-new IntersectionObserver(e=>sticky.classList.toggle('show',!e[0].isIntersecting&&e[0].boundingClientRect.top<0)).observe(atc);
+function syncSticky(){sticky.classList.toggle('show', atc.getBoundingClientRect().bottom < 0)}
+addEventListener('scroll', syncSticky, {passive:true}); syncSticky();
 </script>
 </body>
 </html>
