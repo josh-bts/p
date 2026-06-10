@@ -17,7 +17,10 @@ body{font-family:"Nunito Sans",sans-serif;color:var(--body);background:var(--bg)
 h1,h2,h3,.btn{font-family:Montserrat,sans-serif;font-weight:500;color:var(--ink)}
 .wrap{max-width:480px;margin:0 auto;padding:0 16px}
 a{color:inherit}
-.announce{background:#111;color:#fff;text-align:center;font-family:Montserrat,sans-serif;font-size:10.5px;letter-spacing:.12em;padding:8px 12px;text-transform:uppercase}
+.announce{background:#111;color:#fff;text-align:center;font-family:Montserrat,sans-serif;font-size:10.5px;letter-spacing:.08em;padding:8px 12px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shoppay{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;background:#5a31f4;color:#fff;border:0;border-radius:4px;padding:14px;margin-top:10px;font-family:"Nunito Sans",sans-serif;font-size:14px;cursor:pointer}
+.shoppay b{font-weight:700;font-size:16px;letter-spacing:-.02em}
+.shoppay span{font-weight:400;font-size:13px;opacity:.95}
 header{border-bottom:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:40}
 header .logo img{height:30px;display:block}
 header .ic{display:flex;gap:16px}
@@ -130,7 +133,7 @@ details ul{margin-left:18px}
 </style>
 </head>
 <body>
-<div class="announce">🦙 Now Landing: Traverse Backpack 30L — Astral Edition 🦙</div>
+<div class="announce">🦙 Now Landing: Traverse Backpack 30L 🦙</div>
 <header>
   <svg viewBox="0 0 24 24" aria-label="Menu"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
   <a class="logo" href="https://alpakagear.com"><img src="https://alpakagear.com/cdn/shop/files/alpaka-logo-registered-transparent_adceca46-2e73-4526-868a-bd1e91b2644d.png?v=1613724215&width=300" alt="ALPAKA"></a>
@@ -152,7 +155,8 @@ details ul{margin-left:18px}
     <div class="rating"><span class="stars"><i style="width:92%"></i></span> <a href="#reviews">4.6 · 986 reviews</a></div>
     <div class="priceline"><span class="price" id="priceTxt">$39.00 USD</span><span class="pricelab">Sale price</span></div>
     <button class="btn" id="atc">Add to Cart — $39.00</button>
-    <a class="paylink" href="#">More payment options — including Shop&nbsp;Pay</a>
+    <button class="shoppay"><span>Buy with</span> <b>shop</b><span style="font-weight:700">Pay</span></button>
+    <a class="paylink" href="#">More payment options</a>
   </div>
 
   <div class="thumbs" id="thumbs">
