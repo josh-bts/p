@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ceramide Refillable Lip Silk | SOSHE — CRO Prototype</title>
+<style>
+@font-face{font-family:"ITC Garamond";src:url("https://soshebeauty.com/cdn/shop/t/170/assets/ITCGaramondStdBookNarrow.woff2?v=152585173276529790161780312803") format("woff2");font-display:swap}
+@font-face{font-family:Apercu;font-weight:400;src:url("https://soshebeauty.com/cdn/shop/t/170/assets/apercu-regular-pro.woff2") format("woff2");font-display:swap}
+@font-face{font-family:Apercu;font-weight:700;src:url("https://soshebeauty.com/cdn/shop/t/170/assets/apercu-bold.woff2") format("woff2");font-display:swap}
+:root{--ink:#1d2a2e;--body:#3e4a4e;--line:#e7e3df;--teal:#15393f;--rose:#bc7f72;--soft:#f7f4f1;--blush:#f4e9e4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Apercu,system-ui,sans-serif;color:var(--body);background:#fff;font-size:15px;line-height:1.6}
+h1,h2{font-family:"ITC Garamond",Georgia,serif;font-weight:400;color:var(--ink);letter-spacing:.01em}
+.wrap{max-width:480px;margin:0 auto;padding:0 16px}
+a{color:inherit}
+.announce{background:var(--rose);color:#fff;text-align:center;font-size:11.5px;letter-spacing:.1em;padding:8px 12px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header{border-bottom:1px solid var(--line);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:40}
+.brand{font-family:Apercu,sans-serif;font-weight:700;letter-spacing:.42em;font-size:17px;color:var(--ink);text-decoration:none;margin-left:.42em}
+header svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.6}
+.hero img{width:100%;display:block;background:var(--soft)}
+.thumbs{display:flex;gap:8px;padding:10px 16px 0;overflow-x:auto}
+.thumbs img{width:58px;height:58px;object-fit:cover;border:1px solid var(--line);border-radius:4px;cursor:pointer;background:var(--soft);flex:0 0 auto}
+.thumbs img.on{border-color:var(--ink)}
+.info{padding:16px 0 6px}
+h1{font-size:27px;line-height:1.1}
+.sub{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#8a8580;margin:5px 0}
+.tagline{margin:6px 0 4px}
+.rating{display:flex;align-items:center;gap:7px;margin:8px 0 2px;font-size:13px;color:var(--ink)}
+.stars{color:var(--rose);font-size:14px;letter-spacing:1px}
+.rating a{text-decoration:underline;text-underline-offset:3px}
+.priceline{display:flex;align-items:baseline;gap:10px;margin:6px 0 4px}
+.price{font-size:21px;color:var(--ink);font-family:"ITC Garamond",serif}
+.shadelabel{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:14px 0 8px}
+.shadelabel span{color:#8a8580;text-transform:none;letter-spacing:0}
+.shades{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.shade{text-align:center;font-size:10.5px;color:#666;cursor:pointer}
+.shade img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;border:2px solid transparent}
+.shade.on img{border-color:var(--ink)}
+.shade span{display:block;margin-top:3px}
+.tryon{background:var(--blush);border-radius:12px;padding:14px;margin:16px 0}
+.tryon h3{font-family:"ITC Garamond",serif;font-weight:400;font-size:19px;color:var(--ink);margin-bottom:3px}
+.tryon p{font-size:12.5px;margin-bottom:10px}
+.tryon .vids{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tryon video{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:10px;background:#ddd}
+.plan{border:1.5px solid var(--line);border-radius:10px;padding:12px;margin:8px 0;cursor:pointer;font-size:12.5px;color:#555;display:flex;justify-content:space-between;gap:8px}
+.plan.on{border-color:var(--teal);background:#f2f6f5}
+.plan b{display:block;color:var(--ink);font-size:14px}
+.plan .pr{text-align:right;white-space:nowrap}
+.plan .pr b{font-size:14.5px}
+.plan .pr s{color:#a9a49e;font-size:12px}
+.btn{display:block;width:100%;background:var(--teal);color:#fff;text-align:center;border:0;border-radius:4px;padding:16px;font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;font-family:Apercu,sans-serif;font-weight:700}
+.trust{display:flex;justify-content:center;gap:16px;font-size:12px;color:var(--ink);margin:10px 0 2px}
+.trust span::before{content:"✓ ";color:var(--rose);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.chips span{font-size:11px;letter-spacing:.04em;border:1px solid var(--line);color:var(--ink);border-radius:99px;padding:5px 11px}
+.section{padding:22px 0 6px}
+.section h2{font-size:22px;margin-bottom:10px}
+.trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px}
+.trio div{background:var(--soft);border-radius:10px;padding:11px;font-size:11.5px;text-align:center}
+.trio b{display:block;font-family:"ITC Garamond",serif;font-weight:400;color:var(--ink);font-size:14px;margin-bottom:2px}
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{font-weight:700;color:var(--ink);font-size:13px;letter-spacing:.06em;padding:14px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;text-transform:uppercase}
+summary::after{content:"+";color:#999}
+details[open] summary::after{content:"–"}
+details .pad{padding:0 0 14px;font-size:13.5px}
+.refill{background:var(--teal);color:#dfe9e7;border-radius:12px;padding:18px;margin:20px 0}
+.refill h2{color:#fff;font-size:21px;margin-bottom:6px}
+.refill p{font-size:13.5px}
+.rsummary{display:flex;gap:16px;align-items:center;margin-bottom:8px}
+.rbig{font-family:"ITC Garamond",serif;font-size:44px;color:var(--ink)}
+.rmeta{font-size:13px}
+.foot{background:var(--soft);margin-top:26px;padding:26px 0 22px;font-size:12.5px;color:#7d7872}
+.foot .legal{font-size:11px;border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
+.stickybar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1.5px solid var(--teal);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;z-index:50}
+.stickybar.show{display:block}
+.stickybar .inner{max-width:480px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.stickybar .meta{font-size:11.5px;color:var(--ink);line-height:1.3;white-space:nowrap}
+.stickybar .btn{padding:13px;flex:1}
+@media(min-width:600px){
+  body{background:#ece8e4}
+  .device{max-width:390px;margin:0 auto;background:#fff;box-shadow:0 0 48px rgba(0,0,0,.16);min-height:100vh}
+  .stickybar{width:100%;max-width:390px;left:50%;right:auto;transform:translateX(-50%)}
+}
+</style>
+</head>
+<body>
+<div class="device">
+<div class="announce">Free shipping on orders $50+</div>
+<header>
+  <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  <a class="brand" href="https://soshebeauty.com">SOSHE</a>
+  <svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12H6.2L5 8z"/><path d="M9 8a3 3 0 016 0"/></svg>
+</header>
+
+<div class="hero"><img id="mainImg" src="soshe-beauty-hero.png" alt="SOSHE Ceramide Refillable Lip Silk on marble"></div>
+<div class="thumbs" id="thumbs">
+  <img class="on" src="soshe-beauty-hero.png" data-full="soshe-beauty-hero.png" alt="Lip Silk hero">
+  <img src="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_pdp_lipsilk_rewind_03.jpg?v=1717632808&width=200" data-full="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_pdp_lipsilk_rewind_03.jpg?v=1717632808&width=900" alt="Lip Silk detail">
+  <img src="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_pdp_lipsilk_rewind_02.jpg?v=1717632808&width=200" data-full="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_pdp_lipsilk_rewind_02.jpg?v=1717632808&width=900" alt="Lip Silk texture">
+  <img src="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_speakeasy_pdp_1.jpg?v=1718239387&width=200" data-full="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_speakeasy_pdp_1.jpg?v=1718239387&width=900" alt="Speakeasy">
+</div>
+
+<div class="wrap">
+  <div class="info">
+    <h1>Ceramide Refillable Lip Silk</h1>
+    <div class="sub">Sheer Hydrating Lipstick</div>
+    <p class="tagline">A buildable wash of color and hydrating shine, all without the need for a mirror or an ultra-steady hand.</p>
+    <div class="rating"><span class="stars">★★★★★</span> <a href="#reviews">4.5 · 626 reviews</a></div>
+    <div class="priceline"><span class="price" id="priceTxt">$25.20</span><span style="font-size:12.5px;color:#8a8580">Subscribe &amp; Save · <s>$28.00</s></span></div>
+
+    <div class="shadelabel">Shade: <span id="shadeName">Speakeasy</span></div>
+    <div class="shades">
+<div class="shade on" data-name="Speakeasy" data-img="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_speakeasy_pdp_1.jpg?v=1718239387&width=900"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_speakeasy_pdp_1.jpg?v=1718239387&width=200" alt="Speakeasy"><span>Speakeasy</span></div>
+<div class="shade" data-name="Just Right" data-img="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_justright_pdp_1.jpg?v=1718239387&width=900"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_justright_pdp_1.jpg?v=1718239387&width=200" alt="Just Right"><span>Just Right</span></div>
+<div class="shade" data-name="Wine Stained" data-img="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_winestained_pdp_1.jpg?v=1718239387&width=900"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_winestained_pdp_1.jpg?v=1718239387&width=200" alt="Wine Stained"><span>Wine Stained</span></div>
+<div class="shade" data-name="Adore" data-img="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_adore_pdp_1.jpg?v=1718239387&width=900"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_adore_pdp_1.jpg?v=1718239387&width=200" alt="Adore"><span>Adore</span></div>
+<div class="shade" data-name="Flirt" data-img="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_flirt_pdp_1.jpg?v=1718239387&width=900"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_flirt_pdp_1.jpg?v=1718239387&width=200" alt="Flirt"><span>Flirt</span></div>
+<div class="shade" data-name="With Love" data-img="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_withlove_pdp_1.jpg?v=1718239387&width=900"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_withlove_pdp_1.jpg?v=1718239387&width=200" alt="With Love"><span>With Love</span></div>
+<div class="shade" data-name="Rewind" data-img="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_rewind_pdp_1.jpg?v=1705530096&width=900"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0521/3821/3555/files/soshe_rewind_pdp_1.jpg?v=1705530096&width=200" alt="Rewind"><span>Rewind</span></div>
+    </div>
+
+    <div class="tryon">
+      <h3>See it on skin like yours</h3>
+      <p>Real try-ons from the SOSHE community — undertone-matched shades on real skin.</p>
+      <div class="vids">
+        <video src="https://trypoweredbyhue.com/output/assets/skin-twin-assets/1719549780058-96645c3f-890c-4757-b804-2653cbcac1a8-application_video_1283772098664-copy_6BAB12D1-2A95-4A33-8AE4-ACE528425D7E/clip_mp4_480.mp4" muted loop playsinline autoplay></video>
+        <video src="https://trypoweredbyhue.com/output/assets/skin-twin-assets/1718225593631-f61e3e4f-33ad-416b-ad74-7afb0955e790-application_video_1283772098664-copy_0C5617B6-8890-47FA-BB3A-9DCC41FE56BE/clip_mp4_480.mp4" muted loop playsinline autoplay></video>
+      </div>
+    </div>
+
+    <div class="plan on" data-p="$25.20" data-s="Subscribe & Save 10%">
+      <div><b>Subscribe &amp; Save 10%</b>Delivery every 3 months · Free shipping · Modify any time</div>
+      <div class="pr"><b>$25.20</b> <s>$28.00</s></div>
+    </div>
+    <div class="plan" data-p="$28.00" data-s="One-time purchase">
+      <div><b>One-time purchase</b></div>
+      <div class="pr"><b>$28.00</b></div>
+    </div>
+    <button class="btn" id="atc">Add to Cart — $25.20</button>
+    <div class="trust"><span>Free shipping over $50</span><span>Refillable case</span></div>
+
+    <div class="chips"><span>Dermatologist-Tested</span><span>Refillable</span><span>Skincare-Infused</span><span>Cruelty-Free</span></div>
+  </div>
+
+  <div class="section">
+    <h2>Skincare, in a lipstick</h2>
+    <div class="trio">
+      <div><b>Ceramides</b>Barrier support</div>
+      <div><b>Vitamin E</b>Antioxidant care</div>
+      <div><b>Shea Butter</b>Deep hydration</div>
+    </div>
+  </div>
+
+  <div class="refill">
+    <h2>Refill it. Keep the case.</h2>
+    <p>Lip Silk is built around a refillable case — when you hit the bottom, swap in a refill instead of rebuying the whole thing. Better for your wallet, better for the planet.</p>
+  </div>
+
+  <div class="section">
+    <details open>
+      <summary>Description</summary>
+      <div class="pad">Somewhere between a lipstick and lip balm, Lip Silk will forever change the way you think about lip color. The incredibly silky, skincare-infused formula gives lips a buildable wash of color and hydrating shine.</div>
+    </details>
+    <details>
+      <summary>How to Use</summary>
+      <div class="pad">For an everyday look apply it like a lip balm — one or two swipes are ideal. For a bolder statement, this buildable formula shines: apply three or more swipes for a deeper, full-coverage look reminiscent of a glossy lipstick.</div>
+    </details>
+    <details>
+      <summary>Ingredients</summary>
+      <div class="pad">Helianthus Annuus (Sunflower) Seed Oil*, Sesamum Indicum (Sesame) Seed Oil*, Ricinus Communis (Castor) Seed Oil*, Butyrospermum Parkii (Shea) Butter*, Theobroma Cacao (Cocoa) Seed Butter*, Copernicia Cerifera (Carnauba) Wax* — full list at soshebeauty.com</div>
+    </details>
+  </div>
+
+  <div class="section" id="reviews">
+    <h2>Rated by the community</h2>
+    <div class="rsummary">
+      <div class="rbig">4.5</div>
+      <div class="rmeta"><span class="stars">★★★★★</span><br>From 626 verified reviews</div>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  <div class="wrap">
+    <div style="font-weight:700;letter-spacing:.42em;color:var(--ink)">SOSHE</div>
+    <p style="margin-top:8px">Clean, refillable color cosmetics.</p>
+    <div class="legal">© 2026 — SOSHE Beauty<br>CRO prototype by Burn the Ships — not affiliated with SOSHE. Product content © SOSHE.</div>
+  </div>
+</div>
+</div><!-- /device -->
+
+<div class="stickybar" id="sticky">
+  <div class="inner">
+    <div class="meta">Lip Silk · <span id="stickyS">Speakeasy</span><br><strong id="stickyP">$25.20</strong> · ★ 4.5</div>
+    <button class="btn">Add to Cart</button>
+  </div>
+</div>
+
+<script>
+const thumbs=document.querySelectorAll('#thumbs img'), main=document.getElementById('mainImg');
+thumbs.forEach(t=>t.addEventListener('click',()=>{thumbs.forEach(x=>x.classList.remove('on'));t.classList.add('on');main.src=t.dataset.full;}));
+document.querySelectorAll('.shade').forEach(s=>s.addEventListener('click',()=>{
+  document.querySelectorAll('.shade').forEach(x=>x.classList.remove('on'));s.classList.add('on');
+  document.getElementById('shadeName').textContent=s.dataset.name;
+  document.getElementById('stickyS').textContent=s.dataset.name;
+  main.src=s.dataset.img;
+}));
+document.querySelectorAll('.plan').forEach(p=>p.addEventListener('click',()=>{
+  document.querySelectorAll('.plan').forEach(x=>x.classList.remove('on'));p.classList.add('on');
+  document.getElementById('priceTxt').textContent=p.dataset.p;
+  document.getElementById('stickyP').textContent=p.dataset.p;
+  document.getElementById('atc').textContent='Add to Cart — '+p.dataset.p;
+}));
+const atc=document.getElementById('atc'), sticky=document.getElementById('sticky');
+function syncSticky(){sticky.classList.toggle('show', atc.getBoundingClientRect().bottom < 0)}
+addEventListener('scroll', syncSticky, {passive:true}); syncSticky();
+</script>
+</body>
+</html>
