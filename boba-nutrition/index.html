@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infi — All-in-One Superfood Shake | Boba Nutrition — CRO Prototype</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#231f31;--body:#46415a;--line:#e8e5f0;--purple:#8d4bbb;--deep:#5e2d8c;--soft:#f7f4fb;--peach:#f3eafc;--green:#1c7c4f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Roboto,system-ui,sans-serif;color:var(--body);background:#fff;font-size:15.5px;line-height:1.55}
+h1,h2,h3{color:var(--ink);font-weight:900;letter-spacing:-.01em}
+.wrap{max-width:480px;margin:0 auto;padding:0 16px}
+a{color:inherit}
+.announce{background:var(--deep);color:#fff;text-align:center;font-size:12px;font-weight:700;padding:8px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header{border-bottom:1px solid var(--line);padding:11px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:40}
+.brand{display:flex;align-items:center;gap:8px;font-weight:900;color:var(--purple);font-size:17px;letter-spacing:.01em;text-decoration:none}
+.brand img{width:30px;height:30px}
+header svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.7}
+.hero img{width:100%;display:block;background:var(--soft)}
+.thumbs{display:flex;gap:8px;padding:10px 16px 0;overflow-x:auto}
+.thumbs img{width:60px;height:60px;object-fit:contain;border:1px solid var(--line);border-radius:6px;cursor:pointer;background:var(--soft);flex:0 0 auto}
+.thumbs img.on{border-color:var(--purple)}
+.info{padding:16px 0 6px}
+h1{font-size:23px;line-height:1.15}
+.tagline{margin:7px 0 4px;font-weight:500}
+.checks{list-style:none;margin:4px 0}
+.checks li{padding:3px 0 3px 24px;position:relative;font-size:14px;color:var(--ink)}
+.checks li::before{content:"✓";position:absolute;left:2px;color:var(--green);font-weight:900}
+.rating{display:flex;align-items:center;gap:7px;margin:8px 0 2px;font-size:13.5px;color:var(--ink)}
+.stars{color:#f1a33c;font-size:15px;letter-spacing:1px}
+.rating a{text-decoration:underline;text-underline-offset:3px}
+.priceline{display:flex;align-items:baseline;gap:10px;margin:6px 0 12px}
+.price{font-size:22px;font-weight:900;color:var(--ink)}
+.perserv{font-size:13px;color:#777}
+.btn{display:block;width:100%;background:var(--purple);color:#fff;text-align:center;border:0;border-radius:99px;padding:16px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit}
+.trust{display:flex;justify-content:center;gap:18px;font-size:12.5px;color:var(--ink);margin:10px 0 2px}
+.trust span::before{content:"✓ ";color:var(--green);font-weight:700}
+.chooser{border:2px solid var(--purple);border-radius:16px;padding:16px;margin:20px 0}
+.chooser h3{font-size:17px;margin-bottom:8px}
+.plan{border:1.5px solid var(--line);border-radius:12px;padding:12px;margin:8px 0;cursor:pointer;font-size:13px;color:#555;display:flex;justify-content:space-between;gap:8px}
+.plan.on{border-color:var(--purple);background:var(--peach)}
+.plan b{display:block;color:var(--ink);font-size:14.5px}
+.plan .pr{text-align:right;white-space:nowrap}
+.plan .pr b{font-size:15px}
+.plan .pr small{color:var(--green);font-weight:700}
+.badge{display:inline-block;background:var(--purple);color:#fff;border-radius:99px;font-size:10.5px;font-weight:700;padding:2px 8px;margin-bottom:4px}
+.step{font-size:11px;letter-spacing:.08em;color:#888;text-transform:uppercase;font-weight:700;margin:14px 0 8px}
+.flavgrid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px}
+.flav{text-align:center;font-size:11px;color:#555;cursor:pointer}
+.flav img{width:100%;aspect-ratio:1;object-fit:contain;background:var(--soft);border-radius:10px;border:2px solid transparent}
+.flav.on img{border-color:var(--purple)}
+.subnote{font-size:11.5px;color:#777;margin-top:10px}
+.section{padding:24px 0 6px}
+.section h2{font-size:20px;margin-bottom:12px}
+.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bgrid div{background:var(--soft);border-radius:12px;padding:12px;font-size:12.5px}
+.bgrid b{display:block;color:var(--deep);font-size:13px;margin-bottom:2px}
+.stats{display:flex;gap:10px;text-align:center;background:var(--deep);border-radius:16px;padding:18px 10px;margin:20px 0}
+.stats div{flex:1;color:#d9c9ef;font-size:11px}
+.stats b{display:block;color:#fff;font-size:17px;font-weight:900}
+.how li{list-style:none;display:flex;gap:12px;padding:8px 0;font-size:14px;color:var(--ink)}
+.how i{flex:0 0 26px;height:26px;border-radius:50%;background:var(--purple);color:#fff;font-style:normal;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.timeline{border-left:2px solid var(--purple);margin-left:8px;padding-left:16px}
+.timeline div{margin-bottom:12px;font-size:13px}
+.timeline b{display:block;color:var(--deep);font-size:13.5px}
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{font-weight:700;color:var(--ink);font-size:14px;padding:14px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"+";color:#888}
+details[open] summary::after{content:"–"}
+details .pad{padding:0 0 14px;font-size:12.5px}
+.diet{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.diet span{font-size:11.5px;border:1.5px solid var(--purple);color:var(--deep);border-radius:99px;padding:5px 11px;font-weight:700}
+.guarantee{background:var(--peach);border:2px dashed var(--purple);border-radius:16px;padding:18px;text-align:center;margin:20px 0}
+.guarantee h3{font-size:18px;color:var(--deep);margin-bottom:4px}
+.guarantee p{font-size:13.5px}
+.rtabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.rtab{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:7px 14px;font-size:12.5px;font-weight:700;color:#666;cursor:pointer;font-family:inherit}
+.rtab.on{background:var(--purple);border-color:var(--purple);color:#fff}
+.rpanel{display:none}
+.rpanel.on{display:block}
+.review{border-top:1px solid var(--line);padding:13px 0}
+.review .stars{font-size:12px}
+.review p{font-size:13.5px;margin:5px 0 4px}
+.review .who{font-size:12px;color:var(--ink);font-weight:700}
+.rsummary{display:flex;gap:16px;align-items:center;margin-bottom:10px}
+.rbig{font-size:42px;font-weight:900;color:var(--ink)}
+.rmeta{font-size:13.5px}
+.foot{background:var(--deep);color:#d9c9ef;margin-top:28px;padding:28px 0 24px;font-size:13px}
+.foot .legal{color:#a98cc9;font-size:11.5px;border-top:1px solid #7445a0;padding-top:14px;margin-top:14px}
+.stickybar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:2px solid var(--purple);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;z-index:50}
+.stickybar.show{display:block}
+.stickybar .inner{max-width:480px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.stickybar .meta{font-size:12px;color:var(--ink);line-height:1.3;white-space:nowrap}
+.stickybar .btn{padding:13px;flex:1;font-size:15px}
+@media(min-width:600px){
+  body{background:#ece8f2}
+  .device{max-width:390px;margin:0 auto;background:#fff;box-shadow:0 0 48px rgba(0,0,0,.16);min-height:100vh}
+  .stickybar{width:100%;max-width:390px;left:50%;right:auto;transform:translateX(-50%)}
+}
+</style>
+</head>
+<body>
+<div class="device">
+<div class="announce">60-Day Happiness Guarantee — even on opened bags</div>
+<header>
+  <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  <a class="brand" href="https://bobanutrition.co"><img src="https://bobanutrition.co/cdn/shop/files/bobafavicon_228x228.png" alt="Boba Nutrition">boba nutrition</a>
+  <svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12H6.2L5 8z"/><path d="M9 8a3 3 0 016 0"/></svg>
+</header>
+
+<div class="hero"><img id="mainImg" src="boba-nutrition-hero.png" alt="Infi taro shake with pouch"></div>
+<div class="thumbs" id="thumbs">
+  <img class="on" src="boba-nutrition-hero.png" data-full="boba-nutrition-hero.png" alt="Infi taro scene">
+<img src="https://cdn.shopify.com/s/files/1/0597/7666/3715/files/infi-taro.png?v=1772083285&width=200" data-full="https://cdn.shopify.com/s/files/1/0597/7666/3715/files/infi-taro.png?v=1772083285&width=900" alt="Infi Taro">
+<img src="https://cdn.shopify.com/s/files/1/0597/7666/3715/files/infi-matcha-front_dbded653-1c9a-4511-85f0-440d94a6aa79.png?v=1761801324&width=200" data-full="https://cdn.shopify.com/s/files/1/0597/7666/3715/files/infi-matcha-front_dbded653-1c9a-4511-85f0-440d94a6aa79.png?v=1761801324&width=900" alt="Infi Matcha">
+<img src="https://cdn.shopify.com/s/files/1/0597/7666/3715/files/infi-brownsugar-front_fdec4210-2491-4f59-8e4a-fec2907b472a.png?v=1761801340&width=200" data-full="https://cdn.shopify.com/s/files/1/0597/7666/3715/files/infi-brownsugar-front_fdec4210-2491-4f59-8e4a-fec2907b472a.png?v=1761801340&width=900" alt="Infi Brown Sugar">
+<img src="https://cdn.shopify.com/s/files/1/0597/7666/3715/files/infi-honeydew-front_9d14fc54-5ce1-4161-b889-450e5f094f76.png?v=1761801349&width=200" data-full="https://cdn.shopify.com/s/files/1/0597/7666/3715/files/infi-honeydew-front_9d14fc54-5ce1-4161-b889-450e5f094f76.png?v=1761801349&width=900" alt="Infi Honeydew">
+</div>
+
+<div class="wrap">
+  <div class="info">
+    <h1>Infi — All-in-One Superfood Shake</h1>
+    <p class="tagline">The boba habit that loves you back. The shake you'll actually look forward to.</p>
+    <ul class="checks">
+      <li>22g protein + 5g fiber</li>
+      <li>41 fruits, veggies &amp; supergreens</li>
+      <li>One scoop. Just add water.</li>
+      <li>Smooth, creamy boba flavor</li>
+    </ul>
+    <div class="rating"><span class="stars">★★★★★</span> <a href="#reviews">4.7/5 "Excellent" · 614 reviews</a></div>
+    <div class="priceline"><span class="price" id="priceTxt">$41.99</span><span class="perserv" id="servTxt">Subscribe &amp; Save 30% · $1.40/serving</span></div>
+    <button class="btn" id="atc">Add to Cart — $41.99</button>
+    <div class="trust"><span>60-day guarantee</span><span>Pause, skip or cancel anytime</span></div>
+  </div>
+
+  <div class="chooser">
+    <h3>Build your habit</h3>
+    <div class="plan on" data-p="$41.99" data-s="Subscribe &amp; Save 30% · $1.40/serving">
+      <div><span class="badge">BEST OFFER — SAVE 30%</span><b>Subscribe &amp; Save</b>20% off recurring orders · Never run out · Pause, skip or cancel anytime</div>
+      <div class="pr"><b>$41.99</b><br><small>$1.40/serving</small></div>
+    </div>
+    <div class="plan" data-p="$59.99" data-s="One-time purchase · $1.99/serving">
+      <div><b>One-Time Purchase</b>Single bag · Try it out</div>
+      <div class="pr"><b>$59.99</b><br>$1.99/serving</div>
+    </div>
+    <div class="step">Choose your flavor</div>
+    <div class="flavgrid">
+<div class="flav on" data-name="Taro"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0597/7666/3715/files/infi-taro.png?v=1772083285&width=300" alt="Infi Taro"><span>Taro</span></div>
+<div class="flav" data-name="Matcha"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0597/7666/3715/files/infi-matcha-front_dbded653-1c9a-4511-85f0-440d94a6aa79.png?v=1761801324&width=300" alt="Infi Matcha"><span>Matcha</span></div>
+<div class="flav" data-name="Brown Sugar"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0597/7666/3715/files/infi-brownsugar-front_fdec4210-2491-4f59-8e4a-fec2907b472a.png?v=1761801340&width=300" alt="Infi Brown Sugar"><span>Brown Sugar</span></div>
+<div class="flav" data-name="Honeydew"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0597/7666/3715/files/infi-honeydew-front_9d14fc54-5ce1-4161-b889-450e5f094f76.png?v=1761801349&width=300" alt="Infi Honeydew"><span>Honeydew</span></div>
+    </div>
+    <div class="subnote">Every order backed by the 60-day happiness guarantee — even if the bag is opened.</div>
+  </div>
+
+  <div class="section">
+    <h2>All the boba tea, with the benefits</h2>
+    <div class="bgrid">
+      <div><b>High-Protein Formula</b>22g of protein per serving for muscle growth and satiety</div>
+      <div><b>Boba-Inspired Flavors</b>Your favorite boba drinks without the excess sugar</div>
+      <div><b>Good Source of Fiber</b>Dietary fiber that helps with digestion</div>
+      <div><b>No Added Sugar</b>Naturally sweetened, guilt-free</div>
+      <div><b>Dissolves Effortlessly</b>Smooth, clump-free in water or milk</div>
+      <div><b>Nutrient Rich</b>41 fruits &amp; veggies for antioxidant support</div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div><b>30,000+</b>happy customers</div>
+    <div><b>800,000+</b>shakes sold</div>
+    <div><b>2M+</b>views on Instagram</div>
+  </div>
+
+  <div class="section how">
+    <h2>Here's how it works</h2>
+    <li><i>1</i><span><b>Add &amp; pour</b> — one scoop into 12 oz of water, milk, or plant milk</span></li>
+    <li><i>2</i><span><b>Shake or blend</b> — mix until smooth and creamy</span></li>
+    <li><i>3</i><span><b>Sip &amp; go</b> — a complete, easy breakfast or meal</span></li>
+  </div>
+
+  <div class="section">
+    <h2>What happens when Infi becomes your daily habit</h2>
+    <div class="timeline">
+      <div><b>Week 1</b>Likely to feel fuller and more satisfied with 22g of complete whey protein. Fewer cravings as you replace sugar spikes with balanced fuel.</div>
+      <div><b>Month 1</b>Daily fiber and probiotics help support healthy digestion and steadier energy through the day.</div>
+      <div><b>Month 4+</b>This is just how you eat now. And it tastes like boba.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>What's inside</h2>
+    <details>
+      <summary>Full ingredient list</summary>
+      <div class="pad">Whey Protein Concentrate, Acacia Gum, Natural Flavors, Xanthan Gum, Digestive Enzyme Blend (Protease, Amylase, Lactase, Cellulase, Beta-Glucanase, Xylanase, Mannanase, Pectinase, Phytase, Alpha-Galactosidase), Fruits &amp; Vegetables Blend (Apple, Orange, Blueberry, Cranberry, Tomato, Broccoli, Spinach, Carrot, Strawberry, Mushroom, Spirulina, Papaya, Pitaya, Elderberry, Mangosteen, Blackcurrant, Bilberry, Brussels Sprout, Broccoli Sprout, Camu Camu, Garlic, Oregano, Sweet Cherry, Raspberry, Chokeberry, Kale, Blackberry, Barley Grass, Wheat Grass, Alfalfa, Chlorella, Parsley, Clove, Green Tea, Onion, Acerola, Mint Leaf, Rosemary, Grape Seed, Curry Leaf), Bacillus subtilis, Vegetable Juice (for Color), Pink Himalayan Salt, Rebaudioside M. Contains: Milk. May Contain: Tree Nuts or Coconut.</div>
+    </details>
+    <details>
+      <summary>Why people choose Infi</summary>
+      <div class="pad">Every recipe is developed specifically for our formula and produced in North America so we can maintain quality and consistency. We focus on the small details that make a daily habit enjoyable: taste, texture, and ingredients that come together in one simple scoop.</div>
+    </details>
+    <div class="diet"><span>Gluten Free</span><span>High in Protein</span><span>No Sugar Added</span><span>Low Carb</span><span>Keto Friendly</span></div>
+  </div>
+
+  <div class="guarantee">
+    <h3>60-Day Happiness Guarantee</h3>
+    <p>Enough time to actually feel the difference. If it's not for you, that's completely okay — every order is backed, even if the bag is opened.</p>
+  </div>
+
+  <div class="section" id="reviews">
+    <h2>Join 30,000+ people who refused to make health boring</h2>
+    <div class="rsummary">
+      <div class="rbig">4.7</div>
+      <div class="rmeta"><span class="stars">★★★★★</span><br>"Excellent" · 614 reviews</div>
+    </div>
+    <div class="rtabs">
+<button class="rtab on" data-tab="Taste">Taste</button>
+<button class="rtab" data-tab="Benefits">Benefits</button>
+<button class="rtab" data-tab="Value">Value</button>
+<button class="rtab" data-tab="Convenience">Convenience</button>
+    </div>
+<div class="rpanel on" data-panel="Taste"><div class="review"><span class="stars">★★★★★</span><p>"Even with water it's SO good. Totally satisfies my craving for Taro Boba Tea without the sugar. Blends perfectly."</p><div class="who">Kendra D. · Verified buyer</div></div>
+<div class="review"><span class="stars">★★★★★</span><p>"It's worth it. No aftertaste of sweetener… It's better than other milk tea protein I've tried."</p><div class="who">Hannah L. · Verified buyer</div></div>
+<div class="review"><span class="stars">★★★★★</span><p>"Reminds me of ube. Mixes well with no clumps. Can't believe it's sugar-free."</p><div class="who">Ronald W. · Verified buyer</div></div></div>
+<div class="rpanel" data-panel="Benefits"><div class="review"><span class="stars">★★★★★</span><p>"Finally, something that actually works. Feeling full and nourished after a drink in the morning. Absolutely love it."</p><div class="who">Diana W. · Verified buyer</div></div>
+<div class="review"><span class="stars">★★★★★</span><p>"Satisfies my boba cravings so I haven't gone out for any since. I usually have a shake after workouts — feels like a treat."</p><div class="who">Beverly T. · Verified buyer</div></div></div>
+<div class="rpanel" data-panel="Value"><div class="review"><span class="stars">★★★★★</span><p>"The price is cheaper than protein milk out there."</p><div class="who">Khang T. · Verified buyer</div></div>
+<div class="review"><span class="stars">★★★★★</span><p>"I was a little hesitant because of the price, but I'm glad I bought it! The flavor is so nice and smooth… I'll be ordering more."</p><div class="who">Sarah · Verified buyer</div></div></div>
+<div class="rpanel" data-panel="Convenience"><div class="review"><span class="stars">★★★★★</span><p>"Taste is great. Macros are very good. Mixing ability is perfect. No clumping."</p><div class="who">Roummel Z. · Verified buyer</div></div>
+<div class="review"><span class="stars">★★★★★</span><p>"Better texture, no aftertaste or clumps. Definitely buying again!"</p><div class="who">Hector V. · Verified buyer</div></div></div>
+
+  </div>
+</div>
+
+<div class="foot">
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:8px;font-weight:900;color:#fff;font-size:16px"><img src="https://bobanutrition.co/cdn/shop/files/bobafavicon_228x228.png" alt="" style="width:28px;height:28px">boba nutrition</div>
+    <p style="margin-top:10px">Real boba flavor. Way better for you.</p>
+    <div class="legal">© 2026 — Boba Nutrition<br>CRO prototype by Burn the Ships — not affiliated with Boba Nutrition. Product content © Boba Nutrition.</div>
+  </div>
+</div>
+</div><!-- /device -->
+
+<div class="stickybar" id="sticky">
+  <div class="inner">
+    <div class="meta">Infi · <span id="stickyF">Taro</span><br><strong id="stickyP">$41.99</strong> · ★ 4.7</div>
+    <button class="btn">Add to Cart</button>
+  </div>
+</div>
+
+<script>
+const thumbs=document.querySelectorAll('#thumbs img'), main=document.getElementById('mainImg');
+thumbs.forEach(t=>t.addEventListener('click',()=>{thumbs.forEach(x=>x.classList.remove('on'));t.classList.add('on');main.src=t.dataset.full;}));
+document.querySelectorAll('.plan').forEach(p=>p.addEventListener('click',()=>{
+  document.querySelectorAll('.plan').forEach(x=>x.classList.remove('on'));p.classList.add('on');
+  document.getElementById('priceTxt').textContent=p.dataset.p;
+  document.getElementById('servTxt').innerHTML=p.dataset.s;
+  document.getElementById('stickyP').textContent=p.dataset.p;
+  document.getElementById('atc').textContent='Add to Cart — '+p.dataset.p;
+}));
+document.querySelectorAll('.flav').forEach(f=>f.addEventListener('click',()=>{
+  document.querySelectorAll('.flav').forEach(x=>x.classList.remove('on'));f.classList.add('on');
+  document.getElementById('stickyF').textContent=f.dataset.name;
+}));
+document.querySelectorAll('.rtab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.rtab').forEach(x=>x.classList.remove('on'));t.classList.add('on');
+  document.querySelectorAll('.rpanel').forEach(p=>p.classList.toggle('on', p.dataset.panel===t.dataset.tab));
+}));
+const atc=document.getElementById('atc'), sticky=document.getElementById('sticky');
+function syncSticky(){sticky.classList.toggle('show', atc.getBoundingClientRect().bottom < 0)}
+addEventListener('scroll', syncSticky, {passive:true}); syncSticky();
+</script>
+</body>
+</html>
