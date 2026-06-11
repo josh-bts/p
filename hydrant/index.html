@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hydrant Hydrate | Rapid Hydration Mix — CRO Prototype</title>
+<style>
+@font-face{font-family:Euclid;font-weight:400;font-display:swap;src:url("https://www.drinkhydrant.com/cdn/shop/t/486/assets/EuclidFlex.woff2?v=164714948334602357661780506780") format("woff2")}
+@font-face{font-family:Euclid;font-weight:700;font-display:swap;src:url("https://www.drinkhydrant.com/cdn/shop/t/486/assets/EuclidFlexBold.woff2?v=149119695064097418281780506780") format("woff2")}
+:root{--ink:#141414;--navy:#101b33;--body:#33394a;--line:#e5e7ee;--blue:#2f6df6;--sky:#bfe2f7;--red:#d94f3c;--green:#1c7c4f;--soft:#f5f7fb}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Euclid,system-ui,sans-serif;color:var(--body);background:#fff;font-size:15.5px;line-height:1.55}
+h1,h2,h3{color:var(--ink);font-weight:700;letter-spacing:-.01em}
+.wrap{max-width:480px;margin:0 auto;padding:0 16px}
+a{color:inherit}
+.announce{background:var(--navy);color:#fff;text-align:center;font-size:12px;font-weight:700;padding:8px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header{border-bottom:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:40}
+header svg.ic{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.7}
+.hero img{width:100%;display:block;background:var(--soft)}
+.thumbs{display:flex;gap:8px;padding:10px 16px 0;overflow-x:auto}
+.thumbs img{width:60px;height:60px;object-fit:cover;border:1px solid var(--line);border-radius:6px;cursor:pointer;background:var(--soft);flex:0 0 auto}
+.thumbs img.on{border-color:var(--ink)}
+.info{padding:16px 0 6px}
+h1{font-size:23px;line-height:1.15}
+.tagline{margin:7px 0 2px}
+.tagline b{color:var(--blue)}
+.rating{display:flex;align-items:center;gap:7px;margin:8px 0 2px;font-size:13.5px;color:var(--ink)}
+.stars{color:#f1a33c;font-size:15px;letter-spacing:1px}
+.rating a{text-decoration:underline;text-underline-offset:3px}
+.priceline{display:flex;align-items:baseline;gap:10px;margin:6px 0 12px}
+.price{font-size:22px;font-weight:700;color:var(--ink)}
+.perserv{font-size:13px;color:#777}
+.btn{display:block;width:100%;background:var(--red);color:#fff;text-align:center;border:0;border-radius:10px;padding:16px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit}
+.trust{display:flex;justify-content:center;gap:18px;font-size:12.5px;color:var(--ink);margin:10px 0 2px}
+.trust span::before{content:"✓ ";color:var(--green);font-weight:700}
+.chooser{border:1.5px solid var(--ink);border-radius:14px;padding:16px;margin:20px 0}
+.chooser h3{font-size:17px;margin-bottom:8px}
+.plan{border:1.5px solid var(--line);border-radius:10px;padding:12px;margin:8px 0;cursor:pointer;font-size:13px;color:#555;display:flex;justify-content:space-between;gap:8px}
+.plan.on{border-color:var(--green);background:#f1faf5}
+.plan b{display:block;color:var(--ink);font-size:14.5px}
+.plan .pr{text-align:right;white-space:nowrap}
+.plan .pr b{font-size:15px}
+.plan .pr small{color:var(--green);font-weight:700}
+.badge{display:inline-block;background:var(--green);color:#fff;border-radius:99px;font-size:10.5px;font-weight:700;padding:2px 8px;margin-bottom:4px}
+.step{font-size:11px;letter-spacing:.08em;color:#888;text-transform:uppercase;font-weight:700;margin:14px 0 8px}
+.slots{display:flex;gap:8px;margin-bottom:10px}
+.slot{flex:1;border:1.5px dashed var(--line);border-radius:8px;min-height:44px;font-size:10.5px;color:#999;display:flex;align-items:center;justify-content:center;text-align:center;padding:4px}
+.slot.filled{border-style:solid;border-color:var(--green);color:var(--ink);background:#f1faf5}
+.quick{display:block;width:100%;border:1.5px solid var(--blue);color:var(--blue);background:#fff;border-radius:8px;padding:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-bottom:10px}
+.flavgrid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px}
+.flav{text-align:center;font-size:10px;color:#555;cursor:pointer}
+.flav img{width:100%;aspect-ratio:1;object-fit:contain;background:var(--soft);border-radius:8px;border:1.5px solid transparent}
+.flav:active img{border-color:var(--blue)}
+.section{padding:24px 0 6px}
+.section h2{font-size:20px;margin-bottom:12px}
+.chips4{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chips4 div{background:var(--soft);border-radius:10px;padding:12px;font-size:12.5px}
+.chips4 b{display:block;color:var(--blue);font-size:13px;margin-bottom:2px}
+.irow{display:flex;gap:12px;border-top:1px solid var(--line);padding:11px 0;font-size:13px}
+.irow .em{font-size:22px;flex:0 0 30px}
+.irow b{color:var(--ink);font-size:14px}
+.irow em{font-style:normal;color:var(--green);font-weight:700;font-size:12.5px}
+table{width:100%;border-collapse:collapse;font-size:11.5px}
+th,td{border-top:1px solid var(--line);padding:8px 5px;text-align:left;vertical-align:top}
+th{font-size:10.5px;color:var(--ink)}
+td.us{background:#eef4ff;font-weight:700;color:var(--ink)}
+.ok{color:var(--green);font-weight:700}
+.no{color:var(--red)}
+.how li{list-style:none;display:flex;gap:12px;padding:8px 0;font-size:14px;color:var(--ink)}
+.how i{flex:0 0 26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-style:normal;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.founder{background:var(--soft);border-radius:14px;padding:16px;margin:18px 0}
+.founder img{width:100%;border-radius:10px;margin-bottom:10px}
+.founder p{font-size:14px;margin-bottom:8px}
+.founder .sig{font-size:12.5px;color:#666}
+.review{border-top:1px solid var(--line);padding:13px 0}
+.review .stars{font-size:12px}
+.review p{font-size:13.5px;margin:5px 0 4px}
+.review .who{font-size:12px;color:var(--ink);font-weight:700}
+.rsummary{display:flex;gap:16px;align-items:center;margin-bottom:6px}
+.rbig{font-size:42px;font-weight:700;color:var(--ink)}
+.rmeta{font-size:13.5px}
+.ghost{display:block;width:100%;text-align:center;border:1.5px solid var(--ink);border-radius:10px;background:#fff;padding:13px;font-size:14px;font-weight:700;color:var(--ink);margin:12px 0 4px;cursor:pointer;font-family:inherit}
+.foot{background:var(--navy);color:#c8cede;margin-top:28px;padding:28px 0 24px;font-size:13px}
+.foot .legal{color:#7d8499;font-size:11.5px;border-top:1px solid #243049;padding-top:14px;margin-top:14px}
+.stickybar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1.5px solid var(--ink);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;z-index:50}
+.stickybar.show{display:block}
+.stickybar .inner{max-width:480px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.stickybar .meta{font-size:12px;color:var(--ink);line-height:1.3;white-space:nowrap}
+.stickybar .btn{padding:13px;flex:1;font-size:15px}
+@media(min-width:600px){
+  body{background:#e9ecf2}
+  .device{max-width:390px;margin:0 auto;background:#fff;box-shadow:0 0 48px rgba(0,0,0,.16);min-height:100vh}
+  .stickybar{width:100%;max-width:390px;left:50%;right:auto;transform:translateX(-50%)}
+}
+</style>
+</head>
+<body>
+<div class="device">
+<div class="announce">Buy 2, Get 2 Free — up to 50% off bundles</div>
+<header>
+  <svg class="ic" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  <a href="https://drinkhydrant.com"><svg width="128" height="35" viewBox="0 0 128 35" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.69274 8.88268C6.03352 8.08659 7.5838 7.6676 9.25978 7.6676C14.3715 7.6676 18.5196 11.8575 18.5196 16.9274V26.8994H13.8268V16.9274C13.8268 14.4134 11.7737 12.3603 9.25978 12.3603C6.74581 12.3603 4.69274 14.4134 4.69274 16.9274V26.8994H0V0H4.69274V8.88268ZM125.279 21.9134C125.028 22.081 124.693 22.2067 124.232 22.2067C123.059 22.2067 122.137 21.243 122.137 20.1117V12.4022H127.374V8.00281H122.137V0.209511H117.402V8.00281H114.26V12.4022H117.402V20.0698C117.402 23.8408 120.461 26.8995 124.232 26.8995C125.447 26.8995 126.62 26.5643 127.668 25.9777L125.279 21.9134ZM114.26 17.0531V26.8995H109.525V17.0531C109.525 14.5391 107.472 12.4441 104.916 12.4441C102.402 12.4441 100.307 14.4972 100.307 17.0531V26.8995H95.5727V8.0028H100.307V9.38549C101.522 8.3799 103.031 7.70951 104.916 7.70951C110.112 7.70951 114.26 11.8995 114.26 17.0531ZM88.785 9.63688V8.0028H93.3939V26.8576H88.785V25.3911C87.1509 26.6062 85.1398 27.3184 82.961 27.3184C77.556 27.3184 73.1565 22.919 73.1565 17.514C73.1565 12.109 77.556 7.70951 82.961 7.70951C85.1398 7.70951 87.1509 8.4218 88.785 9.63688ZM77.6816 17.514C77.6816 20.4469 80.028 22.8352 82.961 22.8352C85.8939 22.8352 88.2822 20.4469 88.2822 17.514C88.2822 14.6229 85.8939 12.2346 82.961 12.2346C80.0699 12.2346 77.6816 14.581 77.6816 17.514ZM68.9666 7.5838C67.4582 7.5838 65.4889 8.17039 64.3577 9.55308V8.0028H59.6649V26.8994H64.3577V16.8855C64.3577 14.3715 66.4107 12.2765 68.9666 12.2765C70.1398 12.2765 71.2292 12.7374 72.0253 13.4497L74.5392 9.42738C72.9889 8.25419 71.0616 7.5838 68.9666 7.5838ZM52.8353 9.59497V0.2514H57.4442V26.8575H52.8353V25.433C51.2431 26.6061 49.2319 27.3184 47.095 27.3184C41.69 27.3184 37.2906 22.919 37.2906 17.514C37.2906 12.1089 41.69 7.7095 47.095 7.7095C49.2319 7.7095 51.2012 8.42179 52.8353 9.59497ZM41.8157 17.514C41.8157 20.4469 44.1621 22.8352 47.095 22.8352C50.028 22.8352 52.4163 20.4469 52.4163 17.514C52.4163 14.6229 50.028 12.2346 47.095 12.2346C44.204 12.2346 41.8157 14.581 41.8157 17.514ZM33.3521 8.0028L27.8632 20.7402L22.7096 8.0028H17.6398L25.2236 26.8994L21.7459 34.9022H26.8157L27.6118 33.0587L30.2515 26.8994L38.4219 8.0028H33.3521Z" fill="#141414"></path></svg></a>
+  <svg class="ic" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12H6.2L5 8z"/><path d="M9 8a3 3 0 016 0"/></svg>
+</header>
+
+<div class="hero"><img id="mainImg" src="hydrant-hero.png" alt="Hydrant electrolyte mix with fruit punch glass"></div>
+<div class="thumbs" id="thumbs">
+  <img class="on" src="hydrant-hero.png" data-full="hydrant-hero.png" alt="Hydrant morning scene">
+  <img src="https://cdn.shopify.com/s/files/1/2720/4792/products/04-Hydration-Variety-MultipleSachets-min.png?v=1762457618&width=200" data-full="https://cdn.shopify.com/s/files/1/2720/4792/products/04-Hydration-Variety-MultipleSachets-min.png?v=1762457618&width=900" alt="Variety pack with sachets">
+  <img src="https://cdn.shopify.com/s/files/1/2720/4792/products/01-Hydration-LemonLime-Front-min.png?v=1677287082&width=200" data-full="https://cdn.shopify.com/s/files/1/2720/4792/products/01-Hydration-LemonLime-Front-min.png?v=1677287082&width=900" alt="Lemon Lime front">
+  <img src="https://cdn.shopify.com/s/files/1/2720/4792/products/04-Hydration-FruitPunch-MultipleSachets-min.png?v=1677287082&width=200" data-full="https://cdn.shopify.com/s/files/1/2720/4792/products/04-Hydration-FruitPunch-MultipleSachets-min.png?v=1677287082&width=900" alt="Fruit Punch sachets">
+  <img src="https://cdn.shopify.com/s/files/1/2720/4792/files/PouchOnFruit-1080.webp?width=200" data-full="https://cdn.shopify.com/s/files/1/2720/4792/files/PouchOnFruit-1080.webp?width=900" alt="Pouch on fruit">
+</div>
+
+<div class="wrap">
+  <div class="info">
+    <h1>Hydrant Hydrate — Rapid Hydration Mix</h1>
+    <p class="tagline">Electrolytes made simple. Real fruit juice. <b>No stevia.</b> Nothing artificial.</p>
+    <div class="rating"><span class="stars">★★★★★</span> <a href="#reviews">4.8/5 from 5,412+ reviews</a></div>
+    <div class="priceline"><span class="price" id="priceTxt">$89.98</span><span class="perserv" id="servTxt">Buy 2 Get 2 Free · 120 sticks · $0.75/stick</span></div>
+    <button class="btn" id="atc">Add to Cart — $89.98</button>
+    <div class="trust"><span>Free shipping</span><span>90-day guarantee</span></div>
+  </div>
+
+  <div class="chooser">
+    <h3>Choose your plan</h3>
+    <div class="plan" data-p="$44.99" data-s="One-time · 30 sticks · $1.50/stick"><div><b>One-Time Purchase</b>30 stick packs · Try risk-free</div><div class="pr"><b>$44.99</b><br>$1.50/stick</div></div>
+    <div class="plan" data-p="$35.99" data-s="Subscribe · 30 sticks/mo · $1.20/stick"><div><b>Subscribe &amp; Save 20%</b>30 sticks every 30 days · Cancel anytime · Free shipping</div><div class="pr"><b>$35.99</b><br><small>$1.20/stick</small></div></div>
+    <div class="plan on" data-p="$89.98" data-s="Buy 2 Get 2 Free · 120 sticks · $0.75/stick"><div><span class="badge">BEST VALUE — 50% OFF</span><b>Buy 2, Get 2 Free</b>Pick 4 bags. Pay for 2. 120 sticks total.</div><div class="pr"><b>$89.98</b><br><small>$0.75/stick</small></div></div>
+
+    <div class="step">Your 4 bags · tap a flavor to fill a slot</div>
+    <div class="slots" id="slots">
+      <div class="slot">Bag 1</div><div class="slot">Bag 2</div><div class="slot">Bag 3 · FREE</div><div class="slot">Bag 4 · FREE</div>
+    </div>
+    <button class="quick" id="quick">⚡ Quick fill: Variety, Berry Burst, Lemonade, Fruit Punch</button>
+    <div class="flavgrid">
+<div class="flav" data-name="Variety: No Sugar"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/2720/4792/files/21.png?v=1735882043&width=300" alt="Variety: No Sugar"><span>Variety: No Sugar</span></div>
+<div class="flav" data-name="Berry Burst"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/2720/4792/files/22.png?v=1735882042&width=300" alt="Berry Burst"><span>Berry Burst</span></div>
+<div class="flav" data-name="Lemonade"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/2720/4792/files/23.png?v=1735882043&width=300" alt="Lemonade"><span>Lemonade</span></div>
+<div class="flav" data-name="Watermelonade"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/2720/4792/files/24.png?v=1735882043&width=300" alt="Watermelonade"><span>Watermelonade</span></div>
+<div class="flav" data-name="Variety: Low Sugar"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/2720/4792/files/25.png?v=1735882043&width=300" alt="Variety: Low Sugar"><span>Variety: Low Sugar</span></div>
+<div class="flav" data-name="Fruit Punch"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/2720/4792/files/26.png?v=1735882042&width=300" alt="Fruit Punch"><span>Fruit Punch</span></div>
+<div class="flav" data-name="Blood Orange"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/2720/4792/files/27.png?v=1735882043&width=300" alt="Blood Orange"><span>Blood Orange</span></div>
+<div class="flav" data-name="Lemon Lime"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/2720/4792/files/28.png?v=1735882043&width=300" alt="Lemon Lime"><span>Lemon Lime</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Here's what's inside every stick</h2>
+    <div class="chips4">
+      <div><b>REAL</b>Real fruit juice powder for flavor</div>
+      <div><b>FAST</b>Electrolytes that absorb 3x faster</div>
+      <div><b>CLEAN</b>No artificial sweeteners or stevia</div>
+      <div><b>LOVED</b>252,000+ customers, 17M+ sticks consumed</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>The full ingredient list</h2>
+    <p style="margin-bottom:8px">Every single thing in Hydrant. Stuff you can actually pronounce.</p>
+<div class="irow"><span class="em">🌾</span><div><b>Cane Sugar <em>4g</em></b><p>Required for sodium-glucose cotransport. 73% less than Liquid IV.</p></div></div>
+<div class="irow"><span class="em">🍊</span><div><b>Blood Orange Juice Powder <em>Natural</em></b><p>Actual fruit juice. Not “natural flavors” made in a lab.</p></div></div>
+<div class="irow"><span class="em">🧂</span><div><b>Sodium Citrate <em>260mg</em></b><p>Activates water absorption. The key to the WHO formula.</p></div></div>
+<div class="irow"><span class="em">💎</span><div><b>Magnesium Gluconate <em>30mg</em></b><p>Reduces fatigue. Supports 300+ enzymatic reactions.</p></div></div>
+<div class="irow"><span class="em">🍌</span><div><b>Potassium Citrate <em>200mg</em></b><p>Prevents muscle cramps. Supports nerve function.</p></div></div>
+<div class="irow"><span class="em">🍋</span><div><b>Citric Acid <em>Natural</em></b><p>Found naturally in citrus. Improves mineral absorption.</p></div></div>
+  </div>
+
+  <div class="section">
+    <h2>How Hydrant compares</h2>
+    <table>
+      <tr><th></th><th>HYDRANT</th><th>Liquid IV</th><th>LMNT</th><th>Pedialyte</th></tr>
+      <tr><td>Sugar</td><td class="us">4g real cane</td><td>11g + stevia</td><td>0g (stevia)</td><td>0g (sucralose)</td></tr>
+      <tr><td>Stevia / artificial</td><td class="us ok">None ✓</td><td class="no">Stevia ✗</td><td class="no">Stevia ✗</td><td class="no">Sucralose ✗</td></tr>
+      <tr><td>Flavor source</td><td class="us ok">Real fruit juice ✓</td><td class="no">"Natural flavors"</td><td class="no">"Natural flavors"</td><td class="no">Artificial</td></tr>
+      <tr><td>Synthetic dyes</td><td class="us ok">None ✓</td><td class="no">Added colors ✗</td><td class="ok">None ✓</td><td class="no">Red 40, Blue 1 ✗</td></tr>
+      <tr><td>Sodium</td><td class="us">260mg</td><td>500mg</td><td>1,000mg</td><td>370mg</td></tr>
+      <tr><td>Zinc + magnesium</td><td class="us ok">Both ✓</td><td class="no">Neither ✗</td><td>Mg only</td><td class="no">Neither ✗</td></tr>
+      <tr><td>Price (sub)</td><td class="us">$1.20/stick</td><td>$1.09</td><td>$1.13</td><td>$1.25+</td></tr>
+    </table>
+  </div>
+
+  <div class="section how">
+    <h2>How it works</h2>
+    <p style="margin-bottom:8px">The World Health Organization's oral rehydration formula needs three things: sodium, glucose, and water. We adapted it with real fruit juice and real cane sugar.</p>
+    <li><i>1</i>Pour into 8–16oz cold water — over ice is ideal</li>
+    <li><i>2</i>Stir for 10 seconds. Real fruit juice powder dissolves fast, no chalky residue</li>
+    <li><i>3</i>Absorbs 3x faster than water — sodium-glucose cotransport pulls water into your bloodstream</li>
+  </div>
+
+  <div class="founder">
+    <img loading="lazy" src="https://cdn.shopify.com/s/files/1/2720/4792/files/PouchOnFruit-1080.webp?width=800" alt="Hydrant pouch on fruit">
+    <h2 style="font-size:18px;margin-bottom:8px">Why I started Hydrant</h2>
+    <p>"I picked up every hydration product at Whole Foods and read the labels. Stevia. Sucralose. 'Natural flavors.' Synthetic dyes. Every single one. As a biology student at Oxford, I knew the science only needed a few ingredients — the WHO proved this 50 years ago. So I built Hydrant with one rule: every ingredient has to be real, pronounceable, and something I'd want in my own body."</p>
+    <div class="sig">John Sherwin · Co-Founder · Oxford Scientist</div>
+  </div>
+
+  <div class="section" id="reviews">
+    <h2>Loved by 252,000+ Hydrant drinkers</h2>
+    <div class="rsummary">
+      <div class="rbig">4.8</div>
+      <div class="rmeta"><span class="stars">★★★★★</span><br>From 5,412+ reviews · less than 0.5% of customers return it</div>
+    </div>
+<div class="review"><span class="stars">★★★★★</span><p>"Neither of us can tolerate stevia or chemical sweeteners. Hydrant uses real fruit juice and real sugar. It's actually what it says it is."</p><div class="who">Sarah K. · Subscribed 8 months</div></div>
+<div class="review"><span class="stars">★★★★★</span><p>"Liquid IV was always too sweet — like sugary soda with a salty aftertaste. Hydrant tastes like actual flavored water."</p><div class="who">Marcus R. · Switched from Liquid IV</div></div>
+<div class="review"><span class="stars">★★★★★</span><p>"After long rides I used to get calf cramps. That stopped with Hydrant. It's a staple now."</p><div class="who">Jake T. · Cyclist</div></div>
+<div class="review"><span class="stars">★★★★★</span><p>"Finally something without that gross stevia aftertaste."</p><div class="who">Amanda W. · Subscribed 3 months</div></div>
+    <button class="ghost">Show more reviews</button>
+  </div>
+</div>
+
+<div class="foot">
+  <div class="wrap">
+    <div style="background:#fff;display:inline-block;padding:6px 10px;border-radius:8px"><svg width="128" height="35" viewBox="0 0 128 35" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.69274 8.88268C6.03352 8.08659 7.5838 7.6676 9.25978 7.6676C14.3715 7.6676 18.5196 11.8575 18.5196 16.9274V26.8994H13.8268V16.9274C13.8268 14.4134 11.7737 12.3603 9.25978 12.3603C6.74581 12.3603 4.69274 14.4134 4.69274 16.9274V26.8994H0V0H4.69274V8.88268ZM125.279 21.9134C125.028 22.081 124.693 22.2067 124.232 22.2067C123.059 22.2067 122.137 21.243 122.137 20.1117V12.4022H127.374V8.00281H122.137V0.209511H117.402V8.00281H114.26V12.4022H117.402V20.0698C117.402 23.8408 120.461 26.8995 124.232 26.8995C125.447 26.8995 126.62 26.5643 127.668 25.9777L125.279 21.9134ZM114.26 17.0531V26.8995H109.525V17.0531C109.525 14.5391 107.472 12.4441 104.916 12.4441C102.402 12.4441 100.307 14.4972 100.307 17.0531V26.8995H95.5727V8.0028H100.307V9.38549C101.522 8.3799 103.031 7.70951 104.916 7.70951C110.112 7.70951 114.26 11.8995 114.26 17.0531ZM88.785 9.63688V8.0028H93.3939V26.8576H88.785V25.3911C87.1509 26.6062 85.1398 27.3184 82.961 27.3184C77.556 27.3184 73.1565 22.919 73.1565 17.514C73.1565 12.109 77.556 7.70951 82.961 7.70951C85.1398 7.70951 87.1509 8.4218 88.785 9.63688ZM77.6816 17.514C77.6816 20.4469 80.028 22.8352 82.961 22.8352C85.8939 22.8352 88.2822 20.4469 88.2822 17.514C88.2822 14.6229 85.8939 12.2346 82.961 12.2346C80.0699 12.2346 77.6816 14.581 77.6816 17.514ZM68.9666 7.5838C67.4582 7.5838 65.4889 8.17039 64.3577 9.55308V8.0028H59.6649V26.8994H64.3577V16.8855C64.3577 14.3715 66.4107 12.2765 68.9666 12.2765C70.1398 12.2765 71.2292 12.7374 72.0253 13.4497L74.5392 9.42738C72.9889 8.25419 71.0616 7.5838 68.9666 7.5838ZM52.8353 9.59497V0.2514H57.4442V26.8575H52.8353V25.433C51.2431 26.6061 49.2319 27.3184 47.095 27.3184C41.69 27.3184 37.2906 22.919 37.2906 17.514C37.2906 12.1089 41.69 7.7095 47.095 7.7095C49.2319 7.7095 51.2012 8.42179 52.8353 9.59497ZM41.8157 17.514C41.8157 20.4469 44.1621 22.8352 47.095 22.8352C50.028 22.8352 52.4163 20.4469 52.4163 17.514C52.4163 14.6229 50.028 12.2346 47.095 12.2346C44.204 12.2346 41.8157 14.581 41.8157 17.514ZM33.3521 8.0028L27.8632 20.7402L22.7096 8.0028H17.6398L25.2236 26.8994L21.7459 34.9022H26.8157L27.6118 33.0587L30.2515 26.8994L38.4219 8.0028H33.3521Z" fill="#141414"></path></svg></div>
+    <p style="margin-top:10px">Hydration, made by science. Real fruit juice, never stevia.</p>
+    <div class="legal">© 2026 — Hydrant<br>CRO prototype by Burn the Ships — not affiliated with Hydrant. Product content © Hydrant.</div>
+  </div>
+</div>
+</div><!-- /device -->
+
+<div class="stickybar" id="sticky">
+  <div class="inner">
+    <div class="meta">Hydrant Hydrate<br><strong id="stickyP">$89.98</strong> · ★ 4.8</div>
+    <button class="btn">Add to Cart</button>
+  </div>
+</div>
+
+<script>
+const thumbs=document.querySelectorAll('#thumbs img'), main=document.getElementById('mainImg');
+thumbs.forEach(t=>t.addEventListener('click',()=>{thumbs.forEach(x=>x.classList.remove('on'));t.classList.add('on');main.src=t.dataset.full;}));
+document.querySelectorAll('.plan').forEach(p=>p.addEventListener('click',()=>{
+  document.querySelectorAll('.plan').forEach(x=>x.classList.remove('on'));p.classList.add('on');
+  document.getElementById('priceTxt').textContent=p.dataset.p;
+  document.getElementById('servTxt').textContent=p.dataset.s;
+  document.getElementById('stickyP').textContent=p.dataset.p;
+  document.getElementById('atc').textContent='Add to Cart — '+p.dataset.p;
+}));
+const slots=[...document.querySelectorAll('.slot')];
+function fillNext(name){const s=slots.find(x=>!x.classList.contains('filled'));if(s){s.classList.add('filled');s.textContent=name;}}
+document.querySelectorAll('.flav').forEach(f=>f.addEventListener('click',()=>fillNext(f.dataset.name)));
+document.getElementById('quick').addEventListener('click',()=>{
+  const mix=['Variety: No Sugar','Berry Burst','Lemonade','Fruit Punch'];
+  slots.forEach((s,i)=>{s.classList.add('filled');s.textContent=mix[i];});
+});
+const atc=document.getElementById('atc'), sticky=document.getElementById('sticky');
+function syncSticky(){sticky.classList.toggle('show', atc.getBoundingClientRect().bottom < 0)}
+addEventListener('scroll', syncSticky, {passive:true}); syncSticky();
+</script>
+</body>
+</html>
