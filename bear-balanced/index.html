@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creatine Gummies | Blueberry — Bear Balanced</title>
+<style>
+:root{
+  --navy:#000B44;
+  --navy2:#0A2A8C;
+  --blue:#2E8FE6;
+  --blue-lt:#E8F2FD;
+  --ink:#0A1430;
+  --ink-soft:#5a6276;
+  --bg:#F5F5F7;
+  --card:#fff;
+  --line:#e4e6ee;
+  --gold:#F5A623;
+  --san:Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:var(--san);color:var(--ink);background:#dfe1e8;line-height:1.5;font-size:15px;-webkit-font-smoothing:antialiased}
+.frame{max-width:390px;margin:0 auto;background:var(--bg);position:relative;overflow-x:hidden;min-height:100vh}
+@media(min-width:600px){body{padding:24px 0}.frame{box-shadow:0 18px 60px rgba(0,0,0,.22);border-radius:18px;overflow:hidden;min-height:auto}}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.01em}
+
+/* announce */
+.announce{background:linear-gradient(90deg,var(--blue) 0%,var(--navy) 100%);color:#fff;font-size:12px;font-weight:700;text-align:center;padding:9px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.02em}
+.announce b{color:#bfe0ff}
+
+/* header */
+.header{position:sticky;top:0;z-index:40;background:rgba(245,245,247,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:11px 15px}
+.header .burger{display:flex;flex-direction:column;gap:4px;cursor:pointer}
+.header .burger span{width:20px;height:2px;background:var(--navy);border-radius:2px}
+.header .logo img{height:22px;width:auto}
+.header .hicons{display:flex;gap:15px;align-items:center}
+.header .hicons svg{width:21px;height:21px;stroke:var(--navy);fill:none;stroke-width:1.7}
+.cart-dot{position:relative}
+.cart-dot b{position:absolute;top:-7px;right:-8px;background:var(--blue);color:#fff;font-size:9px;font-weight:700;width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+/* benefit ticker */
+.ticker{background:#fff;border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:8px 0}
+.ticker .track{display:inline-flex;gap:10px;animation:scroll 18s linear infinite;padding-left:10px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tpill{font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:5px 12px;border-radius:30px}
+.tpill.a{background:#dff3e6;color:#1a7d46}.tpill.b{background:#e0eefe;color:#1d6fd0}.tpill.c{background:#fdf6cf;color:#9a8200}.tpill.d{background:#ffe3dc;color:#d2532f}
+
+/* gallery */
+.gallery{background:#fff}
+.gmain{position:relative;aspect-ratio:1/1;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center}
+.gmain .slide{width:100%;height:100%;position:absolute;inset:0;opacity:0;transition:opacity .35s;display:flex;align-items:center;justify-content:center;background:#fff}
+.gmain .slide.on{opacity:1;position:relative}
+.gmain img{width:100%;height:100%;object-fit:contain}
+.gmain video{width:100%;height:100%;object-fit:cover;background:#000}
+.vplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}
+.vplay span{width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.vplay span:after{content:"";border-left:18px solid var(--navy);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
+.gbadge{position:absolute;top:12px;left:12px;z-index:3;background:var(--navy);color:#fff;font-size:10px;font-weight:700;letter-spacing:.05em;padding:6px 11px;border-radius:30px}
+.garrows{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none;z-index:3}
+.garrows button{pointer-events:auto;border:none;background:rgba(255,255,255,.9);width:34px;height:34px;border-radius:50%;margin:0 8px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.garrows svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:2.4}
+.thumbs{display:flex;gap:8px;padding:11px 14px 14px;overflow-x:auto;scrollbar-width:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumbs .t{width:58px;height:58px;border-radius:10px;object-fit:contain;background:#fff;border:1.5px solid var(--line);cursor:pointer;flex:0 0 auto;position:relative;overflow:hidden}
+.thumbs .t.on{border-color:var(--blue)}
+.thumbs .t img{width:100%;height:100%;object-fit:contain}
+.thumbs .t.vid:after{content:"▶";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;background:rgba(0,0,0,.35);font-size:13px}
+
+/* buy zone */
+.buy{padding:16px 16px 6px;background:var(--bg)}
+.rrow{display:flex;align-items:center;gap:7px;cursor:pointer;margin-bottom:5px}
+.stars{color:var(--gold);font-size:14px;letter-spacing:1px}
+.rrow .rt{font-size:12.5px;color:var(--ink-soft);font-weight:600}
+.title{font-size:25px;line-height:1.12}
+.worldfirst{font-size:11px;font-weight:700;letter-spacing:.09em;color:var(--blue);text-transform:uppercase;margin:8px 0 0}
+.desc1{font-size:13.5px;color:var(--ink-soft);margin:6px 0 0}
+
+/* flavor selector — PRIMARY fix */
+.seclabel{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:18px 0 9px;color:var(--ink)}
+.seclabel small{float:right;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink-soft);font-size:11.5px}
+.flavors{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.flavor{border:1.5px solid var(--line);border-radius:13px;padding:10px 11px;cursor:pointer;background:#fff;display:flex;align-items:center;gap:9px;transition:.15s}
+.flavor.on{border-color:var(--navy);box-shadow:0 0 0 1px var(--navy)}
+.flavor .dot{width:20px;height:20px;border-radius:50%;flex:0 0 auto;box-shadow:inset 0 0 0 2px rgba(255,255,255,.6)}
+.flavor .fn{font-weight:700;font-size:13px;line-height:1.15}
+.fl-blue .dot{background:radial-gradient(circle at 35% 30%,#5cb3ff,#1f6fd0)}
+.fl-peach .dot{background:radial-gradient(circle at 35% 30%,#ffc06b,#ff8a3d)}
+.fl-water .dot{background:radial-gradient(circle at 35% 30%,#ff8aa6,#e8456d)}
+.fl-grape .dot{background:radial-gradient(circle at 35% 30%,#c79bff,#7b3fd0)}
+
+/* quantity tiers */
+.tiers{display:flex;flex-direction:column;gap:9px}
+.tier{position:relative;border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;cursor:pointer;background:#fff;display:flex;align-items:center;gap:12px;transition:.15s}
+.tier.on{border-color:var(--navy);box-shadow:0 0 0 1px var(--navy);background:#fff}
+.tier .radio{width:19px;height:19px;border-radius:50%;border:2px solid #c4c9d6;flex:0 0 auto;position:relative}
+.tier.on .radio{border-color:var(--navy)}
+.tier.on .radio:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--navy)}
+.tier .tmid{flex:1}
+.tier .tname{font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:8px}
+.tier .tsave{font-size:9.5px;font-weight:700;color:#fff;background:var(--blue);padding:2px 7px;border-radius:20px;letter-spacing:.02em}
+.tier .tserv{font-size:11.5px;color:var(--ink-soft);margin-top:2px}
+.tier .tright{text-align:right}
+.tier .tprice{font-weight:700;font-size:16px}
+.tier .twas{font-size:11.5px;color:var(--ink-soft);text-decoration:line-through}
+.tier .badge{position:absolute;top:-9px;right:13px;font-size:9px;font-weight:700;letter-spacing:.04em;padding:2px 9px;border-radius:20px;color:#fff}
+.tier .badge.pop{background:var(--blue)}
+.tier .badge.deal{background:#13a36b}
+
+/* subscription */
+.subrow{margin-top:11px;border:1.5px dashed var(--blue);background:var(--blue-lt);border-radius:13px;padding:12px 13px;display:flex;align-items:center;gap:11px}
+.subrow .chk{width:21px;height:21px;border-radius:6px;border:2px solid var(--navy);flex:0 0 auto;position:relative;cursor:pointer;background:#fff}
+.subrow .chk.on{background:var(--navy)}
+.subrow .chk.on:after{content:"✓";position:absolute;inset:0;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.subrow .stxt{flex:1}
+.subrow .st{font-weight:700;font-size:13px}
+.subrow .ss{font-size:11px;color:var(--ink-soft)}
+.subrow .spill{font-size:10px;font-weight:700;color:var(--navy)}
+
+/* atc */
+.atc{width:100%;margin-top:14px;border:none;background:var(--navy);color:#fff;font-family:var(--san);font-weight:700;font-size:16px;padding:16px;border-radius:13px;cursor:pointer;transition:.15s;line-height:1.2}
+.atc:hover{background:#001a6e}
+.atc .sub{display:block;font-size:10px;font-weight:600;letter-spacing:.05em;opacity:.8;margin-top:3px}
+.guar{text-align:center;font-size:11px;color:var(--ink-soft);margin-top:9px;display:flex;align-items:center;justify-content:center;gap:6px}
+.guar svg{width:14px;height:14px;stroke:#13a36b;fill:none;stroke-width:2}
+
+/* differentiator strip — SECONDARY fix */
+.diffstrip{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:18px 16px 0}
+.diff{background:#fff;padding:13px 12px;display:flex;align-items:center;gap:10px}
+.diff svg{width:22px;height:22px;stroke:var(--blue);fill:none;stroke-width:1.7;flex:0 0 auto}
+.diff .dt{font-weight:700;font-size:12px;line-height:1.2}
+.diff .dd{font-size:10.5px;color:var(--ink-soft)}
+
+/* mini reviews near buy box */
+.proof{margin:16px 16px 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}
+.proof-head{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.proof-num{font-size:30px;font-weight:700;line-height:1}
+.proof-meta{font-size:12px;color:var(--ink-soft);font-weight:600}
+.pqs{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none}
+.pqs::-webkit-scrollbar{display:none}
+.pq{flex:0 0 215px;background:var(--bg);border-radius:12px;padding:11px 12px}
+.pq .stars{font-size:12px}
+.pq .pqt{font-weight:700;font-size:12.5px;margin:4px 0 3px}
+.pq .pqb{font-size:11.5px;color:var(--ink-soft);line-height:1.4}
+.pq .pqn{font-size:10.5px;color:#9aa0b0;margin-top:7px;font-weight:600}
+
+/* sections */
+.sec{padding:24px 16px}
+.sec.dark{background:var(--navy);color:#fff}
+.sec.alt{background:#fff}
+.sec h2{font-size:21px;margin-bottom:6px}
+.sec.dark h2{color:#fff}
+.sec .lead{font-size:13px;color:var(--ink-soft);margin:0 0 16px}
+.sec.dark .lead{color:#aab6e8}
+.kicker{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+
+/* creatine+ ingredients */
+.ing{display:flex;flex-direction:column;gap:11px}
+.ingc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px}
+.ingc .in{font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px}
+.ingc .in .tag{font-size:9.5px;font-weight:700;background:var(--blue);color:#fff;padding:2px 7px;border-radius:20px;letter-spacing:.03em}
+.ingc .ib{font-size:12.5px;color:#c5cdf0;margin-top:6px;line-height:1.5}
+.ingc ul{margin:8px 0 0;padding-left:17px}
+.ingc li{font-size:12.5px;color:#c5cdf0;margin:3px 0}
+.blendlist{font-size:12px;color:#9fa9d8;margin-top:14px;line-height:1.6}
+
+/* benefits grid */
+.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bcard{background:var(--bg);border-radius:14px;padding:14px 13px}
+.bcard svg{width:26px;height:26px;stroke:var(--navy);fill:none;stroke-width:1.7;margin-bottom:8px}
+.bcard .bt{font-weight:700;font-size:13px;line-height:1.2}
+
+/* quality / testing */
+.quality img{border-radius:14px;width:100%;margin-bottom:14px}
+.qpoints{display:flex;flex-direction:column;gap:10px}
+.qp{display:flex;gap:11px;align-items:flex-start}
+.qp svg{width:20px;height:20px;stroke:var(--blue);fill:none;stroke-width:2;flex:0 0 auto;margin-top:1px}
+.qp .qt{font-size:13px}.qp .qt b{font-weight:700}
+
+/* athletes */
+.athletes{display:flex;gap:11px;overflow-x:auto;scrollbar-width:none}
+.athletes::-webkit-scrollbar{display:none}
+.acard{flex:0 0 130px}
+.acard img{aspect-ratio:1/1;object-fit:cover;border-radius:14px;background:#dfe1e8}
+.acard .an{font-weight:700;font-size:12.5px;margin-top:7px}
+.acard .ar{font-size:11px;color:var(--ink-soft)}
+
+/* facts */
+.facts{display:flex;gap:14px;align-items:flex-start}
+.facts img{width:46%;border-radius:12px;border:1px solid var(--line)}
+.facts .finfo{flex:1}
+.facts .finfo h3{font-size:13px;margin:0 0 5px}
+.facts .finfo p{font-size:12px;color:var(--ink-soft);margin:0 0 11px;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:10.5px;font-weight:700;background:var(--blue-lt);color:var(--navy);padding:4px 10px;border-radius:20px}
+
+/* reviews */
+.rev-summary{display:flex;gap:18px;align-items:center;margin-bottom:14px}
+.rev-big{text-align:center}
+.rev-big .n{font-size:42px;font-weight:700;line-height:1}
+.rev-big .stars{font-size:14px;display:block;margin:2px 0}
+.rev-big .c{font-size:11px;color:var(--ink-soft)}
+.rev-hist{flex:1}
+.hrow{display:flex;align-items:center;gap:8px;font-size:11px;margin:3px 0;color:var(--ink-soft)}
+.hrow .hl{width:24px;font-weight:600}
+.hbar{flex:1;height:7px;background:#e9ebf1;border-radius:6px;overflow:hidden}
+.hbar i{display:block;height:100%;background:var(--gold)}
+.hrow .hc{width:26px;text-align:right}
+.rfilter{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:12px}
+.rfilter::-webkit-scrollbar{display:none}
+.rpill{flex:0 0 auto;border:1.5px solid var(--line);background:#fff;border-radius:30px;padding:7px 13px;font-size:11.5px;font-weight:600;cursor:pointer;color:var(--ink-soft)}
+.rpill.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.review{border-top:1px solid var(--line);padding:14px 0}
+.review .rvtop{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.review .av{width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.review .rvname{font-weight:700;font-size:12.5px}
+.review .rvv{font-size:10px;color:#13a36b;font-weight:600}
+.review .rvdate{margin-left:auto;font-size:10.5px;color:#9aa0b0}
+.review .rvtitle{font-weight:700;font-size:13px;margin:5px 0 3px}
+.review .rvbody{font-size:12.5px;color:var(--ink-soft);line-height:1.5}
+
+/* faq */
+.faq .item{border-bottom:1px solid var(--line)}
+.faq .q{padding:15px 2px;display:flex;justify-content:space-between;gap:12px;cursor:pointer;font-weight:700;font-size:13.5px;align-items:center}
+.faq .q .ic{flex:0 0 20px;font-size:21px;color:var(--blue);transition:.2s;line-height:1;text-align:center}
+.faq .item.open .q .ic{transform:rotate(45deg)}
+.faq .a{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:12.5px;color:var(--ink-soft)}
+.faq .item.open .a{max-height:300px}
+.faq .a p{margin:0 0 14px;line-height:1.55}
+
+/* footer */
+.footer{background:#05082a;color:#9fa6c4;padding:26px 16px;font-size:12.5px}
+.footer .flogo{height:22px;margin-bottom:14px}
+.footer .fcols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.footer h4{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#fff;margin:0 0 9px}
+.footer a{display:block;padding:3px 0;color:#9fa6c4}
+.footer .fbot{border-top:1px solid #23284e;padding-top:14px;font-size:10.5px;color:#6f7596}
+
+/* sticky atc */
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(110%);width:100%;max-width:390px;z-index:60;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(0,0,0,.12);padding:10px 14px;display:flex;align-items:center;gap:12px;transition:transform .3s ease}
+.sticky.show{transform:translateX(-50%) translateY(0)}
+.sticky .sthumb{width:42px;height:42px;border-radius:9px;object-fit:contain;background:var(--bg);flex:0 0 auto}
+.sticky .sinfo{flex:1;min-width:0}
+.sticky .sst{font-weight:700;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky .ssp{font-size:11.5px;color:var(--ink-soft);font-weight:600}
+.sticky .satc{border:none;background:var(--navy);color:#fff;font-family:var(--san);font-weight:700;font-size:14px;padding:12px 18px;border-radius:11px;cursor:pointer;white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <div class="announce">SPRING SALE — UP TO <b>60% OFF</b> · use code <b>SPRING20</b></div>
+
+  <header class="header">
+    <div class="burger"><span></span><span></span><span></span></div>
+    <a class="logo" href="#"><img src="https://creatinegummies.com/cdn/shop/files/logo.webp?v=1697820313" alt="Bear Balanced"></a>
+    <div class="hicons">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21"/></svg>
+      <span class="cart-dot"><svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M6 6 5 2H2"/></svg><b>0</b></span>
+    </div>
+  </header>
+
+  <div class="ticker">
+    <div class="track">
+      <span class="tpill a">IMPROVE FOCUS</span><span class="tpill b">ENHANCE HEALTH</span><span class="tpill c">INCREASE ENERGY</span><span class="tpill d">BOOST STRENGTH</span>
+      <span class="tpill a">IMPROVE FOCUS</span><span class="tpill b">ENHANCE HEALTH</span><span class="tpill c">INCREASE ENERGY</span><span class="tpill d">BOOST STRENGTH</span>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="gallery">
+    <div class="gmain" id="gmain">
+      <div class="gbadge">WORLD'S FIRST CREATINE GUMMY®</div>
+      <div class="slide on" data-type="img"><img src="https://cdn.shopify.com/s/files/1/0603/0144/3125/files/FRONT_-_BLUE_TRANSPARENT_-_FILTERED_79e53e0e-12a1-410a-9126-911ba11b3aac.png?v=1774340450" alt="Bear Balanced Creatine Gummies front"></div>
+      <div class="slide" data-type="video">
+        <video id="pvid" poster="https://creatinegummies.com/cdn/shop/files/preview_images/0f1f05fb75fc443c94cabdd10daa56c3.thumbnail.0000000000_610x.jpg?v=1699772664" playsinline preload="none"></video>
+        <div class="vplay" id="vplay" onclick="playVid()"><span></span></div>
+      </div>
+      <div class="slide" data-type="img"><img src="https://cdn.shopify.com/s/files/1/0603/0144/3125/files/Four_Natural_Fruit_Flavors.png?v=1774751526" alt="Four natural fruit flavors"></div>
+      <div class="slide" data-type="img"><img src="https://cdn.shopify.com/s/files/1/0603/0144/3125/files/1.jpg?v=1774372977" alt="Bear Balanced gummies"></div>
+      <div class="slide" data-type="img"><img src="https://cdn.shopify.com/s/files/1/0603/0144/3125/files/BACK_-_BLUE_TRANSPARENT_-_Shopify_PDP_Long.png?v=1774750844" alt="Supplement facts back of pack"></div>
+      <div class="slide" data-type="img"><img src="https://cdn.shopify.com/s/files/1/0603/0144/3125/files/NOWReportTestingCreatineGummiesPR1.png?v=1774372977" alt="Third-party tested"></div>
+      <div class="garrows"><button onclick="gnav(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button><button onclick="gnav(1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+    </div>
+    <div class="thumbs" id="thumbs">
+      <div class="t on" onclick="gset(0)"><img src="https://cdn.shopify.com/s/files/1/0603/0144/3125/files/FRONT_-_BLUE_TRANSPARENT_-_FILTERED_79e53e0e-12a1-410a-9126-911ba11b3aac.png?v=1774340450" alt=""></div>
+      <div class="t vid" onclick="gset(1)"><img src="https://creatinegummies.com/cdn/shop/files/preview_images/0f1f05fb75fc443c94cabdd10daa56c3.thumbnail.0000000000_610x.jpg?v=1699772664" alt=""></div>
+      <div class="t" onclick="gset(2)"><img src="https://cdn.shopify.com/s/files/1/0603/0144/3125/files/Four_Natural_Fruit_Flavors.png?v=1774751526" alt=""></div>
+      <div class="t" onclick="gset(3)"><img src="https://cdn.shopify.com/s/files/1/0603/0144/3125/files/1.jpg?v=1774372977" alt=""></div>
+      <div class="t" onclick="gset(4)"><img src="https://cdn.shopify.com/s/files/1/0603/0144/3125/files/BACK_-_BLUE_TRANSPARENT_-_Shopify_PDP_Long.png?v=1774750844" alt=""></div>
+      <div class="t" onclick="gset(5)"><img src="https://cdn.shopify.com/s/files/1/0603/0144/3125/files/NOWReportTestingCreatineGummiesPR1.png?v=1774372977" alt=""></div>
+    </div>
+  </div>
+
+  <!-- BUY ZONE -->
+  <div class="buy" id="buyzone">
+    <div class="rrow" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'})">
+      <span class="stars">★★★★★</span><span class="rt">4.9 · 661 reviews</span>
+    </div>
+    <h1 class="title">Creatine Gummies <span id="flavorTitle">| Blueberry</span></h1>
+    <div class="worldfirst">World's First Creatine Gummy®</div>
+    <p class="desc1">Sugar-free, scientifically-backed creatine for optimal performance and convenient daily use.</p>
+
+    <!-- FLAVOR (primary fix) -->
+    <div class="seclabel">1. Pick your flavor <small>4 natural fruit flavors</small></div>
+    <div class="flavors" id="flavors">
+      <div class="flavor fl-blue on" data-f="Blueberry" onclick="flavorSel(this)"><span class="dot"></span><span class="fn">Blueberry</span></div>
+      <div class="flavor fl-peach" data-f="Peach Mango" onclick="flavorSel(this)"><span class="dot"></span><span class="fn">Peach Mango</span></div>
+      <div class="flavor fl-water" data-f="Watermelon Burst" onclick="flavorSel(this)"><span class="dot"></span><span class="fn">Watermelon Burst</span></div>
+      <div class="flavor fl-grape" data-f="Cotton Candy Grape" onclick="flavorSel(this)"><span class="dot"></span><span class="fn">Cotton Candy Grape</span></div>
+    </div>
+
+    <!-- QUANTITY TIERS -->
+    <div class="seclabel">2. Choose your supply</div>
+    <div class="tiers" id="tiers">
+      <div class="tier" data-q="1" data-price="42" data-was="60" data-serv="30 servings" onclick="tierSel(this)">
+        <div class="radio"></div>
+        <div class="tmid"><div class="tname">Buy 1 <span class="tsave">SAVE $18</span></div><div class="tserv">30 servings · 1-month supply</div></div>
+        <div class="tright"><div class="tprice">$42</div><div class="twas">$60</div></div>
+      </div>
+      <div class="tier" data-q="2" data-price="78" data-was="120" data-serv="60 servings" onclick="tierSel(this)">
+        <div class="radio"></div>
+        <div class="tmid"><div class="tname">Buy 2 <span class="tsave">SAVE $42</span></div><div class="tserv">60 servings · 2-month supply</div></div>
+        <div class="tright"><div class="tprice">$78</div><div class="twas">$120</div></div>
+      </div>
+      <div class="tier on" data-q="3" data-price="108" data-was="180" data-serv="90 servings" onclick="tierSel(this)">
+        <span class="badge pop">MOST POPULAR</span>
+        <div class="radio"></div>
+        <div class="tmid"><div class="tname">Buy 3 <span class="tsave">SAVE $72</span></div><div class="tserv">90 servings · 3-month supply</div></div>
+        <div class="tright"><div class="tprice">$108</div><div class="twas">$180</div></div>
+      </div>
+      <div class="tier" data-q="4" data-price="132" data-was="240" data-serv="120 servings" onclick="tierSel(this)">
+        <span class="badge deal">BEST DEAL</span>
+        <div class="radio"></div>
+        <div class="tmid"><div class="tname">Buy 4 <span class="tsave">SAVE $108</span></div><div class="tserv">120 servings · 4-month supply</div></div>
+        <div class="tright"><div class="tprice">$132</div><div class="twas">$240</div></div>
+      </div>
+    </div>
+
+    <div class="subrow">
+      <div class="chk on" id="subchk" onclick="this.classList.toggle('on')"></div>
+      <div class="stxt"><div class="st">Save more with automatic refills</div><div class="ss">Shipped monthly · no commitment · cancel anytime</div></div>
+      <div class="spill">SAVE 40%</div>
+    </div>
+
+    <button class="atc" onclick="addToCart()">Add to Cart · <span id="atcPrice">$108</span><span class="sub">FREE SHIPPING ON ORDERS OVER $100</span></button>
+    <div class="guar"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> 30-day money-back guarantee</div>
+  </div>
+
+  <!-- DIFFERENTIATOR STRIP (secondary fix) -->
+  <div class="diffstrip">
+    <div class="diff"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 8 8 8 8s8-3 8-8V6z"/></svg><div><div class="dt">Made with Creapure®</div><div class="dd">Purest creatine, 3rd-party tested</div></div></div>
+    <div class="diff"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg><div><div class="dt">Sugar-free & vegan</div><div class="dd">Keto · paleo · non-GMO</div></div></div>
+    <div class="diff"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 6.5L21 9l-5 4 1.5 7L12 16l-5.5 4L8 13 3 9l6.5-.5z"/></svg><div><div class="dt">World's first gummy</div><div class="dd">5 years refined · 661 reviews</div></div></div>
+    <div class="diff"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><div><div class="dt">Athlete-recommended</div><div class="dd">By pros & health experts</div></div></div>
+  </div>
+
+  <!-- MINI REVIEWS -->
+  <div class="proof">
+    <div class="proof-head"><div class="proof-num">4.92</div><div class="proof-meta"><span class="stars">★★★★★</span><br>661 verified reviews</div></div>
+    <div class="pqs">
+      <div class="pq"><div class="stars">★★★★★</div><div class="pqt">Like the taste</div><div class="pqb">Like the taste and how easy to use.</div><div class="pqn">— Jes S., verified buyer</div></div>
+      <div class="pq"><div class="stars">★★★★★</div><div class="pqt">Taste great</div><div class="pqb">They taste great and seem to be helping my workouts.</div><div class="pqn">— Ismansjah S., verified buyer</div></div>
+      <div class="pq"><div class="stars">★★★★★</div><div class="pqt">Gummies</div><div class="pqb">Beats powder or nasty pills taste.</div><div class="pqn">— Verified buyer</div></div>
+    </div>
+  </div>
+
+  <!-- CREATINE+ -->
+  <div class="sec dark">
+    <div class="kicker">Reinforced with Creatine+™</div>
+    <h2>More than just creatine</h2>
+    <p class="lead">A clinically-guided blend built around Creapure® — the world's purest creatine.</p>
+    <div class="ing">
+      <div class="ingc">
+        <div class="in">Creapure® Creatine Monohydrate <span class="tag">CORE</span></div>
+        <ul>
+          <li>Muscle fullness visible in 2–3 weeks</li>
+          <li>Increases strength 8–15% in clinical trials</li>
+          <li>Up to 20% faster recovery between workouts</li>
+          <li>Reduces brain fog and sharpens focus</li>
+        </ul>
+      </div>
+      <div class="ingc">
+        <div class="in">L-Theanine</div>
+        <div class="ib">Supports healthy cortisol levels to promote deeper sleep, faster recovery, and fuller muscles.</div>
+      </div>
+    </div>
+    <div class="blendlist">Full blend: Creapure® Creatine Monohydrate, L-Theanine, L-Tyrosine, Vitamin B12, and Huperzine A.</div>
+  </div>
+
+  <!-- BENEFITS -->
+  <div class="sec alt">
+    <h2>Benefits of daily use</h2>
+    <p class="lead">One simple habit, working across body and mind.</p>
+    <div class="bgrid">
+      <div class="bcard"><svg viewBox="0 0 24 24"><path d="M6 12h12M9 7v10M15 7v10"/></svg><div class="bt">Build lean muscle</div></div>
+      <div class="bcard"><svg viewBox="0 0 24 24"><path d="M12 21C7 17 4 13 4 9a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 4-3 8-8 12z"/></svg><div class="bt">Support healthy aging</div></div>
+      <div class="bcard"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg><div class="bt">Improve energy & mood</div></div>
+      <div class="bcard"><svg viewBox="0 0 24 24"><path d="M4 18l5-5 3 3 7-8"/><path d="M16 5h4v4"/></svg><div class="bt">Increase performance</div></div>
+      <div class="bcard"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M12 13V9M9 2h6"/></svg><div class="bt">Boost metabolism</div></div>
+      <div class="bcard"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg><div class="bt">Sharpen focus</div></div>
+    </div>
+  </div>
+
+  <!-- QUALITY -->
+  <div class="sec">
+    <div class="kicker">Unparalleled quality</div>
+    <h2>Only pure creatine</h2>
+    <p class="lead">Clear of toxins, unidentifiable chemicals, and the risk of accidental doping.</p>
+    <div class="quality">
+      <img src="https://cdn.shopify.com/s/files/1/0603/0144/3125/files/NOWReportTestingCreatineGummiesPR1.png?v=1774372977" alt="Third-party lab testing report">
+      <div class="qpoints">
+        <div class="qp"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><div class="qt"><b>Creapure®</b> — the gold-standard creatine, made in Germany</div></div>
+        <div class="qp"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><div class="qt"><b>Third-party tested</b> for purity and potency</div></div>
+        <div class="qp"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><div class="qt"><b>No banned substances</b> — safe for tested athletes</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ATHLETES -->
+  <div class="sec alt">
+    <div class="kicker">Trusted by the best</div>
+    <h2>Recommended by world-class athletes</h2>
+    <p class="lead">& by health experts and researchers.</p>
+    <div class="athletes">
+      <div class="acard"><img src="https://creatinegummies.com/cdn/shop/files/Jose_20x_crop_center.webp?v=1697820732" alt="Athlete Jose"><div class="an">Jose</div><div class="ar">Pro athlete</div></div>
+      <div class="acard"><img src="https://creatinegummies.com/cdn/shop/files/Andrew_20x_crop_center.webp?v=1697820746" alt="Athlete Andrew"><div class="an">Andrew</div><div class="ar">Pro athlete</div></div>
+      <div class="acard"><img src="https://creatinegummies.com/cdn/shop/files/Scott_20x_crop_center.webp?v=1697820761" alt="Athlete Scott"><div class="an">Scott</div><div class="ar">Pro athlete</div></div>
+    </div>
+  </div>
+
+  <!-- FACTS -->
+  <div class="sec">
+    <h2>What's inside</h2>
+    <p class="lead">Full transparency — here's exactly what you're taking.</p>
+    <div class="facts">
+      <img src="https://cdn.shopify.com/s/files/1/0603/0144/3125/files/BACK_-_BLUE_TRANSPARENT_-_Shopify_PDP_Long.png?v=1774750844" alt="Supplement facts">
+      <div class="finfo">
+        <h3>Suggested use</h3>
+        <p>Take 3–5 gummies daily to sustain your body's creatine supply — any time of day.</p>
+        <h3>Dietary</h3>
+        <div class="chips"><span>Sugar-free</span><span>Fat-free</span><span>Vegan</span><span>Vegetarian</span><span>Paleo</span><span>Keto</span></div>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:14px;font-size:11.5px"><b>Ingredients:</b> Creapure® Creatine Monohydrate, L-Theanine, L-Tyrosine, B12, Huperzine A, Maltitol, Water, Xylitol, Pectin, Citric Acid, Malic Acid, Reb M, Natural Flavor and Color.</p>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="sec alt" id="reviews">
+    <h2>Customer reviews</h2>
+    <div class="rev-summary" style="margin-top:14px">
+      <div class="rev-big"><div class="n">4.92</div><span class="stars">★★★★★</span><div class="c">661 reviews</div></div>
+      <div class="rev-hist">
+        <div class="hrow"><span class="hl">5★</span><div class="hbar"><i style="width:93%"></i></div><span class="hc">617</span></div>
+        <div class="hrow"><span class="hl">4★</span><div class="hbar"><i style="width:5%"></i></div><span class="hc">31</span></div>
+        <div class="hrow"><span class="hl">3★</span><div class="hbar"><i style="width:1%"></i></div><span class="hc">8</span></div>
+        <div class="hrow"><span class="hl">2★</span><div class="hbar"><i style="width:0%"></i></div><span class="hc">2</span></div>
+        <div class="hrow"><span class="hl">1★</span><div class="hbar"><i style="width:1%"></i></div><span class="hc">3</span></div>
+      </div>
+    </div>
+    <div class="rfilter">
+      <div class="rpill on" onclick="rfil(this,'all')">All</div>
+      <div class="rpill" onclick="rfil(this,'taste')">Taste</div>
+      <div class="rpill" onclick="rfil(this,'results')">Results</div>
+      <div class="rpill" onclick="rfil(this,'ease')">Easy to use</div>
+    </div>
+    <div id="rlist">
+      <div class="review" data-c="taste ease"><div class="rvtop"><div class="av">JS</div><div><div class="rvname">Jes S.</div><div class="rvv">✓ Verified Buyer</div></div><div class="rvdate">Jun 7, 2026</div></div><div class="stars">★★★★★</div><div class="rvtitle">Like the taste</div><div class="rvbody">Like the taste and how easy to use.</div></div>
+      <div class="review" data-c="taste results"><div class="rvtop"><div class="av">IS</div><div><div class="rvname">Ismansjah S.</div><div class="rvv">✓ Verified Buyer</div></div><div class="rvdate">Jun 6, 2026</div></div><div class="stars">★★★★★</div><div class="rvtitle">Taste great</div><div class="rvbody">They taste great and seem to be helping my workouts.</div></div>
+      <div class="review" data-c="taste"><div class="rvtop"><div class="av">BB</div><div><div class="rvname">Verified Buyer</div><div class="rvv">✓ Verified Buyer</div></div><div class="rvdate">Jun 3, 2026</div></div><div class="stars">★★★★★</div><div class="rvtitle">Gummies</div><div class="rvbody">Beats powder or nasty pills taste.</div></div>
+      <div class="review" data-c="ease results"><div class="rvtop"><div class="av">BB</div><div><div class="rvname">Verified Buyer</div><div class="rvv">✓ Verified Buyer</div></div><div class="rvdate">Jun 2, 2026</div></div><div class="stars">★★★★★</div><div class="rvtitle">Subscription delivery</div><div class="rvbody">I'm on a subscription — easiest way to never run out.</div></div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="sec">
+    <h2>Your creatine questions — answered</h2>
+    <div class="faq" id="faq" style="margin-top:8px">
+      <div class="item"><div class="q" onclick="faqT(this)">How many gummies should I take?<span class="ic">+</span></div><div class="a"><p>Take 3–5 gummies daily to sustain your body's creatine supply. You can personalize the amount within that range based on your size, muscle mass, and activity level — any time of day.</p></div></div>
+      <div class="item"><div class="q" onclick="faqT(this)">What's actually in them?<span class="ic">+</span></div><div class="a"><p>Creapure® Creatine Monohydrate, L-Theanine, L-Tyrosine, B12, Huperzine A, Maltitol, Water, Xylitol, Pectin, Citric Acid, Malic Acid, Reb M, and natural flavor and color.</p></div></div>
+      <div class="item"><div class="q" onclick="faqT(this)">Are they really sugar-free?<span class="ic">+</span></div><div class="a"><p>Yes — sugar-free and fat-free, and they fit vegan, vegetarian, paleo, and keto diets.</p></div></div>
+      <div class="item"><div class="q" onclick="faqT(this)">How fast will I see results?<span class="ic">+</span></div><div class="a"><p>With consistent daily use, muscle fullness is typically visible in 2–3 weeks, with sharper focus often noticeable within days.</p></div></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <img class="flogo" src="https://creatinegummies.com/cdn/shop/files/logo.webp?v=1697820313" alt="Bear Balanced" style="filter:brightness(0) invert(1)">
+    <div class="fcols">
+      <div><h4>Shop</h4><a href="#">All flavors</a><a href="#">Bundles</a><a href="#">Subscribe & save</a><a href="#">Accessories</a></div>
+      <div><h4>Learn</h4><a href="#">Our story</a><a href="#">Reviews</a><a href="#">FAQ</a><a href="#">Contact</a></div>
+    </div>
+    <div class="fbot">World's First Creatine Gummy® · Made with Creapure® · Sugar-free & vegan · 30-day money-back guarantee</div>
+  </div>
+
+</div>
+
+<!-- STICKY -->
+<div class="sticky" id="sticky">
+  <img class="sthumb" src="https://cdn.shopify.com/s/files/1/0603/0144/3125/files/FRONT_-_BLUE_TRANSPARENT_-_FILTERED_79e53e0e-12a1-410a-9126-911ba11b3aac.png?v=1774340450" alt="">
+  <div class="sinfo"><div class="sst" id="stName">Blueberry · Buy 3</div><div class="ssp" id="stSub">90 servings</div></div>
+  <button class="satc" onclick="addToCart()">Add · <span id="stPrice">$108</span></button>
+</div>
+
+<script>
+var state={flavor:'Blueberry',q:3,price:108,serv:'90 servings'};
+
+/* gallery */
+var gi=0,slides=document.querySelectorAll('#gmain .slide'),thumbs=document.querySelectorAll('#thumbs .t');
+function gset(i){
+  gi=(i+slides.length)%slides.length;
+  slides.forEach((s,k)=>s.classList.toggle('on',k===gi));
+  thumbs.forEach((t,k)=>t.classList.toggle('on',k===gi));
+  var v=document.getElementById('pvid'); if(v&&gi!==1){v.pause();}
+}
+function gnav(d){gset(gi+d);}
+function playVid(){var v=document.getElementById('pvid');if(!v.src){v.src='https://creatinegummies.com/cdn/shop/videos/c/vp/0f1f05fb75fc443c94cabdd10daa56c3/0f1f05fb75fc443c94cabdd10daa56c3.HD-1080p-7.2Mbps-20572860.mp4?v=0';}v.controls=true;document.getElementById('vplay').style.display='none';v.play();}
+
+function render(){
+  document.getElementById('atcPrice').textContent='$'+state.price;
+  document.getElementById('flavorTitle').textContent='| '+state.flavor;
+  document.getElementById('stName').textContent=state.flavor+' · Buy '+state.q;
+  document.getElementById('stSub').textContent=state.serv;
+  document.getElementById('stPrice').textContent='$'+state.price;
+}
+function flavorSel(el){
+  document.querySelectorAll('#flavors .flavor').forEach(f=>f.classList.remove('on'));
+  el.classList.add('on');state.flavor=el.dataset.f;render();
+}
+function tierSel(el){
+  document.querySelectorAll('#tiers .tier').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+  state.q=+el.dataset.q;state.price=+el.dataset.price;state.serv=el.dataset.serv;render();
+}
+function addToCart(){
+  var b=document.querySelector('.atc');var old=b.innerHTML;
+  b.innerHTML='✓ Added — '+state.flavor+' ($'+state.price+')';b.style.background='#13a36b';
+  document.querySelector('.cart-dot b').textContent=state.q;
+  setTimeout(function(){b.innerHTML=old;b.style.background='';},1500);
+}
+function rfil(el,c){
+  document.querySelectorAll('.rfilter .rpill').forEach(p=>p.classList.remove('on'));el.classList.add('on');
+  document.querySelectorAll('#rlist .review').forEach(function(r){
+    r.style.display=(c==='all'||r.dataset.c.indexOf(c)>-1)?'':'none';
+  });
+}
+function faqT(q){q.parentElement.classList.toggle('open');}
+
+/* sticky */
+var buyzone=document.getElementById('buyzone'),sticky=document.getElementById('sticky');
+function onScroll(){var r=buyzone.getBoundingClientRect();sticky.classList.toggle('show',r.bottom<120);}
+window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);
+render();onScroll();
+</script>
+</body>
+</html>
