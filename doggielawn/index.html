@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disposable DoggieLawn — Real Grass Dog Potty</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Red+Hat+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#85C342;
+  --green-dark:#6BA630;
+  --coral:#FD6A54;
+  --coral-dark:#ED5740;
+  --ink:#313132;
+  --ink-soft:#5b5b5c;
+  --line:#e7e4dd;
+  --cream:#FAF7F0;
+  --cream2:#F2EEE4;
+  --white:#fff;
+  --serif:'Frank Ruhl Libre',Georgia,serif;
+  --sans:'Red Hat Text',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:#e9e6df;
+  line-height:1.5;
+  font-size:15px;
+}
+/* ---- Mobile frame on desktop ---- */
+.frame{
+  max-width:390px;
+  margin:0 auto;
+  background:var(--white);
+  position:relative;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+@media(min-width:600px){
+  body{padding:24px 0}
+  .frame{box-shadow:0 18px 60px rgba(0,0,0,.18);border-radius:18px;overflow:hidden;min-height:auto}
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;letter-spacing:-.01em}
+
+/* ---- Announcement ---- */
+.announce{
+  background:var(--green);
+  color:#fff;
+  font-size:12.5px;
+  font-weight:600;
+  text-align:center;
+  padding:8px 12px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  letter-spacing:.01em;
+}
+/* ---- Header ---- */
+.header{
+  position:sticky;top:0;z-index:40;
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;
+}
+.header .logo img{height:30px;width:auto}
+.header .hicons{display:flex;gap:16px;align-items:center}
+.header .hicons svg{width:21px;height:21px;stroke:var(--ink);fill:none;stroke-width:1.8}
+.burger{display:flex;flex-direction:column;gap:4px;cursor:pointer}
+.burger span{width:20px;height:2px;background:var(--ink);border-radius:2px}
+.cart-dot{position:relative}
+.cart-dot b{position:absolute;top:-6px;right:-8px;background:var(--coral);color:#fff;font-size:9px;font-weight:700;width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--sans)}
+
+/* ---- Gallery ---- */
+.gallery{background:var(--cream)}
+.gmain{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--cream)}
+.gmain img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0;transition:opacity .35s}
+.gmain img.on{opacity:1;position:relative}
+.gbadge{position:absolute;top:12px;left:12px;z-index:2;background:#fff;color:var(--ink);font-size:11px;font-weight:700;padding:6px 11px;border-radius:30px;display:flex;align-items:center;gap:5px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.gbadge svg{width:12px;height:12px}
+.garrows{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.garrows button{pointer-events:auto;border:none;background:rgba(255,255,255,.85);width:34px;height:34px;border-radius:50%;margin:0 8px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.garrows svg{width:16px;height:16px;stroke:var(--ink);fill:none;stroke-width:2.2}
+.thumbs{display:flex;gap:8px;padding:10px 14px 14px;overflow-x:auto;scrollbar-width:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumbs img{width:60px;height:60px;border-radius:10px;object-fit:cover;border:2px solid transparent;cursor:pointer;flex:0 0 auto}
+.thumbs img.on{border-color:var(--green)}
+
+/* ---- Buy zone ---- */
+.buy{padding:18px 16px 8px}
+.brandby{font-size:12px;color:var(--green-dark);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.title{font-size:27px;line-height:1.12;font-weight:500}
+.rrow{display:flex;align-items:center;gap:8px;margin:9px 0 2px;cursor:pointer}
+.stars{color:#F5A623;font-size:15px;letter-spacing:1px}
+.rrow .rt{font-size:13px;color:var(--ink-soft);font-weight:600}
+.rrow .rt u{text-underline-offset:2px}
+.recbar{font-size:12px;color:var(--ink-soft);margin:2px 0 0}
+.recbar b{color:var(--ink)}
+
+.priceline{display:flex;align-items:baseline;gap:9px;margin:14px 0 4px}
+.price{font-family:var(--serif);font-size:30px;font-weight:500}
+.price-strike{font-size:16px;color:var(--ink-soft);text-decoration:line-through}
+.price-save{font-size:11.5px;font-weight:700;color:var(--green-dark);background:#eef6e3;padding:3px 8px;border-radius:20px}
+
+/* size selector — the primary fix */
+.seclabel{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:18px 0 9px;color:var(--ink)}
+.seclabel .hint{float:right;font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink-soft);font-size:12px}
+.sizes{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.size{
+  border:1.5px solid var(--line);border-radius:13px;padding:11px 12px;cursor:pointer;
+  background:#fff;transition:.15s;position:relative;text-align:left;
+}
+.size:hover{border-color:#cfcabf}
+.size.on{border-color:var(--green);background:#f6fbef;box-shadow:0 0 0 1px var(--green)}
+.size .sn{font-weight:700;font-size:14.5px;display:flex;justify-content:space-between;align-items:center}
+.size .sp{font-weight:700;font-size:14.5px;color:var(--ink)}
+.size .sfit{font-size:11.5px;color:var(--ink-soft);margin-top:3px;line-height:1.35}
+.size .sdim{font-size:11px;color:#9a958a;margin-top:1px}
+.size.on .tick{position:absolute;top:9px;right:9px;display:none}
+
+/* subscription */
+.subs{margin-top:16px;border:1.5px solid var(--line);border-radius:14px;overflow:hidden}
+.opt{display:flex;align-items:center;gap:11px;padding:13px 14px;cursor:pointer;border-bottom:1px solid var(--line)}
+.opt:last-child{border-bottom:none}
+.opt.on{background:#f6fbef}
+.opt .radio{width:19px;height:19px;border-radius:50%;border:2px solid #cfcabf;flex:0 0 auto;position:relative}
+.opt.on .radio{border-color:var(--green)}
+.opt.on .radio:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--green)}
+.opt .otxt{flex:1}
+.opt .ot{font-weight:700;font-size:14px}
+.opt .os{font-size:11.5px;color:var(--ink-soft)}
+.opt .op{font-weight:700;font-size:15px}
+.opt .save-pill{font-size:10px;font-weight:700;color:#fff;background:var(--green);padding:2px 7px;border-radius:20px;margin-left:7px}
+.cadence{padding:0 14px 13px;background:#f6fbef;display:none}
+.cadence.show{display:block}
+.cadence label{font-size:11.5px;color:var(--ink-soft);display:block;margin-bottom:5px;font-weight:600}
+.cadence select{width:100%;padding:10px 11px;border-radius:10px;border:1.5px solid var(--line);font-family:var(--sans);font-size:13.5px;background:#fff;color:var(--ink)}
+
+/* qty + atc */
+.atcrow{display:flex;gap:10px;margin-top:16px}
+.qty{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:12px;overflow:hidden}
+.qty button{border:none;background:#fff;width:40px;height:48px;font-size:20px;cursor:pointer;color:var(--ink)}
+.qty input{width:34px;border:none;text-align:center;font-family:var(--sans);font-size:15px;font-weight:700}
+.atc{
+  flex:1;border:none;background:var(--coral);color:#fff;font-family:var(--sans);font-weight:700;
+  font-size:16px;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;
+  letter-spacing:.01em;transition:.15s;
+}
+.atc:hover{background:var(--coral-dark)}
+.atc .ap{font-weight:700}
+
+.trust{display:flex;justify-content:space-between;gap:6px;margin:16px 0 4px;padding:13px 6px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust .ti{flex:1;text-align:center}
+.trust .ti svg{width:22px;height:22px;stroke:var(--green-dark);fill:none;stroke-width:1.7;margin:0 auto 4px}
+.trust .ti span{font-size:10.5px;color:var(--ink-soft);font-weight:600;line-height:1.25;display:block}
+
+/* mini social proof near buy box — secondary fix */
+.proof{margin:18px 16px 4px;background:var(--cream);border-radius:16px;padding:15px 15px 6px}
+.proof-head{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.proof-num{font-family:var(--serif);font-size:32px;line-height:1;font-weight:700}
+.proof-meta{font-size:12px;color:var(--ink-soft);font-weight:600}
+.proof-meta .stars{font-size:14px}
+.proof-quotes{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:10px}
+.proof-quotes::-webkit-scrollbar{display:none}
+.pq{flex:0 0 230px;background:#fff;border-radius:13px;padding:12px 13px;border:1px solid var(--line)}
+.pq .stars{font-size:12px}
+.pq .pqt{font-weight:700;font-size:13px;margin:5px 0 4px}
+.pq .pqb{font-size:12px;color:var(--ink-soft);line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pq .pqn{font-size:11px;color:#9a958a;margin-top:7px;font-weight:600}
+.proof-link{display:block;text-align:center;font-size:12.5px;font-weight:700;color:var(--green-dark);padding:8px;text-decoration:underline;text-underline-offset:2px}
+
+/* sections */
+.sec{padding:24px 16px}
+.sec.alt{background:var(--cream)}
+.sec h2{font-size:22px;margin-bottom:6px}
+.sec .lead{font-size:13.5px;color:var(--ink-soft);margin:0 0 14px}
+.desc p{font-size:14px;color:var(--ink-soft);margin:0 0 11px}
+
+/* how it works */
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;gap:13px;align-items:flex-start}
+.step .num{flex:0 0 34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-family:var(--serif);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:16px}
+.step .st{font-weight:700;font-size:14.5px;margin-bottom:2px}
+.step .sb{font-size:13px;color:var(--ink-soft)}
+
+/* size guide table */
+.sgtable{border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:13px}
+.sgtable .r{display:grid;grid-template-columns:1.1fr 1fr 1.2fr .9fr;align-items:center}
+.sgtable .r+.r{border-top:1px solid var(--line)}
+.sgtable .h{background:var(--cream2);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.sgtable .c{padding:10px 8px}
+.sgtable .r .c:first-child{font-weight:700}
+.sgtable .c .p{color:var(--green-dark);font-weight:700}
+
+/* reviews widget */
+.rev-summary{display:flex;gap:18px;align-items:center;margin-bottom:16px}
+.rev-big{text-align:center}
+.rev-big .n{font-family:var(--serif);font-size:44px;line-height:1;font-weight:700}
+.rev-big .stars{font-size:15px;display:block;margin:3px 0}
+.rev-big .c{font-size:11.5px;color:var(--ink-soft)}
+.rev-hist{flex:1}
+.hrow{display:flex;align-items:center;gap:8px;font-size:11px;margin:3px 0;color:var(--ink-soft)}
+.hrow .hl{width:26px;font-weight:600}
+.hbar{flex:1;height:7px;background:var(--cream2);border-radius:6px;overflow:hidden}
+.hbar i{display:block;height:100%;background:var(--green)}
+.hrow .hc{width:24px;text-align:right}
+.recommend{text-align:center;font-size:12.5px;color:var(--ink-soft);margin-bottom:16px}
+.recommend b{color:var(--ink)}
+.filters{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:12px}
+.filters::-webkit-scrollbar{display:none}
+.fpill{flex:0 0 auto;border:1.5px solid var(--line);background:#fff;border-radius:30px;padding:7px 13px;font-size:12px;font-weight:600;cursor:pointer;color:var(--ink-soft)}
+.fpill.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.review{border-top:1px solid var(--line);padding:15px 0}
+.review .rvtop{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.review .av{width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.review .rvname{font-weight:700;font-size:13px}
+.review .rvverified{font-size:10.5px;color:var(--green-dark);font-weight:600;display:flex;align-items:center;gap:3px}
+.review .rvverified svg{width:11px;height:11px}
+.review .rvdate{margin-left:auto;font-size:11px;color:#9a958a}
+.review .stars{font-size:13px}
+.review .rvtitle{font-weight:700;font-size:14px;margin:6px 0 3px}
+.review .rvbody{font-size:13px;color:var(--ink-soft);line-height:1.5}
+.review .rvattrs{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.review .rvattrs span{font-size:10.5px;background:var(--cream2);color:var(--ink-soft);padding:3px 9px;border-radius:20px;font-weight:600}
+.review.hide{display:none}
+
+/* photo gallery */
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pgrid img{aspect-ratio:1/1;object-fit:cover;border-radius:12px}
+.pgrid img:first-child{grid-column:1/-1;aspect-ratio:16/10}
+
+/* faq */
+.faq{border-top:1px solid var(--line)}
+.faq .q{padding:15px 2px;display:flex;justify-content:space-between;gap:12px;cursor:pointer;font-weight:700;font-size:14px;align-items:center}
+.faq .q .ic{flex:0 0 20px;font-size:20px;color:var(--green-dark);transition:.2s;line-height:1}
+.faq .item.open .q .ic{transform:rotate(45deg)}
+.faq .a{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:13px;color:var(--ink-soft)}
+.faq .item.open .a{max-height:340px}
+.faq .a p{margin:0 0 14px;line-height:1.55}
+.faq .item{border-bottom:1px solid var(--line)}
+
+/* cross sells */
+.tray-cs{display:flex;gap:14px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:14px}
+.tray-cs img{width:84px;height:84px;border-radius:12px;object-fit:cover;flex:0 0 auto;background:var(--cream)}
+.tray-cs .tt{font-weight:700;font-size:14.5px;margin-bottom:2px}
+.tray-cs .td{font-size:12px;color:var(--ink-soft);margin-bottom:8px}
+.tray-cs .addbtn{border:1.5px solid var(--green);color:var(--green-dark);background:#fff;font-weight:700;font-size:12.5px;border-radius:9px;padding:7px 14px;cursor:pointer;font-family:var(--sans)}
+.tray-cs .addbtn b{color:var(--ink)}
+.yml{display:flex;gap:11px;overflow-x:auto;scrollbar-width:none;padding-bottom:6px}
+.yml::-webkit-scrollbar{display:none}
+.ycard{flex:0 0 140px}
+.ycard img{aspect-ratio:1/1;object-fit:cover;border-radius:13px;background:var(--cream)}
+.ycard .yn{font-weight:700;font-size:13px;margin:8px 0 2px}
+.ycard .yp{font-size:13px;color:var(--green-dark);font-weight:700}
+
+/* footer */
+.footer{background:var(--ink);color:#cfcdc8;padding:26px 16px;font-size:13px}
+.footer .flogo{height:26px;margin-bottom:14px;filter:brightness(0) invert(1)}
+.footer .fcols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+.footer h4{font-family:var(--sans);font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:#fff;margin:0 0 9px}
+.footer a{display:block;padding:3px 0;color:#cfcdc8}
+.footer .fbot{border-top:1px solid #4a4a4b;padding-top:14px;font-size:11px;color:#9a9896}
+
+/* sticky atc */
+.sticky{
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(110%);
+  width:100%;max-width:390px;z-index:50;background:#fff;border-top:1px solid var(--line);
+  box-shadow:0 -6px 20px rgba(0,0,0,.1);padding:10px 14px;display:flex;align-items:center;gap:12px;
+  transition:transform .3s ease;
+}
+.sticky.show{transform:translateX(-50%) translateY(0)}
+.sticky .sthumb{width:44px;height:44px;border-radius:9px;object-fit:cover;flex:0 0 auto}
+.sticky .sinfo{flex:1;min-width:0}
+.sticky .sst{font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky .ssp{font-size:12px;color:var(--green-dark);font-weight:700}
+.sticky .satc{border:none;background:var(--coral);color:#fff;font-family:var(--sans);font-weight:700;font-size:14px;padding:12px 18px;border-radius:11px;cursor:pointer;white-space:nowrap}
+.sticky .satc:hover{background:var(--coral-dark)}
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <div class="announce">🌱 Use code <b>PUPPYLOVE15</b> for 15% off your first XL Lawn</div>
+
+  <header class="header">
+    <div class="burger" aria-label="menu"><span></span><span></span><span></span></div>
+    <a class="logo" href="#"><img src="https://doggielawn.com/cdn/shop/files/doggielawn-logo_68b18f46-399e-4d82-909b-58a68c6a4509_200x.svg?v=1760336521" width="150" height="30" alt="DoggieLawn"></a>
+    <div class="hicons">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21"/></svg>
+      <span class="cart-dot">
+        <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M6 6 5 2H2"/></svg>
+        <b>0</b>
+      </span>
+    </div>
+  </header>
+
+  <!-- GALLERY -->
+  <div class="gallery">
+    <div class="gmain" id="gmain">
+      <div class="gbadge"><svg viewBox="0 0 24 24" fill="#85C342"><path d="M12 2C7 7 4 10 4 14a8 8 0 0 0 16 0c0-4-3-7-8-12z"/></svg> Real California Grass</div>
+      <img class="on" src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/Disp._800_x_800.webp?v=1762457267" alt="Disposable DoggieLawn real grass dog potty">
+      <img src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/Disp._800_x_800__1.webp?v=1728385112" alt="DoggieLawn grass pad">
+      <img src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/Untitled_design__1.webp?v=1728385112" alt="DoggieLawn lifestyle">
+      <img src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/disposible-tray-new.webp?v=1728385112" alt="DoggieLawn with tray">
+      <img src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/XL_Disp._800_x_800_fd1c4c01-44da-4879-b894-c679e9f29ea9.webp?v=1728385112" alt="XL DoggieLawn">
+      <div class="garrows">
+        <button onclick="gnav(-1)" aria-label="prev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button onclick="gnav(1)" aria-label="next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+    </div>
+    <div class="thumbs" id="thumbs">
+      <img class="on" onclick="gset(0)" src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/Disp._800_x_800.webp?v=1762457267" alt="">
+      <img onclick="gset(1)" src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/Disp._800_x_800__1.webp?v=1728385112" alt="">
+      <img onclick="gset(2)" src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/Untitled_design__1.webp?v=1728385112" alt="">
+      <img onclick="gset(3)" src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/disposible-tray-new.webp?v=1728385112" alt="">
+      <img onclick="gset(4)" src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/XL_Disp._800_x_800_fd1c4c01-44da-4879-b894-c679e9f29ea9.webp?v=1728385112" alt="">
+    </div>
+  </div>
+
+  <!-- BUY ZONE -->
+  <div class="buy" id="buyzone">
+    <div class="brandby">DoggieLawn</div>
+    <h1 class="title">Disposable DoggieLawn</h1>
+    <div class="rrow" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'})">
+      <span class="stars">★★★★★</span>
+      <span class="rt">4.9 · <u>162 reviews</u></span>
+    </div>
+
+    <div class="priceline">
+      <span class="price" id="price">$33.89</span>
+      <span class="price-save" id="saveTag" style="display:none">Subscribe &amp; save 5%</span>
+    </div>
+
+    <!-- SIZE: prices + fit on every option (primary fix) -->
+    <div class="seclabel">Choose your size <span class="hint">price &amp; fit shown</span></div>
+    <div class="sizes" id="sizes">
+      <div class="size on" data-i="0" data-name="Standard" data-price="33.89" data-sub="32.20" onclick="sizeSel(0)">
+        <div class="sn"><span>Standard</span><span class="sp">$33.89</span></div>
+        <div class="sfit">Dogs under 15 lb</div>
+        <div class="sdim">24 × 16 in</div>
+      </div>
+      <div class="size" data-i="1" data-name="Medium" data-price="37.84" data-sub="35.95" onclick="sizeSel(1)">
+        <div class="sn"><span>Medium</span><span class="sp">$37.84</span></div>
+        <div class="sfit">Dogs 10–30 lb</div>
+        <div class="sdim">24 × 20 in</div>
+      </div>
+      <div class="size" data-i="2" data-name="Large" data-price="39.95" data-sub="37.95" onclick="sizeSel(2)">
+        <div class="sn"><span>Large</span><span class="sp">$39.95</span></div>
+        <div class="sfit">Dogs 20–50 lb</div>
+        <div class="sdim">24 × 24 in</div>
+      </div>
+      <div class="size" data-i="3" data-name="XL" data-price="63.50" data-sub="60.33" onclick="sizeSel(3)">
+        <div class="sn"><span>XL</span><span class="sp">$63.50</span></div>
+        <div class="sfit">40 lb+ / multi-dog</div>
+        <div class="sdim">48 × 24 in</div>
+      </div>
+    </div>
+
+    <!-- SUBSCRIPTION -->
+    <div class="seclabel" style="margin-top:18px">Purchase options</div>
+    <div class="subs" id="subs">
+      <div class="opt" data-mode="onetime" onclick="modeSel('onetime')">
+        <div class="radio"></div>
+        <div class="otxt">
+          <div class="ot">One-time purchase</div>
+          <div class="os">Fresh grass delivered once</div>
+        </div>
+        <div class="op" id="opOne">$33.89</div>
+      </div>
+      <div class="opt on" data-mode="sub" onclick="modeSel('sub')">
+        <div class="radio"></div>
+        <div class="otxt">
+          <div class="ot">Subscribe &amp; save<span class="save-pill">SAVE 5%</span></div>
+          <div class="os">Auto-replacements so you never run out</div>
+        </div>
+        <div class="op" id="opSub">$32.20</div>
+      </div>
+      <div class="cadence show" id="cadence">
+        <label>Deliver every</label>
+        <select>
+          <option>Every week</option>
+          <option selected>Every 2 weeks (Most Popular)</option>
+          <option>Every 3 weeks</option>
+          <option>Every 4 weeks</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="atcrow">
+      <div class="qty">
+        <button onclick="qstep(-1)">−</button>
+        <input id="qty" value="1" readonly>
+        <button onclick="qstep(1)">+</button>
+      </div>
+      <button class="atc" onclick="addToCart()">Add to Cart · <span class="ap" id="atcPrice">$32.20</span></button>
+    </div>
+
+    <div class="trust">
+      <div class="ti"><svg viewBox="0 0 24 24"><path d="M3 8h13v8H3z"/><path d="M16 11h4l1 3v2h-5z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg><span>Free shipping</span></div>
+      <div class="ti"><svg viewBox="0 0 24 24"><path d="M12 3C8 7 6 10 6 13a6 6 0 0 0 12 0c0-3-2-6-6-10z"/></svg><span>Grown in California</span></div>
+      <div class="ti"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>1.4M+ pads shipped</span></div>
+    </div>
+  </div>
+
+  <!-- SOCIAL PROOF near buy box (secondary fix) -->
+  <div class="proof">
+    <div class="proof-head">
+      <div class="proof-num">4.9</div>
+      <div class="proof-meta">
+        <span class="stars">★★★★★</span><br>
+        Based on <b>162 reviews</b> · <b>98%</b> recommend
+      </div>
+    </div>
+    <div class="proof-quotes">
+      <div class="pq"><div class="stars">★★★★★</div><div class="pqt">Easy potty training my 8-week-old</div><div class="pqb">My mini dachshund lives with me in an apartment so I got the DoggieLawn to help with potty training. He is learning so quickly!</div><div class="pqn">— Kaylee G., verified buyer</div></div>
+      <div class="pq"><div class="stars">★★★★★</div><div class="pqt">Been using this for years</div><div class="pqb">We live in a condo, so having a lawn indoors has been a huge help. We keep ours on the balcony… the lawn is always there when needed.</div><div class="pqn">— Amanda B., verified buyer</div></div>
+      <div class="pq"><div class="stars">★★★★★</div><div class="pqt">It absorbs the pee and does not smell</div><div class="pqb">Really liking this for our puppy. He's 11 lbs and we live in a condo. What I love is that it absorbs the pee and does not smell!</div><div class="pqn">— Roseairol S., verified buyer</div></div>
+    </div>
+    <a class="proof-link" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'})">Read all 162 reviews ↓</a>
+  </div>
+
+  <!-- DESCRIPTION (moved below buy box) -->
+  <div class="sec desc">
+    <h2>A real patch of grass, delivered</h2>
+    <p>DoggieLawn is a real dog grass pee pad designed to make potty training easy and stress-free. Hydroponically grown in California, this fresh grass naturally absorbs liquids, reduces odor, and eliminates the mess of synthetic pads.</p>
+    <p>Perfect for dogs of every weight — whether you live in an apartment, have a patio, or a home without a yard, DoggieLawn is a convenient potty solution any time of day, rain or shine.</p>
+    <p>Delivered fresh to your door, it's a natural alternative to disposable pee pads — cleaner and more reliable for both you and your pup.</p>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="sec alt">
+    <h2>How it works</h2>
+    <p class="lead">Three steps to a cleaner indoor potty routine.</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div><div class="st">Pick your size & plan</div><div class="sb">Match the pad to your dog's weight, then subscribe for automatic fresh-grass replacements.</div></div></div>
+      <div class="step"><div class="num">2</div><div><div class="st">Set it down & let them go</div><div class="sb">Place it on a tray, balcony, or floor. The real grass feels natural, so most dogs take to it fast.</div></div></div>
+      <div class="step"><div class="num">3</div><div><div class="st">Swap when it's time</div><div class="sb">When your dog starts going near the edge, the grass is saturated — a fresh patch is already on the way.</div></div></div>
+    </div>
+  </div>
+
+  <!-- SIZE GUIDE -->
+  <div class="sec">
+    <h2>Size guide</h2>
+    <p class="lead">Every size, side by side — so you can choose with confidence.</p>
+    <div class="sgtable">
+      <div class="r h"><div class="c">Size</div><div class="c">Dimensions</div><div class="c">Best for</div><div class="c">Price</div></div>
+      <div class="r"><div class="c">Standard</div><div class="c">24 × 16 in</div><div class="c">Dogs under 15 lb</div><div class="c"><span class="p">$33.89</span></div></div>
+      <div class="r"><div class="c">Medium</div><div class="c">24 × 20 in</div><div class="c">Dogs 10–30 lb</div><div class="c"><span class="p">$37.84</span></div></div>
+      <div class="r"><div class="c">Large</div><div class="c">24 × 24 in</div><div class="c">Dogs 20–50 lb</div><div class="c"><span class="p">$39.95</span></div></div>
+      <div class="r"><div class="c">XL</div><div class="c">48 × 24 in</div><div class="c">40 lb+ / multi-dog</div><div class="c"><span class="p">$63.50</span></div></div>
+    </div>
+  </div>
+
+  <!-- REVIEWS WIDGET -->
+  <div class="sec alt" id="reviews">
+    <h2>What pet parents say</h2>
+    <div class="rev-summary" style="margin-top:14px">
+      <div class="rev-big">
+        <div class="n">4.9</div>
+        <span class="stars">★★★★★</span>
+        <div class="c">162 reviews</div>
+      </div>
+      <div class="rev-hist">
+        <div class="hrow"><span class="hl">5★</span><div class="hbar"><i style="width:91%"></i></div><span class="hc">148</span></div>
+        <div class="hrow"><span class="hl">4★</span><div class="hbar"><i style="width:7%"></i></div><span class="hc">11</span></div>
+        <div class="hrow"><span class="hl">3★</span><div class="hbar"><i style="width:2%"></i></div><span class="hc">2</span></div>
+        <div class="hrow"><span class="hl">2★</span><div class="hbar"><i style="width:0%"></i></div><span class="hc">0</span></div>
+        <div class="hrow"><span class="hl">1★</span><div class="hbar"><i style="width:1%"></i></div><span class="hc">1</span></div>
+      </div>
+    </div>
+    <div class="recommend"><b>98%</b> would recommend this product</div>
+
+    <div class="filters" id="filters">
+      <div class="fpill on" data-w="all" onclick="revFilter('all',this)">All reviews</div>
+      <div class="fpill" data-w="1-10" onclick="revFilter('1-10',this)">🐾 1–10 lb</div>
+      <div class="fpill" data-w="11-20" onclick="revFilter('11-20',this)">🐾 11–20 lb</div>
+      <div class="fpill" data-w="21-30" onclick="revFilter('21-30',this)">🐾 21–30 lb</div>
+    </div>
+
+    <div id="reviewList">
+      <div class="review" data-w="11-20">
+        <div class="rvtop"><div class="av">AM</div><div><div class="rvname">Anna M.</div><div class="rvverified"><svg viewBox="0 0 24 24" fill="#6BA630" stroke="none"><path d="M20 6 9 17l-5-5"/></svg>Verified Buyer</div></div><div class="rvdate">2 months ago</div></div>
+        <div class="stars">★★★★★</div>
+        <div class="rvtitle">That stopped our cat pee crisis</div>
+        <div class="rvbody">We found DoggieLawn a while back when a feral young cat decided to call our house his home… he never took to the litter box, but with DoggieLawn he's now happy using the indoor patch of grass. We get the biggest size so he has space to use one side and nibble grass on the other. We couldn't be happier.</div>
+        <div class="rvattrs"><span>🐾 11–20 lb</span><span>7–9 yrs old</span><span>Found via Google</span></div>
+      </div>
+      <div class="review" data-w="1-10">
+        <div class="rvtop"><div class="av">KG</div><div><div class="rvname">Kaylee G.</div><div class="rvverified"><svg viewBox="0 0 24 24" fill="#6BA630" stroke="none"><path d="M20 6 9 17l-5-5"/></svg>Verified Buyer</div></div><div class="rvdate">7 months ago</div></div>
+        <div class="stars">★★★★★</div>
+        <div class="rvtitle">Easy potty training my 8 week old mini dachshund</div>
+        <div class="rvbody">My 8 week old mini dachshund lives with me in an apartment so I got the DoggieLawn to help with potty training. He is learning so quickly and is doing so well with the DoggieLawn! Going to continue to use it!</div>
+        <div class="rvattrs"><span>🐾 1–10 lb</span><span>&lt; 1 yr old</span><span>Found via Instagram</span></div>
+      </div>
+      <div class="review" data-w="21-30">
+        <div class="rvtop"><div class="av">AB</div><div><div class="rvname">Amanda B.</div><div class="rvverified"><svg viewBox="0 0 24 24" fill="#6BA630" stroke="none"><path d="M20 6 9 17l-5-5"/></svg>Verified Buyer</div></div><div class="rvdate">7 months ago</div></div>
+        <div class="stars">★★★★★</div>
+        <div class="rvtitle">Been using this product for years</div>
+        <div class="rvbody">The DoggieLawn has made our life much easier. We live in a condo, so having a lawn indoors has been a huge help. We keep ours on the balcony and installed a doggie door. We walk a few times a day, but the lawn is always there when needed. We love it.</div>
+        <div class="rvattrs"><span>🐾 21–30 lb</span><span>4–6 yrs old</span><span>Found via word of mouth</span></div>
+      </div>
+      <div class="review" data-w="11-20">
+        <div class="rvtop"><div class="av">RS</div><div><div class="rvname">Roseairol S.</div><div class="rvverified"><svg viewBox="0 0 24 24" fill="#6BA630" stroke="none"><path d="M20 6 9 17l-5-5"/></svg>Verified Buyer</div></div><div class="rvdate">9 months ago</div></div>
+        <div class="stars">★★★★★</div>
+        <div class="rvtitle">Good product</div>
+        <div class="rvbody">Really liking this for our puppy. He's 11 lbs and we live in a condo. What I love is that it absorbs the pee and does not smell! Very grateful!</div>
+        <div class="rvattrs"><span>🐾 11–20 lb</span><span>&lt; 1 yr old</span><span>Found via Google</span></div>
+      </div>
+      <div class="review" data-w="1-10">
+        <div class="rvtop"><div class="av">SS</div><div><div class="rvname">Sally S.</div><div class="rvverified"><svg viewBox="0 0 24 24" fill="#6BA630" stroke="none"><path d="M20 6 9 17l-5-5"/></svg>Verified Buyer</div></div><div class="rvdate">9 months ago</div></div>
+        <div class="stars">★★★★★</div>
+        <div class="rvtitle">Must have!!!!</div>
+        <div class="rvbody">A DoggieLawn is perfect to use during housebreaking and perfect for bad weather or a fresh fertilized lawn.</div>
+        <div class="rvattrs"><span>🐾 1–10 lb</span><span>&lt; 1 yr old</span><span>Found via Google</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTO GALLERY -->
+  <div class="sec">
+    <h2>From the DoggieLawn pack</h2>
+    <p class="lead">Real dogs, real grass, real homes.</p>
+    <div class="pgrid">
+      <img src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/dog_on_balcony_2_1.jpg?v=1641849040" alt="Dog using DoggieLawn on balcony">
+      <img src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/dachshund-sitting-on-a-real-grass-dog-potty-pad-with-black-tray-tc2q3w_400x400.webp?v=1780501354" alt="Dachshund on DoggieLawn">
+      <img src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/web-79-DoggieLawn_r1_01E_0233_400x400.jpg?v=1762457687" alt="DoggieLawn studio">
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="sec alt">
+    <h2>DoggieLawn FAQ's</h2>
+    <div class="faq" id="faq" style="margin-top:8px">
+      <div class="item"><div class="q" onclick="faqT(this)">How do I know which subscription is best?<span class="ic">+</span></div><div class="a"><p>You can always give us a call for help determining the best plan for you and your furry friend. We make suggestions based on your dog's general weight, age and anticipated frequency of use. You can also switch or cancel your subscription at any time.</p></div></div>
+      <div class="item"><div class="q" onclick="faqT(this)">When do I change the grass?<span class="ic">+</span></div><div class="a"><p>You'll know it's time to change the grass when your dog starts peeing on the edge of the lawn. That means the grass is too saturated with their own scent and they're looking for a fresh spot to "go!"</p></div></div>
+      <div class="item"><div class="q" onclick="faqT(this)">Do I need to water the lawn?<span class="ic">+</span></div><div class="a"><p>We suggest you only water the DoggieLawn as needed because most dogs don't like walking on wet grass! If your dog doesn't mind, or you live in a hotter climate, a little watering will extend the life of the lawn.</p></div></div>
+      <div class="item"><div class="q" onclick="faqT(this)">Can my male dog use this?<span class="ic">+</span></div><div class="a"><p>Absolutely! As far as male dogs go, we find that they still squat when they pee, and really only lift their leg when they're marking territory. If you have a leg-lifter, you can put something in the middle of the potty like a fire hydrant pee post to give him something to aim for!</p></div></div>
+    </div>
+  </div>
+
+  <!-- TRAY CROSS-SELL -->
+  <div class="sec">
+    <h2 style="margin-bottom:4px">Holds your grass perfectly in place</h2>
+    <p class="lead">Don't forget a tray!</p>
+    <div class="tray-cs">
+      <img src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/disposible-tray-new.webp?v=1728385112" alt="DoggieLawn tray">
+      <div>
+        <div class="tt">Deluxe Wooden Tray</div>
+        <div class="td">Keeps the lawn neatly contained and elevated off your floor.</div>
+        <button class="addbtn">Add for <b>$47.99</b></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- YOU MAY ALSO LIKE -->
+  <div class="sec alt">
+    <h2>Potty-prep extras</h2>
+    <p class="lead">Pairs well with your DoggieLawn.</p>
+    <div class="yml">
+      <div class="ycard"><img src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/standardbarkpotty_400x400.webp?v=1762457203" alt="Bark Potty"><div class="yn">Bark Potty</div><div class="yp">$37.00</div></div>
+      <div class="ycard"><img src="https://cdn.shopify.com/s/files/1/0246/5700/2593/products/greyhydrant_400x400.jpg?v=1762457253" alt="Potty Training Fire Hydrant"><div class="yn">Fire Hydrant</div><div class="yp">$17.99</div></div>
+      <div class="ycard"><img src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/1-pet-stain-odor-remover-983668_1800x1800_474a17ea-b27c-42a1-bd50-82bd56823108_400x400.webp?v=1762457235" alt="Stain & Odor Remover"><div class="yn">Stain & Odor Remover</div><div class="yp">$14.99</div></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <img class="flogo" src="https://doggielawn.com/cdn/shop/files/doggielawn-logo_68b18f46-399e-4d82-909b-58a68c6a4509_200x.svg?v=1760336521" alt="DoggieLawn">
+    <div class="fcols">
+      <div><h4>Shop</h4><a href="#">How it works</a><a href="#">Our grass</a><a href="#">Manage subscription</a><a href="#">Accessories</a></div>
+      <div><h4>Company</h4><a href="#">About us</a><a href="#">Reviews</a><a href="#">Blog</a><a href="#">Help</a></div>
+    </div>
+    <div class="fbot">Real grass, hydroponically grown in California · Free shipping · 1.4M+ grass pads shipped</div>
+  </div>
+
+</div>
+
+<!-- STICKY ATC -->
+<div class="sticky" id="sticky">
+  <img class="sthumb" src="https://cdn.shopify.com/s/files/1/0246/5700/2593/files/Disp._800_x_800.webp?v=1762457267" alt="">
+  <div class="sinfo">
+    <div class="sst" id="stName">Disposable DoggieLawn · Standard</div>
+    <div class="ssp" id="stPrice">$32.20 · Subscribe & save</div>
+  </div>
+  <button class="satc" onclick="addToCart()">Add · <span id="stAtc">$32.20</span></button>
+</div>
+
+<script>
+var state={size:0,mode:'sub',qty:1};
+var SIZES=[
+  {name:'Standard',price:33.89,sub:32.20},
+  {name:'Medium',price:37.84,sub:35.95},
+  {name:'Large',price:39.95,sub:37.95},
+  {name:'XL',price:63.50,sub:60.33}
+];
+function money(n){return '$'+n.toFixed(2);}
+
+/* gallery */
+var gi=0,gImgs=document.querySelectorAll('#gmain img'),gThumbs=document.querySelectorAll('#thumbs img');
+function gset(i){gi=(i+gImgs.length)%gImgs.length;gImgs.forEach((im,k)=>im.classList.toggle('on',k===gi));gThumbs.forEach((t,k)=>t.classList.toggle('on',k===gi));}
+function gnav(d){gset(gi+d);}
+
+/* pricing */
+function render(){
+  var s=SIZES[state.size];
+  var unit = state.mode==='sub'? s.sub : s.price;
+  document.getElementById('price').textContent=money(unit);
+  document.getElementById('saveTag').style.display = state.mode==='sub'?'inline-block':'none';
+  document.getElementById('opOne').textContent=money(s.price);
+  document.getElementById('opSub').textContent=money(s.sub);
+  document.getElementById('atcPrice').textContent=money(unit*state.qty);
+  document.getElementById('stAtc').textContent=money(unit*state.qty);
+  document.getElementById('stName').textContent='Disposable DoggieLawn · '+s.name;
+  document.getElementById('stPrice').textContent= state.mode==='sub'? money(s.sub)+' · Subscribe & save' : money(s.price)+' · One-time';
+}
+function sizeSel(i){
+  state.size=i;
+  document.querySelectorAll('#sizes .size').forEach((el,k)=>el.classList.toggle('on',k===i));
+  render();
+}
+function modeSel(m){
+  state.mode=m;
+  document.querySelectorAll('#subs .opt').forEach(el=>el.classList.toggle('on',el.dataset.mode===m));
+  document.getElementById('cadence').classList.toggle('show',m==='sub');
+  render();
+}
+function qstep(d){state.qty=Math.max(1,state.qty+d);document.getElementById('qty').value=state.qty;render();}
+function addToCart(){
+  var s=SIZES[state.size];var b=document.querySelector('.atc');
+  var old=b.innerHTML;b.innerHTML='✓ Added to cart';b.style.background='#6BA630';
+  document.querySelector('.cart-dot b').textContent=state.qty;
+  setTimeout(function(){b.innerHTML=old;b.style.background='';},1400);
+}
+
+/* reviews filter */
+function revFilter(w,el){
+  document.querySelectorAll('#filters .fpill').forEach(p=>p.classList.remove('on'));
+  el.classList.add('on');
+  document.querySelectorAll('#reviewList .review').forEach(function(r){
+    r.classList.toggle('hide', w!=='all' && r.dataset.w!==w);
+  });
+}
+
+/* faq */
+function faqT(q){q.parentElement.classList.toggle('open');}
+
+/* sticky bar via getBoundingClientRect */
+var buyzone=document.getElementById('buyzone'),sticky=document.getElementById('sticky');
+function onScroll(){
+  var r=buyzone.getBoundingClientRect();
+  // show once the main buy zone has scrolled mostly out of view
+  var show = r.bottom < 90;
+  sticky.classList.toggle('show',show);
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+window.addEventListener('resize',onScroll);
+render();onScroll();
+</script>
+</body>
+</html>
