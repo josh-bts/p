@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Original DracoSlides — Draco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#121212;
+  --ink-soft:#6b6b6b;
+  --cream:#FDFBF7;
+  --line:#e6e3dd;
+  --bg:#ffffff;
+  --shoppay:#5a31f4;
+  --amiri:'Amiri',Georgia,'Times New Roman',serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:var(--amiri);color:var(--ink);background:#cfcfcf;line-height:1.5;font-size:15px}
+.frame{max-width:390px;margin:0 auto;background:var(--bg);position:relative;overflow-x:hidden;min-height:100vh}
+@media(min-width:600px){body{padding:24px 0}.frame{box-shadow:0 20px 60px rgba(0,0,0,.28);min-height:auto}}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0;font-weight:400;letter-spacing:.02em}
+
+/* announce */
+.announce{background:var(--ink);color:var(--cream);font-size:12px;text-align:center;padding:8px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.06em}
+
+/* header */
+.header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:13px 16px}
+.header .burger{display:flex;flex-direction:column;gap:4px;cursor:pointer}
+.header .burger span{width:21px;height:1.5px;background:var(--ink)}
+.header .logo img{height:21px;width:auto}
+.header .hicons{display:flex;gap:16px;align-items:center}
+.header .hicons svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.4}
+.cart-dot{position:relative}
+.cart-dot b{position:absolute;top:-7px;right:-8px;background:var(--ink);color:#fff;font-size:9px;font-weight:700;width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+/* gallery */
+.gallery{background:#f4f3f0}
+.gmain{position:relative;aspect-ratio:1/1;overflow:hidden;background:#f4f3f0}
+.gmain .slide{width:100%;height:100%;position:absolute;inset:0;opacity:0;transition:opacity .35s}
+.gmain .slide.on{opacity:1;position:relative}
+.gmain img{width:100%;height:100%;object-fit:cover}
+.gmain video{width:100%;height:100%;object-fit:cover;background:#000}
+.vplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}
+.vplay span{width:58px;height:58px;border-radius:50%;background:rgba(253,251,247,.92);display:flex;align-items:center;justify-content:center}
+.vplay span:after{content:"";border-left:18px solid var(--ink);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
+.gbadge{position:absolute;top:13px;left:13px;z-index:3;background:var(--ink);color:var(--cream);font-size:10px;letter-spacing:.1em;padding:6px 12px;text-transform:uppercase}
+.garrows{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none;z-index:3}
+.garrows button{pointer-events:auto;border:none;background:rgba(255,255,255,.88);width:36px;height:36px;border-radius:50%;margin:0 10px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.garrows svg{width:15px;height:15px;stroke:var(--ink);fill:none;stroke-width:1.6}
+.thumbs{display:flex;gap:9px;padding:11px 16px 16px;overflow-x:auto;scrollbar-width:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumbs .t{width:60px;height:60px;object-fit:cover;border:1px solid var(--line);cursor:pointer;flex:0 0 auto;position:relative;background:#f4f3f0}
+.thumbs .t.on{border-color:var(--ink)}
+.thumbs .t.vid:after{content:"▶";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;background:rgba(0,0,0,.3);font-size:13px}
+
+/* buy zone */
+.buy{padding:20px 16px 8px}
+.rrow{display:flex;align-items:center;gap:8px;cursor:pointer;margin-bottom:7px}
+.stars{color:var(--ink);font-size:13px;letter-spacing:2px}
+.rrow .rt{font-size:12.5px;color:var(--ink-soft)}
+.title{font-size:30px;line-height:1.1;letter-spacing:.02em}
+.pricerow{display:flex;align-items:center;gap:10px;margin:12px 0 0}
+.price{font-size:21px}
+.was{font-size:15px;color:var(--ink-soft);text-decoration:line-through}
+.savebadge{font-size:11px;letter-spacing:.05em;border:1px solid var(--ink);padding:3px 9px}
+
+/* selectors */
+.seclabel{font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin:20px 0 10px;color:var(--ink);display:flex;justify-content:space-between;align-items:baseline}
+.seclabel .sel{letter-spacing:.02em;text-transform:none;color:var(--ink-soft);font-size:13px}
+.swatches{display:flex;gap:9px;flex-wrap:wrap}
+.sw{width:46px;height:46px;border:1px solid var(--line);cursor:pointer;overflow:hidden;position:relative}
+.sw img{width:100%;height:100%;object-fit:cover}
+.sw.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+
+/* SIZE — primary win: US mapping inline */
+.sizes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.size{border:1px solid var(--line);padding:9px 6px;cursor:pointer;background:#fff;text-align:center;transition:.12s}
+.size:hover{border-color:#bbb}
+.size.on{border-color:var(--ink);background:var(--ink);color:var(--cream)}
+.size .sl{font-size:15px;line-height:1}
+.size .su{font-size:10px;letter-spacing:.03em;color:var(--ink-soft);margin-top:3px}
+.size.on .su{color:#c9c6bf}
+.sizehelp{margin-top:10px;font-size:12px;color:var(--ink-soft);display:flex;align-items:center;gap:6px;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.sizehelp svg{width:14px;height:14px;stroke:var(--ink);fill:none;stroke-width:1.5}
+.sizechart{max-height:0;overflow:hidden;transition:max-height .35s ease;border:0 solid var(--line)}
+.sizechart.open{max-height:340px;margin-top:10px;border:1px solid var(--line)}
+.sizechart table{width:100%;border-collapse:collapse;font-size:11.5px}
+.sizechart th,.sizechart td{padding:7px 6px;text-align:center;border-bottom:1px solid var(--line)}
+.sizechart th{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:400}
+.sizechart tr.hl td{background:#f4f3f0;font-weight:700}
+.sizechart td.lab{font-weight:700}
+
+/* atc + shop pay (express checkout) */
+.atc{width:100%;margin-top:16px;border:none;background:var(--ink);color:var(--cream);font-family:var(--amiri);font-weight:700;font-size:18px;letter-spacing:.08em;padding:17px;cursor:pointer;text-transform:uppercase;transition:.15s}
+.atc:hover{background:#000}
+.installments{text-align:center;font-size:11.5px;color:var(--ink-soft);margin-top:10px}
+.installments b{color:var(--shoppay)}
+.shoppay{width:100%;margin-top:10px;border:none;background:var(--shoppay);color:#fff;font-family:var(--amiri);font-size:15px;padding:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.shoppay .logo-shop{font-weight:700;font-style:italic;font-family:Georgia,serif;letter-spacing:-.3px}
+.morepay{text-align:center;font-size:12px;color:var(--ink-soft);margin-top:9px;text-decoration:underline;text-underline-offset:2px}
+
+/* free gifts */
+.gifts{margin-top:18px;border:1px solid var(--line)}
+.gifts .gh{font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:10px 13px;border-bottom:1px solid var(--line);background:#f9f8f5;display:flex;justify-content:space-between;align-items:center}
+.gifts .gh .fv{color:var(--ink-soft)}
+.gift{display:flex;align-items:center;gap:11px;padding:10px 13px;border-bottom:1px solid var(--line)}
+.gift:last-child{border-bottom:none}
+.gift img{width:42px;height:42px;object-fit:cover;background:#f4f3f0;flex:0 0 auto}
+.gift .gn{flex:1;font-size:13px}
+.gift .gp{font-size:12.5px}.gift .gp b{}.gift .gp s{color:var(--ink-soft);margin-right:5px}
+.gift .gchk{width:19px;height:19px;border:1.5px solid var(--ink);position:relative;cursor:pointer;flex:0 0 auto}
+.gift .gchk.on{background:var(--ink)}
+.gift .gchk.on:after{content:"✓";position:absolute;inset:0;color:var(--cream);font-size:12px;display:flex;align-items:center;justify-content:center}
+
+/* PROOF strip — secondary win */
+.proof{margin:20px 16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;display:flex;gap:0;text-align:center}
+.proof .pc{flex:1;padding:0 8px}
+.proof .pc+.pc{border-left:1px solid var(--line)}
+.proof .pn{font-size:19px}
+.proof .pl{font-size:10.5px;letter-spacing:.04em;color:var(--ink-soft);margin-top:3px;line-height:1.3}
+.proof .stars{font-size:12px;letter-spacing:1px}
+
+/* sections */
+.sec{padding:30px 16px}
+.sec.dark{background:var(--ink);color:var(--cream)}
+.sec.cream{background:#f4f3f0}
+.kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-bottom:8px}
+.sec.dark .kicker{color:#b7b3aa}
+.sec h2{font-size:26px;text-align:center;line-height:1.15;margin-bottom:8px}
+.sec.dark h2{color:var(--cream)}
+.sec .lead{font-size:13.5px;color:var(--ink-soft);text-align:center;max-width:300px;margin:0 auto 20px}
+.sec.dark .lead{color:#b7b3aa}
+
+/* features */
+.feats{display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(255,255,255,.16)}
+.feat{display:flex;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+.feat svg{width:30px;height:30px;stroke:var(--cream);fill:none;stroke-width:1.3;flex:0 0 auto}
+.feat .ft{font-size:16px}
+.feat .fd{font-size:12.5px;color:#b7b3aa;margin-top:2px}
+.guarantee{text-align:center;font-size:13px;color:#b7b3aa;margin-top:20px;font-style:italic}
+
+/* checklist */
+.checks{display:flex;flex-direction:column;gap:11px;margin-top:6px}
+.chk-i{display:flex;gap:11px;align-items:flex-start;font-size:13.5px}
+.chk-i svg{width:18px;height:18px;stroke:var(--ink);fill:none;stroke-width:1.6;flex:0 0 auto;margin-top:2px}
+
+/* video block */
+.vblock{position:relative;aspect-ratio:4/5;overflow:hidden;background:#000;margin-top:4px}
+.vblock video{width:100%;height:100%;object-fit:cover}
+.vblock .vp{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.vblock .vp span{width:62px;height:62px;border-radius:50%;background:rgba(253,251,247,.92);display:flex;align-items:center;justify-content:center}
+.vblock .vp span:after{content:"";border-left:20px solid var(--ink);border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px}
+
+/* worn by */
+.wornimgs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.wornimgs img{aspect-ratio:1/1;object-fit:cover;background:#e6e3dd}
+
+/* reviews aggregate */
+.revagg{text-align:center;padding:6px 0}
+.revagg .big{font-size:54px;line-height:1}
+.revagg .st{font-size:18px;letter-spacing:3px;margin:6px 0}
+.revagg .ct{font-size:13px;color:var(--ink-soft)}
+.revbadges{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+.revbadges span{font-size:11px;letter-spacing:.04em;border:1px solid var(--line);padding:7px 13px;color:var(--ink-soft)}
+
+/* faq / accordions */
+.acc .item{border-bottom:1px solid var(--line)}
+.acc .q{padding:16px 2px;display:flex;justify-content:space-between;gap:12px;cursor:pointer;font-size:15px;align-items:center}
+.acc .q .ic{font-size:19px;transition:.2s;color:var(--ink-soft)}
+.acc .item.open .q .ic{transform:rotate(45deg)}
+.acc .a{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:13px;color:var(--ink-soft)}
+.acc .item.open .a{max-height:260px}
+.acc .a p{margin:0 0 16px;line-height:1.6}
+
+/* cross-sell */
+.yml{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.yml::-webkit-scrollbar{display:none}
+.ycard{flex:0 0 145px}
+.ycard img{aspect-ratio:1/1;object-fit:cover;background:#f4f3f0}
+.ycard .yn{font-size:13px;margin:8px 0 2px}
+.ycard .yp{font-size:13px;color:var(--ink-soft)}
+
+/* footer */
+.footer{background:var(--ink);color:#b7b3aa;padding:28px 16px;font-size:13px}
+.footer .flogo{height:22px;margin-bottom:16px;filter:brightness(0) invert(1)}
+.footer .fcols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.footer h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);margin:0 0 10px;font-weight:400}
+.footer a{display:block;padding:4px 0;color:#b7b3aa}
+.footer .fbot{border-top:1px solid #2c2c2c;padding-top:16px;font-size:10.5px;color:#7d7d7d}
+
+/* sticky */
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(115%);width:100%;max-width:390px;z-index:60;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(0,0,0,.1);padding:10px 14px;display:flex;align-items:center;gap:12px;transition:transform .3s ease}
+.sticky.show{transform:translateX(-50%) translateY(0)}
+.sticky .sthumb{width:44px;height:44px;object-fit:cover;background:#f4f3f0;flex:0 0 auto}
+.sticky .sinfo{flex:1;min-width:0}
+.sticky .sst{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky .ssp{font-size:12px;color:var(--ink-soft)}
+.sticky .satc{border:none;background:var(--ink);color:var(--cream);font-family:var(--amiri);font-weight:700;font-size:14px;letter-spacing:.06em;padding:13px 20px;cursor:pointer;white-space:nowrap;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <div class="announce">Summer Sale &nbsp;|&nbsp; Save up to 50% OFF</div>
+
+  <header class="header">
+    <div class="burger"><span></span><span></span><span></span></div>
+    <a class="logo" href="#"><img src="https://dracoslides.com/cdn/shop/files/Logo_85597f42-9370-44cd-8505-eff4f8230f2d.png" alt="DRACO"></a>
+    <div class="hicons">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21"/></svg>
+      <span class="cart-dot"><svg viewBox="0 0 24 24"><path d="M6 7h13l-1.3 10H7.3z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><b>0</b></span>
+    </div>
+  </header>
+
+  <!-- GALLERY -->
+  <div class="gallery">
+    <div class="gmain" id="gmain">
+      <div class="gbadge">Original</div>
+      <div class="slide on" data-type="img"><img id="heroImg" src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_505c8781-231b-4603-99a1-964966066cac_1.jpg?v=1768054550" alt="Original DracoSlides"></div>
+      <div class="slide" data-type="img"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_4.jpg?v=1768054550" alt=""></div>
+      <div class="slide" data-type="img"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_3.jpg?v=1768054550" alt=""></div>
+      <div class="slide" data-type="video">
+        <video id="pvid" poster="https://dracoslides.com/cdn/shop/files/preview_images/de81369aee2e40eca9e86d8413a3ec02.thumbnail.0000000000_1000x.jpg?v=1720729839" playsinline preload="none"></video>
+        <div class="vplay" id="vplay" onclick="playVid()"><span></span></div>
+      </div>
+      <div class="slide" data-type="img"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_2.jpg?v=1768054550" alt=""></div>
+      <div class="garrows"><button onclick="gnav(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button><button onclick="gnav(1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+    </div>
+    <div class="thumbs" id="thumbs">
+      <img class="t on" onclick="gset(0)" src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_505c8781-231b-4603-99a1-964966066cac_1.jpg?v=1768054550" alt="">
+      <img class="t" onclick="gset(1)" src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_4.jpg?v=1768054550" alt="">
+      <img class="t" onclick="gset(2)" src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_3.jpg?v=1768054550" alt="">
+      <div class="t vid" onclick="gset(3)" style="background-image:url('https://dracoslides.com/cdn/shop/files/preview_images/de81369aee2e40eca9e86d8413a3ec02.thumbnail.0000000000_1000x.jpg?v=1720729839');background-size:cover;background-position:center"></div>
+      <img class="t" onclick="gset(4)" src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_2.jpg?v=1768054550" alt="">
+    </div>
+  </div>
+
+  <!-- BUY ZONE -->
+  <div class="buy" id="buyzone">
+    <div class="rrow" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'})">
+      <span class="stars">★★★★★</span><span class="rt">5.0 · 5,288 reviews</span>
+    </div>
+    <h1 class="title">Original DracoSlides</h1>
+    <div class="pricerow"><span class="price">$99.00</span><span class="was">$119.00</span><span class="savebadge">SAVE 16%</span></div>
+
+    <!-- COLOR -->
+    <div class="seclabel"><span>Color</span><span class="sel" id="colorSel">Blackout</span></div>
+    <div class="swatches" id="swatches">
+      <div class="sw on" data-c="Blackout" data-img="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_505c8781-231b-4603-99a1-964966066cac_1.jpg?v=1768054550" onclick="colorSel(this)"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_505c8781-231b-4603-99a1-964966066cac_1.jpg?v=1768054550" alt="Blackout"></div>
+      <div class="sw" data-c="Snow White" data-img="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/SnowWhiteDracoSlidesComfySlides_f050d0d0-f072-40fc-86e1-346816526e59.jpg?v=1773553344" onclick="colorSel(this)"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/SnowWhiteDracoSlidesComfySlides_f050d0d0-f072-40fc-86e1-346816526e59.jpg?v=1773553344" alt="Snow White"></div>
+      <div class="sw" data-c="Wavy" data-img="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/WavyBlueDracoSlidesComfy_cf785e0a-3e1e-4ec8-9351-08e0c32129d1.jpg?v=1773553344" onclick="colorSel(this)"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/WavyBlueDracoSlidesComfy_cf785e0a-3e1e-4ec8-9351-08e0c32129d1.jpg?v=1773553344" alt="Wavy"></div>
+      <div class="sw" data-c="Magma" data-img="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/MagmaDracoSlides_4_8e455467-6a10-45c0-9b6f-70d994a2cb0f.jpg?v=1773553344" onclick="colorSel(this)"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/MagmaDracoSlides_4_8e455467-6a10-45c0-9b6f-70d994a2cb0f.jpg?v=1773553344" alt="Magma"></div>
+      <div class="sw" data-c="Chocolate" data-img="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/ChocolateDracoSlides7_d6943012-dacd-44fd-8e20-b7c56f855992.jpg?v=1773553344" onclick="colorSel(this)"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/ChocolateDracoSlides7_d6943012-dacd-44fd-8e20-b7c56f855992.jpg?v=1773553344" alt="Chocolate"></div>
+      <div class="sw" data-c="God Mode Black" data-img="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/GOD_MODE_DRACOSLIDES_7_2.jpg?v=1773553344" onclick="colorSel(this)"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/GOD_MODE_DRACOSLIDES_7_2.jpg?v=1773553344" alt="God Mode Black"></div>
+      <div class="sw" data-c="Bubblegum Pink" data-img="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/BubbleGum_Pink_DracoSlides_1_1.jpg?v=1773553344" onclick="colorSel(this)"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/BubbleGum_Pink_DracoSlides_1_1.jpg?v=1773553344" alt="Bubblegum Pink"></div>
+    </div>
+
+    <!-- SIZE — primary win: US mapping inline -->
+    <div class="seclabel"><span>Size</span><span class="sel" id="sizeSel">Select a size</span></div>
+    <div class="sizes" id="sizes">
+      <div class="size" data-s="5-6"   data-us="US 5–6"      onclick="sizeSel(this)"><div class="sl">5–6</div><div class="su">US 5–6</div></div>
+      <div class="size" data-s="7-8"   data-us="US 6.5–8"    onclick="sizeSel(this)"><div class="sl">7–8</div><div class="su">US 6.5–8</div></div>
+      <div class="size" data-s="9-10"  data-us="US 9–10"     onclick="sizeSel(this)"><div class="sl">9–10</div><div class="su">US 9–10</div></div>
+      <div class="size" data-s="11-12" data-us="US 10.5–11.5" onclick="sizeSel(this)"><div class="sl">11–12</div><div class="su">US 10.5–11.5</div></div>
+      <div class="size" data-s="13-14" data-us="US 12–13.5"  onclick="sizeSel(this)"><div class="sl">13–14</div><div class="su">US 12–13.5</div></div>
+      <div class="size" data-s="15-16" data-us="US 14–15"    onclick="sizeSel(this)"><div class="sl">15–16</div><div class="su">US 14–15</div></div>
+    </div>
+    <div class="sizehelp" onclick="document.getElementById('sizechart').classList.toggle('open')">
+      <svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg> Not sure? See the full US / EU / UK size chart
+    </div>
+    <div class="sizechart" id="sizechart">
+      <table>
+        <tr><th>Draco</th><th>US</th><th>EU</th><th>UK</th></tr>
+        <tr id="r-5-6"><td class="lab">5–6</td><td>5–6</td><td>38–39</td><td>4–5</td></tr>
+        <tr id="r-7-8"><td class="lab">7–8</td><td>6.5–8</td><td>39.5–41.5</td><td>5.5–7.5</td></tr>
+        <tr id="r-9-10"><td class="lab">9–10</td><td>9–10</td><td>42–43</td><td>8–9</td></tr>
+        <tr id="r-11-12"><td class="lab">11–12</td><td>10.5–11.5</td><td>43.5–44.5</td><td>9.5–10.5</td></tr>
+        <tr id="r-13-14"><td class="lab">13–14</td><td>12–13.5</td><td>45–46.5</td><td>11–12.5</td></tr>
+        <tr id="r-15-16"><td class="lab">15–16</td><td>14–15</td><td>47–48</td><td>13–14</td></tr>
+      </table>
+    </div>
+
+    <button class="atc" onclick="addToCart()" id="atcBtn">Add to Cart</button>
+    <div class="installments">Pay in 4 interest-free installments of $24.75 with <b>Shop Pay</b></div>
+    <button class="shoppay" onclick="addToCart()">Buy with <span class="logo-shop">shop</span><span style="background:#fff;color:var(--shoppay);font-weight:700;font-style:italic;padding:0 3px;border-radius:3px;font-family:Georgia,serif">Pay</span></button>
+    <div class="morepay">More payment options</div>
+
+    <!-- free gifts -->
+    <div class="gifts">
+      <div class="gh"><span>Free gifts included</span><span class="fv">$90 value</span></div>
+      <div class="gift"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_2.jpg?v=1768054550" alt=""><div class="gn">DracoSlides Travel Bag</div><div class="gp"><s>$25</s><b>FREE</b></div><div class="gchk on" onclick="this.classList.toggle('on')"></div></div>
+      <div class="gift"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_3.jpg?v=1768054550" alt=""><div class="gn">Mystery Socks</div><div class="gp"><s>$10</s><b>FREE</b></div><div class="gchk on" onclick="this.classList.toggle('on')"></div></div>
+      <div class="gift"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_4.jpg?v=1768054550" alt=""><div class="gn">Restore Cleaning Kit</div><div class="gp"><s>$35</s><b>FREE</b></div><div class="gchk on" onclick="this.classList.toggle('on')"></div></div>
+      <div class="gift"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_1.jpg?v=1768054550" alt=""><div class="gn">Draco Sticker Pack</div><div class="gp"><s>$20</s><b>FREE</b></div><div class="gchk on" onclick="this.classList.toggle('on')"></div></div>
+    </div>
+  </div>
+
+  <!-- PROOF strip — secondary win -->
+  <div class="proof">
+    <div class="pc"><div class="stars">★★★★★</div><div class="pl">5,288 reviews</div></div>
+    <div class="pc"><div class="pn">∞</div><div class="pl">Worn by athletes &amp; artists worldwide</div></div>
+    <div class="pc"><div class="pn">↺</div><div class="pl">Comfort or money-back guarantee</div></div>
+  </div>
+
+  <!-- COMFORT FEATURES -->
+  <div class="sec dark">
+    <div class="kicker">Engineered comfort</div>
+    <h2>The most comfortable slides<br>you've ever worn</h2>
+    <div class="feats">
+      <div class="feat"><svg viewBox="0 0 24 24"><path d="M4 15c2-4 5-5 8-5s6 1 8 5M3 18h18"/><circle cx="8" cy="9" r="1"/><circle cx="16" cy="9" r="1"/></svg><div><div class="ft">Cloud memory midsole</div><div class="fd">Suede-soft memory foam that molds to your foot</div></div></div>
+      <div class="feat"><svg viewBox="0 0 24 24"><path d="M4 8h16M4 12h16M4 16h16"/><circle cx="9" cy="8" r="1.5"/><circle cx="15" cy="16" r="1.5"/></svg><div><div class="ft">Adjustable straps</div><div class="fd">Perfect for wide and narrow feet alike</div></div></div>
+      <div class="feat"><svg viewBox="0 0 24 24"><path d="M12 3v18M7 8l5-5 5 5"/></svg><div><div class="ft">Increases height by 1"</div><div class="fd">A subtle lift, all-day support</div></div></div>
+      <div class="feat"><svg viewBox="0 0 24 24"><path d="M4 18c3-2 5-2 8-2s5 0 8 2M5 18l1-3h12l1 3"/></svg><div><div class="ft">Slip-resistant outsole</div><div class="fd">Rubber-gripped for optimal foot &amp; ankle alignment</div></div></div>
+    </div>
+    <div class="guarantee">"If DracoSlides aren't the most comfortable you've ever worn,<br>we'll refund you — no questions asked."</div>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="sec">
+    <div class="kicker">See them move</div>
+    <h2>Built to be worn everywhere</h2>
+    <div class="vblock">
+      <video id="pvid2" poster="https://dracoslides.com/cdn/shop/files/preview_images/1996f30f71224014acc755ab61c09a3b.thumbnail.0000000000_1000x.jpg?v=1700003366" playsinline preload="none"></video>
+      <div class="vp" id="vplay2" onclick="playVid2()"><span></span></div>
+    </div>
+  </div>
+
+  <!-- WORN BY -->
+  <div class="sec cream">
+    <div class="kicker">Culture co-sign</div>
+    <h2>Worn by athletes &amp; artists worldwide</h2>
+    <p class="lead">Draco shows up on feet from the studio to the tunnel walk.</p>
+    <div class="wornimgs">
+      <img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Black_DracoSlides_5.jpg?v=1773631485" alt="">
+      <img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/GOD_MODE_DRACOSLIDES_7_2.jpg?v=1773553344" alt="">
+      <img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/MagmaDracoSlides_4_8e455467-6a10-45c0-9b6f-70d994a2cb0f.jpg?v=1773553344" alt="">
+      <img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/WavyBlueDracoSlidesComfy_cf785e0a-3e1e-4ec8-9351-08e0c32129d1.jpg?v=1773553344" alt="">
+    </div>
+  </div>
+
+  <!-- REVIEWS aggregate (real data only, no fabricated reviews) -->
+  <div class="sec" id="reviews">
+    <div class="revagg">
+      <div class="big">5.0</div>
+      <div class="st">★★★★★</div>
+      <div class="ct">Based on 5,288 verified reviews</div>
+      <div class="revbadges"><span>★ Verified by Loox</span><span>5,288 happy customers</span><span>Photo reviews</span></div>
+    </div>
+  </div>
+
+  <!-- DETAILS accordions -->
+  <div class="sec cream">
+    <div class="acc" id="acc">
+      <div class="item"><div class="q" onclick="accT(this)">Product details<span class="ic">+</span></div><div class="a"><p>Suede memory-foam footbed on a cloud midsole, with adjustable webbing straps and a slip-resistant rubber-gripped outsole. Designed for optimal foot and ankle alignment, with a subtle 1" lift.</p></div></div>
+      <div class="item"><div class="q" onclick="accT(this)">Shipping &amp; returns<span class="ic">+</span></div><div class="a"><p>Fast shipping with tracking. Easy returns and exchanges — and our comfort guarantee means if they aren't the most comfortable slides you've worn, we'll refund you.</p></div></div>
+      <div class="item"><div class="q" onclick="accT(this)">How do I pick my size?<span class="ic">+</span></div><div class="a"><p>Each Draco size covers a US range. Use the chart in the size selector above — 5–6 fits US 5–6, 7–8 fits US 6.5–8, 9–10 fits US 9–10, 11–12 fits US 10.5–11.5, 13–14 fits US 12–13.5, and 15–16 fits US 14–15. If you're between sizes, size up.</p></div></div>
+    </div>
+  </div>
+
+  <!-- CROSS SELL -->
+  <div class="sec">
+    <div class="kicker" style="text-align:left">Complete the fit</div>
+    <h2 style="text-align:left;font-size:22px;margin-bottom:16px">You may also like</h2>
+    <div class="yml">
+      <div class="ycard"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Black_DracoSlides_1.jpg?v=1773631485" alt=""><div class="yn">In Draco We Trust Tee</div><div class="yp">$40.00</div></div>
+      <div class="ycard"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/SnowWhiteDracoSlidesComfySandals.jpg?v=1773631548" alt=""><div class="yn">Draco Army Pants</div><div class="yp">$120.00</div></div>
+      <div class="ycard"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/ChocolateDracoSlides7_d6943012-dacd-44fd-8e20-b7c56f855992.jpg?v=1773553344" alt=""><div class="yn">Grey Distressed Zip Up</div><div class="yp">$99.00</div></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <img class="flogo" src="https://dracoslides.com/cdn/shop/files/Logo_85597f42-9370-44cd-8505-eff4f8230f2d.png" alt="DRACO">
+    <div class="fcols">
+      <div><h4>Shop</h4><a href="#">All slides</a><a href="#">Apparel</a><a href="#">VIP Club</a><a href="#">Summer Sale</a></div>
+      <div><h4>Help</h4><a href="#">Customer reviews</a><a href="#">Track your order</a><a href="#">Returns / exchanges</a><a href="#">Contact us</a></div>
+    </div>
+    <div class="fbot">Original DracoSlides · Suede memory-foam comfort · Worn by athletes &amp; artists worldwide · Comfort guarantee</div>
+  </div>
+
+</div>
+
+<!-- STICKY -->
+<div class="sticky" id="sticky">
+  <img class="sthumb" id="stThumb" src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_505c8781-231b-4603-99a1-964966066cac_1.jpg?v=1768054550" alt="">
+  <div class="sinfo"><div class="sst" id="stName">Original DracoSlides · Blackout</div><div class="ssp" id="stSub">$99.00 · select size</div></div>
+  <button class="satc" onclick="stickyAtc()" id="stBtn">Choose Size</button>
+</div>
+
+<script>
+var state={color:'Blackout',colorImg:'https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_505c8781-231b-4603-99a1-964966066cac_1.jpg?v=1768054550',size:null};
+
+/* gallery */
+var gi=0,slides=document.querySelectorAll('#gmain .slide'),thumbs=document.querySelectorAll('#thumbs .t');
+function gset(i){gi=(i+slides.length)%slides.length;slides.forEach((s,k)=>s.classList.toggle('on',k===gi));thumbs.forEach((t,k)=>t.classList.toggle('on',k===gi));var v=document.getElementById('pvid');if(v&&gi!==3)v.pause();}
+function gnav(d){gset(gi+d);}
+function playVid(){var v=document.getElementById('pvid');if(!v.src)v.src='https://dracoslides.com/cdn/shop/videos/c/vp/de81369aee2e40eca9e86d8413a3ec02/de81369aee2e40eca9e86d8413a3ec02.HD-1080p-2.5Mbps-31604138.mp4?v=0';v.controls=true;document.getElementById('vplay').style.display='none';v.play();}
+function playVid2(){var v=document.getElementById('pvid2');if(!v.src)v.src='https://dracoslides.com/cdn/shop/videos/c/vp/1996f30f71224014acc755ab61c09a3b/1996f30f71224014acc755ab61c09a3b.HD-1080p-7.2Mbps-20690622.mp4?v=0';v.controls=true;document.getElementById('vplay2').style.display='none';v.play();}
+
+function colorSel(el){
+  document.querySelectorAll('#swatches .sw').forEach(s=>s.classList.remove('on'));el.classList.add('on');
+  state.color=el.dataset.c;state.colorImg=el.dataset.img;
+  document.getElementById('colorSel').textContent=state.color;
+  document.getElementById('heroImg').src=state.colorImg;
+  document.getElementById('stThumb').src=state.colorImg;
+  gset(0);
+  render();
+}
+function sizeSel(el){
+  document.querySelectorAll('#sizes .size').forEach(s=>s.classList.remove('on'));el.classList.add('on');
+  state.size=el.dataset.s;
+  document.getElementById('sizeSel').textContent=el.dataset.s+' · '+el.dataset.us;
+  // highlight chart row
+  document.querySelectorAll('#sizechart tr').forEach(r=>r.classList.remove('hl'));
+  var row=document.getElementById('r-'+el.dataset.s);if(row)row.classList.add('hl');
+  render();
+}
+function render(){
+  document.getElementById('stName').textContent='Original DracoSlides · '+state.color;
+  if(state.size){
+    document.getElementById('stSub').textContent='$99.00 · Size '+state.size;
+    document.getElementById('stBtn').textContent='Add to Cart';
+  }else{
+    document.getElementById('stSub').textContent='$99.00 · select size';
+    document.getElementById('stBtn').textContent='Choose Size';
+  }
+}
+function addToCart(){
+  if(!state.size){document.getElementById('sizes').scrollIntoView({behavior:'smooth',block:'center'});flashSize();return;}
+  var b=document.getElementById('atcBtn');var old=b.textContent;b.textContent='✓ Added — '+state.color+' / '+state.size;b.style.background='#3a6b3a';
+  document.querySelector('.cart-dot b').textContent='1';
+  setTimeout(function(){b.textContent=old;b.style.background='';},1500);
+}
+function stickyAtc(){if(!state.size){document.getElementById('sizes').scrollIntoView({behavior:'smooth',block:'center'});flashSize();return;}addToCart();}
+function flashSize(){var s=document.getElementById('sizes');s.style.transition='box-shadow .2s';s.style.boxShadow='0 0 0 2px #121212';setTimeout(()=>s.style.boxShadow='',900);}
+function accT(q){q.parentElement.classList.toggle('open');}
+
+var buyzone=document.getElementById('buyzone'),sticky=document.getElementById('sticky');
+function onScroll(){var r=buyzone.getBoundingClientRect();sticky.classList.toggle('show',r.bottom<140);}
+window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);
+render();onScroll();
+</script>
+</body>
+</html>
