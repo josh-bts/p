@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>blackberry lavender — moment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Instrument+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Bergen Sans';src:url('https://drinkmoment.com/cdn/shop/files/BergenSans-Bold.woff2?v=1737017576') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Benton Book';src:url('https://drinkmoment.com/cdn/shop/files/BentonSans-Book.woff2?v=1737612007') format('woff2');font-weight:400;font-display:swap}
+:root{
+  --pink:#FF00AD;
+  --pink-soft:#FCE3F2;
+  --pink-line:#F7C6E6;
+  --ink:#1B1420;
+  --mut:#7d7488;
+  --lav:#F2ECFA;
+  --lav2:#E7DBF7;
+  --lav-deep:#8B6FC7;
+  --bg:#FFFFFF;
+  --line:#ece6f1;
+  --bergen:'Bergen Sans','Instrument Sans',sans-serif;
+  --body:'Benton Book','Instrument Sans',sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+  --inst:'Instrument Sans',sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:var(--body);color:var(--ink);background:#e9e3f0;line-height:1.5;font-size:15px;-webkit-font-smoothing:antialiased}
+.frame{max-width:390px;margin:0 auto;background:var(--bg);position:relative;overflow-x:hidden;min-height:100vh}
+@media(min-width:600px){body{padding:24px 0}.frame{box-shadow:0 22px 60px rgba(80,40,120,.22);border-radius:22px;overflow:hidden;min-height:auto}}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0}
+
+/* marquee */
+.announce{background:linear-gradient(90deg,#FF7AD0,#C9A0F0);color:#fff;overflow:hidden;white-space:nowrap;padding:8px 0}
+.announce .track{display:inline-flex;animation:scroll 16s linear infinite;will-change:transform}
+.announce .track span{font-family:var(--serif);font-size:12.5px;font-weight:600;letter-spacing:.03em;padding:0 14px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* header */
+.header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+.header .burger{display:flex;flex-direction:column;gap:4px;cursor:pointer}
+.header .burger span{width:20px;height:2px;background:var(--ink);border-radius:2px}
+.header .logo{font-family:var(--serif);font-size:25px;font-weight:600;letter-spacing:-.02em;line-height:1;position:relative}
+.header .logo sup{font-size:9px;top:-1.1em;font-weight:500}
+.header .hicons{display:flex;gap:15px;align-items:center}
+.header .hicons svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.7}
+.cart-dot{position:relative}
+.cart-dot b{position:absolute;top:-7px;right:-8px;background:var(--pink);color:#fff;font-size:9px;font-weight:800;width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--inst)}
+
+/* gallery */
+.gallery{background:linear-gradient(180deg,#F3ECFA,#EDE4F8)}
+.gmain{position:relative;aspect-ratio:1/1;overflow:hidden}
+.gmain .slide{width:100%;height:100%;position:absolute;inset:0;opacity:0;transition:opacity .4s}
+.gmain .slide.on{opacity:1;position:relative}
+.gmain img{width:100%;height:100%;object-fit:cover}
+.gbadge{position:absolute;top:13px;left:13px;z-index:3;background:#fff;color:var(--pink);font-size:10px;font-weight:800;letter-spacing:.05em;padding:6px 12px;border-radius:30px;text-transform:uppercase;font-family:var(--inst)}
+.garrows{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none;z-index:3}
+.garrows button{pointer-events:auto;border:none;background:rgba(255,255,255,.82);width:36px;height:36px;border-radius:50%;margin:0 10px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(80,40,120,.12)}
+.garrows svg{width:15px;height:15px;stroke:var(--ink);fill:none;stroke-width:2}
+.thumbs{display:flex;gap:8px;padding:11px 14px 14px;overflow-x:auto;scrollbar-width:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumbs img{width:56px;height:56px;border-radius:12px;object-fit:cover;border:2px solid transparent;cursor:pointer;flex:0 0 auto;background:#F3ECFA}
+.thumbs img.on{border-color:var(--pink)}
+
+/* buy zone */
+.buy{padding:18px 16px 8px}
+.eyebrow{display:flex;justify-content:space-between;align-items:baseline}
+.eyebrow span{font-family:var(--inst);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--pink)}
+.title{font-family:var(--bergen);font-size:36px;font-weight:700;line-height:1;text-transform:lowercase;margin:6px 0 0;letter-spacing:-.01em}
+.rrow{display:flex;align-items:center;gap:7px;cursor:pointer;margin-top:11px}
+.stars{color:var(--pink);font-size:14px;letter-spacing:1px}
+.rrow .rt{font-size:12.5px;color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+
+/* pack selector — PRIMARY win (per-can value) */
+.seclabel{font-family:var(--inst);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:20px 0 10px;color:var(--ink)}
+.packs{display:flex;flex-direction:column;gap:9px}
+.pack{position:relative;border:1.5px solid var(--line);border-radius:15px;padding:13px 14px;cursor:pointer;background:#fff;display:flex;align-items:center;gap:12px;transition:.14s}
+.pack:hover{border-color:var(--pink-line)}
+.pack.on{border-color:var(--pink);background:var(--pink-soft)}
+.pack .radio{width:19px;height:19px;border-radius:50%;border:2px solid #d8cfe2;flex:0 0 auto;position:relative}
+.pack.on .radio{border-color:var(--pink)}
+.pack.on .radio:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--pink)}
+.pack .pmid{flex:1}
+.pack .pn{font-weight:700;font-size:15px;font-family:var(--inst)}
+.pack .pcan{font-size:12px;color:var(--mut);margin-top:2px}
+.pack .pright{text-align:right}
+.pack .pp{font-weight:700;font-size:16px;font-family:var(--inst)}
+.pack .badge{position:absolute;top:0;right:14px;transform:translateY(-50%);font-size:9px;font-weight:800;letter-spacing:.04em;padding:3px 9px;border-radius:20px;color:#fff;background:var(--lav-deep);font-family:var(--inst);text-transform:uppercase}
+
+/* purchase mode */
+.modes{margin-top:14px;display:flex;flex-direction:column;gap:9px}
+.mode{border:1.5px solid var(--line);border-radius:15px;padding:13px 14px;cursor:pointer;background:#fff}
+.mode.on{border-color:var(--pink)}
+.mode .mtop{display:flex;align-items:center;gap:11px}
+.mode .radio{width:19px;height:19px;border-radius:50%;border:2px solid #d8cfe2;flex:0 0 auto;position:relative}
+.mode.on .radio{border-color:var(--pink)}
+.mode.on .radio:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--pink)}
+.mode .mt{flex:1;font-weight:700;font-size:14px;font-family:var(--inst)}
+.mode .mp{font-weight:700;font-size:15px;font-family:var(--inst)}
+.mode .mp s{color:var(--mut);font-weight:400;margin-right:5px}
+.mode .save{font-size:10px;font-weight:800;color:#fff;background:var(--pink);padding:2px 7px;border-radius:20px;margin-left:7px;font-family:var(--inst)}
+.mode .mbody{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--pink-line)}
+.mode.on .mbody{display:block}
+.mode .mbody ul{margin:0;padding-left:18px}
+.mode .mbody li{font-size:12px;color:#5b5266;margin:3px 0}
+.mode .freq{margin-top:9px;font-size:12px;color:var(--mut);display:flex;align-items:center;gap:7px}
+.mode .freq select{flex:1;padding:7px 9px;border:1.5px solid var(--pink-line);border-radius:9px;font-family:var(--inst);font-size:12px;background:#fff;color:var(--ink)}
+
+/* atc */
+.atc{width:100%;margin-top:16px;border:none;background:var(--pink);color:#fff;font-family:var(--inst);font-weight:700;font-size:16px;letter-spacing:.05em;padding:18px;cursor:pointer;text-transform:uppercase;border-radius:12px;transition:.15s;box-shadow:0 8px 24px rgba(255,0,173,.28)}
+.atc:hover{background:#e6009c}
+.daily{text-align:center;font-size:12px;color:var(--mut);margin-top:10px}
+.bicons{display:flex;justify-content:space-between;gap:8px;margin:16px 0 2px}
+.bicon{flex:1;text-align:center}
+.bicon .c{width:46px;height:46px;border-radius:50%;background:var(--lav);display:flex;align-items:center;justify-content:center;margin:0 auto 7px}
+.bicon .c svg{width:24px;height:24px;stroke:var(--lav-deep);fill:none;stroke-width:1.7}
+.bicon span{font-family:var(--inst);font-size:10px;font-weight:700;letter-spacing:.03em;color:var(--ink);line-height:1.25;display:block;text-transform:uppercase}
+
+/* why-it-works + proof — SECONDARY win */
+.why{margin:18px 16px 0;background:var(--lav);border-radius:18px;padding:16px}
+.why .wt{font-family:var(--bergen);font-size:19px;font-weight:700;text-transform:lowercase;margin-bottom:3px}
+.why .ws{font-size:12.5px;color:#5b5266;margin-bottom:13px}
+.why .adapts{display:flex;flex-direction:column;gap:9px}
+.adapt{background:#fff;border-radius:13px;padding:11px 12px;display:flex;gap:11px;align-items:flex-start}
+.adapt .ai{width:34px;height:34px;border-radius:50%;background:var(--lav2);display:flex;align-items:center;justify-content:center;flex:0 0 auto;font-size:16px}
+.adapt .an{font-weight:700;font-size:13px;font-family:var(--inst)}
+.adapt .an em{font-style:normal;color:var(--lav-deep)}
+.adapt .ad{font-size:11.5px;color:#5b5266;margin-top:2px;line-height:1.4}
+.proofbar{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:13px;flex-wrap:wrap;font-size:11.5px;color:#5b5266}
+.proofbar b{color:var(--ink)}
+.proofbar .dot{width:3px;height:3px;border-radius:50%;background:var(--mut)}
+
+/* sections */
+.sec{padding:28px 16px}
+.sec.lav{background:var(--lav)}
+.kicker{font-family:var(--inst);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);text-align:center;margin-bottom:8px}
+.sec h2{font-family:var(--bergen);font-size:27px;font-weight:700;text-align:center;line-height:1.05;margin-bottom:10px;text-transform:lowercase}
+.sec .lead{font-size:13.5px;color:#5b5266;text-align:center;max-width:300px;margin:0 auto 20px}
+
+/* press */
+.press{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;padding:4px 0}
+.press img{height:22px;width:auto;opacity:.62;filter:grayscale(1)}
+
+/* botanicals */
+.bot-list{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.bot-list span{font-family:var(--inst);font-size:12px;font-weight:600;background:#fff;border:1px solid var(--line);padding:8px 14px;border-radius:30px}
+
+/* ritual */
+.ritual{text-align:center}
+.ritual .big{font-family:var(--bergen);font-size:30px;font-weight:700;text-transform:lowercase;line-height:1.08}
+.ritual .big em{font-style:normal;color:var(--pink)}
+
+/* challenge */
+.timeline{display:flex;flex-direction:column;gap:0;border-left:2px solid var(--pink-line);margin-left:8px;padding-left:18px}
+.tnode{position:relative;padding:6px 0 18px}
+.tnode:before{content:"";position:absolute;left:-25px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--pink)}
+.tnode .tn{font-family:var(--inst);font-weight:700;font-size:13px}
+.tnode .td{font-size:12.5px;color:#5b5266;margin-top:2px}
+.rewards{margin-top:16px;background:#fff;border-radius:14px;padding:14px;font-size:12.5px}
+.rewards .rh{font-family:var(--inst);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:9px;color:var(--lav-deep)}
+.rewards .ri{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--line)}
+.rewards .ri:last-child{border-bottom:none}
+.rewards .ri b{color:var(--pink)}
+
+/* reviews aggregate */
+.revagg{text-align:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px 18px}
+.revagg .big{font-family:var(--bergen);font-size:50px;font-weight:700;line-height:1;color:var(--pink)}
+.revagg .st{font-size:18px;letter-spacing:3px;margin:5px 0;color:var(--pink)}
+.revagg .ct{font-size:13px;color:var(--mut)}
+.revbadges{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.revbadges span{font-family:var(--inst);font-size:10.5px;font-weight:600;background:var(--lav);padding:7px 12px;border-radius:30px;color:#5b5266}
+
+/* desc accordion */
+.acc .item{border-bottom:1px solid var(--line)}
+.acc .q{padding:16px 2px;display:flex;justify-content:space-between;gap:12px;cursor:pointer;font-family:var(--inst);font-weight:700;font-size:14px;align-items:center}
+.acc .q .ic{font-size:20px;transition:.2s;color:var(--pink)}
+.acc .item.open .q .ic{transform:rotate(45deg)}
+.acc .a{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:13px;color:#5b5266}
+.acc .item.open .a{max-height:240px}
+.acc .a p{margin:0 0 16px;line-height:1.6}
+
+/* footer */
+.footer{background:var(--ink);color:#b6abc4;padding:28px 16px;font-size:13px}
+.footer .flogo{font-family:var(--serif);font-size:24px;color:#fff;margin-bottom:16px;display:inline-block}
+.footer .fcols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.footer h4{font-family:var(--inst);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin:0 0 10px}
+.footer a{display:block;padding:4px 0;color:#b6abc4}
+.footer .fbot{border-top:1px solid #34293f;padding-top:16px;font-size:10.5px;color:#7a6f8a}
+
+/* sticky */
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:390px;z-index:60;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(80,40,120,.1);padding:10px 14px;display:flex;align-items:center;gap:12px;transition:transform .3s ease}
+.sticky.show{transform:translateX(-50%) translateY(0)}
+.sticky .sthumb{width:44px;height:44px;object-fit:cover;border-radius:10px;background:#F3ECFA;flex:0 0 auto}
+.sticky .sinfo{flex:1;min-width:0}
+.sticky .sst{font-family:var(--inst);font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky .ssp{font-size:12px;color:var(--mut)}
+.sticky .satc{border:none;background:var(--pink);color:#fff;font-family:var(--inst);font-weight:700;font-size:13.5px;letter-spacing:.04em;padding:13px 18px;border-radius:11px;cursor:pointer;white-space:nowrap;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <div class="announce">
+    <div class="track">
+      <span>✨ limited time bestseller collection · free shipping ✨</span>
+      <span>✨ limited time bestseller collection · free shipping ✨</span>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="burger"><span></span><span></span><span></span></div>
+    <div class="logo">moment<sup>®</sup></div>
+    <div class="hicons">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21"/></svg>
+      <span class="cart-dot"><svg viewBox="0 0 24 24"><path d="M6 7h13l-1.3 10H7.3z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><b>0</b></span>
+    </div>
+  </header>
+
+  <!-- GALLERY -->
+  <div class="gallery">
+    <div class="gmain" id="gmain">
+      <div class="gbadge">drink your meditation</div>
+      <div class="slide on"><img src="https://cdn.shopify.com/s/files/1/0403/5103/9649/files/02_blackberry_lavender_Page_1_hero.png?v=1772807756" alt="blackberry lavender can"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0403/5103/9649/files/02_blackberry_lavender_Page_3_UGC.png?v=1772807757" alt="lifestyle"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0403/5103/9649/files/02_blackberry_lavender_Page_5_social.png?v=1772807756" alt="social"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0403/5103/9649/files/Flavor_02blackberrylavender_Page_4ingredientspage1.png?v=1778802997" alt="ingredients"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0403/5103/9649/files/02_blackberry_lavender_Page_6_USPs.png?v=1772807744" alt="benefits"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0403/5103/9649/files/02_blackberry_lavender_Page_2_nutrition.png?v=1772807748" alt="nutrition"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0403/5103/9649/files/02blackberrylavender_Page_7recipe.png?v=1777393373" alt="recipe"></div>
+      <div class="garrows"><button onclick="gnav(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button><button onclick="gnav(1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+    </div>
+    <div class="thumbs" id="thumbs">
+      <img class="on" onclick="gset(0)" src="https://cdn.shopify.com/s/files/1/0403/5103/9649/files/02_blackberry_lavender_Page_1_hero.png?v=1772807756" alt="">
+      <img onclick="gset(1)" src="https://cdn.shopify.com/s/files/1/0403/5103/9649/files/02_blackberry_lavender_Page_3_UGC.png?v=1772807757" alt="">
+      <img onclick="gset(2)" src="https://cdn.shopify.com/s/files/1/0403/5103/9649/files/02_blackberry_lavender_Page_5_social.png?v=1772807756" alt="">
+      <img onclick="gset(3)" src="https://cdn.shopify.com/s/files/1/0403/5103/9649/files/Flavor_02blackberrylavender_Page_4ingredientspage1.png?v=1778802997" alt="">
+      <img onclick="gset(4)" src="https://cdn.shopify.com/s/files/1/0403/5103/9649/files/02_blackberry_lavender_Page_6_USPs.png?v=1772807744" alt="">
+      <img onclick="gset(5)" src="https://cdn.shopify.com/s/files/1/0403/5103/9649/files/02_blackberry_lavender_Page_2_nutrition.png?v=1772807748" alt="">
+      <img onclick="gset(6)" src="https://cdn.shopify.com/s/files/1/0403/5103/9649/files/02blackberrylavender_Page_7recipe.png?v=1777393373" alt="">
+    </div>
+  </div>
+
+  <!-- BUY ZONE -->
+  <div class="buy" id="buyzone">
+    <div class="eyebrow"><span>sparkling soda</span><span id="packLabel">12 pack</span></div>
+    <h1 class="title">blackberry lavender</h1>
+    <div class="rrow" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'})">
+      <span class="stars">★★★★★</span><span class="rt">4.8 · 8,870 reviews</span>
+    </div>
+
+    <!-- PACK SELECTOR (primary: per-can value) -->
+    <div class="seclabel">1. choose your size <span style="float:right;text-transform:none;letter-spacing:0;font-weight:400;color:var(--mut)">price per can shown</span></div>
+    <div class="packs" id="packs">
+      <div class="pack on" data-p="12" data-base="40" data-cans="12" data-label="12 pack" onclick="packSel(this)">
+        <div class="radio"></div>
+        <div class="pmid"><div class="pn">12-pack · blackberry lavender</div><div class="pcan" data-can>$3.33 / can</div></div>
+        <div class="pright"><div class="pp" data-pp>$40</div></div>
+      </div>
+      <div class="pack" data-p="18" data-base="54" data-cans="18" data-label="18 pack" onclick="packSel(this)">
+        <div class="radio"></div>
+        <div class="pmid"><div class="pn">18-pack · variety</div><div class="pcan" data-can>$3.00 / can</div></div>
+        <div class="pright"><div class="pp" data-pp>$54</div></div>
+      </div>
+      <div class="pack" data-p="24" data-base="70" data-cans="24" data-label="24 pack" onclick="packSel(this)">
+        <span class="badge">best value</span>
+        <div class="radio"></div>
+        <div class="pmid"><div class="pn">24-pack · variety</div><div class="pcan" data-can>$2.92 / can</div></div>
+        <div class="pright"><div class="pp" data-pp>$70</div></div>
+      </div>
+    </div>
+
+    <!-- PURCHASE MODE -->
+    <div class="seclabel" style="margin-top:18px">2. how often</div>
+    <div class="modes" id="modes">
+      <div class="mode" data-mode="onetime" onclick="modeSel('onetime')">
+        <div class="mtop"><div class="radio"></div><div class="mt">One-time purchase</div><div class="mp" id="onePrice">$40</div></div>
+      </div>
+      <div class="mode on" data-mode="sub" onclick="modeSel('sub')">
+        <div class="mtop"><div class="radio"></div><div class="mt">Subscribe &amp; save<span class="save">SAVE 15%</span></div><div class="mp" id="subPrice"><s id="subWas">$40</s>$34</div></div>
+        <div class="mbody">
+          <ul>
+            <li><span id="subCan">$2.83 per can</span> · free shipping every order</li>
+            <li>easily swap, skip, or cancel anytime</li>
+            <li>free gifts &amp; rewards as you go</li>
+          </ul>
+          <div class="freq">deliver every <select><option>30 days</option><option>45 days</option><option>60 days</option></select></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="atc" onclick="addToCart()" id="atcBtn">Add to Cart — <span id="atcPrice">$34</span></button>
+    <div class="daily">most effective when consumed daily ✨</div>
+
+    <div class="bicons">
+      <div class="bicon"><div class="c"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/><circle cx="12" cy="12" r="9"/></svg></div><span>zero added sugar</span></div>
+      <div class="bicon"><div class="c"><svg viewBox="0 0 24 24"><path d="M7 3v6a5 5 0 0 0 10 0V3M9 21h6"/></svg></div><span>10–20 calories</span></div>
+      <div class="bicon"><div class="c"><svg viewBox="0 0 24 24"><path d="M4 8h13a3 3 0 0 1 0 6h-1M4 8v8h12M6 4v2M10 4v2"/></svg></div><span>zero caffeine</span></div>
+    </div>
+  </div>
+
+  <!-- WHY IT WORKS + PROOF (secondary) -->
+  <div class="why">
+    <div class="wt">it's not soda. it's a ritual.</div>
+    <div class="ws">two adaptogens do the quiet work behind the bubbles.</div>
+    <div class="adapts">
+      <div class="adapt"><div class="ai">🍵</div><div><div class="an">L-theanine <em>· the zen-master</em></div><div class="ad">Found in green tea. Increases alpha brainwaves — the same ones you get when meditating — reducing stress and improving mental clarity.</div></div></div>
+      <div class="adapt"><div class="ai">🌿</div><div><div class="an">Ashwagandha <em>· the guru</em></div><div class="ad">Ancient ayurvedic root. Studies show it boosts brain function, lowers cortisol, and helps fight stress.</div></div></div>
+    </div>
+    <div class="proofbar"><span class="stars" style="font-size:12px">★★★★★</span> <b>4.8</b> · <b>8,870</b> reviews <span class="dot"></span> as seen on <b>Shark Tank</b></div>
+  </div>
+
+  <!-- DESCRIPTION -->
+  <div class="sec">
+    <div class="acc" id="acc">
+      <div class="item open"><div class="q" onclick="accT(this)">description<span class="ic">+</span></div><div class="a"><p>Find your calm with this dreamy blend of wild blackberries and soothing lavender. Rich, juicy blackberries provide a perfect base for aromatic lavender, creating a sophisticated purple elixir that helps you unwind and reset.</p></div></div>
+      <div class="item"><div class="q" onclick="accT(this)">taste<span class="ic">+</span></div><div class="a"><p>Wild blackberries and calming lavender create a purple elixir that's both bold and soothing.</p></div></div>
+      <div class="item"><div class="q" onclick="accT(this)">how to enjoy<span class="ic">+</span></div><div class="a"><p>Best served cold. Most effective when consumed daily — make it your afternoon reset or evening wind-down ritual.</p></div></div>
+    </div>
+  </div>
+
+  <!-- BOTANICALS -->
+  <div class="sec lav">
+    <div class="kicker">our botanicals</div>
+    <h2>what's inside</h2>
+    <p class="lead">a functional blend, not a flavor lab.</p>
+    <div class="bot-list">
+      <span>ashwagandha</span><span>L-theanine</span><span>apple cider vinegar</span><span>tulsi</span><span>cardamom</span><span>meyer lemon</span>
+    </div>
+  </div>
+
+  <!-- RITUAL -->
+  <div class="sec">
+    <div class="ritual">
+      <div class="big">all of the <em>ritual</em>,<br>none of the <em>regret</em>.</div>
+      <p class="lead" style="margin-top:14px">zero added sugar · 10–20 calories · zero caffeine — a feel-good drink you can have every day.</p>
+    </div>
+  </div>
+
+  <!-- PRESS -->
+  <div class="sec lav">
+    <div class="kicker">as seen on</div>
+    <div class="press">
+      <img src="https://drinkmoment.com/cdn/shop/files/sharktank_logo_horizontal.png?v=1616693932" alt="Shark Tank">
+      <img src="https://drinkmoment.com/cdn/shop/files/forbes_logo.png?v=1616694492" alt="Forbes">
+      <img src="https://drinkmoment.com/cdn/shop/files/glamour_logo.png?v=1616694534" alt="Glamour">
+      <img src="https://drinkmoment.com/cdn/shop/files/refinery29_logo.png?v=1616694375" alt="Refinery29">
+      <img src="https://drinkmoment.com/cdn/shop/files/press-bevnet2020.png?v=1617117999" alt="BevNET">
+    </div>
+  </div>
+
+  <!-- 30 DAY CHALLENGE -->
+  <div class="sec">
+    <div class="kicker">why subscribe</div>
+    <h2>the 30-day challenge</h2>
+    <p class="lead">one small daily habit, building toward a more mindful you.</p>
+    <div class="timeline">
+      <div class="tnode"><div class="tn">night 1</div><div class="td">enjoy a feel-good drink</div></div>
+      <div class="tnode"><div class="tn">night 10</div><div class="td">build a daily ritual</div></div>
+      <div class="tnode"><div class="tn">night 30</div><div class="td">a more mindful you</div></div>
+    </div>
+    <div class="rewards">
+      <div class="rh">secret rewards as you go</div>
+      <div class="ri"><span>3 deliveries</span><b>free loftie puzzle</b></div>
+      <div class="ri"><span>6 deliveries</span><b>free moment cap</b></div>
+      <div class="ri"><span>10 deliveries</span><b>free moment hoodie</b></div>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="sec lav" id="reviews">
+    <div class="revagg">
+      <div class="big">4.8</div>
+      <div class="st">★★★★★</div>
+      <div class="ct">based on 8,870 verified reviews</div>
+      <div class="revbadges"><span>★ Verified by Yotpo</span><span>8,870 reviews</span><span>as seen on Shark Tank</span></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="flogo">moment<sup style="font-size:9px">®</sup></div>
+    <div class="fcols">
+      <div><h4>Shop</h4><a href="#">mood-boosting soda</a><a href="#">variety collection</a><a href="#">botanical tea</a><a href="#">subscribe &amp; save</a></div>
+      <div><h4>Info</h4><a href="#">our science</a><a href="#">about</a><a href="#">reviews</a><a href="#">contact</a></div>
+    </div>
+    <div class="fbot">moment® · drink your meditation · zero added sugar · as seen on Shark Tank</div>
+  </div>
+
+</div>
+
+<!-- STICKY -->
+<div class="sticky" id="sticky">
+  <img class="sthumb" src="https://cdn.shopify.com/s/files/1/0403/5103/9649/files/02_blackberry_lavender_Page_1_hero.png?v=1772807756" alt="">
+  <div class="sinfo"><div class="sst" id="stName">blackberry lavender · 12 pack</div><div class="ssp" id="stSub">subscribe · $2.83/can</div></div>
+  <button class="satc" onclick="addToCart()">Add · <span id="stPrice">$34</span></button>
+</div>
+
+<script>
+var state={base:40,cans:12,label:'12 pack',mode:'sub'};
+function money(n){return '$'+(Number.isInteger(n)?n:n.toFixed(2));}
+function perCan(total,cans){return '$'+(total/cans).toFixed(2)+' / can';}
+
+var gi=0,slides=document.querySelectorAll('#gmain .slide'),thumbs=document.querySelectorAll('#thumbs img');
+function gset(i){gi=(i+slides.length)%slides.length;slides.forEach((s,k)=>s.classList.toggle('on',k===gi));thumbs.forEach((t,k)=>t.classList.toggle('on',k===gi));}
+function gnav(d){gset(gi+d);}
+
+function packSel(el){
+  document.querySelectorAll('#packs .pack').forEach(p=>p.classList.remove('on'));el.classList.add('on');
+  state.base=+el.dataset.base;state.cans=+el.dataset.cans;state.label=el.dataset.label;
+  document.getElementById('packLabel').textContent=state.label;
+  render();
+}
+function modeSel(m){
+  state.mode=m;
+  document.querySelectorAll('#modes .mode').forEach(x=>x.classList.toggle('on',x.dataset.mode===m));
+  render();
+}
+function render(){
+  var one=state.base, sub=Math.round(state.base*0.85*100)/100;
+  document.getElementById('onePrice').textContent=money(one);
+  document.getElementById('subWas').textContent=money(one);
+  document.getElementById('subPrice').innerHTML='<s id="subWas">'+money(one)+'</s>'+money(sub);
+  document.getElementById('subCan').textContent=perCan(sub,state.cans);
+  var price=state.mode==='sub'?sub:one;
+  document.getElementById('atcPrice').textContent=money(price);
+  document.getElementById('stPrice').textContent=money(price);
+  document.getElementById('stName').textContent='blackberry lavender · '+state.label;
+  document.getElementById('stSub').textContent=(state.mode==='sub'?'subscribe · ':'one-time · ')+perCan(price,state.cans);
+}
+function addToCart(){
+  var b=document.getElementById('atcBtn');var old=b.innerHTML;
+  b.innerHTML='✓ added to cart';b.style.background='#8B6FC7';
+  document.querySelector('.cart-dot b').textContent=state.cans;
+  setTimeout(function(){b.innerHTML=old;b.style.background='';},1500);
+}
+function accT(q){q.parentElement.classList.toggle('open');}
+
+var buyzone=document.getElementById('buyzone'),sticky=document.getElementById('sticky');
+function onScroll(){var r=buyzone.getBoundingClientRect();sticky.classList.toggle('show',r.bottom<130);}
+window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);
+render();onScroll();
+</script>
+</body>
+</html>
