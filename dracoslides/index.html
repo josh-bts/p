@@ -6,208 +6,212 @@
 <title>Original DracoSlides — Draco</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#121212;
-  --ink-soft:#6b6b6b;
-  --cream:#FDFBF7;
-  --line:#e6e3dd;
-  --bg:#ffffff;
-  --shoppay:#5a31f4;
-  --amiri:'Amiri',Georgia,'Times New Roman',serif;
+  --bg:#0E0E10;
+  --card:#1A1A1E;
+  --card2:#232328;
+  --line:#2c2c32;
+  --txt:#F5F4F0;
+  --mut:#9a9aa2;
+  --volt:#D8FF3E;
+  --volt-dim:#b4d62f;
+  --ink:#0E0E10;
+  --arc:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
-body{font-family:var(--amiri);color:var(--ink);background:#cfcfcf;line-height:1.5;font-size:15px}
+body{font-family:var(--arc);color:var(--txt);background:#000;line-height:1.5;font-size:15px;-webkit-font-smoothing:antialiased}
 .frame{max-width:390px;margin:0 auto;background:var(--bg);position:relative;overflow-x:hidden;min-height:100vh}
-@media(min-width:600px){body{padding:24px 0}.frame{box-shadow:0 20px 60px rgba(0,0,0,.28);min-height:auto}}
+@media(min-width:600px){body{padding:24px 0}.frame{box-shadow:0 24px 70px rgba(0,0,0,.6);border-radius:22px;overflow:hidden;min-height:auto}}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-h1,h2,h3{margin:0;font-weight:400;letter-spacing:.02em}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.02em;line-height:1.04}
 
-/* announce */
-.announce{background:var(--ink);color:var(--cream);font-size:12px;text-align:center;padding:8px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.06em}
+/* announce marquee */
+.announce{background:var(--volt);color:var(--ink);overflow:hidden;white-space:nowrap;padding:7px 0;border-bottom:1px solid #000}
+.announce .track{display:inline-flex;gap:0;animation:scroll 14s linear infinite;will-change:transform}
+.announce .track span{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:0 18px;display:inline-flex;align-items:center;gap:18px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* header */
-.header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:13px 16px}
-.header .burger{display:flex;flex-direction:column;gap:4px;cursor:pointer}
-.header .burger span{width:21px;height:1.5px;background:var(--ink)}
-.header .logo img{height:21px;width:auto}
+.header{position:sticky;top:0;z-index:40;background:rgba(14,14,16,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:13px 16px}
+.header .burger{display:flex;flex-direction:column;gap:4.5px;cursor:pointer}
+.header .burger span{width:21px;height:2px;background:var(--txt);border-radius:2px}
+.header .logo img{height:19px;width:auto;filter:brightness(0) invert(1)}
 .header .hicons{display:flex;gap:16px;align-items:center}
-.header .hicons svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.4}
+.header .hicons svg{width:20px;height:20px;stroke:var(--txt);fill:none;stroke-width:1.7}
 .cart-dot{position:relative}
-.cart-dot b{position:absolute;top:-7px;right:-8px;background:var(--ink);color:#fff;font-size:9px;font-weight:700;width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.cart-dot b{position:absolute;top:-7px;right:-8px;background:var(--volt);color:var(--ink);font-size:9px;font-weight:800;width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center}
 
 /* gallery */
-.gallery{background:#f4f3f0}
-.gmain{position:relative;aspect-ratio:1/1;overflow:hidden;background:#f4f3f0}
-.gmain .slide{width:100%;height:100%;position:absolute;inset:0;opacity:0;transition:opacity .35s}
+.gallery{background:#0a0a0b;position:relative}
+.gmain{position:relative;aspect-ratio:1/1;overflow:hidden;background:radial-gradient(circle at 50% 40%,#26262b,#0a0a0b 75%)}
+.gmain .slide{width:100%;height:100%;position:absolute;inset:0;opacity:0;transition:opacity .4s}
 .gmain .slide.on{opacity:1;position:relative}
-.gmain img{width:100%;height:100%;object-fit:cover}
+.gmain img{width:100%;height:100%;object-fit:cover;mix-blend-mode:normal}
 .gmain video{width:100%;height:100%;object-fit:cover;background:#000}
 .vplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}
-.vplay span{width:58px;height:58px;border-radius:50%;background:rgba(253,251,247,.92);display:flex;align-items:center;justify-content:center}
+.vplay span{width:60px;height:60px;border-radius:50%;background:var(--volt);display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(216,255,62,.5)}
 .vplay span:after{content:"";border-left:18px solid var(--ink);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
-.gbadge{position:absolute;top:13px;left:13px;z-index:3;background:var(--ink);color:var(--cream);font-size:10px;letter-spacing:.1em;padding:6px 12px;text-transform:uppercase}
+.gbadge{position:absolute;top:14px;left:14px;z-index:3;background:var(--volt);color:var(--ink);font-size:10px;font-weight:900;letter-spacing:.12em;padding:6px 12px;border-radius:30px;text-transform:uppercase}
+.gtag{position:absolute;top:14px;right:14px;z-index:3;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);color:var(--txt);font-size:10px;font-weight:700;letter-spacing:.06em;padding:6px 11px;border-radius:30px}
 .garrows{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none;z-index:3}
-.garrows button{pointer-events:auto;border:none;background:rgba(255,255,255,.88);width:36px;height:36px;border-radius:50%;margin:0 10px;display:flex;align-items:center;justify-content:center;cursor:pointer}
-.garrows svg{width:15px;height:15px;stroke:var(--ink);fill:none;stroke-width:1.6}
-.thumbs{display:flex;gap:9px;padding:11px 16px 16px;overflow-x:auto;scrollbar-width:none}
+.garrows button{pointer-events:auto;border:none;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);width:38px;height:38px;border-radius:50%;margin:0 10px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.garrows svg{width:16px;height:16px;stroke:var(--txt);fill:none;stroke-width:2.2}
+.thumbs{display:flex;gap:9px;padding:12px 16px 4px;overflow-x:auto;scrollbar-width:none}
 .thumbs::-webkit-scrollbar{display:none}
-.thumbs .t{width:60px;height:60px;object-fit:cover;border:1px solid var(--line);cursor:pointer;flex:0 0 auto;position:relative;background:#f4f3f0}
-.thumbs .t.on{border-color:var(--ink)}
-.thumbs .t.vid:after{content:"▶";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;background:rgba(0,0,0,.3);font-size:13px}
+.thumbs .t{width:62px;height:62px;border-radius:12px;object-fit:cover;border:2px solid transparent;cursor:pointer;flex:0 0 auto;position:relative;background:#1a1a1e}
+.thumbs .t.on{border-color:var(--volt)}
+.thumbs .t.vid:after{content:"▶";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--volt);background:rgba(0,0,0,.4);font-size:14px;border-radius:10px}
 
 /* buy zone */
 .buy{padding:20px 16px 8px}
-.rrow{display:flex;align-items:center;gap:8px;cursor:pointer;margin-bottom:7px}
-.stars{color:var(--ink);font-size:13px;letter-spacing:2px}
-.rrow .rt{font-size:12.5px;color:var(--ink-soft)}
-.title{font-size:30px;line-height:1.1;letter-spacing:.02em}
-.pricerow{display:flex;align-items:center;gap:10px;margin:12px 0 0}
-.price{font-size:21px}
-.was{font-size:15px;color:var(--ink-soft);text-decoration:line-through}
-.savebadge{font-size:11px;letter-spacing:.05em;border:1px solid var(--ink);padding:3px 9px}
+.rrow{display:inline-flex;align-items:center;gap:7px;cursor:pointer;margin-bottom:11px;background:var(--card);border:1px solid var(--line);padding:5px 11px;border-radius:30px}
+.stars{color:var(--volt);font-size:12px;letter-spacing:1px}
+.rrow .rt{font-size:11.5px;color:var(--txt);font-weight:600}
+.title{font-size:34px;font-weight:900;letter-spacing:-.03em;text-transform:uppercase}
+.pricerow{display:flex;align-items:center;gap:10px;margin:13px 0 0}
+.price{font-size:24px;font-weight:800}
+.was{font-size:16px;color:var(--mut);text-decoration:line-through}
+.savebadge{font-size:11px;font-weight:900;letter-spacing:.04em;background:var(--volt);color:var(--ink);padding:4px 10px;border-radius:30px}
 
 /* selectors */
-.seclabel{font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin:20px 0 10px;color:var(--ink);display:flex;justify-content:space-between;align-items:baseline}
-.seclabel .sel{letter-spacing:.02em;text-transform:none;color:var(--ink-soft);font-size:13px}
+.seclabel{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin:22px 0 11px;color:var(--mut);display:flex;justify-content:space-between;align-items:baseline}
+.seclabel .sel{letter-spacing:0;text-transform:none;color:var(--txt);font-size:13px;font-weight:700}
 .swatches{display:flex;gap:9px;flex-wrap:wrap}
-.sw{width:46px;height:46px;border:1px solid var(--line);cursor:pointer;overflow:hidden;position:relative}
+.sw{width:50px;height:50px;border-radius:13px;border:2px solid var(--line);cursor:pointer;overflow:hidden;position:relative;background:#1a1a1e}
 .sw img{width:100%;height:100%;object-fit:cover}
-.sw.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.sw.on{border-color:var(--volt);box-shadow:0 0 0 3px rgba(216,255,62,.18)}
 
-/* SIZE — primary win: US mapping inline */
-.sizes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.size{border:1px solid var(--line);padding:9px 6px;cursor:pointer;background:#fff;text-align:center;transition:.12s}
-.size:hover{border-color:#bbb}
-.size.on{border-color:var(--ink);background:var(--ink);color:var(--cream)}
-.size .sl{font-size:15px;line-height:1}
-.size .su{font-size:10px;letter-spacing:.03em;color:var(--ink-soft);margin-top:3px}
-.size.on .su{color:#c9c6bf}
-.sizehelp{margin-top:10px;font-size:12px;color:var(--ink-soft);display:flex;align-items:center;gap:6px;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
-.sizehelp svg{width:14px;height:14px;stroke:var(--ink);fill:none;stroke-width:1.5}
-.sizechart{max-height:0;overflow:hidden;transition:max-height .35s ease;border:0 solid var(--line)}
-.sizechart.open{max-height:340px;margin-top:10px;border:1px solid var(--line)}
-.sizechart table{width:100%;border-collapse:collapse;font-size:11.5px}
-.sizechart th,.sizechart td{padding:7px 6px;text-align:center;border-bottom:1px solid var(--line)}
-.sizechart th{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:400}
-.sizechart tr.hl td{background:#f4f3f0;font-weight:700}
-.sizechart td.lab{font-weight:700}
+/* SIZE — primary win */
+.sizes{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.size{border:1.5px solid var(--line);border-radius:13px;padding:11px 6px;cursor:pointer;background:var(--card);text-align:center;transition:.13s}
+.size:hover{border-color:#444}
+.size.on{border-color:var(--volt);background:var(--volt);color:var(--ink)}
+.size .sl{font-size:16px;font-weight:800;line-height:1}
+.size .su{font-size:10px;font-weight:600;letter-spacing:.02em;color:var(--mut);margin-top:4px}
+.size.on .su{color:rgba(14,14,16,.7)}
+.sizehelp{margin-top:11px;font-size:12px;color:var(--volt);display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-weight:700}
+.sizehelp svg{width:14px;height:14px;stroke:var(--volt);fill:none;stroke-width:1.8}
+.sizechart{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.sizechart.open{max-height:360px;margin-top:12px}
+.sizechart table{width:100%;border-collapse:collapse;font-size:11.5px;background:var(--card);border-radius:12px;overflow:hidden}
+.sizechart th,.sizechart td{padding:8px 6px;text-align:center;border-bottom:1px solid var(--line)}
+.sizechart th{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);font-weight:700}
+.sizechart tr.hl td{background:rgba(216,255,62,.14);font-weight:800;color:var(--volt)}
+.sizechart td.lab{font-weight:800}
 
-/* atc + shop pay (express checkout) */
-.atc{width:100%;margin-top:16px;border:none;background:var(--ink);color:var(--cream);font-family:var(--amiri);font-weight:700;font-size:18px;letter-spacing:.08em;padding:17px;cursor:pointer;text-transform:uppercase;transition:.15s}
-.atc:hover{background:#000}
-.installments{text-align:center;font-size:11.5px;color:var(--ink-soft);margin-top:10px}
-.installments b{color:var(--shoppay)}
-.shoppay{width:100%;margin-top:10px;border:none;background:var(--shoppay);color:#fff;font-family:var(--amiri);font-size:15px;padding:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
-.shoppay .logo-shop{font-weight:700;font-style:italic;font-family:Georgia,serif;letter-spacing:-.3px}
-.morepay{text-align:center;font-size:12px;color:var(--ink-soft);margin-top:9px;text-decoration:underline;text-underline-offset:2px}
+/* atc */
+.atc{width:100%;margin-top:18px;border:none;background:var(--volt);color:var(--ink);font-family:var(--arc);font-weight:900;font-size:17px;letter-spacing:.04em;padding:18px;cursor:pointer;text-transform:uppercase;border-radius:14px;transition:.15s;box-shadow:0 8px 30px rgba(216,255,62,.22)}
+.atc:hover{background:#e6ff5c}
+.installments{text-align:center;font-size:11.5px;color:var(--mut);margin-top:11px}
+.installments b{color:#9d8bff}
+.shoppay{width:100%;margin-top:10px;border:none;background:#5a31f4;color:#fff;font-family:var(--arc);font-weight:600;font-size:15px;padding:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:14px}
+.shoppay .lo{font-weight:800;font-style:italic;font-family:Georgia,serif;letter-spacing:-.3px}
+.morepay{text-align:center;font-size:12px;color:var(--mut);margin-top:11px;text-decoration:underline;text-underline-offset:3px}
 
 /* free gifts */
-.gifts{margin-top:18px;border:1px solid var(--line)}
-.gifts .gh{font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:10px 13px;border-bottom:1px solid var(--line);background:#f9f8f5;display:flex;justify-content:space-between;align-items:center}
-.gifts .gh .fv{color:var(--ink-soft)}
-.gift{display:flex;align-items:center;gap:11px;padding:10px 13px;border-bottom:1px solid var(--line)}
+.gifts{margin-top:20px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+.gifts .gh{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:12px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.gifts .gh .fv{color:var(--volt)}
+.gift{display:flex;align-items:center;gap:12px;padding:11px 14px;border-bottom:1px solid var(--line)}
 .gift:last-child{border-bottom:none}
-.gift img{width:42px;height:42px;object-fit:cover;background:#f4f3f0;flex:0 0 auto}
-.gift .gn{flex:1;font-size:13px}
-.gift .gp{font-size:12.5px}.gift .gp b{}.gift .gp s{color:var(--ink-soft);margin-right:5px}
-.gift .gchk{width:19px;height:19px;border:1.5px solid var(--ink);position:relative;cursor:pointer;flex:0 0 auto}
-.gift .gchk.on{background:var(--ink)}
-.gift .gchk.on:after{content:"✓";position:absolute;inset:0;color:var(--cream);font-size:12px;display:flex;align-items:center;justify-content:center}
+.gift img{width:44px;height:44px;object-fit:cover;border-radius:9px;background:#26262b;flex:0 0 auto}
+.gift .gn{flex:1;font-size:13px;font-weight:600}
+.gift .gp{font-size:12.5px;font-weight:700}.gift .gp s{color:var(--mut);margin-right:6px;font-weight:400}
+.gift .gp b{color:var(--volt)}
+.gift .gchk{width:20px;height:20px;border:1.5px solid var(--mut);border-radius:6px;position:relative;cursor:pointer;flex:0 0 auto}
+.gift .gchk.on{background:var(--volt);border-color:var(--volt)}
+.gift .gchk.on:after{content:"✓";position:absolute;inset:0;color:var(--ink);font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center}
 
-/* PROOF strip — secondary win */
-.proof{margin:20px 16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;display:flex;gap:0;text-align:center}
-.proof .pc{flex:1;padding:0 8px}
-.proof .pc+.pc{border-left:1px solid var(--line)}
-.proof .pn{font-size:19px}
-.proof .pl{font-size:10.5px;letter-spacing:.04em;color:var(--ink-soft);margin-top:3px;line-height:1.3}
-.proof .stars{font-size:12px;letter-spacing:1px}
+/* PROOF — secondary win, animated counters */
+.proof{margin:22px 16px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 8px;text-align:center}
+.pc .pn{font-size:23px;font-weight:900;color:var(--volt);line-height:1}
+.pc .stars{font-size:13px;color:var(--volt);letter-spacing:1px}
+.pc .pl{font-size:9.5px;font-weight:600;letter-spacing:.03em;color:var(--mut);margin-top:5px;line-height:1.3;text-transform:uppercase}
 
 /* sections */
-.sec{padding:30px 16px}
-.sec.dark{background:var(--ink);color:var(--cream)}
-.sec.cream{background:#f4f3f0}
-.kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-bottom:8px}
-.sec.dark .kicker{color:#b7b3aa}
-.sec h2{font-size:26px;text-align:center;line-height:1.15;margin-bottom:8px}
-.sec.dark h2{color:var(--cream)}
-.sec .lead{font-size:13.5px;color:var(--ink-soft);text-align:center;max-width:300px;margin:0 auto 20px}
-.sec.dark .lead{color:#b7b3aa}
+.sec{padding:34px 16px}
+.sec.lift{background:linear-gradient(180deg,#0E0E10,#141418)}
+.kicker{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--volt);text-align:center;margin-bottom:10px}
+.sec h2{font-size:30px;font-weight:900;text-align:center;line-height:1.04;margin-bottom:10px;text-transform:uppercase;letter-spacing:-.02em}
+.sec .lead{font-size:13.5px;color:var(--mut);text-align:center;max-width:300px;margin:0 auto 22px}
 
-/* features */
-.feats{display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(255,255,255,.16)}
-.feat{display:flex;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.16)}
-.feat svg{width:30px;height:30px;stroke:var(--cream);fill:none;stroke-width:1.3;flex:0 0 auto}
-.feat .ft{font-size:16px}
-.feat .fd{font-size:12.5px;color:#b7b3aa;margin-top:2px}
-.guarantee{text-align:center;font-size:13px;color:#b7b3aa;margin-top:20px;font-style:italic}
+/* features grid */
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 14px}
+.fcard svg{width:30px;height:30px;stroke:var(--volt);fill:none;stroke-width:1.5;margin-bottom:11px}
+.fcard .ft{font-size:14.5px;font-weight:800;text-transform:uppercase;letter-spacing:-.01em}
+.fcard .fd{font-size:11.5px;color:var(--mut);margin-top:4px;line-height:1.4}
+.guarantee{margin-top:18px;background:var(--card);border:1px solid var(--volt);border-radius:16px;padding:16px;text-align:center;font-size:13px;color:var(--txt)}
+.guarantee b{color:var(--volt)}
 
-/* checklist */
-.checks{display:flex;flex-direction:column;gap:11px;margin-top:6px}
-.chk-i{display:flex;gap:11px;align-items:flex-start;font-size:13.5px}
-.chk-i svg{width:18px;height:18px;stroke:var(--ink);fill:none;stroke-width:1.6;flex:0 0 auto;margin-top:2px}
-
-/* video block */
-.vblock{position:relative;aspect-ratio:4/5;overflow:hidden;background:#000;margin-top:4px}
+/* video */
+.vblock{position:relative;aspect-ratio:4/5;overflow:hidden;background:#000;border-radius:18px;border:1px solid var(--line)}
 .vblock video{width:100%;height:100%;object-fit:cover}
 .vblock .vp{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer}
-.vblock .vp span{width:62px;height:62px;border-radius:50%;background:rgba(253,251,247,.92);display:flex;align-items:center;justify-content:center}
+.vblock .vp span{width:64px;height:64px;border-radius:50%;background:var(--volt);display:flex;align-items:center;justify-content:center;box-shadow:0 0 34px rgba(216,255,62,.5)}
 .vblock .vp span:after{content:"";border-left:20px solid var(--ink);border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px}
 
 /* worn by */
-.wornimgs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
-.wornimgs img{aspect-ratio:1/1;object-fit:cover;background:#e6e3dd}
+.wornimgs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.wornimgs img{aspect-ratio:1/1;object-fit:cover;border-radius:14px;background:#1a1a1e}
 
 /* reviews aggregate */
-.revagg{text-align:center;padding:6px 0}
-.revagg .big{font-size:54px;line-height:1}
-.revagg .st{font-size:18px;letter-spacing:3px;margin:6px 0}
-.revagg .ct{font-size:13px;color:var(--ink-soft)}
-.revbadges{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
-.revbadges span{font-size:11px;letter-spacing:.04em;border:1px solid var(--line);padding:7px 13px;color:var(--ink-soft)}
+.revagg{text-align:center;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 18px}
+.revagg .big{font-size:64px;font-weight:900;line-height:1;color:var(--volt)}
+.revagg .st{font-size:20px;letter-spacing:3px;margin:8px 0;color:var(--volt)}
+.revagg .ct{font-size:13px;color:var(--mut)}
+.revbadges{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:18px}
+.revbadges span{font-size:10.5px;font-weight:600;letter-spacing:.03em;background:var(--card2);border:1px solid var(--line);padding:7px 12px;border-radius:30px;color:var(--mut)}
 
-/* faq / accordions */
+/* accordions */
 .acc .item{border-bottom:1px solid var(--line)}
-.acc .q{padding:16px 2px;display:flex;justify-content:space-between;gap:12px;cursor:pointer;font-size:15px;align-items:center}
-.acc .q .ic{font-size:19px;transition:.2s;color:var(--ink-soft)}
+.acc .q{padding:17px 2px;display:flex;justify-content:space-between;gap:12px;cursor:pointer;font-size:14.5px;font-weight:700;align-items:center;text-transform:uppercase;letter-spacing:-.01em}
+.acc .q .ic{font-size:20px;transition:.2s;color:var(--volt)}
 .acc .item.open .q .ic{transform:rotate(45deg)}
-.acc .a{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:13px;color:var(--ink-soft)}
-.acc .item.open .a{max-height:260px}
-.acc .a p{margin:0 0 16px;line-height:1.6}
+.acc .a{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:13px;color:var(--mut)}
+.acc .item.open .a{max-height:280px}
+.acc .a p{margin:0 0 17px;line-height:1.6}
 
 /* cross-sell */
 .yml{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
 .yml::-webkit-scrollbar{display:none}
-.ycard{flex:0 0 145px}
-.ycard img{aspect-ratio:1/1;object-fit:cover;background:#f4f3f0}
-.ycard .yn{font-size:13px;margin:8px 0 2px}
-.ycard .yp{font-size:13px;color:var(--ink-soft)}
+.ycard{flex:0 0 150px}
+.ycard img{aspect-ratio:1/1;object-fit:cover;border-radius:14px;background:#1a1a1e}
+.ycard .yn{font-size:13px;font-weight:700;margin:9px 0 2px}
+.ycard .yp{font-size:13px;color:var(--volt);font-weight:700}
 
 /* footer */
-.footer{background:var(--ink);color:#b7b3aa;padding:28px 16px;font-size:13px}
-.footer .flogo{height:22px;margin-bottom:16px;filter:brightness(0) invert(1)}
-.footer .fcols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
-.footer h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);margin:0 0 10px;font-weight:400}
-.footer a{display:block;padding:4px 0;color:#b7b3aa}
-.footer .fbot{border-top:1px solid #2c2c2c;padding-top:16px;font-size:10.5px;color:#7d7d7d}
+.footer{background:#000;color:var(--mut);padding:30px 16px;font-size:13px}
+.footer .flogo{height:22px;margin-bottom:18px;filter:brightness(0) invert(1)}
+.footer .fcols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
+.footer h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt);margin:0 0 10px;font-weight:800}
+.footer a{display:block;padding:4px 0;color:var(--mut)}
+.footer .fbot{border-top:1px solid #222;padding-top:16px;font-size:10.5px;color:#666}
 
 /* sticky */
-.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(115%);width:100%;max-width:390px;z-index:60;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(0,0,0,.1);padding:10px 14px;display:flex;align-items:center;gap:12px;transition:transform .3s ease}
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:390px;z-index:60;background:rgba(20,20,24,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:11px 14px;display:flex;align-items:center;gap:12px;transition:transform .3s ease}
 .sticky.show{transform:translateX(-50%) translateY(0)}
-.sticky .sthumb{width:44px;height:44px;object-fit:cover;background:#f4f3f0;flex:0 0 auto}
+.sticky .sthumb{width:46px;height:46px;object-fit:cover;border-radius:10px;background:#26262b;flex:0 0 auto}
 .sticky .sinfo{flex:1;min-width:0}
-.sticky .sst{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sticky .ssp{font-size:12px;color:var(--ink-soft)}
-.sticky .satc{border:none;background:var(--ink);color:var(--cream);font-family:var(--amiri);font-weight:700;font-size:14px;letter-spacing:.06em;padding:13px 20px;cursor:pointer;white-space:nowrap;text-transform:uppercase}
+.sticky .sst{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky .ssp{font-size:12px;color:var(--mut)}
+.sticky .satc{border:none;background:var(--volt);color:var(--ink);font-family:var(--arc);font-weight:900;font-size:13.5px;letter-spacing:.04em;padding:13px 18px;border-radius:11px;cursor:pointer;white-space:nowrap;text-transform:uppercase}
 </style>
 </head>
 <body>
 <div class="frame">
 
-  <div class="announce">Summer Sale &nbsp;|&nbsp; Save up to 50% OFF</div>
+  <div class="announce">
+    <div class="track">
+      <span>Summer Sale — Up to 50% Off · Free Gifts ($90 Value) · Worn Worldwide ·</span>
+      <span>Summer Sale — Up to 50% Off · Free Gifts ($90 Value) · Worn Worldwide ·</span>
+    </div>
+  </div>
 
   <header class="header">
     <div class="burger"><span></span><span></span><span></span></div>
@@ -222,6 +226,7 @@ h1,h2,h3{margin:0;font-weight:400;letter-spacing:.02em}
   <div class="gallery">
     <div class="gmain" id="gmain">
       <div class="gbadge">Original</div>
+      <div class="gtag">★ 5,288</div>
       <div class="slide on" data-type="img"><img id="heroImg" src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_505c8781-231b-4603-99a1-964966066cac_1.jpg?v=1768054550" alt="Original DracoSlides"></div>
       <div class="slide" data-type="img"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_4.jpg?v=1768054550" alt=""></div>
       <div class="slide" data-type="img"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_3.jpg?v=1768054550" alt=""></div>
@@ -247,7 +252,7 @@ h1,h2,h3{margin:0;font-weight:400;letter-spacing:.02em}
       <span class="stars">★★★★★</span><span class="rt">5.0 · 5,288 reviews</span>
     </div>
     <h1 class="title">Original DracoSlides</h1>
-    <div class="pricerow"><span class="price">$99.00</span><span class="was">$119.00</span><span class="savebadge">SAVE 16%</span></div>
+    <div class="pricerow"><span class="price">$99</span><span class="was">$119</span><span class="savebadge">SAVE 16%</span></div>
 
     <!-- COLOR -->
     <div class="seclabel"><span>Color</span><span class="sel" id="colorSel">Blackout</span></div>
@@ -261,8 +266,8 @@ h1,h2,h3{margin:0;font-weight:400;letter-spacing:.02em}
       <div class="sw" data-c="Bubblegum Pink" data-img="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/BubbleGum_Pink_DracoSlides_1_1.jpg?v=1773553344" onclick="colorSel(this)"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/BubbleGum_Pink_DracoSlides_1_1.jpg?v=1773553344" alt="Bubblegum Pink"></div>
     </div>
 
-    <!-- SIZE — primary win: US mapping inline -->
-    <div class="seclabel"><span>Size</span><span class="sel" id="sizeSel">Select a size</span></div>
+    <!-- SIZE — primary win -->
+    <div class="seclabel"><span>Size — US shown</span><span class="sel" id="sizeSel">Select a size</span></div>
     <div class="sizes" id="sizes">
       <div class="size" data-s="5-6"   data-us="US 5–6"      onclick="sizeSel(this)"><div class="sl">5–6</div><div class="su">US 5–6</div></div>
       <div class="size" data-s="7-8"   data-us="US 6.5–8"    onclick="sizeSel(this)"><div class="sl">7–8</div><div class="su">US 6.5–8</div></div>
@@ -272,7 +277,7 @@ h1,h2,h3{margin:0;font-weight:400;letter-spacing:.02em}
       <div class="size" data-s="15-16" data-us="US 14–15"    onclick="sizeSel(this)"><div class="sl">15–16</div><div class="su">US 14–15</div></div>
     </div>
     <div class="sizehelp" onclick="document.getElementById('sizechart').classList.toggle('open')">
-      <svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg> Not sure? See the full US / EU / UK size chart
+      <svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg> Full US / EU / UK size chart
     </div>
     <div class="sizechart" id="sizechart">
       <table>
@@ -286,14 +291,13 @@ h1,h2,h3{margin:0;font-weight:400;letter-spacing:.02em}
       </table>
     </div>
 
-    <button class="atc" onclick="addToCart()" id="atcBtn">Add to Cart</button>
-    <div class="installments">Pay in 4 interest-free installments of $24.75 with <b>Shop Pay</b></div>
-    <button class="shoppay" onclick="addToCart()">Buy with <span class="logo-shop">shop</span><span style="background:#fff;color:var(--shoppay);font-weight:700;font-style:italic;padding:0 3px;border-radius:3px;font-family:Georgia,serif">Pay</span></button>
+    <button class="atc" onclick="addToCart()" id="atcBtn">Add to Cart — $99</button>
+    <div class="installments">or 4 interest-free payments of $24.75 with <b>Shop Pay</b></div>
+    <button class="shoppay" onclick="addToCart()">Buy with <span class="lo">shop</span><span style="background:#fff;color:#5a31f4;font-weight:800;font-style:italic;padding:0 3px;border-radius:3px;font-family:Georgia,serif">Pay</span></button>
     <div class="morepay">More payment options</div>
 
-    <!-- free gifts -->
     <div class="gifts">
-      <div class="gh"><span>Free gifts included</span><span class="fv">$90 value</span></div>
+      <div class="gh"><span>🎁 Free gifts included</span><span class="fv">$90 value</span></div>
       <div class="gift"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_2.jpg?v=1768054550" alt=""><div class="gn">DracoSlides Travel Bag</div><div class="gp"><s>$25</s><b>FREE</b></div><div class="gchk on" onclick="this.classList.toggle('on')"></div></div>
       <div class="gift"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_3.jpg?v=1768054550" alt=""><div class="gn">Mystery Socks</div><div class="gp"><s>$10</s><b>FREE</b></div><div class="gchk on" onclick="this.classList.toggle('on')"></div></div>
       <div class="gift"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_4.jpg?v=1768054550" alt=""><div class="gn">Restore Cleaning Kit</div><div class="gp"><s>$35</s><b>FREE</b></div><div class="gchk on" onclick="this.classList.toggle('on')"></div></div>
@@ -301,30 +305,30 @@ h1,h2,h3{margin:0;font-weight:400;letter-spacing:.02em}
     </div>
   </div>
 
-  <!-- PROOF strip — secondary win -->
+  <!-- PROOF — secondary win -->
   <div class="proof">
     <div class="pc"><div class="stars">★★★★★</div><div class="pl">5,288 reviews</div></div>
-    <div class="pc"><div class="pn">∞</div><div class="pl">Worn by athletes &amp; artists worldwide</div></div>
-    <div class="pc"><div class="pn">↺</div><div class="pl">Comfort or money-back guarantee</div></div>
+    <div class="pc"><div class="pn" data-count="5288">5,288</div><div class="pl">Happy customers</div></div>
+    <div class="pc"><div class="pn">↺</div><div class="pl">Comfort or money back</div></div>
   </div>
 
   <!-- COMFORT FEATURES -->
-  <div class="sec dark">
+  <div class="sec lift">
     <div class="kicker">Engineered comfort</div>
-    <h2>The most comfortable slides<br>you've ever worn</h2>
-    <div class="feats">
-      <div class="feat"><svg viewBox="0 0 24 24"><path d="M4 15c2-4 5-5 8-5s6 1 8 5M3 18h18"/><circle cx="8" cy="9" r="1"/><circle cx="16" cy="9" r="1"/></svg><div><div class="ft">Cloud memory midsole</div><div class="fd">Suede-soft memory foam that molds to your foot</div></div></div>
-      <div class="feat"><svg viewBox="0 0 24 24"><path d="M4 8h16M4 12h16M4 16h16"/><circle cx="9" cy="8" r="1.5"/><circle cx="15" cy="16" r="1.5"/></svg><div><div class="ft">Adjustable straps</div><div class="fd">Perfect for wide and narrow feet alike</div></div></div>
-      <div class="feat"><svg viewBox="0 0 24 24"><path d="M12 3v18M7 8l5-5 5 5"/></svg><div><div class="ft">Increases height by 1"</div><div class="fd">A subtle lift, all-day support</div></div></div>
-      <div class="feat"><svg viewBox="0 0 24 24"><path d="M4 18c3-2 5-2 8-2s5 0 8 2M5 18l1-3h12l1 3"/></svg><div><div class="ft">Slip-resistant outsole</div><div class="fd">Rubber-gripped for optimal foot &amp; ankle alignment</div></div></div>
+    <h2>The comfiest slides<br>you'll ever wear</h2>
+    <div class="fgrid">
+      <div class="fcard"><svg viewBox="0 0 24 24"><path d="M4 15c2-4 5-5 8-5s6 1 8 5M3 18h18"/><circle cx="8" cy="9" r="1"/><circle cx="16" cy="9" r="1"/></svg><div class="ft">Cloud midsole</div><div class="fd">Suede-soft memory foam that molds to your foot</div></div>
+      <div class="fcard"><svg viewBox="0 0 24 24"><path d="M4 8h16M4 12h16M4 16h16"/><circle cx="9" cy="8" r="1.5"/><circle cx="15" cy="16" r="1.5"/></svg><div class="ft">Adjustable straps</div><div class="fd">Dialed in for wide and narrow feet alike</div></div>
+      <div class="fcard"><svg viewBox="0 0 24 24"><path d="M12 3v18M7 8l5-5 5 5"/></svg><div class="ft">+1" height</div><div class="fd">A subtle lift with all-day support</div></div>
+      <div class="fcard"><svg viewBox="0 0 24 24"><path d="M4 18c3-2 5-2 8-2s5 0 8 2M5 18l1-3h12l1 3"/></svg><div class="ft">Grip outsole</div><div class="fd">Slip-resistant rubber, aligned for comfort</div></div>
     </div>
-    <div class="guarantee">"If DracoSlides aren't the most comfortable you've ever worn,<br>we'll refund you — no questions asked."</div>
+    <div class="guarantee">If DracoSlides aren't the <b>most comfortable</b> you've ever worn, we'll refund you — <b>no questions asked.</b></div>
   </div>
 
   <!-- VIDEO -->
   <div class="sec">
     <div class="kicker">See them move</div>
-    <h2>Built to be worn everywhere</h2>
+    <h2>Built for everywhere</h2>
     <div class="vblock">
       <video id="pvid2" poster="https://dracoslides.com/cdn/shop/files/preview_images/1996f30f71224014acc755ab61c09a3b.thumbnail.0000000000_1000x.jpg?v=1700003366" playsinline preload="none"></video>
       <div class="vp" id="vplay2" onclick="playVid2()"><span></span></div>
@@ -332,10 +336,9 @@ h1,h2,h3{margin:0;font-weight:400;letter-spacing:.02em}
   </div>
 
   <!-- WORN BY -->
-  <div class="sec cream">
+  <div class="sec lift">
     <div class="kicker">Culture co-sign</div>
-    <h2>Worn by athletes &amp; artists worldwide</h2>
-    <p class="lead">Draco shows up on feet from the studio to the tunnel walk.</p>
+    <h2>Worn by athletes<br>&amp; artists worldwide</h2>
     <div class="wornimgs">
       <img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Black_DracoSlides_5.jpg?v=1773631485" alt="">
       <img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/GOD_MODE_DRACOSLIDES_7_2.jpg?v=1773553344" alt="">
@@ -344,7 +347,7 @@ h1,h2,h3{margin:0;font-weight:400;letter-spacing:.02em}
     </div>
   </div>
 
-  <!-- REVIEWS aggregate (real data only, no fabricated reviews) -->
+  <!-- REVIEWS aggregate -->
   <div class="sec" id="reviews">
     <div class="revagg">
       <div class="big">5.0</div>
@@ -354,23 +357,23 @@ h1,h2,h3{margin:0;font-weight:400;letter-spacing:.02em}
     </div>
   </div>
 
-  <!-- DETAILS accordions -->
-  <div class="sec cream">
+  <!-- accordions -->
+  <div class="sec lift">
     <div class="acc" id="acc">
       <div class="item"><div class="q" onclick="accT(this)">Product details<span class="ic">+</span></div><div class="a"><p>Suede memory-foam footbed on a cloud midsole, with adjustable webbing straps and a slip-resistant rubber-gripped outsole. Designed for optimal foot and ankle alignment, with a subtle 1" lift.</p></div></div>
-      <div class="item"><div class="q" onclick="accT(this)">Shipping &amp; returns<span class="ic">+</span></div><div class="a"><p>Fast shipping with tracking. Easy returns and exchanges — and our comfort guarantee means if they aren't the most comfortable slides you've worn, we'll refund you.</p></div></div>
-      <div class="item"><div class="q" onclick="accT(this)">How do I pick my size?<span class="ic">+</span></div><div class="a"><p>Each Draco size covers a US range. Use the chart in the size selector above — 5–6 fits US 5–6, 7–8 fits US 6.5–8, 9–10 fits US 9–10, 11–12 fits US 10.5–11.5, 13–14 fits US 12–13.5, and 15–16 fits US 14–15. If you're between sizes, size up.</p></div></div>
+      <div class="item"><div class="q" onclick="accT(this)">Shipping &amp; returns<span class="ic">+</span></div><div class="a"><p>Fast tracked shipping. Easy returns and exchanges — and our comfort guarantee means if they aren't the most comfortable slides you've worn, we'll refund you.</p></div></div>
+      <div class="item"><div class="q" onclick="accT(this)">How do I pick my size?<span class="ic">+</span></div><div class="a"><p>Each Draco size covers a US range: 5–6 fits US 5–6, 7–8 fits US 6.5–8, 9–10 fits US 9–10, 11–12 fits US 10.5–11.5, 13–14 fits US 12–13.5, and 15–16 fits US 14–15. Between sizes? Size up.</p></div></div>
     </div>
   </div>
 
-  <!-- CROSS SELL -->
+  <!-- cross sell -->
   <div class="sec">
     <div class="kicker" style="text-align:left">Complete the fit</div>
-    <h2 style="text-align:left;font-size:22px;margin-bottom:16px">You may also like</h2>
+    <h2 style="text-align:left;font-size:24px;margin-bottom:16px">You may also like</h2>
     <div class="yml">
-      <div class="ycard"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Black_DracoSlides_1.jpg?v=1773631485" alt=""><div class="yn">In Draco We Trust Tee</div><div class="yp">$40.00</div></div>
-      <div class="ycard"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/SnowWhiteDracoSlidesComfySandals.jpg?v=1773631548" alt=""><div class="yn">Draco Army Pants</div><div class="yp">$120.00</div></div>
-      <div class="ycard"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/ChocolateDracoSlides7_d6943012-dacd-44fd-8e20-b7c56f855992.jpg?v=1773553344" alt=""><div class="yn">Grey Distressed Zip Up</div><div class="yp">$99.00</div></div>
+      <div class="ycard"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Black_DracoSlides_1.jpg?v=1773631485" alt=""><div class="yn">In Draco We Trust Tee</div><div class="yp">$40</div></div>
+      <div class="ycard"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/SnowWhiteDracoSlidesComfySandals.jpg?v=1773631548" alt=""><div class="yn">Draco Army Pants</div><div class="yp">$120</div></div>
+      <div class="ycard"><img src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/ChocolateDracoSlides7_d6943012-dacd-44fd-8e20-b7c56f855992.jpg?v=1773553344" alt=""><div class="yn">Grey Distressed Zip Up</div><div class="yp">$99</div></div>
     </div>
   </div>
 
@@ -388,14 +391,13 @@ h1,h2,h3{margin:0;font-weight:400;letter-spacing:.02em}
 <!-- STICKY -->
 <div class="sticky" id="sticky">
   <img class="sthumb" id="stThumb" src="https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_505c8781-231b-4603-99a1-964966066cac_1.jpg?v=1768054550" alt="">
-  <div class="sinfo"><div class="sst" id="stName">Original DracoSlides · Blackout</div><div class="ssp" id="stSub">$99.00 · select size</div></div>
+  <div class="sinfo"><div class="sst" id="stName">DracoSlides · Blackout</div><div class="ssp" id="stSub">$99 · select size</div></div>
   <button class="satc" onclick="stickyAtc()" id="stBtn">Choose Size</button>
 </div>
 
 <script>
 var state={color:'Blackout',colorImg:'https://cdn.shopify.com/s/files/1/0368/7871/2964/files/Blackout_DracoSlides_505c8781-231b-4603-99a1-964966066cac_1.jpg?v=1768054550',size:null};
 
-/* gallery */
 var gi=0,slides=document.querySelectorAll('#gmain .slide'),thumbs=document.querySelectorAll('#thumbs .t');
 function gset(i){gi=(i+slides.length)%slides.length;slides.forEach((s,k)=>s.classList.toggle('on',k===gi));thumbs.forEach((t,k)=>t.classList.toggle('on',k===gi));var v=document.getElementById('pvid');if(v&&gi!==3)v.pause();}
 function gnav(d){gset(gi+d);}
@@ -408,40 +410,43 @@ function colorSel(el){
   document.getElementById('colorSel').textContent=state.color;
   document.getElementById('heroImg').src=state.colorImg;
   document.getElementById('stThumb').src=state.colorImg;
-  gset(0);
-  render();
+  gset(0);render();
 }
 function sizeSel(el){
   document.querySelectorAll('#sizes .size').forEach(s=>s.classList.remove('on'));el.classList.add('on');
   state.size=el.dataset.s;
   document.getElementById('sizeSel').textContent=el.dataset.s+' · '+el.dataset.us;
-  // highlight chart row
   document.querySelectorAll('#sizechart tr').forEach(r=>r.classList.remove('hl'));
   var row=document.getElementById('r-'+el.dataset.s);if(row)row.classList.add('hl');
   render();
 }
 function render(){
-  document.getElementById('stName').textContent='Original DracoSlides · '+state.color;
-  if(state.size){
-    document.getElementById('stSub').textContent='$99.00 · Size '+state.size;
-    document.getElementById('stBtn').textContent='Add to Cart';
-  }else{
-    document.getElementById('stSub').textContent='$99.00 · select size';
-    document.getElementById('stBtn').textContent='Choose Size';
-  }
+  document.getElementById('stName').textContent='DracoSlides · '+state.color;
+  if(state.size){document.getElementById('stSub').textContent='$99 · Size '+state.size;document.getElementById('stBtn').textContent='Add to Cart';}
+  else{document.getElementById('stSub').textContent='$99 · select size';document.getElementById('stBtn').textContent='Choose Size';}
 }
 function addToCart(){
   if(!state.size){document.getElementById('sizes').scrollIntoView({behavior:'smooth',block:'center'});flashSize();return;}
-  var b=document.getElementById('atcBtn');var old=b.textContent;b.textContent='✓ Added — '+state.color+' / '+state.size;b.style.background='#3a6b3a';
+  var b=document.getElementById('atcBtn');var old=b.textContent;b.textContent='✓ Added — '+state.color+' / '+state.size;
   document.querySelector('.cart-dot b').textContent='1';
-  setTimeout(function(){b.textContent=old;b.style.background='';},1500);
+  setTimeout(function(){b.textContent=old;},1500);
 }
 function stickyAtc(){if(!state.size){document.getElementById('sizes').scrollIntoView({behavior:'smooth',block:'center'});flashSize();return;}addToCart();}
-function flashSize(){var s=document.getElementById('sizes');s.style.transition='box-shadow .2s';s.style.boxShadow='0 0 0 2px #121212';setTimeout(()=>s.style.boxShadow='',900);}
+function flashSize(){var s=document.getElementById('sizes');s.style.transition='box-shadow .2s';s.style.boxShadow='0 0 0 2px #D8FF3E';setTimeout(()=>s.style.boxShadow='',900);}
 function accT(q){q.parentElement.classList.toggle('open');}
 
+/* animated counter */
+var counted=false;
+function animateCount(){
+  if(counted)return;var el=document.querySelector('[data-count]');if(!el)return;
+  var r=el.getBoundingClientRect();if(r.top>window.innerHeight||r.bottom<0)return;
+  counted=true;var target=+el.dataset.count,t0=null;
+  function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1100,1);el.textContent=Math.floor(p*target).toLocaleString();if(p<1)requestAnimationFrame(step);else el.textContent=target.toLocaleString();}
+  requestAnimationFrame(step);
+}
+
 var buyzone=document.getElementById('buyzone'),sticky=document.getElementById('sticky');
-function onScroll(){var r=buyzone.getBoundingClientRect();sticky.classList.toggle('show',r.bottom<140);}
+function onScroll(){var r=buyzone.getBoundingClientRect();sticky.classList.toggle('show',r.bottom<140);animateCount();}
 window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);
 render();onScroll();
 </script>
