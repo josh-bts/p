@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese Cool Cashmere Knit Tee | Buck Mason</title>
+<style>
+/* Real Buck Mason typefaces (Acumin Pro / Acumin Pro Condensed) self-hosted from their Typekit kit */
+@font-face{font-family:'Acumin Pro';src:url('bm-acumin-pro-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Acumin Pro';src:url('bm-acumin-pro-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'Acumin Pro Condensed';src:url('bm-acumin-pro-cond-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Acumin Pro Condensed';src:url('bm-acumin-pro-cond-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;}
+@font-face{font-family:'Acumin Pro Condensed';src:url('bm-acumin-pro-cond-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
+
+:root{
+  --bg:#ffffff;
+  --ink:#1a1a1a;
+  --black:#111111;
+  --grey:#767676;
+  --line:#e3e1de;
+  --rust:#b73e25;
+  --gallery:#f1f0ed;
+  --cond:'Acumin Pro Condensed','Helvetica Neue',Arial,sans-serif;
+  --body:'Acumin Pro','Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:var(--body);color:var(--ink);background:#dcdcdc;line-height:1.5;font-size:15px;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+a{color:inherit;text-decoration:none;}
+.cond{font-family:var(--cond);text-transform:uppercase;}
+
+/* Phone frame */
+.frame{max-width:390px;margin:0 auto;background:var(--bg);position:relative;overflow:hidden;min-height:100vh;}
+@media(min-width:600px){
+  body{padding:26px 0;}
+  .frame{box-shadow:0 16px 50px rgba(0,0,0,.28);min-height:auto;}
+}
+
+.announce{background:#f1f1f1;color:var(--ink);text-align:center;font-size:12.5px;font-weight:400;padding:8px 12px;white-space:nowrap;overflow:hidden;}
+
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 12px;background:var(--bg);position:relative;z-index:30;}
+.hdr .burger{display:flex;flex-direction:column;gap:3px;width:20px;}
+.hdr .burger span{height:1.5px;background:var(--ink);display:block;}
+.wordmark{font-family:var(--cond);font-weight:700;font-size:22px;letter-spacing:.5px;text-transform:uppercase;line-height:1;}
+.hdr-ic{display:flex;gap:14px;align-items:center;}
+.hdr-ic svg{width:19px;height:19px;stroke:var(--ink);fill:none;stroke-width:1.4;}
+.cartwrap{position:relative;}
+
+/* Title row */
+.title-row{padding:14px 16px 10px;}
+.restock{font-family:var(--cond);font-weight:600;font-size:11px;letter-spacing:1px;color:var(--rust);text-transform:uppercase;border-bottom:1px solid var(--rust);display:inline-block;padding-bottom:1px;margin-bottom:9px;}
+.title-row .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+h1{font-family:var(--cond);font-weight:600;font-size:21px;letter-spacing:.4px;text-transform:uppercase;line-height:1.05;}
+.price{font-family:var(--cond);font-weight:600;font-size:19px;white-space:nowrap;}
+
+/* Gallery */
+.gallery{background:var(--gallery);}
+.gal-main{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--gallery);}
+.gal-main img{width:100%;height:100%;object-fit:cover;}
+.gal-main img.flat{object-fit:contain;}
+.gal-dots{display:flex;justify-content:center;gap:7px;padding:12px 0 14px;background:var(--gallery);}
+.gal-dots button{width:7px;height:7px;border-radius:50%;background:#c7c4bf;}
+.gal-dots button.active{background:var(--ink);}
+
+/* Buy zone */
+.buy{padding:18px 16px 20px;}
+.sdesc{font-size:14px;color:#3a3a3a;margin-bottom:20px;max-width:330px;}
+.selabel{font-family:var(--cond);font-weight:600;font-size:12px;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:11px;}
+.selabel .val{font-family:var(--body);font-weight:400;letter-spacing:0;text-transform:none;color:#3a3a3a;font-size:13.5px;}
+
+/* color swatches */
+.swatches{display:flex;gap:11px;margin-bottom:22px;}
+.sw{width:30px;height:30px;border:1px solid var(--line);position:relative;cursor:pointer;}
+.sw.active{outline:1px solid var(--ink);outline-offset:2px;}
+.sw.active::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:1.5px;background:var(--ink);}
+
+/* size row */
+.size-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px;}
+.size-guide{font-family:var(--cond);font-weight:600;font-size:11px;letter-spacing:.8px;color:var(--rust);text-transform:uppercase;}
+.sizes{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-bottom:14px;}
+.size{border:1px solid var(--line);background:#fff;padding:11px 0;text-align:center;font-family:var(--cond);font-weight:600;font-size:13px;letter-spacing:.5px;transition:.12s;}
+.size:hover{border-color:#999;}
+.size.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+.size.oos{color:#cfccc7;text-decoration:line-through;cursor:not-allowed;}
+
+/* PRIMARY FIX: inline fit confidence at the size step */
+.fit-panel{border:1px solid var(--line);background:#faf9f7;padding:13px 14px;margin-bottom:18px;}
+.fit-top{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
+.fit-meter{flex:1;height:4px;background:#e4e1dc;position:relative;border-radius:2px;}
+.fit-meter i{position:absolute;top:-3px;width:10px;height:10px;border-radius:50%;background:var(--ink);left:46%;}
+.fit-meter .ends{position:absolute;top:8px;left:0;right:0;display:flex;justify-content:space-between;font-family:var(--cond);font-size:8.5px;letter-spacing:.4px;color:var(--grey);text-transform:uppercase;}
+.fit-tts{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:#2c7a4b;white-space:nowrap;}
+.fit-lines{font-size:12.5px;color:#4a4a4a;line-height:1.5;margin-top:14px;}
+.fit-lines b{font-weight:500;color:var(--ink);}
+.fit-model{display:flex;align-items:center;gap:8px;margin-top:9px;font-size:12px;color:#4a4a4a;}
+.fit-model svg{width:15px;height:15px;stroke:var(--grey);fill:none;stroke-width:1.4;flex:0 0 auto;}
+
+/* ATC */
+.atc{width:100%;background:var(--black);color:#fff;font-family:var(--cond);font-weight:700;font-size:14px;letter-spacing:1.4px;text-transform:uppercase;padding:17px;border:1px solid var(--black);transition:.12s;}
+.atc.disabled{background:#aaa;border-color:#aaa;cursor:default;}
+.ship-note{text-align:center;font-size:11.5px;color:var(--grey);margin-top:10px;}
+.ship-note b{color:var(--ink);font-weight:500;}
+
+/* accordions */
+.acc{border-top:1px solid var(--line);}
+.acc-item{border-bottom:1px solid var(--line);}
+.acc-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 16px;font-family:var(--cond);font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;text-align:left;}
+.acc-q .pm{width:13px;height:13px;position:relative;flex:0 0 auto;}
+.acc-q .pm::before,.acc-q .pm::after{content:"";position:absolute;background:var(--ink);}
+.acc-q .pm::before{top:6px;left:0;right:0;height:1.5px;}
+.acc-q .pm::after{left:6px;top:0;bottom:0;width:1.5px;transition:.2s;}
+.acc-item.open .pm::after{opacity:0;}
+.acc-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.acc-a .inner{padding:0 16px 17px;font-size:13.5px;color:#4a4a4a;line-height:1.6;}
+.acc-a .inner .sub{font-family:var(--cond);font-weight:600;font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:var(--ink);display:block;margin-bottom:4px;}
+
+/* footer */
+.foot{background:#111;color:#bdbdbd;padding:30px 16px 34px;text-align:center;}
+.foot .wm{font-family:var(--cond);font-weight:700;font-size:20px;letter-spacing:1px;color:#fff;text-transform:uppercase;margin-bottom:14px;}
+.foot .links{display:flex;flex-wrap:wrap;justify-content:center;gap:9px 18px;font-family:var(--cond);font-size:11px;letter-spacing:.8px;text-transform:uppercase;margin-bottom:16px;}
+.foot .cp{font-size:11px;color:#7c7c7c;}
+
+/* sticky add bar (SECONDARY FIX) */
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(110%);width:100%;max-width:390px;background:#fff;border-top:1px solid var(--line);box-shadow:0 -5px 20px rgba(0,0,0,.1);padding:9px 12px;display:flex;align-items:center;gap:11px;z-index:50;transition:transform .26s ease;}
+.sticky.show{transform:translateX(-50%) translateY(0);}
+.sticky img{width:42px;height:52px;object-fit:cover;background:var(--gallery);flex:0 0 auto;}
+.sticky .si{flex:1;min-width:0;}
+.sticky .sn{font-family:var(--cond);font-weight:600;font-size:11.5px;letter-spacing:.5px;text-transform:uppercase;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sticky .sp{font-size:11.5px;color:var(--grey);}
+.sticky .sp b{color:var(--ink);}
+.sticky .sbtn{background:var(--black);color:#fff;font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:13px 18px;white-space:nowrap;}
+.sticky .sbtn.disabled{background:#aaa;}
+</style>
+</head>
+<body>
+<div class="frame" id="frame">
+
+  <div class="announce">Shipping On Us Over $150 &amp; 365-Day Returns</div>
+
+  <header class="hdr">
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="wordmark">Buck Mason</div>
+    <div class="hdr-ic">
+      <button aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg></button>
+      <button class="cartwrap" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M6 7h12l-1 14H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></button>
+    </div>
+  </header>
+
+  <div class="title-row">
+    <span class="restock">Back In Stock</span>
+    <div class="row">
+      <h1>Japanese Cool Cashmere Knit Tee</h1>
+      <span class="price">$118</span>
+    </div>
+  </div>
+
+  <!-- Gallery -->
+  <section class="gallery">
+    <div class="gal-main" id="galMain">
+      <img id="galImg" class="flat" src="https://cdn.shopify.com/s/files/1/0123/5065/2473/files/BM11388.1352_JAPANESE-DE-LUXE-COTTON-CASHMERE-KNIT-TEE_BLK.jpg" alt="Japanese Cool Cashmere Knit Tee, Black">
+    </div>
+    <div class="gal-dots" id="galDots"></div>
+  </section>
+
+  <!-- Buy zone -->
+  <section class="buy">
+    <p class="sdesc">Knit in Japan, a featherweight cotton-cashmere tee with a refined handfeel and natural drape.</p>
+
+    <div class="selabel">Color: <span class="val" id="colorVal">Black</span></div>
+    <div class="swatches" id="swatches">
+      <div class="sw active" data-name="Black" style="background:#111111"></div>
+      <div class="sw" data-name="Dress Navy" style="background:#302e36"></div>
+      <div class="sw" data-name="Rustic Sienna" style="background:#813e2b"></div>
+      <div class="sw" data-name="High Desert" style="background:#bb9870"></div>
+      <div class="sw" data-name="White" style="background:#ffffff"></div>
+    </div>
+
+    <div class="size-head">
+      <span class="selabel" style="margin-bottom:0">Size: <span class="val" id="sizeVal">Select</span></span>
+      <a href="#" class="size-guide">Size / Fit Guide</a>
+    </div>
+    <div class="sizes" id="sizes">
+      <button class="size" data-size="XS">XS</button>
+      <button class="size" data-size="S">S</button>
+      <button class="size" data-size="M">M</button>
+      <button class="size" data-size="L">L</button>
+      <button class="size" data-size="XL">XL</button>
+      <button class="size" data-size="XXL">XXL</button>
+    </div>
+
+    <!-- PRIMARY FIX: fit confidence surfaced at the size step -->
+    <div class="fit-panel">
+      <div class="fit-top">
+        <span class="fit-tts">True to size</span>
+        <div class="fit-meter"><i></i><div class="ends"><span>Slim</span><span>Relaxed</span></div></div>
+      </div>
+      <div class="fit-lines">
+        <span class="sub">Classic fit · relaxed &amp; easy</span>
+        Cut <b>½&quot; longer</b> in the body and <b>¾&quot; fuller</b> in the chest than the Tough Knit Classic Tee, for a natural drape.
+      </div>
+      <div class="fit-model">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg>
+        Model is 6&#39;1&quot; / 175 lbs and wears a <b style="font-weight:500">Medium</b>.
+      </div>
+    </div>
+
+    <button class="atc disabled" id="atc">Select a Size</button>
+    <div class="ship-note"><b>Back in stock.</b> Shipping on us over $150 · 365-day returns.</div>
+  </section>
+
+  <!-- Accordions (content parity) -->
+  <div class="acc" id="acc">
+    <div class="acc-item open">
+      <button class="acc-q">Description<span class="pm"></span></button>
+      <div class="acc-a"><div class="inner">A classic tee knit in Japan from a blend of cotton and cashmere — delivering a refined, ultra-lightweight feel at just 100 GSM. Piece-dyed for rich color. Designed slightly longer in length and fuller in the chest for a relaxed, easy fit.</div></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-q">Fit<span class="pm"></span></button>
+      <div class="acc-a"><div class="inner"><span class="sub">Classic</span>Fits like our Tough Knit Classic Tee, with a ½&quot; longer body and +¾&quot; in the chest for natural drape.</div></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-q">Model Info<span class="pm"></span></button>
+      <div class="acc-a"><div class="inner">Model is 6&#39;1&quot; and 175 lbs. He wears a Medium top and 32&quot; bottoms.</div></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-q">Fabric — 90% Cotton, 10% Cashmere<span class="pm"></span></button>
+      <div class="acc-a"><div class="inner">Superfine 60 singles yarn, blended with 90% cotton and 10% cashmere, spun and knit exclusively in Japan. 100 GSM.</div></div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <div class="wm">Buck Mason</div>
+    <div class="links"><a href="#">Shop</a><a href="#">New Arrivals</a><a href="#">Size / Fit Guide</a><a href="#">Stores</a><a href="#">Help</a></div>
+    <div class="cp">© Buck Mason · Built in California</div>
+  </footer>
+
+  <!-- Sticky add bar (SECONDARY FIX) -->
+  <div class="sticky" id="sticky">
+    <img src="https://cdn.shopify.com/s/files/1/0123/5065/2473/files/BM11388.1352_JAPANESE-DE-LUXE-COTTON-CASHMERE-KNIT-TEE_BLK.jpg" alt="">
+    <div class="si">
+      <div class="sn">Cool Cashmere Knit Tee</div>
+      <div class="sp"><b>$118</b> · <span id="sSize">Select size</span></div>
+    </div>
+    <button class="sbtn disabled" id="sBtn">Add</button>
+  </div>
+
+</div>
+
+<script>
+const GAL = [
+  {src:'https://cdn.shopify.com/s/files/1/0123/5065/2473/files/BM11388.1352_JAPANESE-DE-LUXE-COTTON-CASHMERE-KNIT-TEE_BLK.jpg', flat:true},
+  {src:'https://cdn.shopify.com/s/files/1/0123/5065/2473/files/BM11388.1361_JAPANESE-DE-LUXE-COTTON-Cashmere-KNIT-TEE_BLACK_1277_2.jpg', flat:false},
+  {src:'https://cdn.shopify.com/s/files/1/0123/5065/2473/files/BM11388.1361_JAPANESE-DE-LUXE-COTTON-Cashmere-KNIT-TEE_BLACK_1291_2.jpg', flat:false},
+  {src:'https://cdn.shopify.com/s/files/1/0123/5065/2473/files/BM11388.1361_JAPANESE-DE-LUXE-COTTON-Cashmere-KNIT-TEE_BLACK_1280_2.jpg', flat:false},
+  {src:'https://cdn.shopify.com/s/files/1/0123/5065/2473/files/BM11388.1361_JAPANESE-DE-LUXE-COTTON-Cashmere-KNIT-TEE_BLACK_1300_2.jpg', flat:false}
+];
+const $=s=>document.querySelector(s);
+let galIdx=0, selectedSize=null;
+
+// gallery dots
+const dotsWrap=$('#galDots');
+GAL.forEach((g,i)=>{const b=document.createElement('button');if(i===0)b.classList.add('active');b.addEventListener('click',()=>showSlide(i));dotsWrap.appendChild(b);});
+function showSlide(i){
+  galIdx=i; const g=GAL[i]; const img=$('#galImg');
+  img.src=g.src; img.classList.toggle('flat', g.flat);
+  [...dotsWrap.children].forEach((d,j)=>d.classList.toggle('active',j===i));
+}
+// swipe
+let sx=null; const gm=$('#galMain');
+gm.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
+gm.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40){showSlide((galIdx+(dx<0?1:GAL.length-1))%GAL.length);}sx=null;},{passive:true});
+
+// color swatches
+$('#swatches').querySelectorAll('.sw').forEach(s=>{
+  s.addEventListener('click',()=>{
+    $('#swatches').querySelector('.active').classList.remove('active');
+    s.classList.add('active'); $('#colorVal').textContent=s.dataset.name;
+  });
+});
+
+// size selection
+$('#sizes').querySelectorAll('.size').forEach(b=>{
+  b.addEventListener('click',()=>{
+    if(b.classList.contains('oos'))return;
+    $('#sizes').querySelectorAll('.size').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); selectedSize=b.dataset.size;
+    $('#sizeVal').textContent=selectedSize;
+    const atc=$('#atc'); atc.classList.remove('disabled'); atc.textContent='Add to Bag — $118';
+    $('#sSize').textContent='Size '+selectedSize;
+    const sb=$('#sBtn'); sb.classList.remove('disabled'); sb.textContent='Add';
+  });
+});
+
+function addToBag(){
+  if(!selectedSize){ document.querySelector('#sizes').scrollIntoView({behavior:'smooth',block:'center'}); return; }
+  const atc=$('#atc'); const t=atc.textContent; atc.textContent='✓ Added to Bag'; setTimeout(()=>atc.textContent=t,1200);
+}
+$('#atc').addEventListener('click',addToBag);
+$('#sBtn').addEventListener('click',addToBag);
+
+// accordions
+document.querySelectorAll('.acc-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const it=q.closest('.acc-item'),a=it.querySelector('.acc-a'),open=it.classList.contains('open');
+    if(open){it.classList.remove('open');a.style.maxHeight=null;}
+    else{it.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+  });
+});
+// open the first accordion by default
+const firstAcc=document.querySelector('.acc-item.open .acc-a'); if(firstAcc) firstAcc.style.maxHeight=firstAcc.scrollHeight+'px';
+
+// sticky bar — scroll-driven via getBoundingClientRect
+const atcEl=$('#atc'), sticky=$('#sticky');
+function onScroll(){ const r=atcEl.getBoundingClientRect(); sticky.classList.toggle('show', r.bottom<0 || r.top>window.innerHeight); }
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>
