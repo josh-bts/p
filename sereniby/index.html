@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sereniby — The Air Purifier Your Baby Deserves</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#73378B;          /* brand primary (Add to Cart / Buy Now) */
+    --purple-deep:#5d2b73;     /* announcement bar */
+    --ink:#121212;
+    --muted:#5f5566;
+    --cream:#f6f2ec;           /* warm section bg */
+    --cream2:#faf7f2;
+    --line:#e7e0ea;
+    --navy:#2b2436;            /* clinicians badge */
+    --radius:10px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Quicksand",system-ui,sans-serif;
+    color:var(--ink);
+    background:#efe9f1;        /* desktop backdrop behind the phone frame */
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+
+  /* ---------- mobile-only layout wrapped in a phone frame on desktop ---------- */
+  .frame{
+    max-width:390px;
+    margin:0 auto;
+    background:#fff;
+    position:relative;
+    overflow:hidden;
+  }
+  @media(min-width:600px){
+    body{padding:24px 0}
+    .frame{
+      box-shadow:0 18px 60px rgba(40,20,60,.22);
+      border-radius:26px;
+    }
+  }
+
+  /* ---------- announcement ---------- */
+  .announce{
+    background:var(--purple-deep);color:#fff;
+    font-size:12.5px;font-weight:600;letter-spacing:.1px;
+    text-align:center;padding:8px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .announce b{font-weight:700}
+
+  /* ---------- header ---------- */
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 16px;border-bottom:1px solid var(--line);background:#fff;position:relative;z-index:30;
+  }
+  .burger{width:24px;height:18px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer}
+  .burger span{height:2.5px;background:var(--ink);border-radius:2px}
+  header .logo{height:30px;width:auto}
+  .btn-buy-sm{
+    background:var(--purple);color:#fff;border:none;border-radius:var(--radius);
+    font-family:inherit;font-weight:600;font-size:14px;padding:9px 16px;cursor:pointer;
+  }
+
+  /* ---------- HERO (image-first) ---------- */
+  .hero{padding:0 0 18px}
+  .gallery{position:relative;background:var(--cream2)}
+  .gallery .stage{position:relative}
+  .gallery .stage img{width:100%;aspect-ratio:1/1;object-fit:cover}
+  .clin-badge{
+    position:absolute;top:12px;left:12px;right:12px;
+    background:var(--navy);color:#fff;border-radius:12px;
+    padding:9px 12px;display:flex;gap:9px;align-items:center;font-size:11.5px;line-height:1.25;
+    box-shadow:0 6px 18px rgba(0,0,0,.18);
+  }
+  .clin-badge .laurel{font-size:11px;font-weight:700;text-align:center;letter-spacing:.3px;flex:0 0 auto;
+    border-right:1px solid rgba(255,255,255,.25);padding-right:9px;color:#e9d9f2}
+  .clin-badge b{font-weight:700}
+  .thumbs{display:flex;gap:8px;padding:10px 12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .thumbs img{
+    width:62px;height:62px;flex:0 0 auto;border-radius:8px;object-fit:cover;
+    border:2px solid transparent;cursor:pointer;scroll-snap-align:start;background:#fff
+  }
+  .thumbs img.active{border-color:var(--purple)}
+
+  .hero-info{padding:16px 18px 0}
+  .h1{font-size:27px;font-weight:700;line-height:1.12;letter-spacing:-.4px;margin:2px 0 12px}
+  .stars{display:flex;align-items:center;gap:8px;margin:0 0 12px;font-weight:600;font-size:14px;color:var(--muted)}
+  .stars .s{color:var(--purple);letter-spacing:1px;font-size:16px}
+  .benefits{list-style:none;margin:0 0 16px;padding:0}
+  .benefits li{display:flex;gap:9px;align-items:flex-start;margin-bottom:9px}
+  .benefits .ck{flex:0 0 auto;width:19px;height:19px;border-radius:50%;background:#e8f6ea;color:#2e9b4e;
+    display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-top:2px}
+  .benefits .bt{font-weight:700;font-size:15px;line-height:1.25}
+  .benefits .bs{font-size:13px;color:var(--muted);font-style:italic;line-height:1.3;display:block;margin-top:1px}
+
+  .price-row{display:flex;align-items:baseline;gap:10px;margin:4px 0 4px}
+  .price{font-size:26px;font-weight:700}
+  .fin{font-size:13px;color:var(--muted);margin:0 0 12px}
+  .fin .shoppay{display:inline-block;background:#5a31e0;color:#fff;border-radius:4px;font-size:10px;font-weight:700;
+    padding:2px 6px;vertical-align:middle;letter-spacing:.2px}
+  .fin a{color:var(--purple);text-decoration:underline;font-weight:600}
+  .ship{font-size:13.5px;font-weight:600;margin:0 0 6px}
+  .hsa{font-size:13.5px;color:var(--muted);margin:0 0 16px;display:flex;align-items:center;gap:7px}
+  .hsa .flex{background:#1a2b4a;color:#fff;font-weight:700;font-size:11px;border-radius:5px;padding:3px 8px}
+
+  .btn-atc{
+    width:100%;background:var(--purple);color:#fff;border:none;border-radius:var(--radius);
+    font-family:inherit;font-weight:700;font-size:19px;padding:16px;cursor:pointer;letter-spacing:.2px;
+    box-shadow:0 8px 22px rgba(115,55,139,.28);
+  }
+  .btn-shoppay{
+    width:100%;background:#5a31e0;color:#fff;border:none;border-radius:var(--radius);
+    font-family:inherit;font-weight:600;font-size:15px;padding:13px;margin-top:10px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:6px;
+  }
+  .btn-shoppay b{font-weight:800;letter-spacing:.3px}
+  .more-ways{text-align:center;font-size:11px;color:var(--muted);margin-top:8px}
+
+  /* ---------- generic section ---------- */
+  section{padding:34px 18px}
+  .sec-cream{background:var(--cream)}
+  .sec-cream2{background:var(--cream2)}
+  .eyebrow{color:var(--purple);font-weight:700;font-size:13px;letter-spacing:.4px;text-transform:uppercase;text-align:center;margin:0 0 6px}
+  h2.sec{font-size:24px;font-weight:700;line-height:1.15;letter-spacing:-.4px;text-align:center;margin:0 0 8px}
+  .sec-sub{text-align:center;color:var(--muted);font-size:14.5px;line-height:1.45;margin:0 auto 20px;max-width:330px}
+
+  /* founder */
+  .founder-img{border-radius:14px;margin:0 auto 18px;max-width:300px}
+  .founder-copy{font-size:15.5px;line-height:1.5;margin:0 0 16px}
+  .founder-copy b{font-weight:700}
+  .cite{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin:0 0 12px;box-shadow:0 4px 14px rgba(40,20,60,.05)}
+  .cite .src{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .cite .src img{height:30px;width:auto;object-fit:contain}
+  .cite .src span{font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.3px}
+  .cite p{margin:0;font-size:13.5px;font-style:italic;color:#3b3340;line-height:1.4}
+  .cite-dots{display:flex;justify-content:center;gap:6px;margin-top:4px}
+  .cite-dots i{width:7px;height:7px;border-radius:50%;background:#d8cde0;display:block;transition:.2s}
+  .cite-dots i.on{background:var(--purple);width:18px;border-radius:4px}
+
+  /* authority logos strip */
+  .auth-strip{display:flex;flex-wrap:wrap;gap:14px 18px;align-items:center;justify-content:center;margin-top:18px}
+  .auth-strip img{height:30px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.7}
+
+  /* feature list (radial-on-desktop -> stacked) */
+  .feat-hero{border-radius:16px;margin:0 0 6px;width:100%;aspect-ratio:1/1;object-fit:cover}
+  .feat{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .feat:last-child{border-bottom:none}
+  .feat .ic{flex:0 0 auto;width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center}
+  .feat .ic img{width:26px;height:26px}
+  .feat .ic .emoji{font-size:22px}
+  .feat h3{margin:0 0 3px;font-size:16px;font-weight:700}
+  .feat p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.4}
+
+  /* trust badges 2x2 */
+  .trust{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .trust .card{border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;background:#fff}
+  .trust .card .tic{width:46px;height:46px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+  .trust .card .tic img{width:26px;height:26px;filter:brightness(0) invert(1)}
+  .trust .card span{font-weight:700;font-size:14px}
+
+  /* video testimonials */
+  .vrow{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 8px;-webkit-overflow-scrolling:touch}
+  .vcard{flex:0 0 78%;scroll-snap-align:center;border-radius:16px;overflow:hidden;background:#000;position:relative;box-shadow:0 8px 24px rgba(40,20,60,.12)}
+  .vcard video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:#000}
+  .vcard .vstars{position:absolute;top:10px;left:10px;color:#fff;font-size:14px;letter-spacing:1px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+  .vmeta{padding:10px 12px;background:#fff}
+  .vmeta b{display:block;font-size:14px;font-weight:700}
+  .vmeta span{font-size:12px;color:var(--muted)}
+
+  /* full-bleed lifestyle */
+  .bleed{position:relative}
+  .bleed img{width:100%;height:auto;display:block}
+  .bleed .ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px}
+  .bleed .card{background:rgba(43,36,54,.42);backdrop-filter:blur(2px);border-radius:16px;color:#fff;padding:20px;text-align:center}
+  .bleed .card h2{font-size:22px;font-weight:700;margin:0 0 10px}
+  .bleed .card p{font-size:13.5px;line-height:1.5;margin:0 0 8px}
+  .bleed .card b{font-weight:700}
+
+  /* every-detail + image */
+  .detail-img{border-radius:16px;margin:0 0 18px;width:100%;aspect-ratio:4/3;object-fit:cover}
+  .dlist{list-style:none;margin:0;padding:0}
+  .dlist li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+  .dlist li:last-child{border-bottom:none}
+  .dlist .ic{flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center}
+  .dlist .ic img{width:24px;height:24px}
+  .dlist p{margin:0;font-size:14px;line-height:1.4}
+  .dlist b{font-weight:700}
+
+  /* smart features grouped */
+  .sf-group{margin-bottom:20px}
+  .sf-group .gh{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .sf-group .gn{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:var(--purple);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+  .sf-group .gt{font-size:16.5px;font-weight:700}
+  .sf-group ul{list-style:none;margin:0;padding:0 0 0 4px}
+  .sf-group li{display:flex;gap:8px;font-size:13.5px;line-height:1.4;color:#3b3340;margin-bottom:8px}
+  .sf-group li .ck{color:#2e9b4e;font-weight:700;flex:0 0 auto}
+
+  /* investment trio */
+  .inv{display:flex;flex-direction:column;gap:14px}
+  .inv .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+  .inv .card h3{margin:0 0 6px;font-size:16px;font-weight:700;color:var(--purple)}
+  .inv .card p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.45}
+
+  /* comparison image */
+  .compare-img{width:100%;border-radius:14px;border:1px solid var(--line)}
+
+  /* community grid */
+  .comm-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:6px}
+  .comm-grid .cell{position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:8px}
+  .comm-grid .cell img{width:100%;height:100%;object-fit:cover}
+  .comm-grid .cell .ig{position:absolute;top:6px;right:6px;width:18px;height:18px;filter:brightness(0) invert(1);opacity:.9}
+  .comm-handle{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;font-weight:700;color:var(--purple)}
+  .comm-handle img{width:20px;height:20px}
+
+  /* closing CTA */
+  .closing{background:var(--cream);text-align:center}
+  .closing .price{font-size:24px}
+  .closing .btn-atc{max-width:330px;margin:14px auto 0}
+
+  footer{background:#fff;padding:26px 18px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:12px}
+  footer img{height:24px;margin:0 auto 10px;opacity:.85}
+
+  /* ---------- sticky buy bar (SECONDARY FIX) ---------- */
+  .stickybar{
+    position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);
+    width:100%;max-width:390px;background:#fff;border-top:1px solid var(--line);
+    box-shadow:0 -6px 22px rgba(40,20,60,.14);
+    display:flex;align-items:center;gap:12px;padding:10px 14px;z-index:60;
+    transition:transform .28s ease;padding-bottom:calc(10px + env(safe-area-inset-bottom));
+  }
+  .stickybar.show{transform:translateX(-50%) translateY(0)}
+  .stickybar img{width:46px;height:46px;border-radius:8px;object-fit:cover;background:var(--cream)}
+  .stickybar .sinfo{flex:1;min-width:0}
+  .stickybar .sinfo b{display:block;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .stickybar .sinfo span{font-size:13px;font-weight:700;color:var(--purple)}
+  .stickybar button{
+    flex:0 0 auto;background:var(--purple);color:#fff;border:none;border-radius:var(--radius);
+    font-family:inherit;font-weight:700;font-size:15px;padding:12px 18px;cursor:pointer;
+  }
+</style>
+</head>
+<body>
+<div class="frame" id="frame">
+
+  <!-- announcement -->
+  <div class="announce">🎉 Registry Promo — Save <b>15%</b> with code <b>CONGRATS</b></div>
+
+  <!-- header -->
+  <header>
+    <div class="burger" aria-label="menu"><span></span><span></span><span></span></div>
+    <img class="logo" src="https://sereniby.com/cdn/shop/files/sereniby-logo-high-resolution.jpg" alt="Sereniby">
+    <button class="btn-buy-sm" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">Buy Now</button>
+  </header>
+
+  <!-- ============ HERO — IMAGE FIRST ============ -->
+  <div class="hero" id="buy">
+    <div class="gallery">
+      <div class="stage">
+        <img id="mainImg" src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/sereniby-872533.jpg?width=900" alt="Sereniby Medical-Grade Nursery Purifier">
+        <div class="clin-badge">
+          <span class="laurel">CLINICIANS'<br>CHOICE</span>
+          <div><b>364 clinicians</b>, including pediatricians, share this on <i>FrontrowMD</i>.</div>
+        </div>
+      </div>
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+
+    <div class="hero-info">
+      <div class="h1">The Air Purifier<br>Your Baby Deserves</div>
+      <div class="stars"><span class="s">★★★★★</span> 86 reviews</div>
+
+      <ul class="benefits">
+        <li><span class="ck">✓</span><div><span class="bt">Medical-grade HEPA</span><span class="bs">“grown-up” purification for developing lungs</span></div></li>
+        <li><span class="ck">✓</span><div><span class="bt">Engineered for safe sleep</span><span class="bs">keeps clean air flowing while baby rests</span></div></li>
+        <li><span class="ck">✓</span><div><span class="bt">Smart sensors + alerts</span><span class="bs">maintains expert-approved sleep conditions</span></div></li>
+        <li><span class="ck">✓</span><div><span class="bt">Soothing light + sound</span><span class="bs">promotes better rest, with less nursery clutter</span></div></li>
+      </ul>
+
+      <div class="price-row"><span class="price">$349.00</span></div>
+      <p class="fin">From <b>$31.50</b>/mo or 0% APR with <span class="shoppay">shop Pay</span> &nbsp;<a href="#">View sample plans</a></p>
+      <p class="ship">📦 Free Shipping &nbsp;+&nbsp; ✨ Risk-Free Returns</p>
+      <p class="hsa">Pay using HSA / FSA with <span class="flex">flex</span></p>
+
+      <button class="btn-atc">Add to Cart</button>
+      <button class="btn-shoppay">Buy with <b>shop</b> Pay</button>
+      <div class="more-ways">More payment options</div>
+    </div>
+  </div>
+
+  <!-- ============ FROM OUR FAMILY TO YOURS ============ -->
+  <section class="sec-cream2">
+    <p class="eyebrow">By Parents, For Families</p>
+    <h2 class="sec">From Our Family to Yours</h2>
+    <img class="founder-img" src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/Alex_Alexis.jpg?width=600" alt="Sereniby founders Alex and Alexis">
+    <p class="founder-copy">As expecting parents, <b>we read the research about how important clean, circulating air is for babies</b>…</p>
+
+    <div class="cite-track">
+      <div class="cite" data-i="0">
+        <div class="src"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/AAPLogo-1-1024x601-845x321-pfti.webp" alt="American Academy of Pediatrics"><span>American Academy of Pediatrics</span></div>
+        <p>“Children spend 80% to 90% of their time indoors and therefore are frequently exposed to pollutants in indoor air.”</p>
+      </div>
+      <div class="cite" data-i="1" style="display:none">
+        <div class="src"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/Columbia_University_Irving_Medical_Center_Logo-pfti.png" alt="Columbia University Irving Medical Center"><span>Columbia University Irving Medical Center</span></div>
+        <p>“Children’s lungs are especially sensitive to the harmful effects of air pollution.”</p>
+      </div>
+      <div class="cite" data-i="2" style="display:none">
+        <div class="src"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/NEJM-pfti.png" alt="The New England Journal of Medicine"><span>The New England Journal of Medicine</span></div>
+        <p>“…improvements in air quality were associated with statistically and clinically significant positive effects on lung-function growth in children.”</p>
+      </div>
+      <div class="cite-dots"><i class="on"></i><i></i><i></i></div>
+    </div>
+
+    <p class="founder-copy" style="margin-top:16px">We searched and searched for the right air purifier, but none of the options felt good enough. <b>So we set out to create Sereniby.</b></p>
+  </section>
+
+  <!-- ============ BABIES NEED CLEAN AIR ============ -->
+  <section>
+    <h2 class="sec">Babies Need Clean Air 👶</h2>
+    <p class="sec-sub">Sereniby purifies &amp; circulates the air where your baby sleeps, supporting healthy development &amp; safe, restful sleep.</p>
+
+    <div class="cite" style="margin-top:6px">
+      <p style="font-weight:700;font-style:normal;color:var(--ink);margin-bottom:8px">“Air Pollution Puts Children at Higher Risk of Disease in Adulthood”</p>
+      <p>“Studies suggest that PM 2.5 [airborne particulates small enough to penetrate the lungs] can hinder children’s neurological development…”</p>
+    </div>
+
+    <p style="text-align:center;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin:22px 0 0;font-weight:700">Backed by leading health research</p>
+    <div class="auth-strip">
+      <img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/AAPLogo-1-1024x601-845x321-pfti.webp" alt="American Academy of Pediatrics">
+      <img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/Columbia_University_Irving_Medical_Center_Logo-pfti.png" alt="Columbia">
+      <img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/NEJM-pfti.png" alt="NEJM">
+      <img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/stanford-university_1-pfti.jpg" alt="Stanford University">
+      <img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/Harvard_University_logo_svg-pfti.png" alt="Harvard University">
+      <img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/Kaiser-pfti.jpg" alt="Kaiser">
+      <img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/NIH_logo-pfti.jpg" alt="NIH">
+    </div>
+  </section>
+
+  <!-- ============ FEATURE OVERVIEW ============ -->
+  <section class="sec-cream">
+    <img class="feat-hero" src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/sereniby-872533.jpg?width=800" alt="Sereniby in the nursery">
+    <div class="feat">
+      <div class="ic"><span class="emoji">🤍</span></div>
+      <div><h3>By Parents, For Families</h3><p>Crafted with care to meet the unique needs of babies — and those who care for them.</p></div>
+    </div>
+    <div class="feat">
+      <div class="ic"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/icon-airflow-symbol-with-recycling-arrows_1.svg" alt=""></div>
+      <div><h3>Medical-Grade HEPA</h3><p>Eliminates impurities up to 5x more effectively than standard filters — for the air your baby deserves.</p></div>
+    </div>
+    <div class="feat">
+      <div class="ic"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/security-icon-with-shield-and-lock-symbol_1.svg" alt=""></div>
+      <div><h3>Safety in Every Detail</h3><p>Innovative, patent-pending design circulates air where your baby sleeps while keeping little hands safe.</p></div>
+    </div>
+    <div class="feat">
+      <div class="ic"><span class="emoji">🛡️</span></div>
+      <div><h3>Precision Sensors Protect Every Breath</h3><p>Science-grade sensors stand guard to ensure a healthy environment during this critical stage of growth.</p></div>
+    </div>
+    <div class="feat">
+      <div class="ic"><span class="emoji">📱</span></div>
+      <div><h3>Smart Features for Better Rest</h3><p>Sleep-friendly night lighting, white noise, and “set it and forget it” controls bring peace to the whole family.</p></div>
+    </div>
+    <div class="feat">
+      <div class="ic"><span class="emoji">🌱</span></div>
+      <div><h3>An Investment In Your Child’s Health</h3><p>Powerful, energy-efficient, and configurable, Sereniby grows with your child to provide clean air wherever it’s needed most.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST BADGES ============ -->
+  <section>
+    <div class="trust">
+      <div class="card"><div class="tic"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/sereniby-free-delivery-icon_5deecf5e-ff19-406a-bb0a-6bd41baaaacc.svg" alt=""></div><span>Free Shipping</span></div>
+      <div class="card"><div class="tic"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/sereniby-easy-return-icon_596eac6b-1421-4438-97be-40f8126a7860.svg" alt=""></div><span>30-Day Risk-Free Trial</span></div>
+      <div class="card"><div class="tic"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/sereniby-premium-quality-icon_099c8f6c-6c7b-4e11-960a-8cb1a1a0acd1.svg" alt=""></div><span>2-Year Warranty</span></div>
+      <div class="card"><div class="tic"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/sereniby-parent-approved-icon_0ecea947-56f6-4322-b8a3-bbc4d72de754.svg" alt=""></div><span>Parent-Approved Support</span></div>
+    </div>
+  </section>
+
+  <!-- ============ VIDEO TESTIMONIALS ============ -->
+  <section class="sec-cream2">
+    <h2 class="sec">Those Who Know Sereniby,<br>Love Sereniby</h2>
+    <p class="sec-sub">Parents, healthcare professionals, and even designers.</p>
+    <div class="vrow">
+      <div class="vcard">
+        <div class="vstars">★★★★★</div>
+        <video controls playsinline preload="metadata" poster="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/Brianne_Video_Cover-pfti.jpg?width=500"
+          src="https://cdn.shopify.com/videos/c/o/v/d5e1a0eed18846ec9ebdb0cac26e626e.mp4"></video>
+        <div class="vmeta"><b>Brianne Martin</b><span>Mom · Knoxville, TN</span></div>
+      </div>
+      <div class="vcard">
+        <div class="vstars">★★★★★</div>
+        <video controls playsinline preload="metadata" poster="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/Hannah_Video_Cover-pfti.jpg?width=500"
+          src="https://cdn.shopify.com/videos/c/o/v/73b14acda08f4727b50dce3e9bdbf6b5.mp4"></video>
+        <div class="vmeta"><b>Dr. Hannah &amp; Chris Herring</b><span>Physician Mom &amp; Dad · Reading, PA</span></div>
+      </div>
+      <div class="vcard">
+        <div class="vstars">★★★★★</div>
+        <video controls playsinline preload="metadata" poster="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/LCI_Video_Cover.jpg?width=500"
+          src="https://cdn.shopify.com/videos/c/o/v/46eb062f626945adb51da838ee781187.mp4"></video>
+        <div class="vmeta"><b>Naomi Coe</b><span>“The Queen of Modern Nursery Design” — Forbes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MEDICAL-GRADE PURIFICATION (full-bleed) ============ -->
+  <div class="bleed">
+    <img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/6_25_24_Sereniby-236-Edit.jpg?width=900" alt="Baby in the nursery with Sereniby">
+    <div class="ov">
+      <div class="card">
+        <h2>Medical-Grade Purification</h2>
+        <p>We hold our air to the highest standard — <b>the same trusted by neonatal intensive care units.</b></p>
+        <p>With a <b>custom-engineered, True HEPA filtration system</b>, Sereniby eliminates viruses, pollution, wildfire smoke, and other harmful impurities <b>up to 5x more effectively than standard home air filters.</b> Because your baby deserves nothing less than the purest air.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ EVERY DETAIL CRAFTED WITH SAFETY ============ -->
+  <section>
+    <h2 class="sec" style="text-align:left">Every Detail Crafted with Safety in Mind</h2>
+    <img class="detail-img" src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/6_25_24_Sereniby-113-Edit.jpg?width=700" alt="Sereniby beside a sleeping baby’s crib" style="margin-top:14px">
+    <ul class="dlist">
+      <li><div class="ic"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/icon-airflow-symbol-with-recycling-arrows_1.svg" alt=""></div><p><b>Evenly circulates air</b> to help <b>battle CO2 build-up</b>, keeping baby’s air fresh &amp; clean</p></li>
+      <li><div class="ic"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/recycling-icon-with-fan-and-arrows_1.svg" alt=""></div><p><b>Hidden fan blades</b> keep little hands safe</p></li>
+      <li><div class="ic"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/security-icon-with-shield-and-lock-symbol_1.svg" alt=""></div><p>Thoughtfully designed <b>anti-tip</b> &amp; <b>power-cord management</b> provide added security</p></li>
+    </ul>
+  </section>
+
+  <!-- ============ PRECISION SENSORS ============ -->
+  <section class="sec-cream">
+    <h2 class="sec">Precision Sensors Protect Every Breath</h2>
+    <p class="sec-sub">When it comes to healthy air, <b>the smallest particles have the biggest impact.</b> Sereniby’s science-grade sensors constantly monitor air quality and temperature, springing into action the moment conditions dip.</p>
+    <div style="text-align:center"><a href="#buy" style="color:var(--purple);font-weight:700;text-decoration:underline;font-size:14px">👉 Learn More About Indoor Air Quality</a></div>
+  </section>
+
+  <!-- ============ SMART FEATURES ============ -->
+  <section>
+    <h2 class="sec">The Whole Family Rests Easier With Sereniby’s Smart Features</h2>
+    <div style="height:14px"></div>
+    <div class="sf-group">
+      <div class="gh"><div class="gn">1</div><div class="gt">Helping Your Baby Sleep Peacefully</div></div>
+      <ul>
+        <li><span class="ck">✓</span>Pure-red nightlight to support melatonin production &amp; restful sleep</li>
+        <li><span class="ck">✓</span>Gentle white noise naturally generated — no synthetic recordings</li>
+        <li><span class="ck">✓</span>Dark Mode eliminates light pollution to create an ideal sleep environment</li>
+      </ul>
+    </div>
+    <div class="sf-group">
+      <div class="gh"><div class="gn">2</div><div class="gt">Giving You Peace of Mind</div></div>
+      <ul>
+        <li><span class="ck">✓</span>Real-time air quality monitoring alerts keep you confident the air is clean</li>
+        <li><span class="ck">✓</span>Springs into action the moment air-quality dips, without you lifting a finger</li>
+        <li><span class="ck">✓</span>Filter health sensing ensures optimal performance without any guesswork</li>
+      </ul>
+    </div>
+    <div class="sf-group">
+      <div class="gh"><div class="gn">3</div><div class="gt">Establishing Healthy Habits</div></div>
+      <ul>
+        <li><span class="ck">✓</span>Set-it-and-forget-it scheduling seamlessly integrates into your routines</li>
+        <li><span class="ck">✓</span>Rise-to-wake lighting gently cues your toddler for healthy sleep habits</li>
+        <li><span class="ck">✓</span>Intuitive on-device controls empower everyone to participate</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ INVESTMENT ============ -->
+  <section class="sec-cream2">
+    <h2 class="sec">A Long-Term Investment in Your Child’s Health</h2>
+    <img class="detail-img" src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/6_25_24_Sereniby-142-Edit.jpg?width=700" alt="Toddler beside the Sereniby purifier" style="margin:14px 0 18px">
+    <div class="inv">
+      <div class="card"><h3>Exceptional Air Purification</h3><p>Not just for babies — this high-performance air purifier rivals the best on the market, delivering clean, healthy air across spaces up to 1,200 square feet.</p></div>
+      <div class="card"><h3>Energy Smart, Eco-Conscious</h3><p>Energy-efficient airflow design and a purpose-built motor deliver powerful performance while minimizing impact on the environment — and your electric bill.</p></div>
+      <div class="card"><h3>Grows with Your Child</h3><p>Modular, adaptable design transitions effortlessly from nursery to playroom to shared family spaces, providing clean, healthy air at every stage of your child’s growth.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ COMPARISON ============ -->
+  <section>
+    <h2 class="sec">Why Settle When You Can Have It All</h2>
+    <p class="sec-sub">One Device. Everything They Do — Only Better.</p>
+    <img class="compare-img" src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/Comparison_mobile-pfti.png?width=800" alt="Sereniby vs traditional air purifiers, fans, and noise &amp; light machines comparison">
+  </section>
+
+  <!-- ============ COMMUNITY ============ -->
+  <section class="sec-cream">
+    <h2 class="sec">Welcome To Our Sereniby Community</h2>
+    <p class="sec-sub">We love getting to know you. Please tag us @Sereniby_Official or share a review to tell us why clean air matters to your family.</p>
+    <div class="comm-grid">
+      <div class="cell"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/6_25_24_Sereniby-358-Edit.jpg?width=300" alt=""></div>
+      <div class="cell"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/6_25_24_Sereniby-236-Edit.jpg?width=300" alt=""></div>
+      <div class="cell"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/6_25_24_Sereniby-142-Edit.jpg?width=300" alt=""></div>
+      <div class="cell"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/6_25_24_Sereniby-113-Edit.jpg?width=300" alt=""></div>
+      <div class="cell"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/6_25_24_Sereniby-166-Edit.jpg?width=300" alt=""></div>
+      <div class="cell"><img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/6_25_24_Sereniby-102-Edit.jpg?width=300" alt=""></div>
+    </div>
+    <div class="comm-handle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#73378B" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#73378B" stroke="none"/></svg>@Sereniby_Official</div>
+  </section>
+
+  <!-- ============ CLOSING CTA ============ -->
+  <section class="closing">
+    <h2 class="sec">The Air Purifier Your Baby Deserves</h2>
+    <div class="stars" style="justify-content:center"><span class="s">★★★★★</span> 86 reviews</div>
+    <div class="price">$349.00</div>
+    <p class="fin" style="text-align:center">From <b>$31.50</b>/mo or 0% APR with <span class="shoppay">shop Pay</span></p>
+    <button class="btn-atc" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">Add to Cart</button>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:12px">Free Shipping · 30-Day Risk-Free Trial · 2-Year Warranty · HSA/FSA eligible</p>
+  </section>
+
+  <footer>
+    <img src="https://sereniby.com/cdn/shop/files/sereniby-logo-high-resolution.jpg" alt="Sereniby">
+    <div>The Air Purifier Your Baby Deserves.</div>
+  </footer>
+
+  <!-- ============ STICKY BUY BAR (SECONDARY FIX) ============ -->
+  <div class="stickybar" id="stickybar">
+    <img src="https://cdn.shopify.com/s/files/1/0755/9073/0019/files/sereniby-872533.jpg?width=120" alt="">
+    <div class="sinfo"><b>Nursery Purifier</b><span>$349.00</span></div>
+    <button onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">Add to Cart</button>
+  </div>
+
+</div>
+
+<script>
+  // ---- gallery thumbnails ----
+  var imgs = [
+    'sereniby-872533.jpg','sereniby-910066.jpg','sereniby-342472.jpg',
+    'sereniby-564818.jpg','sereniby-138575.jpg','sereniby-488565.jpg','sereniby-205168.jpg'
+  ];
+  var base = 'https://cdn.shopify.com/s/files/1/0755/9073/0019/files/';
+  var thumbs = document.getElementById('thumbs');
+  var mainImg = document.getElementById('mainImg');
+  imgs.forEach(function(f,i){
+    var t = document.createElement('img');
+    t.src = base + f + '?width=160';
+    if(i===0) t.className='active';
+    t.addEventListener('click', function(){
+      mainImg.src = base + f + '?width=900';
+      [].forEach.call(thumbs.children, function(c){c.className='';});
+      t.className='active';
+    });
+    thumbs.appendChild(t);
+  });
+
+  // ---- authority citation carousel ----
+  (function(){
+    var cites = document.querySelectorAll('.cite-track .cite');
+    var dots = document.querySelectorAll('.cite-dots i');
+    var idx = 0;
+    if(cites.length>1){
+      setInterval(function(){
+        cites[idx].style.display='none';
+        dots[idx].className='';
+        idx = (idx+1) % cites.length;
+        cites[idx].style.display='block';
+        dots[idx].className='on';
+      }, 3500);
+    }
+  })();
+
+  // ---- sticky buy bar (getBoundingClientRect-driven) ----
+  (function(){
+    var bar = document.getElementById('stickybar');
+    var hero = document.getElementById('buy');
+    function onScroll(){
+      var atc = hero.querySelector('.btn-atc');
+      var r = atc.getBoundingClientRect();
+      // show once the hero Add-to-Cart has scrolled above the viewport top
+      if(r.bottom < 0){ bar.classList.add('show'); }
+      else { bar.classList.remove('show'); }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  })();
+</script>
+</body>
+</html>
