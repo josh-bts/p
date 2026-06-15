@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lavender Jar Candle | Fontana Candle Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --ink:#1e2535;
+  --gold:#93772d;
+  --gold-d:#7c6325;
+  --cream:#f5efe3;
+  --tan:#e7d8bf;
+  --line:#e7e0d2;
+  --muted:#8a8475;
+  --star:#caa24a;
+  --serif:'Lora',Georgia,serif;
+  --sans:'Karla',-apple-system,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:var(--sans);color:var(--ink);background:#ded7c8;line-height:1.55;font-size:15px;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+a{color:inherit;text-decoration:none;}
+.serif{font-family:var(--serif);}
+
+.frame{max-width:390px;margin:0 auto;background:var(--bg);position:relative;overflow:hidden;min-height:100vh;}
+@media(min-width:600px){body{padding:26px 0;}.frame{box-shadow:0 18px 56px rgba(30,37,53,.22);border-radius:10px;min-height:auto;}}
+
+.announce{background:var(--gold);color:#fff;text-align:center;font-size:11.5px;font-weight:600;letter-spacing:.6px;padding:8px 12px;white-space:nowrap;overflow:hidden;}
+
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--line);}
+.hdr .burger{display:flex;flex-direction:column;gap:3.5px;width:20px;}
+.hdr .burger span{height:1.5px;background:var(--ink);}
+.hdr .logo{height:34px;width:auto;}
+.hdr-ic{display:flex;gap:14px;}
+.hdr-ic svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.5;}
+
+.crumb{padding:11px 16px 0;font-size:11px;color:var(--muted);letter-spacing:.2px;}
+.crumb b{color:var(--ink);font-weight:500;}
+
+/* gallery */
+.gallery{padding:8px 0 6px;}
+.gal-main{aspect-ratio:1/1;background:var(--cream);overflow:hidden;}
+.gal-main img{width:100%;height:100%;object-fit:cover;}
+.gal-thumbs{display:flex;gap:8px;padding:10px 16px 2px;overflow-x:auto;scrollbar-width:none;}
+.gal-thumbs::-webkit-scrollbar{display:none;}
+.gal-thumbs button{flex:0 0 56px;height:56px;border:1px solid var(--line);overflow:hidden;background:var(--cream);}
+.gal-thumbs button.active{border-color:var(--gold);}
+.gal-thumbs img{width:100%;height:100%;object-fit:cover;}
+
+/* buy zone */
+.buy{padding:16px 16px 18px;}
+.tagrow{display:flex;gap:8px;margin-bottom:8px;}
+.tag{font-size:9.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:30px;}
+.tag.best{background:var(--gold);color:#fff;}
+.tag.scent{background:var(--cream);color:var(--gold-d);}
+h1{font-family:var(--serif);font-size:27px;font-weight:600;line-height:1.1;margin-bottom:8px;}
+.rating{display:flex;align-items:center;gap:7px;margin-bottom:10px;font-size:12.5px;}
+.rating .stars{color:var(--star);letter-spacing:1px;font-size:14px;}
+.rating a{color:var(--muted);text-decoration:underline;text-underline-offset:2px;}
+.price{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:14px;}
+
+/* spec strip */
+.specs{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:16px;}
+.spec{flex:1;text-align:center;padding:10px 6px;border-right:1px solid var(--line);}
+.spec:last-child{border-right:none;}
+.spec .v{font-family:var(--serif);font-size:14px;font-weight:600;display:block;}
+.spec .l{font-size:9.5px;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-top:2px;display:block;}
+
+/* PRIMARY FIX: trust + scent confidence block at the buy box */
+.trust{background:var(--cream);border-radius:10px;padding:14px 15px;margin-bottom:16px;}
+.trust h3{font-family:var(--serif);font-size:15px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.trust h3 .seal{width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;font-size:10px;font-weight:700;flex:0 0 auto;}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;}
+.tline{display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.35;}
+.tline svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:2;flex:0 0 auto;margin-top:1px;}
+.scentbar{display:flex;align-items:center;gap:10px;margin-top:13px;padding-top:12px;border-top:1px solid var(--tan);}
+.scentbar .lab{font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--gold-d);white-space:nowrap;}
+.scentbar .meter{flex:1;height:5px;background:#e4dcc9;border-radius:3px;position:relative;}
+.scentbar .meter i{position:absolute;left:0;top:0;bottom:0;width:58%;background:var(--gold);border-radius:3px;}
+.scentbar .end{font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;}
+
+/* purchase options (SECONDARY FIX: subscribe & save) */
+.purchase{display:flex;flex-direction:column;gap:9px;margin-bottom:14px;}
+.popt{border:1.5px solid var(--line);border-radius:9px;padding:12px 13px;transition:.15s;position:relative;}
+.popt.active{border-color:var(--gold);background:#fcf9f2;}
+.popt-top{display:flex;align-items:center;gap:10px;}
+.popt .radio{width:18px;height:18px;border-radius:50%;border:2px solid #ccc6b6;flex:0 0 auto;position:relative;}
+.popt.active .radio{border-color:var(--gold);}
+.popt.active .radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--gold);}
+.popt .nm{flex:1;font-size:13.5px;font-weight:700;}
+.popt .pr{font-size:14px;font-weight:700;}
+.popt .pr .was{font-size:11px;color:var(--muted);text-decoration:line-through;margin-right:5px;font-weight:500;}
+.popt .save-tag{position:absolute;top:-8px;right:12px;background:var(--gold);color:#fff;font-size:9px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 8px;border-radius:30px;}
+.popt .sub{font-size:11px;color:var(--muted);margin-top:5px;padding-left:28px;}
+.freq{display:flex;align-items:center;gap:8px;margin-top:9px;padding-left:28px;}
+.freq.hide{display:none;}
+.freq select{font-family:inherit;font-size:11.5px;font-weight:600;border:1px solid var(--line);border-radius:6px;padding:6px 8px;background:#fff;}
+
+.qty-atc{display:flex;gap:9px;margin-bottom:10px;}
+.qty{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:6px;}
+.qty button{width:34px;height:50px;font-size:18px;}
+.qty span{width:26px;text-align:center;font-weight:600;}
+.atc{flex:1;background:var(--gold);color:#fff;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:8px;transition:.15s;}
+.atc:active{background:var(--gold-d);}
+.ship{text-align:center;font-size:11.5px;color:var(--muted);}
+
+/* sections */
+.section{padding:26px 16px;}
+.cream-bg{background:var(--cream);}
+.eyebrow{font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-d);text-align:center;margin-bottom:6px;}
+.sec-title{font-family:var(--serif);font-size:23px;font-weight:600;text-align:center;margin-bottom:16px;line-height:1.15;}
+.promise img{border-radius:10px;border:1px solid var(--line);}
+
+/* details */
+.details p{font-size:13.5px;color:#3f4456;line-height:1.65;margin-bottom:12px;}
+.details .ingredients{background:var(--cream);border-radius:9px;padding:13px 15px;font-size:12.5px;line-height:1.7;}
+.details .ingredients b{font-family:var(--serif);}
+
+/* accordions */
+.acc-item{border-bottom:1px solid var(--line);}
+.acc-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:15px 2px;font-family:var(--serif);font-size:14px;font-weight:600;text-align:left;}
+.acc-q .pm{width:14px;height:14px;position:relative;flex:0 0 auto;}
+.acc-q .pm::before,.acc-q .pm::after{content:"";position:absolute;background:var(--gold);}
+.acc-q .pm::before{top:6px;left:0;right:0;height:2px;}
+.acc-q .pm::after{left:6px;top:0;bottom:0;width:2px;transition:.2s;}
+.acc-item.open .pm::after{opacity:0;}
+.acc-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.acc-a p{font-size:12.5px;color:#4f5466;line-height:1.6;padding:0 2px 15px;}
+
+/* reviews */
+.rev-summary{text-align:center;}
+.rev-summary .big{font-family:var(--serif);font-size:44px;font-weight:600;line-height:1;}
+.rev-summary .stars{color:var(--star);font-size:17px;letter-spacing:2px;margin:4px 0;}
+.rev-summary .cnt{font-size:12px;color:var(--muted);}
+.rev-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px;}
+.rb{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--gold-d);background:#fff;border:1px solid var(--line);border-radius:30px;padding:6px 12px;}
+.rb svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:2;}
+
+/* cross-sell */
+.xgrid{display:flex;gap:11px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;}
+.xgrid::-webkit-scrollbar{display:none;}
+.xcard{flex:0 0 150px;}
+.xcard .xim{aspect-ratio:1/1;border-radius:9px;overflow:hidden;background:var(--cream);}
+.xcard .xim img{width:100%;height:100%;object-fit:cover;}
+.xcard h4{font-family:var(--serif);font-size:13px;font-weight:600;margin:9px 0 3px;line-height:1.25;}
+.xcard .xp{font-size:13px;font-weight:700;}
+.xcard .xadd{display:block;text-align:center;border:1.5px solid var(--gold);color:var(--gold-d);border-radius:6px;padding:8px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-top:8px;}
+
+/* footer */
+.foot{background:var(--ink);color:#b9bdc8;padding:28px 16px 32px;text-align:center;}
+.foot img{height:30px;margin:0 auto 12px;filter:brightness(0) invert(1);opacity:.92;}
+.foot .links{display:flex;flex-wrap:wrap;justify-content:center;gap:9px 16px;font-size:11px;margin-bottom:14px;}
+.foot .cp{font-size:10.5px;color:#7e8390;}
+
+/* sticky */
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:390px;background:#fff;border-top:1px solid var(--line);box-shadow:0 -5px 20px rgba(30,37,53,.12);padding:9px 12px;display:flex;align-items:center;gap:11px;z-index:50;transition:transform .26s ease;}
+.sticky.show{transform:translateX(-50%) translateY(0);}
+.sticky img{width:42px;height:42px;border-radius:6px;object-fit:cover;background:var(--cream);flex:0 0 auto;}
+.sticky .si{flex:1;min-width:0;}
+.sticky .sn{font-family:var(--serif);font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sticky .sp{font-size:11.5px;color:var(--muted);}
+.sticky .sp b{color:var(--ink);}
+.sticky .sbtn{background:var(--gold);color:#fff;font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;padding:13px 18px;border-radius:6px;white-space:nowrap;}
+.reveal{opacity:0;transform:translateY(12px);transition:.6s ease;}
+.reveal.in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+<div class="frame" id="frame">
+
+  <div class="announce">Free U.S. Shipping on Orders $70+</div>
+
+  <header class="hdr">
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <img class="logo" src="https://fontanacandlecompany.com/cdn/shop/files/2024_Fontana_Primary_Logo_Black.png" alt="Fontana Candle Co.">
+    <div class="hdr-ic">
+      <button aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg></button>
+      <button aria-label="Cart"><svg viewBox="0 0 24 24"><path d="M6 7h12l-1 14H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></button>
+    </div>
+  </header>
+
+  <div class="crumb">Home / All Non-Toxic Candles / <b>Lavender Jar Candle</b></div>
+
+  <section class="gallery">
+    <div class="gal-main"><img id="galImg" src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/Lavender_jar_GMA_shopify_2.png" alt="Lavender Jar Candle"></div>
+    <div class="gal-thumbs" id="galThumbs">
+      <button class="active" data-src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/Lavender_jar_GMA_shopify_2.png"><img src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/Lavender_jar_GMA_shopify_2.png" alt=""></button>
+      <button data-src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/web-78-Fontana_Candle_Company_r1_03F_8435.jpg"><img src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/web-78-Fontana_Candle_Company_r1_03F_8435.jpg" alt=""></button>
+      <button data-src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/web-1a-Fontana_Candle_Company_r1_03F_8886.jpg"><img src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/web-1a-Fontana_Candle_Company_r1_03F_8886.jpg" alt=""></button>
+      <button data-src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/web-68-Fontana_Candle_Company_r1_03F_8415.jpg"><img src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/web-68-Fontana_Candle_Company_r1_03F_8415.jpg" alt=""></button>
+      <button data-src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/web-80-Fontana_Candle_Company_r1_03F_8460.jpg"><img src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/web-80-Fontana_Candle_Company_r1_03F_8460.jpg" alt=""></button>
+    </div>
+  </section>
+
+  <section class="buy">
+    <div class="tagrow"><span class="tag best">Bestseller</span><span class="tag scent">Floral</span></div>
+    <h1 class="serif">Lavender Jar Candle</h1>
+    <div class="rating"><span class="stars">★★★★½</span> <b>4.57</b> <a href="#reviews">54 reviews</a></div>
+    <div class="price" id="priceTop">$25.99</div>
+
+    <div class="specs">
+      <div class="spec"><span class="v">9 oz</span><span class="l">Jar size</span></div>
+      <div class="spec"><span class="v">35–40 hrs</span><span class="l">Burn time</span></div>
+      <div class="spec"><span class="v">Moderate</span><span class="l">Scent throw</span></div>
+    </div>
+
+    <!-- PRIMARY FIX: non-toxic proof + scent confidence at the buy box -->
+    <div class="trust">
+      <h3><span class="seal">✓</span> MADE SAFE® certified — clean enough to breathe</h3>
+      <div class="trust-grid">
+        <div class="tline"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> 100% natural lavender essential oil</div>
+        <div class="tline"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Pure beeswax &amp; coconut oil base</div>
+        <div class="tline"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> No synthetic fragrance or paraffin</div>
+        <div class="tline"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Untreated wooden wick</div>
+      </div>
+      <div class="scentbar">
+        <span class="lab">Scent throw</span>
+        <span class="end">Subtle</span>
+        <span class="meter"><i></i></span>
+        <span class="end">Bold</span>
+      </div>
+    </div>
+
+    <!-- SECONDARY FIX: subscribe & save -->
+    <div class="purchase" id="purchase">
+      <div class="popt active" data-mode="once">
+        <div class="popt-top"><span class="radio"></span><span class="nm">One-time purchase</span><span class="pr">$25.99</span></div>
+      </div>
+      <div class="popt" data-mode="sub">
+        <span class="save-tag">Save 15%</span>
+        <div class="popt-top"><span class="radio"></span><span class="nm">Subscribe &amp; Save</span><span class="pr"><span class="was">$25.99</span>$22.09</span></div>
+        <p class="sub">Never run out of your favorite scent. Skip or cancel anytime.</p>
+        <div class="freq hide" id="freq">
+          <span style="font-size:11.5px;font-weight:600;">Deliver every</span>
+          <select id="freqSel"><option>1 month</option><option>2 months</option><option>3 months</option></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="qty-atc">
+      <div class="qty"><button id="qm" aria-label="Decrease">−</button><span id="qv">1</span><button id="qp" aria-label="Increase">+</button></div>
+      <button class="atc" id="atc">Add to Cart · <span id="atcPrice">$25.99</span></button>
+    </div>
+    <div class="ship">Free U.S. shipping on orders $70+ · One Year Burn Guarantee</div>
+  </section>
+
+  <!-- Our Promise comparison (real brand asset) -->
+  <section class="section cream-bg promise">
+    <div class="eyebrow">The Fontana Difference</div>
+    <h2 class="sec-title serif">Our promise</h2>
+    <img src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/Website_Comparison_Chart.png" alt="Fontana vs others — non-toxic candle comparison">
+  </section>
+
+  <!-- Details -->
+  <section class="section details">
+    <div class="eyebrow">Details</div>
+    <h2 class="sec-title serif">Calm in a jar</h2>
+    <p>Lavender is known for its calming and balancing properties with a clean, pure aroma. This certified non-toxic candle is made from 100% natural lavender essential oils, steam-distilled for the highest quality — ideal for winding down, meditation, or simply filling your home with a gentle, refreshing scent.</p>
+    <p style="font-style:italic;color:var(--gold-d);">If you love lavender but want a bolder floral throw, try our Wildflower Candle.</p>
+    <div class="ingredients">
+      <b>Ingredients</b><br>
+      Beeswax (Apis Mellifera) · Coconut Oil (Cocos Nucifera) · Lavender Oil (Lavandula Angustifolia) · Untreated wooden wick.<br>
+      <span style="color:var(--gold-d);font-weight:600;">MADE SAFE® certified</span> — free of any and all toxins known or suspected to harm human health, animals, or ecosystems.
+    </div>
+  </section>
+
+  <!-- Accordions -->
+  <section class="section" style="padding-top:0;">
+    <div class="acc-item">
+      <button class="acc-q">How to burn it right<span class="pm"></span></button>
+      <div class="acc-a"><p>The first burn matters: let the melted wax reach the edge of the jar — about 2–3+ hours — to set the foundation for an even, optimal burn every time after.</p></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-q">Care + safety<span class="pm"></span></button>
+      <div class="acc-a"><p>Essential-oil candles carry a lighter, more natural scent than synthetic fragrance candles — perfect for those with sensitivities, and for anyone who wants traditional candle ambiance without the toxins. Trim the wooden wick and keep within sight while burning.</p></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-q">One Year Burn Guarantee<span class="pm"></span></button>
+      <div class="acc-a"><p>We stand behind every candle. If you're not satisfied within a year, we'll make it right.</p></div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-q">Shipping &amp; returns<span class="pm"></span></button>
+      <div class="acc-a"><p>Free U.S. shipping on orders $70+. Easy exchanges for store credit. The 9 oz straight-sided jar has a 7.49 oz net weight and a 35–40 hour burn time.</p></div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="section cream-bg" id="reviews">
+    <div class="eyebrow">Real Reviews</div>
+    <h2 class="sec-title serif">What customers say</h2>
+    <div class="rev-summary reveal">
+      <div class="big">4.57</div>
+      <div class="stars">★★★★½</div>
+      <div class="cnt">Based on 54 reviews</div>
+      <div class="rev-badges">
+        <span class="rb"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Naturally Scented</span>
+        <span class="rb"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> 100% Transparent</span>
+        <span class="rb"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Cruelty Free</span>
+        <span class="rb"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Third-Party Certified</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cross-sell -->
+  <section class="section">
+    <div class="eyebrow">Pairs Well With</div>
+    <h2 class="sec-title serif">Complete the ritual</h2>
+    <div class="xgrid">
+      <div class="xcard">
+        <div class="xim"><img src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/web-57-FontanaCandleCompany_r1_03D_4279.jpg" alt="Lavender Noir Glass Candle"></div>
+        <h4>Lavender Noir Glass Candle</h4><div class="xp">$34.99</div><a class="xadd" href="#">Add</a>
+      </div>
+      <div class="xcard">
+        <div class="xim"><img src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/web-73-Fontana_Candle_Company_r1_03F_8436.jpg" alt="Lavender Vanilla Tangerine Jar Candle"></div>
+        <h4>Lavender Vanilla Tangerine</h4><div class="xp">$25.99</div><a class="xadd" href="#">Add</a>
+      </div>
+      <div class="xcard">
+        <div class="xim"><img src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/web-74-Fontana_Candle_Company_r1_03F_8434.jpg" alt="Lemongrass Eucalyptus Jar Candle"></div>
+        <h4>Lemongrass Eucalyptus</h4><div class="xp">$25.99</div><a class="xadd" href="#">Add</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <img src="https://fontanacandlecompany.com/cdn/shop/files/2024_Fontana_Primary_Logo_Black.png" alt="Fontana Candle Co.">
+    <div class="links"><a href="#">All Candles</a><a href="#">Our Story</a><a href="#reviews">Reviews</a><a href="#">Subscribe</a><a href="#">Contact</a></div>
+    <div class="cp">Non-toxic home scenting · MADE SAFE® certified · © Fontana Candle Co.</div>
+  </footer>
+
+  <div class="sticky" id="sticky">
+    <img src="https://cdn.shopify.com/s/files/1/0416/6795/2802/files/Lavender_jar_GMA_shopify_2.png" alt="">
+    <div class="si"><div class="sn">Lavender Jar Candle</div><div class="sp"><b id="sPrice">$25.99</b> · <span id="sMode">One-time</span></div></div>
+    <button class="sbtn" id="sBtn">Add</button>
+  </div>
+
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const PRICE=25.99, SUB=+(25.99*0.85).toFixed(2);
+let mode='once', qty=1;
+
+// gallery
+$('#galThumbs').querySelectorAll('button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    $('#galThumbs').querySelector('.active').classList.remove('active');
+    b.classList.add('active'); $('#galImg').src=b.dataset.src;
+  });
+});
+
+// purchase mode
+$('#purchase').querySelectorAll('.popt').forEach(p=>{
+  p.addEventListener('click',()=>{
+    $('#purchase').querySelector('.active').classList.remove('active');
+    p.classList.add('active'); mode=p.dataset.mode;
+    $('#freq').classList.toggle('hide', mode!=='sub');
+    render();
+  });
+});
+function unit(){ return mode==='sub'?SUB:PRICE; }
+function render(){
+  const u=unit();
+  $('#priceTop').innerHTML = mode==='sub' ? '<span style="font-size:14px;color:#8a8475;text-decoration:line-through;margin-right:6px;">$'+PRICE.toFixed(2)+'</span>$'+u.toFixed(2) : '$'+PRICE.toFixed(2);
+  $('#atcPrice').textContent='$'+(u*qty).toFixed(2);
+  $('#sPrice').textContent='$'+(u*qty).toFixed(2);
+  $('#sMode').textContent = mode==='sub'?'Subscribe · save 15%':'One-time';
+  $('#sBtn').textContent = mode==='sub'?'Subscribe':'Add';
+}
+$('#qm').addEventListener('click',()=>{if(qty>1){qty--;$('#qv').textContent=qty;render();}});
+$('#qp').addEventListener('click',()=>{qty++;$('#qv').textContent=qty;render();});
+
+let cart=0;
+function add(){ cart+=qty; const b=$('#atc'); const t=b.innerHTML; b.innerHTML='✓ Added'; setTimeout(()=>b.innerHTML=t,1100); }
+$('#atc').addEventListener('click',add); $('#sBtn').addEventListener('click',add);
+
+// accordions
+document.querySelectorAll('.acc-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const it=q.closest('.acc-item'),a=it.querySelector('.acc-a'),open=it.classList.contains('open');
+    if(open){it.classList.remove('open');a.style.maxHeight=null;}else{it.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+  });
+});
+
+// sticky
+const buyEl=$('.buy'), sticky=$('#sticky');
+function onScroll(){const r=buyEl.getBoundingClientRect();sticky.classList.toggle('show', r.bottom<0);}
+window.addEventListener('scroll',onScroll,{passive:true});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+render(); onScroll();
+</script>
+</body>
+</html>
