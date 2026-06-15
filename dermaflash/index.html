@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>DERMAFLASH LUXE+ | Sonic Dermaplaning + Peach Fuzz Removal Set</title>
+<style>
+/* ===== Brand fonts (real DERMAFLASH webfonts) ===== */
+@font-face{font-family:'HaasGrotDisp';src:url('https://dermaflash.com/cdn/shop/t/570/assets/HaasGrotDisp-55Roman.woff2?v=89902190693643024461754524369') format('woff2');font-weight:300 400;font-display:swap}
+@font-face{font-family:'HaasGrotDisp';src:url('https://dermaflash.com/cdn/shop/t/570/assets/HaasGrotDisp-65Medium.woff2?v=150051673960375534181754524370') format('woff2');font-weight:500 600;font-display:swap}
+@font-face{font-family:'HaasGrotDisp';src:url('https://dermaflash.com/cdn/shop/t/570/assets/HaasGrotDisp-75Bold.woff2?v=353385363357058251754524367') format('woff2');font-weight:700 800;font-display:swap}
+@font-face{font-family:'HaasGrotDisp';src:url('https://dermaflash.com/cdn/shop/t/570/assets/HaasGrotDisp-95Black.woff2?v=40019087926954031441754524368') format('woff2');font-weight:900;font-display:swap}
+@font-face{font-family:'Austin';src:url('https://dermaflash.com/cdn/shop/t/570/assets/Austin-Light.woff2?v=45129297401876541791754524368') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Austin';src:url('https://dermaflash.com/cdn/shop/t/570/assets/Austin-LightItalic.woff2?v=95918038118951907831754524369') format('woff2');font-weight:300;font-style:italic;font-display:swap}
+
+:root{
+  --wine:#532035; --taupe:#5D514E; --ink:#464545; --pink:#FE42BD;
+  --cream:#F7EFEA; --cream2:#FBF6F3; --line:#E7DCD7; --muted:#8a807d;
+  --sea:#D5E9E1;
+  --sans:'HaasGrotDisp',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --serif:'Austin','Times New Roman',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#e9e3df;line-height:1.45;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+
+/* ===== Phone frame (desktop shows centered mobile layout) ===== */
+.phone{max-width:390px;margin:0 auto;background:#fff;position:relative;overflow:hidden;min-height:100vh}
+@media(min-width:600px){
+  body{padding:24px 0}
+  .phone{box-shadow:0 24px 70px rgba(60,30,40,.22);border-radius:26px;min-height:auto;overflow:visible}
+  .phone>.announce{border-radius:26px 26px 0 0}
+}
+
+/* ===== Announcement bar ===== */
+.announce{background:var(--wine);color:#fff;text-align:center;font-size:13px;letter-spacing:.4px;padding:9px 14px;white-space:nowrap;overflow:hidden;font-weight:500}
+.announce span{display:inline-flex;align-items:center;gap:8px}
+.announce svg{flex:none}
+
+/* ===== Header ===== */
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:13px 18px 12px;background:#fff;position:sticky;top:0;z-index:60}
+.hdr .ico{width:24px;height:24px;color:var(--taupe)}
+.logo{width:178px;height:24px;background:url('https://dermaflash.com/cdn/shop/t/570/assets/sprite-icon-cf2f088a.svg') no-repeat;background-position:0 -655px;background-size:178px 1141px}
+
+/* ===== Gallery ===== */
+.gallery{position:relative;background:#f1ebe8}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.slides::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:1/0.82;background:#f1ebe8;display:flex;align-items:center;justify-content:center}
+.slide img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;top:14px;left:14px;width:78px;height:78px;z-index:3}
+.dots{display:flex;gap:7px;justify-content:center;padding:9px 0 2px}
+.dot{width:8px;height:8px;border-radius:50%;background:#d8cdc8;transition:.25s}
+.dot.on{background:var(--wine);transform:scale(1.15)}
+.thumbs{display:flex;gap:8px;padding:5px 18px 2px;overflow-x:auto;scrollbar-width:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumb{flex:0 0 50px;height:50px;border-radius:10px;overflow:hidden;border:1.5px solid transparent;background:#f1ebe8}
+.thumb.on{border-color:var(--wine)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+
+/* ===== Buy zone ===== */
+.buy{background:var(--cream);padding:14px 20px 22px}
+.rating{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.stars{color:var(--pink);font-size:15px;letter-spacing:1px}
+.rating b{font-weight:700;font-size:14px;color:var(--taupe)}
+.rating a{font-size:13px;color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+h1.title{font-family:var(--sans);font-weight:800;font-size:30px;letter-spacing:.6px;text-transform:uppercase;color:var(--taupe);line-height:1.04}
+.subtitle{font-family:var(--serif);font-weight:300;font-size:20px;color:var(--taupe);margin-top:5px;letter-spacing:.2px}
+.priceline{display:flex;align-items:baseline;gap:10px;margin:11px 0 4px}
+.price{font-size:22px;font-weight:800;color:var(--taupe)}
+.afterpay{font-size:12px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.afterpay img{height:15px;display:inline-block}
+
+.colorlbl{margin:13px 0 9px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--taupe)}
+.colorlbl em{font-family:var(--serif);font-style:italic;font-weight:300;text-transform:none;letter-spacing:0;font-size:17px;margin-left:6px;color:var(--ink)}
+.swatches{display:flex;gap:14px;margin-bottom:6px}
+.sw{width:42px;height:42px;border-radius:50%;position:relative;border:1px solid rgba(0,0,0,.08);transition:.2s}
+.sw.on{box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--wine)}
+.sw[data-sold]::after{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,transparent 46%,#b9544e 46%,#b9544e 54%,transparent 54%)}
+
+.atc{width:100%;background:var(--wine);color:#fff;font-weight:700;font-size:16px;letter-spacing:1px;text-transform:uppercase;padding:18px;border-radius:30px;margin-top:14px;transition:.18s;display:flex;align-items:center;justify-content:center;gap:10px}
+.atc:active{transform:scale(.985)}
+.atc small{font-weight:400;opacity:.85;text-transform:none;letter-spacing:0}
+.installments{text-align:center;font-size:12.5px;color:var(--muted);margin-top:12px;display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+.installments img{height:15px}
+
+.trust{display:grid;grid-template-columns:1fr 1fr;gap:16px 14px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.trust .t{display:flex;align-items:center;gap:11px;font-size:15px;color:var(--taupe)}
+.trust .t img{width:30px;height:30px;flex:none}
+.trust .t em{font-family:var(--serif);font-style:italic;font-weight:300;margin-right:2px}
+
+/* ===== Bundle + Save (SURFACED near buy box) ===== */
+.bundle{background:#fff;padding:24px 20px 10px}
+.bundle .eyebrow{font-family:var(--serif);font-weight:300;font-size:27px;color:var(--taupe);margin-bottom:3px}
+.bundle .eyebrow b{font-weight:300;font-style:italic}
+.bundle .sub{font-size:12.5px;color:var(--muted);margin-bottom:16px;letter-spacing:.3px}
+.bcard{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:12px;background:var(--cream2)}
+.bcard .pic{width:62px;height:62px;border-radius:10px;background:#fff;flex:none;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bcard .pic img{width:100%;height:100%;object-fit:contain}
+.bcard .info{flex:1;min-width:0}
+.bcard .nm{font-weight:700;font-size:13.5px;letter-spacing:.4px;color:var(--taupe);text-transform:uppercase;line-height:1.15}
+.bcard .ds{font-size:12px;color:var(--muted);margin-top:2px}
+.bcard .pr{display:flex;align-items:baseline;gap:7px;margin-top:5px}
+.bcard .pr .now{font-weight:800;color:var(--wine);font-size:15px}
+.bcard .pr .was{text-decoration:line-through;color:#b3a8a4;font-size:13px}
+.bcard .pr .save{font-size:10.5px;font-weight:700;color:#fff;background:var(--pink);border-radius:20px;padding:2px 7px;letter-spacing:.3px}
+.bcard .add{align-self:center;border:1.5px solid var(--wine);color:var(--wine);font-weight:700;font-size:12px;letter-spacing:1px;border-radius:22px;padding:9px 16px;flex:none}
+.bcard .add:active{background:var(--wine);color:#fff}
+
+/* ===== Generic section ===== */
+section{padding:34px 20px}
+.eyebrow{text-transform:uppercase;letter-spacing:2.5px;font-size:11.5px;font-weight:700;color:var(--pink);text-align:center;margin-bottom:8px}
+.h2{font-family:var(--serif);font-weight:300;font-size:32px;line-height:1.12;color:var(--taupe);text-align:center}
+.h2.left{text-align:left}
+.lede{text-align:center;color:var(--ink);font-size:15px;max-width:330px;margin:12px auto 0;line-height:1.55}
+
+/* social proof / #1 */
+.proof{background:var(--wine);color:#fff;text-align:center;padding:32px 22px}
+.proof .num{font-family:var(--serif);font-weight:300;font-size:46px;line-height:1}
+.proof h3{font-family:var(--serif);font-weight:300;font-size:26px;margin-bottom:10px}
+.proof p{font-size:14.5px;opacity:.92;max-width:300px;margin:0 auto;line-height:1.55}
+.vidwrap{margin-top:20px;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:9/13;max-height:430px}
+.vidwrap video{width:100%;height:100%;object-fit:cover}
+
+/* clinically proven stats */
+.stats{background:var(--cream);text-align:center}
+.statgrid{display:flex;gap:10px;margin-top:22px}
+.statgrid .s{flex:1;background:#fff;border-radius:14px;padding:18px 8px}
+.statgrid .s .b{font-family:var(--serif);font-weight:300;font-size:38px;color:var(--wine);line-height:1}
+.statgrid .s .l{font-size:11.5px;color:var(--taupe);margin-top:7px;line-height:1.3}
+.foot{font-size:10.5px;color:var(--muted);margin-top:16px;line-height:1.5}
+
+/* comparison */
+.compare{background:#fff}
+.ctable{margin-top:20px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.crow{display:grid;grid-template-columns:1fr 78px 78px;align-items:center;border-bottom:1px solid var(--line)}
+.crow:last-child{border-bottom:none}
+.chead{background:var(--cream)}
+.chead .c{text-align:center;font-weight:700;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--taupe);padding:14px 4px}
+.chead .c.brand{color:var(--wine);font-weight:800}
+.crow .feat{padding:13px 13px;font-size:12.5px;line-height:1.35}
+.crow .feat b{display:block;font-weight:700;color:var(--taupe);font-size:12px;letter-spacing:.3px;text-transform:uppercase;margin-bottom:2px}
+.crow .feat span{color:var(--muted);font-size:11.5px}
+.cell{text-align:center;font-size:18px}
+.cell.brand{background:#fbf2f8;height:100%;display:flex;align-items:center;justify-content:center}
+.yes{color:#2e8b6f;font-weight:700}
+.no{color:#c9b8b2}
+
+/* sonic edge */
+.edge{background:var(--cream)}
+.edgelist{margin-top:18px;display:flex;flex-direction:column;gap:2px}
+.edgelist .e{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--taupe)}
+.edgelist .e:last-child{border-bottom:none}
+.edgelist .e .n{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--pink);line-height:1.2;flex:none;width:22px}
+.edgeimg{margin-top:20px;border-radius:16px;overflow:hidden}
+
+/* steps */
+.steps{background:#fff}
+.step{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:none}
+.step .no{width:38px;height:38px;border-radius:50%;background:var(--wine);color:#fff;font-family:var(--serif);font-size:19px;display:flex;align-items:center;justify-content:center;flex:none}
+.step h4{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--taupe);margin-bottom:4px}
+.step p{font-size:13.5px;color:var(--ink);line-height:1.5}
+
+/* myths */
+.myths{background:var(--cream)}
+.myth{background:#fff;border-radius:14px;margin-top:12px;overflow:hidden;border:1px solid var(--line)}
+.myth .q{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 16px;font-size:14px}
+.myth .q .tag{font-size:10px;font-weight:700;letter-spacing:1px;color:var(--pink);display:block;margin-bottom:4px}
+.myth .q .mt{font-weight:600;color:var(--taupe)}
+.myth .q .pm{font-size:22px;color:var(--wine);flex:none;transition:.25s;font-weight:300}
+.myth.open .q .pm{transform:rotate(45deg)}
+.myth .a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.myth .a div{padding:0 16px 16px;font-size:13.5px;color:var(--ink);line-height:1.55}
+.myth .a .tag{font-size:10px;font-weight:700;letter-spacing:1px;color:#2e8b6f;display:block;margin-bottom:4px}
+
+/* real women */
+.women{background:#fff}
+.portraits{display:flex;gap:10px;margin-top:18px}
+.portraits img{flex:1;border-radius:14px;aspect-ratio:3/4;object-fit:cover}
+.quote{background:var(--wine);color:#fff;border-radius:18px;padding:28px 24px;margin-top:22px;text-align:center}
+.quote .mark{font-family:var(--serif);font-size:50px;line-height:.4;opacity:.5}
+.quote p{font-family:var(--serif);font-weight:300;font-size:20px;line-height:1.4;margin:6px 0 16px}
+.quote cite{font-style:normal;font-size:11px;letter-spacing:1px;opacity:.85}
+
+/* awards */
+.awards{background:var(--cream);text-align:center}
+.awardimg{margin-top:6px;border-radius:16px;overflow:hidden}
+
+/* reviews */
+.reviews{background:#fff}
+.rsummary{display:flex;gap:18px;align-items:center;margin-top:18px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.rsummary .big{text-align:center;flex:none}
+.rsummary .big .n{font-family:var(--serif);font-weight:300;font-size:52px;color:var(--taupe);line-height:.9}
+.rsummary .big .st{color:var(--pink);font-size:15px;letter-spacing:1px;margin-top:4px}
+.rsummary .big .c{font-size:11.5px;color:var(--muted);margin-top:3px}
+.histo{flex:1}
+.hrow{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);margin:2px 0}
+.hrow .lab{width:10px;text-align:right}
+.hbar{flex:1;height:6px;background:#eee4df;border-radius:4px;overflow:hidden}
+.hbar i{display:block;height:100%;background:var(--pink)}
+.hrow .ct{width:26px}
+.recommend{text-align:center;font-size:13px;color:var(--taupe);padding:14px 0;border-bottom:1px solid var(--line)}
+.recommend b{font-weight:800}
+.subscores{display:flex;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.subscores .ss{flex:1}
+.subscores .ss .t{font-size:12px;color:var(--taupe);font-weight:600;display:flex;justify-content:space-between}
+.subscores .ss .track{height:5px;background:#eee4df;border-radius:4px;margin-top:6px;overflow:hidden}
+.subscores .ss .track i{display:block;height:100%;background:var(--wine)}
+.pills{display:flex;gap:8px;flex-wrap:wrap;padding:16px 0 4px}
+.pill{font-size:11.5px;border:1px solid var(--line);border-radius:20px;padding:7px 13px;color:var(--taupe);background:var(--cream2)}
+.pill.on{background:var(--wine);color:#fff;border-color:var(--wine)}
+.review{padding:18px 0;border-bottom:1px solid var(--line)}
+.review .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.review .st{color:var(--pink);font-size:13px;letter-spacing:1px}
+.review .when{font-size:11.5px;color:var(--muted)}
+.review .who{font-size:12.5px;font-weight:700;color:var(--taupe);margin-bottom:6px}
+.review .who .vb{font-weight:500;color:#2e8b6f;font-size:10.5px;margin-left:6px;letter-spacing:.3px}
+.review h5{font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--taupe);margin-bottom:4px}
+.review p{font-size:13.5px;color:var(--ink);line-height:1.5}
+.review .resp{background:var(--cream);border-radius:12px;padding:12px 14px;margin-top:10px;font-size:12.5px;color:var(--ink);line-height:1.5}
+.review .resp b{display:block;font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--wine);margin-bottom:4px}
+.review .helpful{margin-top:10px;font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:12px}
+.review .helpful span{display:inline-flex;align-items:center;gap:4px}
+.rmore{width:100%;border:1.5px solid var(--wine);color:var(--wine);font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;border-radius:26px;padding:15px;margin-top:18px}
+
+/* faq */
+.faq{background:var(--cream)}
+.qa{border-bottom:1px solid var(--line)}
+.qa .qh{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 2px;font-size:14.5px;font-weight:600;color:var(--taupe)}
+.qa .qh .pm{font-size:22px;font-weight:300;color:var(--wine);flex:none;transition:.25s}
+.qa.open .qh .pm{transform:rotate(45deg)}
+.qa .ans{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.qa .ans div{padding:0 2px 18px;font-size:13.5px;color:var(--ink);line-height:1.55}
+
+/* goes well with */
+.cross{background:#fff}
+.xgrid{display:flex;gap:12px;overflow-x:auto;margin-top:18px;scrollbar-width:none;padding-bottom:4px}
+.xgrid::-webkit-scrollbar{display:none}
+.xcard{flex:0 0 150px}
+.xcard .pic{background:var(--cream);border-radius:14px;aspect-ratio:1/1;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+.xcard .pic img{width:100%;height:100%;object-fit:contain}
+.xcard .tagchip{position:absolute;top:8px;left:8px;font-size:9px;font-weight:700;letter-spacing:.4px;background:var(--pink);color:#fff;padding:3px 7px;border-radius:14px}
+.xcard .tagchip.sold{background:#9a8f8b}
+.xcard .nm{font-size:12px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:var(--taupe);margin-top:10px;line-height:1.2}
+.xcard .ds{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.3}
+.xcard .pr{font-size:13px;font-weight:700;color:var(--wine);margin-top:6px}
+
+/* footer */
+footer{background:var(--wine);color:#fff;text-align:center;padding:34px 22px 38px}
+footer .logo{margin:0 auto 16px;filter:brightness(0) invert(1);opacity:.95;background-position:0 -655px}
+footer p{font-size:12px;opacity:.8;line-height:1.6;max-width:300px;margin:0 auto}
+footer .links{display:flex;gap:18px;justify-content:center;font-size:12px;margin:16px 0;flex-wrap:wrap;opacity:.9}
+
+/* sticky buy bar */
+.stickybar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:390px;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(60,30,40,.1);padding:11px 16px;display:flex;align-items:center;gap:12px;z-index:80;transform:translateX(-50%) translateY(120%);transition:transform .3s ease}
+.stickybar.show{transform:translateX(-50%) translateY(0)}
+.stickybar .sp{width:46px;height:46px;border-radius:9px;background:var(--cream);overflow:hidden;flex:none}
+.stickybar .sp img{width:100%;height:100%;object-fit:contain}
+.stickybar .si{flex:1;min-width:0}
+.stickybar .si .nm{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--taupe);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stickybar .si .pr{font-size:13px;font-weight:800;color:var(--wine)}
+.stickybar .sb{background:var(--wine);color:#fff;font-weight:700;font-size:13px;letter-spacing:.6px;text-transform:uppercase;padding:13px 20px;border-radius:24px;flex:none}
+.pagepad{height:74px}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <!-- Announcement -->
+  <div class="announce"><span>
+    <svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M1 3h10v7H1zM11 5h4l3 3v2h-7z" stroke="#fff" stroke-width="1.2"/><circle cx="5" cy="11" r="1.6" stroke="#fff" stroke-width="1.2"/><circle cx="15" cy="11" r="1.6" stroke="#fff" stroke-width="1.2"/></svg>
+    Free shipping on all orders
+  </span></div>
+
+  <!-- Header -->
+  <header class="hdr">
+    <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <div class="logo" aria-label="DERMAFLASH"></div>
+    <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M6 8h12l-1 12H7L6 8z" stroke="currentColor" stroke-width="1.5"/><path d="M9 8a3 3 0 016 0" stroke="currentColor" stroke-width="1.5"/></svg>
+  </header>
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <img class="badge" src="https://dermaflash.com/cdn/shop/files/NB_Award_Seal_2026_180x.png" alt="NewBeauty 2026 Award Winner">
+    <div class="slides" id="slides">
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0348/3156/4940/products/DermaflashLuxe_PopPink_001_3x_623cbe91-4e89-4821-9e5f-3c875b47485d.png" alt="DERMAFLASH LUXE+ Pop Pink device"></div>
+      <div class="slide"><img src="https://dermaflash.com/cdn/shop/files/Dermaflash_Luxe_Pop_Pink_002_3x_5b67ddfd-3bdd-45e4-88d8-731971278c06_1.png" alt="Removing peach fuzz and dead skin cells"></div>
+      <div class="slide"><img src="https://dermaflash.com/cdn/shop/files/Dermaflash_Luxe_Pop_Pink_004_2x_ec451e0c-2061-45a6-b70d-7ddf23090c2d_1.png" alt="Safe and gentle — Safety Cage, MicroFine Edge, 14K sonic vibrations"></div>
+      <div class="slide"><img src="https://dermaflash.com/cdn/shop/files/Dermaflash_Luxe_Pop_Pink_008_3x_c10cdd16-ff8f-470f-ac48-0dfe05888f47_1.png" alt="Set includes LUXE+ device, 4 MicroFine Edges, PREFLASH Cleanser, charging cable + base"></div>
+    </div>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="thumbs" id="thumbs"></div>
+
+  <!-- BUY ZONE (rating, title, price, color, ATC all surfaced together) -->
+  <div class="buy">
+    <div class="rating">
+      <span class="stars">★★★★★</span>
+      <b>4.8</b>
+      <a href="#reviews">(937 reviews)</a>
+    </div>
+    <h1 class="title">DERMAFLASH LUXE+</h1>
+    <div class="subtitle">Sonic Dermaplaning + Peach Fuzz Removal Set</div>
+
+    <div class="priceline"><span class="price">$199</span></div>
+
+    <div class="colorlbl">Pick a color: <em id="colorName">Pop Pink</em></div>
+    <div class="swatches" id="swatches">
+      <button class="sw on" style="background:#FE42BD" data-name="Pop Pink" data-img="https://cdn.shopify.com/s/files/1/0348/3156/4940/products/DermaflashLuxe_PopPink_001_3x_623cbe91-4e89-4821-9e5f-3c875b47485d.png" aria-label="Pop Pink"></button>
+      <button class="sw" style="background:#F3D9DD" data-name="Blush" data-img="https://cdn.shopify.com/s/files/1/0348/3156/4940/files/DermaflashLuxe_Blush_001_3x_cd6d12f9-925b-40f0-98a5-26edf88eb021.png" aria-label="Blush"></button>
+      <button class="sw" style="background:#D0C9CA" data-name="Stone" data-img="https://cdn.shopify.com/s/files/1/0348/3156/4940/products/DermaflashLuxe_Stone_001_3x_4fe02a69-2fdf-4d7f-8627-bdd32f0ff539.png" aria-label="Stone"></button>
+      <button class="sw" style="background:#D5E9E1" data-name="Sea Foam" data-img="https://cdn.shopify.com/s/files/1/0348/3156/4940/products/DermaflashLuxe_Seafoam_001_3x_ee9745de-af7b-4229-b68d-d2acb12e42ff.png" aria-label="Sea Foam"></button>
+    </div>
+
+    <button class="atc" id="atc">Add to Cart</button>
+    <div class="installments">or 4 interest-free installments of $49.75 by
+      <img src="https://dermaflash.com/cdn/shop/files/after-pay_20x.svg" alt="Afterpay"></div>
+
+    <div class="trust">
+      <div class="t"><img src="https://dermaflash.com/cdn/shop/files/Product_Page_Icons_-_Instant_Results_39x.svg" alt="">Instant Results</div>
+      <div class="t"><img src="https://dermaflash.com/cdn/shop/files/Product_Page_Icons_-_No_Nicks_or_Cuts_30x.svg" alt=""><span><em>No</em> Nicks or Cuts</span></div>
+      <div class="t"><img src="https://dermaflash.com/cdn/shop/files/Product_Page_Icons_-_Free_Shipping_39x.svg" alt="">Free Shipping</div>
+      <div class="t"><img src="https://dermaflash.com/cdn/shop/files/Product_Page_Icons_-_Money_Back_29x.svg" alt="">60-Day Risk-Free Trial</div>
+    </div>
+  </div>
+
+  <!-- BUNDLE + SAVE 25% (surfaced right at the buy decision) -->
+  <div class="bundle">
+    <div class="eyebrow">Bundle + <b>Save 25%</b></div>
+    <div class="sub">Add a set and save — applied automatically at checkout</div>
+    <div class="bcard">
+      <div class="pic"><img src="https://dermaflash.com/cdn/shop/files/LUXE_DP_Stone_Serum_TonerGiftSet.png" alt="Ultimate Sonic Skincare Set"></div>
+      <div class="info">
+        <div class="nm">Ultimate Sonic Skincare Set</div>
+        <div class="ds">Your Ultimate Sonic Device Duo</div>
+        <div class="pr"><span class="now">$224</span><span class="was">$298</span><span class="save">SAVE 25%</span></div>
+      </div>
+      <button class="add">Add</button>
+    </div>
+    <div class="bcard">
+      <div class="pic"><img src="https://dermaflash.com/cdn/shop/articles/Adobe_Express_-_file_47_ff82d6f6-3752-4bba-98e4-30246efab650.jpg" alt="LUXE+ and Serum Set"></div>
+      <div class="info">
+        <div class="nm">LUXE+ and Serum Set</div>
+        <div class="ds">Your De-fuzz + Glow Duo</div>
+        <div class="pr"><span class="now">$200</span><span class="was">$267</span><span class="save">SAVE 25%</span></div>
+      </div>
+      <button class="add">Add</button>
+    </div>
+  </div>
+
+  <!-- Accordions: Description / Details / Clinical Testing -->
+  <section style="padding-top:18px;padding-bottom:18px">
+    <div class="faq" style="background:none">
+      <div class="qa open" data-acc>
+        <div class="qh">Description<span class="pm">+</span></div>
+        <div class="ans"><div>#1 award-winning Sonic Dermaplaning device uses proprietary Sonic Technology to safely + gently remove peach fuzz and exfoliate dead skin cells. Clinically proven to improve the health of your skin, enhance skincare absorption and create a flawless canvas for makeup application.</div></div>
+      </div>
+      <div class="qa" data-acc>
+        <div class="qh">Details<span class="pm">+</span></div>
+        <div class="ans"><div>
+          • Reveals smooth, glowing, fuzz-free skin instantly<br>
+          • Advanced safety features protect your skin (unlike risky disposable razors)<br>
+          • Improves fine lines, wrinkles + dark spots with consistent use<br>
+          • Recommended by dermatologists + estheticians<br>
+          • Clinically proven hair will NOT grow back thicker or faster<br>
+          • For all ages, skin tones and skin types (including sensitive skin)<br>
+          • Includes LUXE+ device, 4 single-use MicroFine Edges, PREFLASH® Cleanser (0.33 fl. oz.), USB charging cable and base
+        </div></div>
+      </div>
+      <div class="qa" data-acc>
+        <div class="qh">Clinical Testing<span class="pm">+</span></div>
+        <div class="ans"><div>
+          <strong>AFTER 1 USE</strong><br>100% saw instant improvement in skin texture*<br>100% said it effectively removed peach fuzz*<br>97% saw brighter, more radiant skin*<br><br>
+          <strong>AFTER 4 WEEKS</strong><br>100% said skin looked younger**<br>100% said skin looked more even**<br>100% said skin felt tightened + sculpted**<br><br>
+          <strong>INDEPENDENT CLINICAL STUDY</strong><br>97% had less visible fine lines + wrinkles^<br>94% had reduced appearance of dark spots^<br><br>
+          <span style="font-size:11px;color:var(--muted)">*Consumer panel survey using LUXE+ 1x &nbsp; **after 4 weeks &nbsp; ^Instrumental analysis after 4 weeks</span>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- #1 Thanks to You + video -->
+  <div class="proof">
+    <h3>#1 Thanks To You</h3>
+    <p>Over 1 million devices sold, 30+ industry awards and countless glowing reviews!</p>
+    <div class="vidwrap">
+      <video poster="https://dermaflash.com/cdn/shop/files/preview_images/e717495714d144d09eb5aa8839791d7d.thumbnail.0000000000_1024x.jpg" controls playsinline preload="none">
+        <source src="https://dermaflash.com/cdn/shop/videos/c/vp/e717495714d144d09eb5aa8839791d7d/e717495714d144d09eb5aa8839791d7d.HD-1080p-4.8Mbps-76758459.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- Clinically proven stats -->
+  <section class="stats">
+    <div class="eyebrow">Clinically Proven</div>
+    <div class="h2">Smoother skin after just 1 use</div>
+    <p class="lede">You'll see smoother skin texture after just 1 use — plus visible improvement in fine lines, wrinkles + dark spots in just 4 weeks.</p>
+    <div class="statgrid">
+      <div class="s"><div class="b">100%</div><div class="l">saw instant improvement in skin texture*</div></div>
+      <div class="s"><div class="b">97%</div><div class="l">had less visible fine lines + wrinkles^</div></div>
+      <div class="s"><div class="b">94%</div><div class="l">had reduced appearance of dark spots^</div></div>
+    </div>
+    <div class="foot">*Consumer panel survey using LUXE+ 1x &nbsp; ^Instrumental analysis after 4 weeks</div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="compare">
+    <div class="eyebrow">How We Compare</div>
+    <div class="h2">LUXE+ Sonic Dermaplaning<br>vs. a Razor</div>
+    <div class="ctable">
+      <div class="crow chead">
+        <div class="c">&nbsp;</div><div class="c brand">LUXE+</div><div class="c">Razors</div>
+      </div>
+      <div class="crow">
+        <div class="feat"><b>14K Sonic Vibrations/min</b><span>For the closest "shave" plus effortless glide</span></div>
+        <div class="cell brand"><span class="yes">✓</span></div><div class="cell"><span class="no">✕</span></div>
+      </div>
+      <div class="crow">
+        <div class="feat"><b>Patented Safety Cage</b><span>Protects your skin from nicks and cuts</span></div>
+        <div class="cell brand"><span class="yes">✓</span></div><div class="cell"><span class="no">✕</span></div>
+      </div>
+      <div class="crow">
+        <div class="feat"><b>Clinically Proven</b><span>Improves your skin's health instantly + long term</span></div>
+        <div class="cell brand"><span class="yes">✓</span></div><div class="cell"><span class="no">✕</span></div>
+      </div>
+      <div class="crow">
+        <div class="feat"><b>Derm + Esthetician Recommended</b><span>Supports cellular turnover</span></div>
+        <div class="cell brand"><span class="yes">✓</span></div><div class="cell"><span class="no">✕</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sonic edge difference -->
+  <section class="edge">
+    <div class="eyebrow">The Sonic Edge Difference</div>
+    <div class="h2">Smooth, glowing skin<br>in your hands</div>
+    <div class="edgelist">
+      <div class="e"><span class="n">01</span>MicroFine Edge™ for ultimate precision + safety</div>
+      <div class="e"><span class="n">02</span>Boosted sonic speed for a smooth, frictionless glide</div>
+      <div class="e"><span class="n">03</span>Easy + painless (no nicks, cuts or irritation)</div>
+      <div class="e"><span class="n">04</span>Skincare absorbs better, makeup glides on like silk</div>
+    </div>
+    <div class="edgeimg"><img src="https://dermaflash.com/cdn/shop/files/Dermaflash_Luxe_Pop_Pink_004_2x_ec451e0c-2061-45a6-b70d-7ddf23090c2d_1.png" alt="LUXE+ safety cage, MicroFine Edge and 14K sonic vibrations"></div>
+  </section>
+
+  <!-- How it works -->
+  <section class="steps">
+    <div class="eyebrow">How It Works</div>
+    <div class="h2">Unlock glowing skin<br>in 3 easy steps</div>
+    <div style="margin-top:18px">
+      <div class="step"><div class="no">1</div><div><h4>Prep</h4><p>Cleanse with PREFLASH® Cleanser (included with your device), rinse, and pat dry. Make sure your skin is completely dry.</p></div></div>
+      <div class="step"><div class="no">2</div><div><h4>Load Your Edge</h4><p>Use a fresh MicroFine Edge™ every time. Place at a 45° angle against your skin and use your other hand to hold your skin taut.</p></div></div>
+      <div class="step"><div class="no">3</div><div><h4>Flash + Hydrate</h4><p>Flash using short, feathery strokes to remove peach fuzz + dead skin. You can Flash in any direction. Follow with HYDRAFLASH Serum.</p></div></div>
+    </div>
+  </section>
+
+  <!-- Myths -->
+  <section class="myths">
+    <div class="eyebrow">Myths: Debunked!</div>
+    <div class="h2">Fact-checking common<br>misconceptions</div>
+    <div class="myth" data-myth>
+      <div class="q"><div><span class="tag">MYTH</span><span class="mt">My peach fuzz will grow back thicker or darker.</span></div><span class="pm">+</span></div>
+      <div class="a"><div><span class="tag">FACT</span>LUXE+ Sonic Dermaplaning does NOT affect the hair follicle in any way — your peach fuzz will grow back exactly the same.</div></div>
+    </div>
+    <div class="myth" data-myth>
+      <div class="q"><div><span class="tag">MYTH</span><span class="mt">Dermaplaning causes breakouts.</span></div><span class="pm">+</span></div>
+      <div class="a"><div><span class="tag">FACT</span>If you prepare your skin properly and use a fresh MicroFine Edge every time, you will not spread acne-causing bacteria.</div></div>
+    </div>
+    <div class="myth" data-myth>
+      <div class="q"><div><span class="tag">MYTH</span><span class="mt">Dermaplaning is painful.</span></div><span class="pm">+</span></div>
+      <div class="a"><div><span class="tag">FACT</span>LUXE+ does not cause any pain — you'll feel a light "sweeping" sensation and hear the gentle sonic vibration.</div></div>
+    </div>
+    <div class="myth" data-myth>
+      <div class="q"><div><span class="tag">MYTH</span><span class="mt">I can't dermaplane because I have sensitive skin.</span></div><span class="pm">+</span></div>
+      <div class="a"><div><span class="tag">FACT</span>LUXE+ is safe for sensitive skin types and has 2 sonic speeds (gentle + invigorating) so you can choose what's best for your skin.</div></div>
+    </div>
+  </section>
+
+  <!-- Real women -->
+  <section class="women">
+    <div class="eyebrow">Real Women, Real Results</div>
+    <div class="h2">Smooth, glowing results<br>instantly</div>
+    <p class="lede">We test our devices on real people to make sure they're delivering real, clinically proven results.</p>
+    <div class="portraits">
+      <img src="https://dermaflash.com/cdn/shop/articles/Adobe_Express_-_file_50.jpg" alt="Real result — smooth, glowing skin">
+      <img src="https://dermaflash.com/cdn/shop/articles/Adobe_Express_-_file_51.jpg" alt="Real result — fresh-faced and fuzz-free">
+    </div>
+    <div class="quote">
+      <div class="mark">&ldquo;</div>
+      <p>Your peach fuzz will grow back exactly as it was before you Flashed. NO thicker, NO darker, NO different.</p>
+      <cite>— DR. ARIZA ORTIZ, MD · BOARD-CERTIFIED DERMATOLOGIST</cite>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section class="awards">
+    <div class="eyebrow">30+ Industry Awards</div>
+    <div class="h2">Awards we've won</div>
+    <div class="awardimg"><img src="https://dermaflash.com/cdn/shop/files/Dermaflash_Luxe_Pop_Pink_006_2x_8a4c7a27-e109-4e38-8d51-80708c941aa8_1.png" alt="DERMAFLASH awards including ELLE, NewBeauty, Allure"></div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews" id="reviews">
+    <div class="eyebrow">Customers Are Talking!</div>
+    <div class="h2">4.8 out of 5 stars</div>
+    <div class="rsummary">
+      <div class="big">
+        <div class="n">4.8</div>
+        <div class="st">★★★★★</div>
+        <div class="c">937 reviews</div>
+      </div>
+      <div class="histo">
+        <div class="hrow"><span class="lab">5</span><span class="hbar"><i style="width:86%"></i></span><span class="ct">808</span></div>
+        <div class="hrow"><span class="lab">4</span><span class="hbar"><i style="width:9%"></i></span><span class="ct">85</span></div>
+        <div class="hrow"><span class="lab">3</span><span class="hbar"><i style="width:1%"></i></span><span class="ct">8</span></div>
+        <div class="hrow"><span class="lab">2</span><span class="hbar"><i style="width:2%"></i></span><span class="ct">13</span></div>
+        <div class="hrow"><span class="lab">1</span><span class="hbar"><i style="width:3%"></i></span><span class="ct">23</span></div>
+      </div>
+    </div>
+    <div class="recommend"><b>95%</b> would recommend these products</div>
+    <div class="subscores">
+      <div class="ss"><div class="t"><span>Results</span><span>4.8</span></div><div class="track"><i style="width:96%"></i></div></div>
+      <div class="ss"><div class="t"><span>Ease of Use</span><span>4.9</span></div><div class="track"><i style="width:98%"></i></div></div>
+    </div>
+    <div class="pills">
+      <span class="pill on">All</span>
+      <span class="pill">Great Quality</span>
+      <span class="pill">Value for Money</span>
+      <span class="pill">Easy to Use</span>
+    </div>
+
+    <div class="review">
+      <div class="top"><span class="st">★★★★☆</span><span class="when">1 week ago</span></div>
+      <div class="who">Valerie B. <span class="vb">✓ Verified Buyer</span></div>
+      <h5>Leaves skin soft and smooth</h5>
+      <p>I'm happy I got this. It's easy to use and leaves my skin soft and smooth. My only concern is that it's a bit pricey. Time will tell if it's worth it but I'm guessing yes (and just bought a bunch of replacement edges based on that belief!).</p>
+      <div class="helpful"><span>Helpful?</span><span>👍 0</span><span>👎 0</span></div>
+    </div>
+
+    <div class="review">
+      <div class="top"><span class="st">★★★★★</span><span class="when">1 week ago</span></div>
+      <div class="who">Lisa F. <span class="vb">✓ Verified Buyer</span></div>
+      <h5>So good!</h5>
+      <p>I wish I hadn't waited so long to purchase this! It's so easy to use and my skin feels so smooth. I highly recommend!</p>
+      <div class="resp"><b>Response from DERMAFLASH</b>We love to hear that you're loving the LUXE+ and how smooth your skin feels, Lisa! Better late than never!</div>
+      <div class="helpful"><span>Helpful?</span><span>👍 0</span><span>👎 0</span></div>
+    </div>
+
+    <div class="review">
+      <div class="top"><span class="st">★★★★★</span><span class="when">1 week ago</span></div>
+      <div class="who">Hayley C. <span class="vb">✓ Verified Buyer</span></div>
+      <h5>No irritation!</h5>
+      <p>I'm so happy with my purchase! I have only used it twice so far, but the results speak for themselves. I have psoriasis and rosacea and I have zero irritation after using the DERMAFLASH. Ultra smooth!</p>
+      <div class="resp"><b>Response from DERMAFLASH</b>So thrilled to hear you're seeing such amazing results with LUXE+, Hayley! It's wonderful that you're getting that ultra smooth skin without any irritation.</div>
+      <div class="helpful"><span>Helpful?</span><span>👍 1</span><span>👎 0</span></div>
+    </div>
+
+    <div class="review">
+      <div class="top"><span class="st">★★★★★</span><span class="when">2 weeks ago</span></div>
+      <div class="who">Ann V. <span class="vb">✓ Verified Buyer</span></div>
+      <h5>Great product!</h5>
+      <p>Easy to use and fun color!</p>
+      <div class="resp"><b>Response from DERMAFLASH</b>Pop Pink is one of our favorites too, Ann! Enjoy :)</div>
+      <div class="helpful"><span>Helpful?</span><span>👍 0</span><span>👎 0</span></div>
+    </div>
+
+    <div class="review">
+      <div class="top"><span class="st">★★★★★</span><span class="when">2 weeks ago</span></div>
+      <div class="who">Susan C. <span class="vb">✓ Verified Buyer</span></div>
+      <h5>Great experience</h5>
+      <p>This product is great quality and very easy to use.</p>
+      <div class="resp"><b>Response from DERMAFLASH</b>So glad you're loving the LUXE+, Susan! Easy to use and great quality — that's what we love to hear!</div>
+      <div class="helpful"><span>Helpful?</span><span>👍 0</span><span>👎 0</span></div>
+    </div>
+
+    <button class="rmore" onclick="alert('937 reviews — read them all on dermaflash.com')">Show more reviews</button>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="eyebrow">FAQ</div>
+    <div class="h2">Frequently asked<br>questions</div>
+    <div style="margin-top:14px">
+      <div class="qa" data-acc>
+        <div class="qh">Does DERMAFLASH LUXE+ remove peach fuzz?<span class="pm">+</span></div>
+        <div class="ans"><div>Yes. DERMAFLASH LUXE+ is a sonic dermaplaning device that exfoliates dead skin cells while safely removing peach fuzz and facial hair. In a clinical study, 100% of users agreed that LUXE+ effectively removes peach fuzz.</div></div>
+      </div>
+      <div class="qa" data-acc>
+        <div class="qh">Will my facial hair grow back thicker or darker?<span class="pm">+</span></div>
+        <div class="ans"><div>No. It's a myth that removing hair from your face makes it grow back differently. It's scientifically proven that your peach fuzz (vellus hair) will NOT grow back thicker or darker after dermaplaning. LUXE+ removes hair from your skin's surface and does not affect the hair follicle in any way.</div></div>
+      </div>
+      <div class="qa" data-acc>
+        <div class="qh">How often should I use DERMAFLASH LUXE+?<span class="pm">+</span></div>
+        <div class="ans"><div>For best results, use DERMAFLASH LUXE+ once a week. Weekly use maintains smooth, fuzz-free skin and is clinically proven to improve the look of fine lines, wrinkles, and dark spots over time.</div></div>
+      </div>
+      <div class="qa" data-acc>
+        <div class="qh">Can I use my regular facial cleanser with LUXE+?<span class="pm">+</span></div>
+        <div class="ans"><div>It's best to prep your skin with the included PREFLASH® Cleanser. It's specially formulated to prepare your skin for dermaplaning, leaving it perfectly clean and completely dry for the smoothest, safest glide.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Goes well with -->
+  <section class="cross">
+    <div class="eyebrow">Goes Well With...</div>
+    <div class="h2">Complete the ritual</div>
+    <div class="xgrid">
+      <div class="xcard">
+        <div class="pic"><img src="https://dermaflash.com/cdn/shop/files/BotanicalKetoacidToner001_3x_26fc4f2a-fbd1-4ec8-8804-b89f39357526.png" alt="Botanical Ketoacid Toner"></div>
+        <div class="nm">Botanical Ketoacid Toner</div>
+        <div class="ds">Non-Irritating Daily Exfoliator</div>
+        <div class="pr">$42.00</div>
+      </div>
+      <div class="xcard">
+        <div class="pic"><span class="tagchip">Subscribe + Save</span><img src="https://dermaflash.com/cdn/shop/files/DermaflashActiveCocooningSerum001_3x_900x_bb9a6825-89a4-4e5f-a9d2-580731cca5a4.png" alt="HydraFlash Active Cocooning Serum"></div>
+        <div class="nm">HydraFlash Active Cocooning Serum™</div>
+        <div class="ds">Smoothing, Firming + Depuffing Serum</div>
+        <div class="pr">$68.00</div>
+      </div>
+      <div class="xcard">
+        <div class="pic"><img src="https://dermaflash.com/cdn/shop/files/Dermaflash_Luxe_Refill_Stone_005_2x_1_1.png" alt="LUXE+ Replenishment Kit"></div>
+        <div class="nm">LUXE+ Replenishment Kit</div>
+        <div class="ds">4-Week Refill of MicroFine Edges™ + PREFLASH® Cleanser</div>
+        <div class="pr">$29.00</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="logo"></div>
+    <div class="links"><a href="#">Shop</a><a href="#">How It Works</a><a href="#reviews">Reviews</a><a href="#">Support</a></div>
+    <p>#1 award-winning Sonic Dermaplaning. Over 1 million devices sold. 60-day risk-free trial on every order.</p>
+  </footer>
+
+  <div class="pagepad"></div>
+
+  <!-- Sticky buy bar -->
+  <div class="stickybar" id="sticky">
+    <div class="sp"><img id="stickyImg" src="https://cdn.shopify.com/s/files/1/0348/3156/4940/products/DermaflashLuxe_PopPink_001_3x_623cbe91-4e89-4821-9e5f-3c875b47485d.png" alt=""></div>
+    <div class="si"><div class="nm">DERMAFLASH LUXE+</div><div class="pr">$199</div></div>
+    <button class="sb" onclick="document.getElementById('atc').click()">Add to Cart</button>
+  </div>
+
+</div>
+
+<script>
+// ---- Gallery: dots + thumbs ----
+(function(){
+  var slides=document.getElementById('slides');
+  var slideEls=[].slice.call(slides.children);
+  var dots=document.getElementById('dots'), thumbs=document.getElementById('thumbs');
+  slideEls.forEach(function(s,i){
+    var d=document.createElement('span'); d.className='dot'+(i===0?' on':''); d.onclick=function(){slides.scrollTo({left:slides.clientWidth*i,behavior:'smooth'});}; dots.appendChild(d);
+    var t=document.createElement('button'); t.className='thumb'+(i===0?' on':''); t.innerHTML='<img src="'+s.querySelector('img').src+'">';
+    t.onclick=function(){slides.scrollTo({left:slides.clientWidth*i,behavior:'smooth'});}; thumbs.appendChild(t);
+  });
+  slides.addEventListener('scroll',function(){
+    var i=Math.round(slides.scrollLeft/slides.clientWidth);
+    [].forEach.call(dots.children,function(d,j){d.classList.toggle('on',j===i);});
+    [].forEach.call(thumbs.children,function(t,j){t.classList.toggle('on',j===i);});
+  },{passive:true});
+})();
+
+// ---- Color swatch ----
+(function(){
+  var sws=document.querySelectorAll('#swatches .sw');
+  var name=document.getElementById('colorName');
+  var hero=document.querySelector('#slides .slide img');
+  var stickyImg=document.getElementById('stickyImg');
+  var firstThumb=document.querySelector('#thumbs .thumb img');
+  sws.forEach(function(b){
+    b.addEventListener('click',function(){
+      sws.forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      name.textContent=b.dataset.name;
+      if(b.dataset.img){hero.src=b.dataset.img; stickyImg.src=b.dataset.img; if(firstThumb)firstThumb.src=b.dataset.img;}
+    });
+  });
+})();
+
+// ---- Accordions (Description/Details/Clinical + FAQ) ----
+document.querySelectorAll('[data-acc]').forEach(function(qa){
+  qa.querySelector('.qh').addEventListener('click',function(){
+    var open=qa.classList.toggle('open');
+    var a=qa.querySelector('.ans');
+    a.style.maxHeight=open? a.scrollHeight+'px':'0';
+  });
+});
+// open the default-open description
+document.querySelectorAll('.qa.open .ans').forEach(function(a){a.style.maxHeight=a.scrollHeight+'px';});
+
+// ---- Myths accordions ----
+document.querySelectorAll('[data-myth]').forEach(function(m){
+  m.querySelector('.q').addEventListener('click',function(){
+    var open=m.classList.toggle('open');
+    var a=m.querySelector('.a');
+    a.style.maxHeight=open? a.scrollHeight+'px':'0';
+  });
+});
+
+// ---- Review filter pills (visual) ----
+document.querySelectorAll('.pills .pill').forEach(function(p){
+  p.addEventListener('click',function(){
+    document.querySelectorAll('.pills .pill').forEach(function(x){x.classList.remove('on');});
+    p.classList.add('on');
+  });
+});
+
+// ---- ATC feedback ----
+document.getElementById('atc').addEventListener('click',function(){
+  var b=this, t=b.textContent; b.textContent='Added ✓';
+  setTimeout(function(){b.textContent=t;},1400);
+});
+
+// ---- Sticky bar: show after main ATC scrolls out of view (getBoundingClientRect) ----
+(function(){
+  var atc=document.getElementById('atc'), bar=document.getElementById('sticky');
+  function upd(){
+    var r=atc.getBoundingClientRect();
+    bar.classList.toggle('show', r.bottom<60);
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd); upd();
+})();
+</script>
+</body>
+</html>
