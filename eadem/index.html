@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>The Mark — Advanced Dark Spot Concentrate | EADEM</title>
+<style>
+/* EADEM brand fonts (real, from their CDN) */
+@font-face{font-family:'Mabry';src:url('https://eadem.co/cdn/shop/t/132/assets/mabry-regular.static.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Mabry';src:url('https://eadem.co/cdn/shop/t/132/assets/Mabry-Medium.static.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Galliard';src:url('https://eadem.co/cdn/shop/t/132/assets/galliard-roman.static.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Galliard';src:url('https://eadem.co/cdn/shop/t/132/assets/galliard-italic.static.woff2') format('woff2');font-weight:500;font-style:italic;font-display:swap}
+
+:root{
+  --coral:#EE8B72; --coral-btn:#F0875C; --forest:#2C3B32; --bronze:#7D5D24;
+  --cream:#F6F1EC; --cream2:#FBF7F2; --line:#E4D8CC; --sage:#C9D2BE; --ink:#3a3128;
+  --sans:'Mabry',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --serif:'Galliard','Hoefler Text',Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--bronze);background:#e6ddd3;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+
+.phone{max-width:390px;margin:0 auto;background:var(--cream);position:relative;overflow:hidden;min-height:100vh}
+@media(min-width:600px){
+  body{padding:24px 0}
+  .phone{box-shadow:0 24px 70px rgba(60,45,30,.22);border-radius:22px;min-height:auto;overflow:visible}
+  .phone>.announce{border-radius:22px 22px 0 0}
+}
+
+.announce{background:var(--coral);color:var(--forest);text-align:center;font-size:11px;letter-spacing:1.2px;padding:8px 14px;white-space:nowrap;overflow:hidden;font-weight:500}
+
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:11px 18px;background:var(--cream);position:sticky;top:0;z-index:60}
+.hdr .ico{width:22px;height:22px;color:var(--forest)}
+.hdr .logo{width:118px;color:var(--forest)}
+.hdr .logo svg{width:100%;height:auto;display:block;fill:currentColor}
+
+/* Gallery */
+.gallery{position:relative;background:#000}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.slides::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:1/0.76;background:#0d0d0d;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide.hero .model{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slide.hero .tube{position:absolute;width:34%;height:auto;top:23%;left:39%;object-fit:contain;filter:drop-shadow(0 18px 30px rgba(0,0,0,.45))}
+.dots{display:flex;gap:6px;justify-content:center;padding:10px 0 2px;background:var(--cream)}
+.dot{width:6px;height:6px;border-radius:50%;background:#d3c4b4;transition:.25s}
+.dot.on{background:var(--bronze);transform:scale(1.25)}
+.thumbs{display:flex;gap:7px;padding:4px 18px 2px;overflow-x:auto;scrollbar-width:none;background:var(--cream)}
+.thumbs::-webkit-scrollbar{display:none}
+.thumb{flex:0 0 44px;height:48px;border-radius:3px;overflow:hidden;border:1px solid transparent;background:#111}
+.thumb.on{border-color:var(--bronze)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+
+/* Buy zone */
+.buy{padding:13px 20px 22px}
+.rating{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.stars{color:var(--coral-btn);font-size:13px;letter-spacing:2px}
+.rating b{font-weight:500;font-size:13px;color:var(--bronze)}
+.rating a{font-size:12.5px;color:var(--bronze);opacity:.7;text-decoration:underline;text-underline-offset:2px}
+h1.title{font-family:var(--serif);font-weight:500;font-size:32px;line-height:1;color:var(--bronze);letter-spacing:.2px}
+.subtitle{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:var(--bronze);margin-top:7px}
+.benefits{margin:13px 0 0;display:flex;flex-direction:column;gap:6px}
+.benefits .b{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:var(--ink)}
+.benefits .b svg{width:15px;height:15px;flex:none;margin-top:2px;color:var(--coral-btn)}
+
+/* clinical proof chip (surfaced — secondary fix) */
+.proofchip{margin:13px 0 0;background:var(--cream2);border:1px solid var(--line);border-left:3px solid var(--coral-btn);border-radius:4px;padding:11px 14px}
+.proofchip .big{font-family:var(--serif);font-size:15px;color:var(--bronze);line-height:1.3}
+.proofchip .big b{font-weight:500;color:var(--coral-btn)}
+.proofchip .sub{font-size:11px;letter-spacing:.4px;color:var(--bronze);opacity:.65;margin-top:5px}
+
+.priceline{display:flex;align-items:baseline;gap:9px;margin:14px 0 0}
+.price{font-size:21px;font-weight:500;color:var(--bronze)}
+.size{font-size:12px;color:var(--bronze);opacity:.6;margin-left:auto}
+
+/* purchase options */
+.purchase{margin-top:14px;display:flex;flex-direction:column;gap:9px}
+.popt{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:5px;padding:13px 14px;background:var(--cream2);transition:.18s}
+.popt.on{border-color:var(--coral-btn);background:#fff}
+.popt .radio{width:18px;height:18px;border-radius:50%;border:1.5px solid #c3b6a4;flex:none;position:relative}
+.popt.on .radio{border-color:var(--coral-btn)}
+.popt.on .radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--coral-btn)}
+.popt .pl{flex:1}
+.popt .pl .t{font-size:13px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;color:var(--bronze)}
+.popt .pl .d{font-size:12px;color:var(--bronze);opacity:.7;margin-top:2px}
+.popt .pr{font-weight:500;font-size:15px;color:var(--bronze)}
+.popt .save{display:block;font-size:10px;color:var(--coral-btn);text-align:right;letter-spacing:.3px}
+
+.cartrow{display:flex;gap:0;margin-top:16px;border:1px solid var(--forest)}
+.qty{display:flex;align-items:center;background:var(--sage)}
+.qty button{width:42px;height:100%;font-size:18px;color:var(--forest)}
+.qty span{width:30px;text-align:center;font-size:14px;color:var(--forest)}
+.atc{flex:1;background:var(--coral-btn);color:var(--forest);font-weight:500;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;padding:16px;transition:.18s}
+.atc:active{opacity:.9}
+.howtouse{margin-top:14px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--bronze);text-decoration:underline;text-underline-offset:3px;display:inline-block}
+
+/* often bought */
+.obt{margin:22px 0 0;padding-top:18px;border-top:1px solid var(--line)}
+.obt .lbl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--bronze);opacity:.7;margin-bottom:12px}
+.obt .row{display:flex;align-items:center;gap:13px}
+.obt .pic{width:60px;height:60px;border-radius:4px;background:#fff;flex:none;overflow:hidden}
+.obt .pic img{width:100%;height:100%;object-fit:contain}
+.obt .info{flex:1}
+.obt .info .n{font-family:var(--serif);font-size:15px;color:var(--bronze)}
+.obt .info .d{font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--bronze);opacity:.6}
+.obt .add{border:1px solid var(--forest);color:var(--forest);font-size:11px;letter-spacing:.8px;text-transform:uppercase;padding:9px 13px;flex:none}
+.obt .add:active{background:var(--forest);color:var(--cream)}
+
+section{padding:38px 20px}
+.eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--coral-btn);text-align:center;margin-bottom:10px}
+.h2{font-family:var(--serif);font-weight:500;font-size:25px;line-height:1.15;color:var(--bronze);text-align:center}
+.lede{text-align:center;font-size:14px;color:var(--bronze);opacity:.85;max-width:320px;margin:12px auto 0;line-height:1.6}
+
+/* science (dark editorial) */
+.science{background:#161210;color:var(--cream)}
+.science .eyebrow{color:var(--coral)}
+.science .h2{color:var(--cream)}
+.science p{color:#d8cdbf}
+.sciimg{margin-top:22px;border-radius:5px;overflow:hidden;aspect-ratio:1/1}
+.sciimg img{width:100%;height:100%;object-fit:cover}
+.scilist{margin-top:22px;display:flex;flex-direction:column;gap:13px}
+.scilist .s{display:flex;gap:11px;align-items:center;font-size:13.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--cream)}
+.scilist .s svg{width:16px;height:16px;flex:none;color:var(--coral)}
+
+/* clinical */
+.clinical{background:var(--cream2)}
+.clinstats{display:flex;gap:12px;margin-top:22px}
+.clinstats .c{flex:1;text-align:center;background:#fff;border:1px solid var(--line);border-radius:5px;padding:20px 8px}
+.clinstats .c .n{font-family:var(--serif);font-size:34px;color:var(--coral-btn);line-height:1}
+.clinstats .c .l{font-size:11px;color:var(--bronze);margin-top:8px;line-height:1.35}
+.clinnote{font-size:11px;color:var(--bronze);opacity:.6;text-align:center;margin-top:16px;line-height:1.5}
+
+/* before after */
+.results{background:var(--cream)}
+.barow{display:flex;gap:12px;overflow-x:auto;margin-top:20px;scrollbar-width:none;scroll-snap-type:x mandatory;padding-bottom:4px}
+.barow::-webkit-scrollbar{display:none}
+.bacard{flex:0 0 78%;scroll-snap-align:center;border-radius:5px;overflow:hidden;background:#000}
+.bacard img{width:100%;height:auto;display:block}
+
+/* ingredients */
+.ingredients{background:#161210;color:var(--cream)}
+.ingredients .h2,.ingredients .eyebrow{color:var(--cream)}
+.ingredients .eyebrow{color:var(--coral)}
+.inggroup{margin-top:24px}
+.inggroup .gt{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--coral);margin-bottom:10px;text-align:center}
+.ing{border-top:1px solid #3a322c;padding:14px 0}
+.ing .n{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--cream);font-weight:500}
+.ing .n span{color:var(--coral);margin-left:5px}
+.ing .d{font-size:12.5px;color:#c9beb0;line-height:1.5;margin-top:4px}
+
+/* how to */
+.howto{background:var(--cream)}
+.howimg{border-radius:5px;overflow:hidden;margin-top:18px;aspect-ratio:1/1}
+.howimg img{width:100%;height:100%;object-fit:cover}
+
+/* marquee */
+.marquee{background:var(--coral);color:var(--forest);overflow:hidden;white-space:nowrap;padding:11px 0;font-size:12px;letter-spacing:1.5px;text-transform:uppercase}
+.marquee .track{display:inline-flex;gap:26px;animation:scroll 20s linear infinite}
+.marquee .track span{display:inline-flex;gap:26px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* reviews */
+.reviews{background:var(--cream2)}
+.rhead{text-align:center}
+.rhead .big{font-family:var(--serif);font-size:42px;color:var(--bronze);line-height:1}
+.rhead .st{color:var(--coral-btn);font-size:15px;letter-spacing:2px;margin:6px 0 3px}
+.rhead .c{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--bronze);opacity:.7}
+.rcarousel{display:flex;gap:12px;overflow-x:auto;margin-top:20px;scrollbar-width:none;scroll-snap-type:x mandatory;padding-bottom:4px}
+.rcarousel::-webkit-scrollbar{display:none}
+.rcard{flex:0 0 86%;scroll-snap-align:center;background:#fff;border:1px solid var(--line);border-radius:5px;padding:18px}
+.rcard .st{color:var(--coral-btn);font-size:12px;letter-spacing:1px}
+.rcard h5{font-family:var(--serif);font-size:15px;color:var(--bronze);margin:8px 0 6px}
+.rcard p{font-size:13px;color:var(--ink);line-height:1.55}
+.rcard .who{margin-top:12px;font-size:11.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--bronze)}
+.rcard .who b{font-weight:500}
+.rcard .tone{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.rcard .tone span{font-size:9.5px;letter-spacing:.4px;text-transform:uppercase;color:var(--bronze);background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:3px 8px}
+
+/* routine */
+.routine{background:var(--cream)}
+.rgrid{display:flex;gap:12px;overflow-x:auto;margin-top:18px;scrollbar-width:none;padding-bottom:4px}
+.rgrid::-webkit-scrollbar{display:none}
+.rcard2{flex:0 0 140px}
+.rcard2 .pic{background:var(--cream2);border:1px solid var(--line);border-radius:5px;aspect-ratio:1/1.1;overflow:hidden}
+.rcard2 .pic img{width:100%;height:100%;object-fit:contain}
+.rcard2 .n{font-family:var(--serif);font-size:15px;color:var(--bronze);margin-top:9px}
+.rcard2 .d{font-size:11px;color:var(--bronze);opacity:.65;line-height:1.3;margin-top:2px}
+.rcard2 .pr{font-size:13px;color:var(--bronze);margin-top:5px}
+
+footer{background:var(--forest);color:var(--cream);padding:32px 22px 36px;text-align:center}
+footer .logo{width:130px;margin:0 auto 16px}
+footer .logo svg{width:100%;fill:var(--cream)}
+footer .links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font-size:12px;opacity:.85;margin-bottom:14px}
+footer p{font-size:11px;opacity:.6;max-width:280px;margin:0 auto;line-height:1.6}
+
+/* sticky bar */
+.stickybar{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:390px;background:var(--cream);border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(60,45,30,.12);padding:10px 14px;display:flex;align-items:center;gap:11px;z-index:80;transition:transform .3s ease}
+.stickybar.show{transform:translateX(-50%) translateY(0)}
+.stickybar .sp{width:42px;height:42px;border-radius:4px;background:#fff;overflow:hidden;flex:none}
+.stickybar .sp img{width:100%;height:100%;object-fit:contain}
+.stickybar .si{flex:1;min-width:0}
+.stickybar .si .nm{font-family:var(--serif);font-size:14px;color:var(--bronze);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stickybar .si .pr{font-size:12px;color:var(--bronze);opacity:.75}
+.stickybar .sb{background:var(--coral-btn);color:var(--forest);font-weight:500;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:13px 18px;flex:none}
+.pagepad{height:70px}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <div class="announce">FREE SHIPPING ON US ORDERS ABOVE USD 45</div>
+
+  <header class="hdr">
+    <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <span class="logo" aria-label="EADEM"><svg viewBox="0 0 1160 194" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 193.14H146.88V160H33.12V97.85C46.81 107 66 112.62 82.85 112.62C106.52 112.62 126.31 103.33 142.06 85.62L143.79 83.62H33.12V33.12H146.88V0H0V193.14Z"/>
+      <path d="M264 130.28L304.67 38.44L345.34 130.28H264ZM322.14 0H285.58L199.58 193.14H236.14L257.74 144.29C271.51 153.59 287.63 159.29 304.65 159.29C321.67 159.29 337.78 153.63 351.54 144.29L373.16 193.14H409.7L323.67 0H322.14Z"/>
+      <path d="M594.68 141.59C588.79 147.531 581.78 152.246 574.055 155.461C566.331 158.676 558.046 160.327 549.68 160.32H499.49V32.81H549.67C562.279 32.7967 574.608 36.5276 585.095 43.5297C595.581 50.5318 603.752 60.4898 608.572 72.1413C613.392 83.7929 614.644 96.6132 612.169 108.977C609.694 121.341 603.604 132.692 594.67 141.59H594.68ZM549.67 0H466.38V193.14H549.67C568.771 193.16 587.449 187.509 603.335 176.903C619.221 166.298 631.602 151.214 638.907 133.565C646.212 115.916 648.114 96.4956 644.37 77.7647C640.627 59.0338 631.408 41.8357 617.88 28.35C608.949 19.3496 598.323 12.2097 586.614 7.34342C574.906 2.47717 562.349 0 549.67 0Z"/>
+      <path d="M713 193.14H859.91V160H746.15V97.85C759.85 107 779 112.62 795.88 112.62C819.55 112.62 839.35 103.33 855.09 85.62L856.83 83.62H746.15V33.12H859.91V0H713V193.14Z"/>
+      <path d="M1120.11 0H1083.11L1040 141.16L997 0H959.89L920 193.14H955.23L982.43 57.56C982.43 57.56 985.53 72.04 989.43 84.17L1023.24 190.43H1056.37L1090.6 84.17C1094.46 72.04 1097.6 57.56 1097.6 57.56L1124.8 193.14H1160L1120.11 0Z"/>
+    </svg></span>
+    <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M6 8h12l-1 12H7L6 8z" stroke="currentColor" stroke-width="1.4"/><path d="M9 8a3 3 0 016 0" stroke="currentColor" stroke-width="1.4"/></svg>
+  </header>
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <div class="slides" id="slides">
+      <div class="slide hero">
+        <img class="model" src="https://cdn.accentuate.io/9094396117245/16023229989017/01a_MARK-PDP-cover-v1767811369031.png" alt="The Mark on melanin-rich skin">
+        <img class="tube" src="https://cdn.shopify.com/s/files/1/0512/1661/3529/files/01B_PRODUCT-OVERLAY-TRANSPARENT.png" alt="The Mark tube">
+      </div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0512/1661/3529/files/01c_MARK-PDP.png" alt="Brighten & visibly fade dark spots in as little as 2 weeks"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0512/1661/3529/files/0010_MARK-PDP.jpg" alt="Precision applicator, maximum fade"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0512/1661/3529/files/02_MARK-PDP.png" alt="Unique gel-patch texture stays put"></div>
+    </div>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="thumbs" id="thumbs"></div>
+
+  <!-- BUY ZONE -->
+  <div class="buy">
+    <div class="rating"><span class="stars">★★★★★</span><b>4.9</b><a href="#reviews">395 Reviews</a></div>
+    <h1 class="title">The Mark</h1>
+    <div class="subtitle">Advanced Dark Spot Concentrate</div>
+
+    <div class="benefits">
+      <div class="b"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Locks on to where you apply it</div>
+      <div class="b"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Targets discoloration with precision</div>
+      <div class="b"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Visibly fades dark marks</div>
+      <div class="b"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Invisible finish</div>
+    </div>
+
+    <!-- Clinical proof surfaced at the buy decision (secondary fix) -->
+    <div class="proofchip">
+      <div class="big"><b>95%</b> agreed it was the best dark-spot treatment they'd ever used — with visible results in as little as <b>2 weeks</b>.</div>
+      <div class="sub">6-week consumer perception study · clinically evaluated</div>
+    </div>
+
+    <div class="priceline"><span class="price">$38.00</span><span class="size">0.5 oz · 15mL</span></div>
+
+    <div class="purchase" id="purchase">
+      <div class="popt on" data-mode="onetime" data-price="38.00">
+        <span class="radio"></span>
+        <div class="pl"><div class="t">One time only</div><div class="d">Just this one</div></div>
+        <div class="pr">$38.00</div>
+      </div>
+      <div class="popt" data-mode="sub" data-price="34.20">
+        <span class="radio"></span>
+        <div class="pl"><div class="t">Subscribe &amp; Save</div><div class="d">Delivered monthly · skip anytime</div></div>
+        <div class="pr">$34.20<span class="save">Save 10%</span></div>
+      </div>
+    </div>
+
+    <div class="cartrow">
+      <div class="qty"><button id="qminus">−</button><span id="qval">1</span><button id="qplus">+</button></div>
+      <button class="atc" id="atc">Add to Cart — <span id="atcPrice">$38.00</span></button>
+    </div>
+    <a href="#howto" class="howtouse">+ How to use it</a>
+
+    <!-- Often bought together -->
+    <div class="obt">
+      <div class="lbl">Often bought together</div>
+      <div class="row">
+        <div class="pic"><img src="https://cdn.shopify.com/s/files/1/0512/1661/3529/files/Sunsuede_Heropackshot2.png" alt="Sunsuede"></div>
+        <div class="info"><div class="n">Sunsuede</div><div class="d">Daily Sunscreen &amp; Blurring Primer · 4.9★ (64)</div></div>
+        <button class="add">Add · $32</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Science (dark editorial) -->
+  <section class="science">
+    <div class="eyebrow">Concentrated by design</div>
+    <div class="h2">Controlled by application</div>
+    <p class="lede">A gel-patch texture that adheres to skin once applied — keeping high-potency actives concentrated exactly where dark spots appear, especially marks that don't respond to traditional serums.</p>
+    <div class="sciimg"><img src="https://cdn.shopify.com/s/files/1/0512/1661/3529/files/02_MARK-PDP.png" alt="Gel-patch texture"></div>
+    <div class="scilist">
+      <div class="s"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>High-performance brightening actives</div>
+      <div class="s"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Gel-patch texture that holds</div>
+      <div class="s"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Focused treatment for stubborn marks</div>
+      <div class="s"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Clinically tested results in 2 weeks</div>
+    </div>
+  </section>
+
+  <!-- Clinical -->
+  <section class="clinical">
+    <div class="eyebrow">Clinically Tested. Visibly Proven.</div>
+    <div class="h2">Visible improvement<br>in as little as 2 weeks</div>
+    <p class="lede">Clinically evaluated using standardized dermatological grading and image analysis — visible improvements in dark spots and tone evenness were observed in as little as 2 weeks.</p>
+    <div class="clinstats">
+      <div class="c"><div class="n">95%</div><div class="l">agreed it was the best dark-spot treatment they'd used</div></div>
+      <div class="c"><div class="n">2 wks</div><div class="l">to visibly improved tone &amp; dark spots</div></div>
+      <div class="c"><div class="n">6 wk</div><div class="l">consumer perception study</div></div>
+    </div>
+    <div class="clinnote">In a 6-week consumer perception study, the majority reported clearer, smoother, more even-looking skin over time.</div>
+  </section>
+
+  <!-- Before / After -->
+  <section class="results">
+    <div class="eyebrow">See how it helped others</div>
+    <div class="h2">Rapidly fades dark spots</div>
+    <div class="barow">
+      <div class="bacard"><img src="https://cdn.shopify.com/s/files/1/0512/1661/3529/files/03_MARK-PDP-BA.png" alt="Before and after — dark spot fading"></div>
+      <div class="bacard"><img src="https://cdn.shopify.com/s/files/1/0512/1661/3529/files/04_MARK-PDP-BA.png" alt="Before and after — dark spot fading"></div>
+      <div class="bacard"><img src="https://cdn.shopify.com/s/files/1/0512/1661/3529/files/05_MARK-PDP-BA.png" alt="Before and after — dark spot fading"></div>
+    </div>
+  </section>
+
+  <!-- Ingredients -->
+  <section class="ingredients">
+    <div class="eyebrow">Precision, powered by formulation</div>
+    <div class="h2">What's inside</div>
+    <div class="inggroup">
+      <div class="gt">Fade-Focused Actives</div>
+      <div class="ing"><div class="n">Tranexamic Acid <span>5%</span></div><div class="d">Helps visibly reduce stubborn dark spots by addressing key drivers of discoloration, including inflammation and pigment transfer.</div></div>
+      <div class="ing"><div class="n">Alpha Arbutin <span>1%</span></div><div class="d">A targeted brightener that helps fade the look of existing spots while supporting a more even-looking skin tone over time.</div></div>
+      <div class="ing"><div class="n">Kojic Acid <span>1%</span></div><div class="d">A proven brightening ingredient that helps improve the appearance of uneven tone, especially in areas prone to lingering marks.</div></div>
+    </div>
+    <div class="inggroup">
+      <div class="gt">Tone-Refining Peptide</div>
+      <div class="ing"><div class="n">Acetyl Glycyl Beta-Alanine <span>2%</span></div><div class="d">A precision peptide that helps interrupt pigment pathways, supporting clearer-looking skin and helping reduce the appearance of future discoloration.</div></div>
+    </div>
+    <div class="inggroup">
+      <div class="gt">Precision Hold Essentials</div>
+      <div class="ing"><div class="n">Glycerin</div><div class="d">Maintains hydration and skin comfort, supporting smooth application without dryness.</div></div>
+      <div class="ing"><div class="n">Sodium Polyacrylate</div><div class="d">A film-forming ingredient that helps the formula adhere to skin, creating a smooth, non-sticky finish that stays in place.</div></div>
+    </div>
+  </section>
+
+  <!-- How to use -->
+  <section class="howto" id="howto">
+    <div class="eyebrow">How to use</div>
+    <div class="h2">Precision applicator,<br>maximum fade</div>
+    <p class="lede">Apply directly onto dark spots with the precision tip. The gel-patch texture locks on where you place it — wear alone or under makeup with an invisible finish.</p>
+    <div class="howimg"><img src="https://cdn.shopify.com/s/files/1/0512/1661/3529/files/0010_MARK-PDP.jpg" alt="Precision application"></div>
+  </section>
+
+  <div class="marquee"><div class="track">
+    <span>Clinically tested results in 2 weeks &nbsp;·&nbsp; Formulated for melanin-rich skin &nbsp;·&nbsp; Tranexamic acid 5% &nbsp;·&nbsp; Invisible finish &nbsp;·&nbsp;</span>
+    <span>Clinically tested results in 2 weeks &nbsp;·&nbsp; Formulated for melanin-rich skin &nbsp;·&nbsp; Tranexamic acid 5% &nbsp;·&nbsp; Invisible finish &nbsp;·&nbsp;</span>
+  </div></div>
+
+  <!-- Reviews -->
+  <section class="reviews" id="reviews">
+    <div class="rhead">
+      <div class="big">4.9</div>
+      <div class="st">★★★★★</div>
+      <div class="c">Based on 395 reviews</div>
+    </div>
+    <div class="rcarousel">
+      <div class="rcard"><div class="st">★★★★★</div><h5>Already seeing the spots fade!</h5><p>"Just a couple of weeks in and this fade cream is already working where other expensive brands didn't!"</p><div class="who"><b>Sandra L.</b> · Verified Buyer</div><div class="tone"><span>Tone: Olive</span><span>Skin: Normal</span></div></div>
+      <div class="rcard"><div class="st">★★★★★</div><h5>Amazing!</h5><p>"I waited till I used it for a while to report back and I can say it definitely works! I've used so many dark spot correctors and left disappointed. BUT THIS ONE IS IT! It takes time so don't expect change in the first week. I will be reordering!"</p><div class="who"><b>Nancy A.</b> · Verified Buyer</div></div>
+      <div class="rcard"><div class="st">★★★★★</div><h5>Fades well</h5><p>"So far so good, I love it. It has cleared up dark spots for me."</p><div class="who"><b>Antwameka H.</b> · Verified Buyer</div><div class="tone"><span>Tone: Caramel</span><span>Skin: Combination</span></div></div>
+      <div class="rcard"><div class="st">★★★★☆</div><h5>Fade away</h5><p>"Within two weeks my old acne scars were fading."</p><div class="who"><b>Halima D.</b> · Verified Buyer</div><div class="tone"><span>Tone: Toffee</span><span>Skin: Combination</span></div></div>
+    </div>
+  </section>
+
+  <!-- Complete your routine -->
+  <section class="routine">
+    <div class="eyebrow">Complete your routine</div>
+    <div class="h2">Pairs beautifully with</div>
+    <div class="rgrid">
+      <div class="rcard2"><div class="pic"><img src="https://cdn.shopify.com/s/files/1/0512/1661/3529/files/CashmerePeelAllure_0519.png" alt="Cashmere Peel"></div><div class="n">Cashmere Peel</div><div class="d">Milky Exfoliant &amp; Hydrating Essence</div><div class="pr">$42</div></div>
+      <div class="rcard2"><div class="pic"><img src="https://cdn.shopify.com/s/files/1/0512/1661/3529/products/CLOUDCUSHIONPDPHERO_Hickory_dcbbc619-45a3-4f26-b91e-1183944568a4.png" alt="Cloud Cushion"></div><div class="n">Cloud Cushion</div><div class="d">Airy Brightening Moisturizer</div><div class="pr">$48</div></div>
+      <div class="rcard2"><div class="pic"><img src="https://cdn.shopify.com/s/files/1/0512/1661/3529/files/EADEM_PDP_LIP_Boba.png" alt="Le Chouchou"></div><div class="n">Le Chouchou</div><div class="d">Lip Softening Balm</div><div class="pr">$24</div></div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="logo"><svg viewBox="0 0 1160 194" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 193.14H146.88V160H33.12V97.85C46.81 107 66 112.62 82.85 112.62C106.52 112.62 126.31 103.33 142.06 85.62L143.79 83.62H33.12V33.12H146.88V0H0V193.14Z"/>
+      <path d="M264 130.28L304.67 38.44L345.34 130.28H264ZM322.14 0H285.58L199.58 193.14H236.14L257.74 144.29C271.51 153.59 287.63 159.29 304.65 159.29C321.67 159.29 337.78 153.63 351.54 144.29L373.16 193.14H409.7L323.67 0H322.14Z"/>
+      <path d="M594.68 141.59C588.79 147.531 581.78 152.246 574.055 155.461C566.331 158.676 558.046 160.327 549.68 160.32H499.49V32.81H549.67C562.279 32.7967 574.608 36.5276 585.095 43.5297C595.581 50.5318 603.752 60.4898 608.572 72.1413C613.392 83.7929 614.644 96.6132 612.169 108.977C609.694 121.341 603.604 132.692 594.67 141.59H594.68ZM549.67 0H466.38V193.14H549.67C568.771 193.16 587.449 187.509 603.335 176.903C619.221 166.298 631.602 151.214 638.907 133.565C646.212 115.916 648.114 96.4956 644.37 77.7647C640.627 59.0338 631.408 41.8357 617.88 28.35C608.949 19.3496 598.323 12.2097 586.614 7.34342C574.906 2.47717 562.349 0 549.67 0Z"/>
+      <path d="M713 193.14H859.91V160H746.15V97.85C759.85 107 779 112.62 795.88 112.62C819.55 112.62 839.35 103.33 855.09 85.62L856.83 83.62H746.15V33.12H859.91V0H713V193.14Z"/>
+      <path d="M1120.11 0H1083.11L1040 141.16L997 0H959.89L920 193.14H955.23L982.43 57.56C982.43 57.56 985.53 72.04 989.43 84.17L1023.24 190.43H1056.37L1090.6 84.17C1094.46 72.04 1097.6 57.56 1097.6 57.56L1124.8 193.14H1160L1120.11 0Z"/>
+    </svg></span>
+    <div class="links"><a href="#">Shop</a><a href="#reviews">Reviews</a><a href="#">Journal</a><a href="#">About</a></div>
+    <p>Everyday skin & lip care, clinically tested for daily use. Formulated for melanin-rich skin.</p>
+  </footer>
+
+  <div class="pagepad"></div>
+
+  <div class="stickybar" id="sticky">
+    <div class="sp"><img src="https://cdn.shopify.com/s/files/1/0512/1661/3529/files/01B_PRODUCT-OVERLAY-TRANSPARENT.png" alt=""></div>
+    <div class="si"><div class="nm">The Mark</div><div class="pr" id="sbPrice">$38.00</div></div>
+    <button class="sb" onclick="document.getElementById('atc').click()">Add to Cart</button>
+  </div>
+
+</div>
+
+<script>
+// Gallery dots + thumbs
+(function(){
+  var slides=document.getElementById('slides'), els=[].slice.call(slides.children);
+  var dots=document.getElementById('dots'), thumbs=document.getElementById('thumbs');
+  els.forEach(function(s,i){
+    var d=document.createElement('span'); d.className='dot'+(i===0?' on':''); d.onclick=function(){slides.scrollTo({left:slides.clientWidth*i,behavior:'smooth'});}; dots.appendChild(d);
+    var src=(s.querySelector('.tube')||s.querySelector('img')).src;
+    var t=document.createElement('button'); t.className='thumb'+(i===0?' on':''); t.innerHTML='<img src="'+src+'">';
+    t.onclick=function(){slides.scrollTo({left:slides.clientWidth*i,behavior:'smooth'});}; thumbs.appendChild(t);
+  });
+  slides.addEventListener('scroll',function(){
+    var i=Math.round(slides.scrollLeft/slides.clientWidth);
+    [].forEach.call(dots.children,function(d,j){d.classList.toggle('on',j===i);});
+    [].forEach.call(thumbs.children,function(t,j){t.classList.toggle('on',j===i);});
+  },{passive:true});
+})();
+
+// Pricing state
+var state={mode:'onetime', price:38.00, qty:1};
+function fmt(n){return '$'+n.toFixed(2);}
+function render(){
+  var total=state.price*state.qty;
+  document.getElementById('atcPrice').textContent=fmt(total);
+  document.getElementById('sbPrice').textContent=fmt(total);
+  document.getElementById('qval').textContent=state.qty;
+}
+document.querySelectorAll('#purchase .popt').forEach(function(o){
+  o.addEventListener('click',function(){
+    document.querySelectorAll('#purchase .popt').forEach(function(x){x.classList.remove('on');});
+    o.classList.add('on');
+    state.mode=o.dataset.mode; state.price=parseFloat(o.dataset.price); render();
+  });
+});
+document.getElementById('qplus').addEventListener('click',function(){state.qty++;render();});
+document.getElementById('qminus').addEventListener('click',function(){if(state.qty>1){state.qty--;render();}});
+render();
+
+document.getElementById('atc').addEventListener('click',function(){
+  var b=this,h=b.innerHTML; b.textContent='Added ✓';
+  setTimeout(function(){b.innerHTML=h;},1300);
+});
+
+// Sticky bar
+(function(){
+  var atc=document.getElementById('atc'), bar=document.getElementById('sticky');
+  function upd(){ bar.classList.toggle('show', atc.getBoundingClientRect().bottom<50); }
+  window.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); upd();
+})();
+</script>
+</body>
+</html>
