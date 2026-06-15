@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Starter Kit — Scentify</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Brand body font (Beatrice) from Scentify CDN — CORS verified */
+@font-face{ font-family:'Beatrice'; src:url('https://scentifyhome.com/cdn/shop/files/BeatriceStandard-Regular.ttf') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face{ font-family:'Beatrice'; src:url('https://scentifyhome.com/cdn/shop/files/BeatriceStandard-Italic.ttf') format('woff2'); font-weight:400; font-style:italic; font-display:swap; }
+
+:root{
+  --white:#ffffff;
+  --cream:#F4EFE8;          /* warm section accent */
+  --ink:#2D2D2D;            /* body text */
+  --slate:#454857;          /* accent / outline CTAs */
+  --bar:#3A3A3A;            /* announcement */
+  --muted:#8a8782;
+  --line:#e7e1d7;
+  --gold:#caa24a;
+  --grad:linear-gradient(105deg,#FFD4F0 0%,#b9a7c9 38%,#454857 100%); /* brand signature */
+  --display:'Playfair Display',serif;
+  --ui:'Karla',sans-serif;
+  --body:'Beatrice','Karla',sans-serif;
+  --pill:30px;
+  --shadow:0 6px 26px rgba(45,45,45,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:var(--body);color:var(--ink);background:#ddd6cb;line-height:1.55;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+a{color:inherit;text-decoration:none;}
+.serif{font-family:var(--display);}
+.ital{font-family:var(--display);font-style:italic;}
+
+/* Phone frame */
+.frame{max-width:390px;margin:0 auto;background:var(--white);position:relative;overflow:hidden;min-height:100vh;}
+@media(min-width:600px){
+  body{padding:26px 0;}
+  .frame{box-shadow:0 20px 64px rgba(45,45,45,.24);border-radius:22px;min-height:auto;}
+}
+
+.announce{background:var(--bar);color:#fff;text-align:center;font-family:var(--ui);font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:9px 12px;white-space:nowrap;overflow:hidden;}
+
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--white);position:relative;z-index:30;border-bottom:1px solid var(--line);}
+.hdr .logo{height:26px;width:auto;filter:brightness(0);} /* logo.svg ships white-filled; darken to brand ink */
+.hdr-ic{display:flex;gap:15px;}
+.hdr-ic svg{width:20px;height:20px;stroke:var(--ink);fill:none;}
+.cart-wrap{position:relative;}
+.cart-count{position:absolute;top:-7px;right:-8px;background:var(--slate);color:#fff;font-family:var(--ui);font-size:9px;font-weight:700;min-width:15px;height:15px;padding:0 3px;border-radius:9px;display:grid;place-items:center;}
+
+/* Hero */
+.hero{background:var(--cream);padding:24px 20px 26px;text-align:center;}
+.hero .eyebrow{font-family:var(--ui);font-size:10.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--slate);margin-bottom:12px;}
+.hero h1{font-family:var(--display);font-size:33px;line-height:1.12;font-weight:500;margin-bottom:12px;}
+.hero h1 em{font-style:italic;}
+.hero p{font-family:var(--body);font-size:13.5px;color:#5c5953;max-width:300px;margin:0 auto 16px;}
+.hero-img{border-radius:14px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:16px;}
+.hero-img img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+.hero-cta{display:inline-block;background:var(--ink);color:#fff;font-family:var(--ui);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:15px 34px;border-radius:var(--pill);}
+
+/* Social proof (PRIMARY improvement) */
+.proof{background:var(--white);padding:18px 20px;border-bottom:1px solid var(--line);text-align:center;}
+.proof .stars{color:var(--gold);font-size:17px;letter-spacing:2px;}
+.proof .pline{font-family:var(--ui);font-size:13px;font-weight:600;margin-top:4px;}
+.proof .pline b{font-weight:700;}
+.proof .psub{font-family:var(--ui);font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+.creds{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;margin-top:13px;}
+.cred{font-family:var(--ui);font-size:10px;font-weight:600;letter-spacing:.4px;color:var(--slate);border:1px solid var(--line);border-radius:var(--pill);padding:5px 11px;}
+
+/* Section scaffolding */
+.section{padding:30px 20px;}
+.sec-eyebrow{font-family:var(--ui);font-size:10.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--slate);margin-bottom:6px;}
+.sec-title{font-family:var(--display);font-size:26px;font-weight:500;line-height:1.12;margin-bottom:8px;}
+.sec-title em{font-style:italic;}
+.sec-sub{font-family:var(--body);font-size:13px;color:#5c5953;margin-bottom:18px;}
+
+/* Builder */
+.builder{background:var(--white);}
+.step-head{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;}
+.step-kicker{font-family:var(--display);font-size:25px;font-weight:500;}
+.step-kicker em{font-style:italic;}
+.step-label{font-family:var(--ui);font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);margin:2px 0 16px;}
+
+.diffuser-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px;}
+.diff-card{border:1.5px solid var(--line);border-radius:14px;padding:14px 12px 16px;text-align:center;transition:.18s;position:relative;background:var(--white);}
+.diff-card.active{border-color:var(--slate);box-shadow:inset 0 0 0 1px var(--slate);}
+.diff-card.soldout{opacity:.5;}
+.diff-card .pic{aspect-ratio:1/1;display:grid;place-items:center;margin-bottom:8px;}
+.diff-card .pic img{height:100%;width:auto;object-fit:contain;}
+.diff-name{font-family:var(--ui);font-size:12.5px;font-weight:600;line-height:1.3;}
+.diff-price{font-family:var(--ui);font-size:13px;font-weight:700;margin-top:2px;}
+.diff-btn{margin-top:10px;width:100%;border:1.5px solid var(--slate);border-radius:var(--pill);padding:9px;font-family:var(--ui);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:.18s;}
+.diff-card.active .diff-btn{background:var(--ink);color:#fff;border-color:var(--ink);}
+.diff-card.soldout .diff-btn{border-color:var(--line);color:var(--muted);}
+.diff-check{position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:50%;background:var(--slate);display:none;place-items:center;}
+.diff-card.active .diff-check{display:grid;}
+.diff-check svg{width:12px;height:12px;stroke:#fff;fill:none;}
+
+/* Scent grid */
+.scent-tools{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:10px;margin-bottom:4px;}
+.scent-tools::-webkit-scrollbar{display:none;}
+.scent-filter{flex:0 0 auto;font-family:var(--ui);font-size:11px;font-weight:600;letter-spacing:.3px;border:1px solid var(--line);border-radius:var(--pill);padding:6px 13px;color:var(--slate);transition:.15s;}
+.scent-filter.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+.scent-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.scent{border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--white);transition:.18s;position:relative;display:flex;flex-direction:column;}
+.scent.sel{border-color:var(--slate);box-shadow:inset 0 0 0 1px var(--slate);}
+.scent .bottle{aspect-ratio:1/1;background:linear-gradient(170deg,#faf7f2,#efe9df);display:grid;place-items:center;position:relative;}
+.scent .bottle img{height:86%;width:auto;object-fit:contain;}
+.scent .bestseller{position:absolute;top:8px;left:8px;font-family:var(--ui);font-size:8.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--slate);padding:3px 7px;border-radius:var(--pill);}
+.scent .grad{height:4px;background:var(--grad);}
+.scent .sb{padding:10px 11px 12px;flex:1;display:flex;flex-direction:column;}
+.scent .sname{font-family:var(--display);font-size:16px;font-weight:500;line-height:1;}
+.scent .sprice{font-family:var(--ui);font-size:12px;font-weight:700;color:var(--slate);margin:2px 0 6px;}
+.scent .snote{font-family:var(--body);font-size:10.5px;line-height:1.45;color:#6f6c66;flex:1;}
+.scent .sadd{margin-top:9px;border:1.5px solid var(--slate);border-radius:var(--pill);padding:7px;font-family:var(--ui);font-size:10.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;transition:.15s;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;min-height:33px;}
+.scent.sel .sadd{background:var(--ink);color:#fff;border-color:var(--ink);}
+.qtybox{display:none;align-items:center;justify-content:space-between;width:100%;}
+.scent.sel .qtybox{display:flex;}
+.scent.sel .sadd-label{display:none;}
+.qtybox .qm,.qtybox .qp{width:24px;height:24px;border:1px solid rgba(255,255,255,.45);border-radius:50%;color:#fff;font-size:15px;line-height:1;display:grid;place-items:center;cursor:pointer;}
+.qtybox .qnum{font-family:var(--ui);font-weight:700;}
+
+/* Your Kit summary (SECONDARY improvement) */
+.kit-panel{background:var(--cream);border-radius:16px;padding:18px;margin-top:6px;}
+.kit-panel h3{font-family:var(--display);font-size:20px;font-weight:500;margin-bottom:4px;}
+.kit-progress{display:flex;gap:8px;margin:10px 0 14px;}
+.kp-step{flex:1;font-family:var(--ui);font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);padding-top:9px;border-top:2px solid var(--line);transition:.2s;}
+.kp-step.done{color:var(--slate);border-top-color:var(--slate);}
+.kit-lines{font-family:var(--ui);font-size:12.5px;}
+.kit-line{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);}
+.kit-line .nm{color:var(--ink);}
+.kit-line .nm small{color:var(--muted);font-weight:400;}
+.kit-line .pr{font-weight:700;white-space:nowrap;}
+.kit-empty{font-family:var(--body);font-size:12px;color:var(--muted);padding:8px 0;font-style:italic;}
+.kit-total{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;}
+.kit-total .lab{font-family:var(--ui);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.kit-total .amt{font-family:var(--display);font-size:26px;font-weight:500;}
+.kit-cta{display:block;width:100%;text-align:center;background:var(--ink);color:#fff;font-family:var(--ui);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:15px;border-radius:var(--pill);margin-top:14px;}
+.kit-cta.disabled{background:#cfc8bd;}
+
+/* Subscription toggle (refills) */
+.sub-toggle{display:flex;flex-direction:column;gap:8px;margin:4px 0 14px;}
+.sub-opt{display:flex;align-items:center;gap:10px;text-align:left;border:1.5px solid var(--line);background:var(--white);border-radius:12px;padding:11px 13px;position:relative;transition:.15s;}
+.sub-opt.active{border-color:var(--slate);box-shadow:inset 0 0 0 1px var(--slate);}
+.sub-radio{width:18px;height:18px;border-radius:50%;border:2px solid #c9c3b8;flex:0 0 auto;position:relative;}
+.sub-opt.active .sub-radio{border-color:var(--slate);}
+.sub-opt.active .sub-radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--slate);}
+.sub-opt .so-txt{flex:1;min-width:0;}
+.sub-opt .so-txt b{font-family:var(--ui);font-size:12.5px;font-weight:700;display:block;}
+.sub-opt .so-txt small{font-family:var(--body);font-size:10.5px;color:var(--muted);}
+.sub-badge{font-family:var(--ui);font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#fff;background:var(--slate);padding:3px 8px;border-radius:var(--pill);flex:0 0 auto;}
+.sub-freq{display:flex;align-items:center;gap:8px;font-family:var(--ui);font-size:11.5px;font-weight:600;color:var(--ink);padding:2px 2px 0;}
+.sub-freq.hide{display:none;}
+.sub-freq select{font-family:inherit;font-size:11.5px;font-weight:600;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 8px;background:#fff;}
+.kit-line .pr small{display:block;font-weight:400;color:var(--muted);font-size:10px;}
+.kit-save{display:flex;justify-content:space-between;font-family:var(--ui);font-size:12px;font-weight:700;color:var(--slate);padding:8px 0 0;}
+.kit-recur{font-family:var(--body);font-size:10.5px;color:var(--muted);margin-top:4px;font-style:italic;}
+
+/* Feature section */
+.features{background:var(--ink);color:#f3efe9;}
+.features .sec-eyebrow{color:var(--gold);}
+.features .sec-title{color:#fff;}
+.feat-hero{border-radius:14px;overflow:hidden;margin-bottom:18px;}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.feat{display:flex;gap:10px;align-items:flex-start;}
+.feat .fi{width:30px;height:30px;flex:0 0 auto;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;}
+.feat .fi svg{width:16px;height:16px;stroke:var(--gold);fill:none;}
+.feat .ft{font-family:var(--ui);font-size:12px;font-weight:700;}
+.feat .fd{font-family:var(--body);font-size:10.5px;color:#b9b4ad;line-height:1.4;margin-top:2px;}
+
+/* Steps how-it-works */
+.how{background:var(--cream);}
+.how-steps{display:flex;flex-direction:column;gap:14px;}
+.how-step{display:flex;gap:14px;align-items:flex-start;}
+.how-num{font-family:var(--display);font-style:italic;font-size:30px;color:var(--slate);line-height:1;flex:0 0 36px;}
+.how-step h4{font-family:var(--ui);font-size:13px;font-weight:700;letter-spacing:.3px;margin-bottom:3px;}
+.how-step p{font-family:var(--body);font-size:12px;color:#6f6c66;}
+
+/* FAQ */
+.faq{background:var(--white);}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;padding:16px 2px;font-family:var(--ui);font-size:13px;font-weight:600;}
+.faq-q .pm{flex:0 0 auto;width:16px;height:16px;position:relative;}
+.faq-q .pm::before,.faq-q .pm::after{content:"";position:absolute;background:var(--slate);}
+.faq-q .pm::before{top:7px;left:0;right:0;height:2px;}
+.faq-q .pm::after{left:7px;top:0;bottom:0;width:2px;transition:.2s;}
+.faq-item.open .pm::after{opacity:0;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.faq-a p{font-family:var(--body);font-size:12px;color:#6f6c66;line-height:1.6;padding:0 2px 16px;}
+
+/* Footer */
+.foot{background:var(--bar);color:#cfcac3;padding:26px 20px 30px;text-align:center;}
+.foot .flogo{height:24px;margin:0 auto 12px;filter:brightness(0) invert(1);opacity:.92;}
+.foot .flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;font-family:var(--ui);font-size:11px;margin-bottom:14px;}
+.foot .fcopy{font-family:var(--ui);font-size:10px;color:#8e8983;line-height:1.6;}
+
+/* Sticky kit bar */
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:390px;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 24px rgba(45,45,45,.13);padding:11px 16px;display:flex;align-items:center;gap:12px;z-index:50;transition:transform .28s ease;}
+.sticky.show{transform:translateX(-50%) translateY(0);}
+.sticky .sinfo{flex:1;min-width:0;}
+.sticky .slab{font-family:var(--ui);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
+.sticky .stot{font-family:var(--display);font-size:21px;font-weight:500;line-height:1.05;}
+.sticky .srecur{font-family:var(--ui);font-size:10.5px;font-weight:600;color:var(--slate);margin-top:1px;}
+.sticky .srecur:empty{display:none;}
+.sticky .sbtn{background:var(--ink);color:#fff;font-family:var(--ui);font-size:11.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:14px 22px;border-radius:var(--pill);white-space:nowrap;}
+
+.reveal{opacity:0;transform:translateY(14px);transition:.6s ease;}
+.reveal.in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+<div class="frame" id="frame">
+
+  <div class="announce">Free Shipping &amp; Returns on All Orders</div>
+
+  <header class="hdr">
+    <img class="logo" src="https://scentifyhome.com/cdn/shop/t/118/assets/logo.svg" alt="Scentify">
+    <div class="hdr-ic">
+      <button aria-label="Search"><svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg></button>
+      <button class="cart-wrap" aria-label="Cart"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-count" id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="eyebrow">The Five-Star Scent Experience</div>
+    <h1 class="serif">Bring Iconic Hotel<br>Aromas <em>into Your Home</em></h1>
+    <p>Experience the same signature scents of five-star hotels — now in your own personal sanctuary.</p>
+    <div class="hero-img"><img src="https://cdn.shopify.com/s/files/1/0487/2798/2229/files/Scentify-PDP-Hero-Web-Res_73.jpg" alt="Scentify Plug-in Diffuser V2 Starter Kit"></div>
+    <a href="#builder" class="hero-cta">Build Your Starter Kit</a>
+  </section>
+
+  <!-- SOCIAL PROOF (primary improvement: surfaced on the PDP) -->
+  <section class="proof">
+    <div class="stars">★★★★★</div>
+    <div class="pline">Rated <b>4.8/5</b> by <b>100,000+</b> Happy Customers</div>
+    <div class="psub">Loved in homes across the country</div>
+    <div class="creds">
+      <span class="cred">Vegan &amp; Non-GMO</span>
+      <span class="cred">Paraben &amp; Phthalate-Free</span>
+      <span class="cred">Safe for Pets</span>
+      <span class="cred">Made in the USA</span>
+      <span class="cred">Free 30-Day Returns</span>
+    </div>
+  </section>
+
+  <!-- Builder -->
+  <section class="section builder" id="builder">
+    <!-- Step One -->
+    <div class="step-head"><span class="step-kicker serif">Step <em>One</em></span></div>
+    <div class="step-label">Select Your Diffuser</div>
+    <div class="diffuser-grid" id="diffuserGrid">
+      <div class="diff-card active" data-diff="White" data-price="99">
+        <div class="diff-check"><svg viewBox="0 0 24 24" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></div>
+        <div class="pic"><img src="https://cdn.shopify.com/s/files/1/0487/2798/2229/files/ScentifyPlug-inDiffuserWhite.jpg" alt="Scentify Plug-in Diffuser V2 White"></div>
+        <div class="diff-name">Plug-in Diffuser V2 — White</div>
+        <div class="diff-price">$99</div>
+        <button class="diff-btn">Selected</button>
+      </div>
+      <div class="diff-card soldout" data-diff="Black" data-price="99">
+        <div class="pic"><img src="https://cdn.shopify.com/s/files/1/0487/2798/2229/files/ScentifyPlug-inDiffuserBlack.jpg" alt="Scentify Plug-in Diffuser V2 Black"></div>
+        <div class="diff-name">Plug-in Diffuser V2 — Black</div>
+        <div class="diff-price">$99</div>
+        <button class="diff-btn" disabled>Sold Out</button>
+      </div>
+    </div>
+
+    <!-- Step Two -->
+    <div class="step-head" style="margin-top:26px;"><span class="step-kicker serif">Step <em>Two</em></span></div>
+    <div class="step-label">Select Your Fragrance · add as many as you like</div>
+    <div class="scent-tools" id="scentTools">
+      <button class="scent-filter active" data-f="all">All Scents</button>
+      <button class="scent-filter" data-f="best">Bestsellers</button>
+      <button class="scent-filter" data-f="30">$30</button>
+      <button class="scent-filter" data-f="35">$35</button>
+    </div>
+    <div class="scent-grid" id="scentGrid"><!-- injected --></div>
+
+    <!-- Your Kit (secondary improvement) -->
+    <div class="kit-panel" id="kitPanel">
+      <h3 class="serif">Your Kit</h3>
+      <div class="kit-progress">
+        <div class="kp-step done" id="kp1">1 · Diffuser</div>
+        <div class="kp-step" id="kp2">2 · Fragrance</div>
+        <div class="kp-step" id="kp3">3 · Checkout</div>
+      </div>
+      <div class="sub-toggle" id="subToggle">
+        <button class="sub-opt active" data-sub="sub">
+          <span class="sub-radio"></span>
+          <span class="so-txt"><b>Subscribe &amp; Save</b><small>Refills auto-deliver — pause, skip or cancel anytime</small></span>
+          <span class="sub-badge">Save 10%</span>
+        </button>
+        <div class="sub-freq" id="subFreq">
+          <span>Deliver refills every</span>
+          <select id="freqSel" aria-label="Delivery frequency">
+            <option value="4" selected>4 weeks</option><option value="5">5 weeks</option><option value="6">6 weeks</option><option value="7">7 weeks</option><option value="8">8 weeks</option><option value="9">9 weeks</option><option value="10">10 weeks</option>
+          </select>
+        </div>
+        <button class="sub-opt" data-sub="once">
+          <span class="sub-radio"></span>
+          <span class="so-txt"><b>One-Time Purchase</b><small>No recurring delivery</small></span>
+        </button>
+      </div>
+      <div class="kit-lines" id="kitLines"></div>
+      <div class="kit-total"><span class="lab">Kit Total</span><span class="amt" id="kitTotal">$99</span></div>
+      <button class="kit-cta" id="kitCta">Add Kit to Cart · <span id="kitCtaTotal">$99</span></button>
+    </div>
+  </section>
+
+  <!-- Why V2 (features from packaging) -->
+  <section class="section features">
+    <div class="sec-eyebrow">Engineered for the Home</div>
+    <h2 class="sec-title serif">Why the <em>V2</em> Diffuser</h2>
+    <div class="feat-hero"><img src="https://cdn.shopify.com/s/files/1/0487/2798/2229/files/Scentify-PDP-Hero-Web-Res_74.jpg" alt="Scentify Diffuser V2"></div>
+    <div class="feat-grid">
+      <div class="feat reveal"><span class="fi"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M18 8A6 6 0 1 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><div><div class="ft">Quieter Motor</div><div class="fd">Whisper-quiet diffusion you'll forget is running.</div></div></div>
+      <div class="feat reveal"><span class="fi"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M12 2s7 7 7 12a7 7 0 0 1-14 0c0-5 7-12 7-12z"/></svg></span><div><div class="ft">Leak Protection</div><div class="fd">Sealed oil chamber — no drips, no mess.</div></div></div>
+      <div class="feat reveal"><span class="fi"><svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></span><div><div class="ft">Custom Coverage</div><div class="fd">Dial intensity to fit any room size.</div></div></div>
+      <div class="feat reveal"><span class="fi"><svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><div class="ft">24hr &amp; Smart Mode</div><div class="fd">Schedule scent cycles around your day.</div></div></div>
+      <div class="feat reveal"><span class="fi"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M7 7l10 10M17 7L7 17"/><path d="M9 4l6 0M12 2v4"/></svg></span><div><div class="ft">Bluetooth App</div><div class="fd">Control intensity &amp; timing from your phone.</div></div></div>
+      <div class="feat reveal"><span class="fi"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></span><div><div class="ft">On/Off Switch</div><div class="fd">Simple physical controls, right on the device.</div></div></div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section how">
+    <div class="sec-eyebrow">Effortless Ritual</div>
+    <h2 class="sec-title serif">How it <em>works</em></h2>
+    <div class="how-steps">
+      <div class="how-step reveal"><span class="how-num serif">1</span><div><h4>Build your kit</h4><p>Pick your diffuser, then choose the signature scents that feel like home.</p></div></div>
+      <div class="how-step reveal"><span class="how-num serif">2</span><div><h4>Plug in &amp; pour</h4><p>Drop in a 100ml bottle — each one lasts 4–8 weeks of everyday diffusing.</p></div></div>
+      <div class="how-step reveal"><span class="how-num serif">3</span><div><h4>Set the mood</h4><p>Dial the intensity or schedule it from the app. Your space, your five-star scent.</p></div></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq">
+    <div class="sec-eyebrow">Good to Know</div>
+    <h2 class="sec-title serif">Questions, <em>answered</em></h2>
+    <div style="margin-top:14px;">
+      <div class="faq-item"><button class="faq-q">Are the oils safe?<span class="pm"></span></button><div class="faq-a"><p>Scentify oils are a blend of synthetic and natural ingredients that are certified vegan and non-GMO, contain no parabens, phthalates or any toxic chemicals, and are safe for humans and pets. The oils are manufactured in the U.S. and comply with the IFRA code of practice.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How often do I need to refill?<span class="pm"></span></button><div class="faq-a"><p>It depends on how you set the diffuser. On average each 100ml bottle should last 4–8 weeks.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Can Scentify oils be diluted?<span class="pm"></span></button><div class="faq-a"><p>Scentify oils are formulated specifically to work with Scentify diffusers and cannot be diluted.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Can I return or exchange an item?<span class="pm"></span></button><div class="faq-a"><p>We offer free returns within 30 days of purchase. You can return your product for store credit, a different product, or a refund to the original payment method. Returned items must be in the original packaging and in working condition.</p></div></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <img class="flogo" src="https://scentifyhome.com/cdn/shop/t/118/assets/logo.svg" alt="Scentify">
+    <div class="flinks"><a href="#builder">Starter Kit</a><a href="#">Fragrances</a><a href="#">Diffusers</a><a href="#">Our Story</a><a href="#">Contact</a></div>
+    <div class="fcopy">Love at first scent.<br>© Scentify · Bring iconic hotel aromas home.</div>
+  </footer>
+
+  <!-- Sticky kit bar -->
+  <div class="sticky" id="sticky">
+    <div class="sinfo">
+      <div class="slab" id="sLab">1 item · White Diffuser</div>
+      <div class="stot" id="sTotal">$99</div>
+      <div class="srecur" id="sRecur"></div>
+    </div>
+    <button class="sbtn" id="sBtn">Add to Cart</button>
+  </div>
+
+</div>
+
+<script>
+const BASE='https://cdn.shopify.com/s/files/1/0487/2798/2229/files/';
+/* Real scent catalog — names, prices, bottle images, first-sentence notes from products.json. Bestsellers per best-selling sort. */
+const SCENTS=[
+  {n:'Bliss',p:30,img:'Bliss_100ml.jpg',best:true,note:'The signature scent that started it all — clean, calming, and unmistakably Scentify.'},
+  {n:'Miami',p:30,img:'Miami_100ml.jpg',best:true,note:'Enter a world of well-being, romance and comfort.'},
+  {n:'5th Ave',p:30,img:'5th_Ave-100ml.jpg',best:true,note:"Evokes life's freshest aromas, led by soft, sweet, sensual berry."},
+  {n:'Monaco',p:35,img:'Monaco_100ml.jpg',note:'An aura of leathery intimacy with sweet and woody tones.'},
+  {n:'Oceania',p:30,img:'Oceania_100ml.jpg',note:'A relaxing coastline resort where ocean blue and luxury reign.'},
+  {n:'Santal',p:35,img:'Santal_100ml.jpg',note:'Warm, woody sandalwood — quietly luxurious.'},
+  {n:'White Tea',p:30,img:'White_Tea_100ml.jpg',note:'Luxuriate in this unmistakably soothing fragrance.'},
+  {n:'Lavender & Musk',p:30,img:'Lavender_100ml.jpg',note:'Soft aromas of lavender paired with grounding musk.'},
+  {n:'Malibu',p:30,img:'Malibu_100ml.jpg',note:'The essence of a sun-kissed day on the California coastline.'},
+  {n:'Madison Ave',p:35,img:'Madison_Ave_100ml.jpg',note:'A refined scent inspired by the elegance of Madison Avenue.'},
+  {n:'Noir',p:35,img:'Noir_100ml.jpg',note:'An effervescent yet deep scent — welcoming and sensuous.'},
+  {n:'Paris',p:30,img:'Paris_100ml.jpg',note:'The iconic City of Light — invigorating and passion-filled.'},
+  {n:'Demure',p:30,img:'Demure_100ml.jpg',note:'A fresh, invigorating fusion of fruity and floral.'},
+  {n:'Tokyo Nights',p:30,img:'Tokyo_Nights_100ml.jpg',note:'An opulent embrace of aromatics and citrus over a rich base.'},
+  {n:'Havana',p:35,img:'Havana_100ml.jpg',note:'Transports you to the vibrant streets of the Cuban capital.'},
+  {n:'Citron',p:30,img:'Citron_100ml.jpg',note:'Fresh and soothing, punctuated by vibrant citrus notes.'},
+  {n:'Amalfi',p:30,img:'Amalfi_100ml.jpg',note:'Rich fragrances that open their arms and say welcome.'},
+  {n:'Fiji',p:30,img:'Fiji_100ml.jpg',note:'Bright blue skies cast their spell in this vivacious scent.'},
+  {n:'Lemongrass Tea',p:30,img:'Lemongrass_100ml.jpg',note:'Bright, buoyant herbal freshness for any room.'},
+  {n:'Bali',p:30,img:'Bali_100ml.jpg',note:'A fresh, delicate essence bursting with life at its greenest.'}
+];
+
+const $=s=>document.querySelector(s);
+const state={ diffuser:{name:'White',price:99}, scents:{}, subMode:'sub', freq:4 };  // scents: {name:{price,qty}}; subMode: sub|once; freq default 4wks matches live
+const SUB_RATE=0.10;  // refills: Subscribe & Save 10% (matches live ReCharge selling plan)
+
+/* render scent grid */
+function renderScents(filter='all'){
+  const grid=$('#scentGrid'); grid.innerHTML='';
+  SCENTS.forEach((s,i)=>{
+    if(filter==='best'&&!s.best) return;
+    if(filter==='30'&&s.p!==30) return;
+    if(filter==='35'&&s.p!==35) return;
+    const sel=state.scents[s.n];
+    const card=document.createElement('div');
+    card.className='scent'+(sel?' sel':'');
+    card.innerHTML=
+      `<div class="bottle">${s.best?'<span class="bestseller">Bestseller</span>':''}<img src="${BASE}${s.img}" alt="${s.n}" loading="lazy"></div>`+
+      `<div class="grad"></div>`+
+      `<div class="sb"><div class="sname serif">${s.n}</div><div class="sprice">$${s.p.toFixed(2)}</div><div class="snote">${s.note}</div>`+
+      `<div class="sadd" role="button" tabindex="0"><span class="sadd-label">+ Add to Kit</span>`+
+        `<span class="qtybox"><span class="qm" role="button" aria-label="less">−</span><span class="qnum">${sel?sel.qty:1} in kit</span><span class="qp" role="button" aria-label="more">+</span></span>`+
+      `</div></div>`;
+    const addBtn=card.querySelector('.sadd');
+    addBtn.addEventListener('click',(e)=>{
+      if(e.target.classList.contains('qm')||e.target.classList.contains('qp')) return;
+      if(!state.scents[s.n]){ state.scents[s.n]={price:s.p,qty:1}; } // toggle on
+      renderScents(filter); renderKit();
+    });
+    if(sel){
+      card.querySelector('.qm').addEventListener('click',(e)=>{ e.stopPropagation(); sel.qty--; if(sel.qty<=0) delete state.scents[s.n]; renderScents(filter); renderKit(); });
+      card.querySelector('.qp').addEventListener('click',(e)=>{ e.stopPropagation(); sel.qty++; renderScents(filter); renderKit(); });
+    }
+    grid.appendChild(card);
+  });
+}
+
+/* render Your Kit summary + running total (secondary improvement) */
+function scentsSubtotal(){ let t=0; for(const k in state.scents) t+=state.scents[k].price*state.scents[k].qty; return t; }
+function refillDiscount(){ return state.subMode==='sub' ? scentsSubtotal()*SUB_RATE : 0; }
+function kitTotal(){ return (state.diffuser?state.diffuser.price:0) + scentsSubtotal() - refillDiscount(); }
+function scentCount(){ let c=0; for(const k in state.scents) c+=state.scents[k].qty; return c; }
+function renderKit(){
+  const sub=state.subMode==='sub';
+  const lines=$('#kitLines'); lines.innerHTML='';
+  if(state.diffuser){
+    lines.innerHTML+=`<div class="kit-line"><span class="nm">Plug-in Diffuser V2 <small>· ${state.diffuser.name}</small></span><span class="pr">$${state.diffuser.price.toFixed(2)}<small>one-time</small></span></div>`;
+  }
+  const keys=Object.keys(state.scents);
+  if(keys.length===0){
+    lines.innerHTML+=`<div class="kit-empty">Add one or more fragrances above to complete your kit.</div>`;
+  } else {
+    keys.forEach(k=>{ const s=state.scents[k]; lines.innerHTML+=`<div class="kit-line"><span class="nm">${k}<small>${s.qty>1?' · ×'+s.qty:''}${sub?' · refill':''}</small></span><span class="pr">$${(s.price*s.qty).toFixed(2)}</span></div>`; });
+  }
+  const disc=refillDiscount();
+  const recurring=scentsSubtotal()-disc;  // discounted refills = the recurring charge (diffuser is one-time)
+  if(sub && disc>0){
+    lines.innerHTML+=`<div class="kit-save"><span>Subscribe &amp; Save (10% off refills)</span><span>−$${disc.toFixed(2)}</span></div>`;
+    lines.innerHTML+=`<div class="kit-recur">Includes your $${state.diffuser.price.toFixed(2)} diffuser (one-time). After today, just <b>$${recurring.toFixed(2)} every ${state.freq} weeks</b> for refills — skip, pause, or cancel anytime.</div>`;
+  }
+  const total=kitTotal();
+  $('#kitTotal').textContent='$'+total.toFixed(0);
+  $('.kit-total .lab').textContent = (sub && scentCount()>0) ? 'Due Today' : 'Kit Total';
+  // progress
+  $('#kp1').classList.toggle('done', !!state.diffuser);
+  $('#kp2').classList.toggle('done', scentCount()>0);
+  const ready=!!state.diffuser && scentCount()>0;
+  $('#kp3').classList.toggle('done', ready);
+  // CTA (rebuilt each time so it survives the "added" flash)
+  const cta=$('#kitCta');
+  cta.classList.toggle('disabled', !ready);
+  cta.innerHTML = ready ? `${sub?'Subscribe &amp; Save':'Add Kit to Cart'} · $${total.toFixed(0)}` : 'Add a fragrance to continue';
+  // sticky — make the recurring amount unmistakable (diffuser is one-time; only refills recur)
+  const items=(state.diffuser?1:0)+scentCount();
+  $('#sTotal').textContent='$'+total.toFixed(0);
+  if(sub && scentCount()>0){
+    $('#sLab').textContent='Due today';
+    $('#sRecur').textContent=`then $${recurring.toFixed(2)} every ${state.freq} wks`;
+    $('#sBtn').textContent='Subscribe';
+  } else {
+    $('#sLab').textContent=`${items} item${items!==1?'s':''} · ${sub?'Subscribe & Save':'One-time'}`;
+    $('#sRecur').textContent='';
+    $('#sBtn').textContent = sub ? 'Choose a refill' : 'Add to Cart';
+  }
+}
+
+/* diffuser selection */
+$('#diffuserGrid').querySelectorAll('.diff-card').forEach(c=>{
+  if(c.classList.contains('soldout')) return;
+  c.addEventListener('click',()=>{
+    $('#diffuserGrid').querySelectorAll('.diff-card').forEach(x=>{x.classList.remove('active');const b=x.querySelector('.diff-btn');if(!x.classList.contains('soldout'))b.textContent='Select';});
+    c.classList.add('active'); c.querySelector('.diff-btn').textContent='Selected';
+    state.diffuser={name:c.dataset.diff,price:+c.dataset.price}; renderKit();
+  });
+});
+
+/* filters */
+$('#scentTools').querySelectorAll('.scent-filter').forEach(f=>{
+  f.addEventListener('click',()=>{ $('#scentTools').querySelector('.active').classList.remove('active'); f.classList.add('active'); renderScents(f.dataset.f); });
+});
+
+/* subscription mode for refills (default Subscribe & Save 10%, matching live) */
+$('#subToggle').querySelectorAll('.sub-opt').forEach(o=>{
+  o.addEventListener('click',()=>{
+    $('#subToggle').querySelector('.sub-opt.active').classList.remove('active');
+    o.classList.add('active'); state.subMode=o.dataset.sub;
+    $('#subFreq').classList.toggle('hide', state.subMode!=='sub');
+    renderKit();
+  });
+});
+$('#freqSel').addEventListener('change',e=>{ state.freq=+e.target.value; renderKit(); });
+
+/* add to cart */
+let cart=0;
+function addKit(){
+  if(!(state.diffuser&&scentCount()>0)) { document.querySelector('#scentGrid').scrollIntoView({behavior:'smooth'}); return; }
+  cart=(state.diffuser?1:0)+scentCount(); $('#cartCount').textContent=cart;
+  const b=$('#kitCta'); b.innerHTML='✓ Kit Added to Cart'; setTimeout(()=>renderKit(),1300);
+}
+$('#kitCta').addEventListener('click',addKit);
+$('#sBtn').addEventListener('click',addKit);
+
+/* sticky visibility — scroll-driven via getBoundingClientRect */
+const builderTop=$('#builder'), sticky=$('#sticky');
+function onScroll(){ const r=builderTop.getBoundingClientRect(); sticky.classList.toggle('show', r.top<-40); }
+window.addEventListener('scroll',onScroll,{passive:true});
+
+/* FAQ accordions */
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const it=q.closest('.faq-item'),a=it.querySelector('.faq-a'),open=it.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null;});
+    if(!open){ it.classList.add('open'); a.style.maxHeight=a.scrollHeight+'px'; }
+  });
+});
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.16});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* init */
+renderScents('all'); renderKit(); onScroll();
+</script>
+</body>
+</html>
