@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Mozy Wearable Thermal Wrap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#3FB7CE; --teal-dk:#2C95AA; --teal-lt:#E5F6F9; --ink:#1f2a2e; --muted:#6b7a80;
+  --cream:#F7FBFC; --line:#dfeef1; --amber:#F2A33C;
+  --f:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);color:var(--ink);background:#d7e6e9;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+
+.phone{max-width:390px;margin:0 auto;background:#fff;position:relative;overflow:hidden;min-height:100vh}
+@media(min-width:600px){
+  body{padding:24px 0}
+  .phone{box-shadow:0 24px 70px rgba(30,80,90,.22);border-radius:20px;min-height:auto;overflow:visible}
+  .phone>.announce{border-radius:20px 20px 0 0}
+}
+
+.announce{background:var(--teal);color:#fff;text-align:center;font-size:12px;font-weight:600;letter-spacing:.3px;padding:9px 14px;white-space:nowrap;overflow:hidden}
+
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:11px 18px;background:#fff;position:sticky;top:0;z-index:60;border-bottom:1px solid var(--line)}
+.hdr .ico{width:23px;height:23px;color:var(--ink)}
+.hdr .logo{height:34px}
+
+/* Gallery */
+.gallery{position:relative;background:var(--teal-lt)}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.slides::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:1/0.82;background:var(--teal-lt)}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide.contain img{object-fit:contain}
+.dots{display:flex;gap:6px;justify-content:center;padding:9px 0 2px}
+.dot{width:7px;height:7px;border-radius:50%;background:#cfe3e7;transition:.25s}
+.dot.on{background:var(--teal);transform:scale(1.25)}
+.thumbs{display:flex;gap:7px;padding:5px 18px 2px;overflow-x:auto;scrollbar-width:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumb{flex:0 0 52px;height:52px;border-radius:8px;overflow:hidden;border:1.5px solid transparent;background:var(--teal-lt)}
+.thumb.on{border-color:var(--teal)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+
+/* Buy zone */
+.buy{padding:16px 20px 22px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal-dk)}
+h1.title{font-size:26px;font-weight:800;line-height:1.05;margin:6px 0 8px}
+.rating{display:flex;align-items:center;gap:8px}
+.stars{color:var(--amber);font-size:15px;letter-spacing:1px}
+.rating a{font-size:12.5px;color:var(--muted);text-decoration:underline}
+
+/* benefit bullets */
+.benefits{margin:15px 0 0;display:flex;flex-direction:column;gap:8px}
+.benefits .b{display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:500}
+.benefits .b .em{font-size:16px;flex:none;width:22px;text-align:center}
+
+/* bundle selector (PRIMARY fix — clean pricing) */
+.bundles{margin:20px 0 0;display:flex;flex-direction:column;gap:10px}
+.bundle{border:2px solid var(--line);border-radius:12px;padding:13px 14px;display:flex;align-items:center;gap:13px;position:relative;transition:.15s;background:#fff}
+.bundle.on{border-color:var(--teal);background:var(--teal-lt)}
+.bundle .radio{width:20px;height:20px;border-radius:50%;border:2px solid #c2d6da;flex:none;position:relative}
+.bundle.on .radio{border-color:var(--teal)}
+.bundle.on .radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--teal)}
+.bundle .bi{flex:1;min-width:0}
+.bundle .bi .nm{font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px}
+.bundle .bi .nm .deal{font-size:10px;font-weight:700;color:#fff;background:var(--amber);border-radius:20px;padding:2px 8px;letter-spacing:.2px}
+.bundle .bi .sub{font-size:12px;color:var(--muted);margin-top:2px}
+.bundle .pr{text-align:right;flex:none}
+.bundle .pr .per{font-weight:800;font-size:16px;color:var(--ink)}
+.bundle .pr .per small{font-size:10px;font-weight:500;color:var(--muted)}
+.bundle .pr .tot{font-size:11.5px;color:var(--muted);margin-top:1px}
+.bundle .pr .tot s{color:#b9c6c9}
+.bundle .pop{position:absolute;top:-9px;right:14px;font-size:9.5px;font-weight:700;letter-spacing:.3px;color:#fff;background:var(--teal);border-radius:11px;padding:2px 8px;text-transform:uppercase}
+
+/* options */
+.opts{margin:18px 0 0;display:flex;flex-direction:column;gap:13px}
+.opt .lbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;color:var(--ink)}
+.opt .lbl span{color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;margin-left:6px}
+.opt .row{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line);border-radius:8px;padding:9px 14px;font-size:13px;font-weight:600;transition:.15s}
+.chip.on{border-color:var(--teal);background:var(--teal);color:#fff}
+.sw{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);position:relative}
+.sw.on{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--teal)}
+
+.atc{width:100%;background:var(--teal);color:#fff;font-weight:700;font-size:17px;padding:17px;border-radius:10px;margin-top:18px;transition:.15s;box-shadow:0 6px 16px rgba(63,183,206,.35)}
+.atc:active{background:var(--teal-dk)}
+.atcsub{text-align:center;font-size:12px;color:var(--muted);margin-top:10px}
+.guarantees{display:flex;justify-content:center;gap:14px;margin-top:14px;flex-wrap:wrap}
+.guarantees span{font-size:11px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:5px}
+.guarantees svg{width:13px;height:13px;color:var(--teal)}
+
+section{padding:36px 20px}
+.h2{font-size:24px;font-weight:800;line-height:1.15;text-align:center}
+.lede{text-align:center;font-size:14px;color:var(--muted);max-width:320px;margin:11px auto 0;line-height:1.6}
+
+/* how it works (SECONDARY surfaced) */
+.how{background:var(--cream)}
+.howgrid{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.howcard{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px}
+.howcard .ic{width:44px;height:44px;border-radius:10px;background:var(--teal-lt);color:var(--teal-dk);display:flex;align-items:center;justify-content:center;flex:none;font-size:21px}
+.howcard h4{font-size:15px;font-weight:700;margin-bottom:3px}
+.howcard p{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* proof image */
+.proof{background:#fff}
+.proofimg{margin-top:18px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+
+/* size */
+.size{background:var(--teal-lt)}
+.sizeimg{margin-top:16px;border-radius:14px;overflow:hidden}
+
+/* reviews */
+.reviews{background:#fff}
+.rhead{text-align:center}
+.rhead .big{font-size:40px;font-weight:800;line-height:1}
+.rhead .st{color:var(--amber);font-size:16px;letter-spacing:2px;margin:5px 0 2px}
+.rhead .c{font-size:12px;color:var(--muted)}
+.rcar{display:flex;gap:12px;overflow-x:auto;margin-top:20px;scrollbar-width:none;scroll-snap-type:x mandatory;padding-bottom:4px}
+.rcar::-webkit-scrollbar{display:none}
+.rcard{flex:0 0 84%;scroll-snap-align:center;background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:17px}
+.rcard .st{color:var(--amber);font-size:13px;letter-spacing:1px}
+.rcard h5{font-size:14px;font-weight:700;margin:7px 0 5px}
+.rcard p{font-size:13px;color:var(--ink);line-height:1.5}
+.rcard .who{font-size:12px;color:var(--muted);margin-top:9px}
+.rcard .who b{color:var(--teal-dk);font-weight:600}
+
+/* faq */
+.faq{background:var(--cream)}
+.qa{border-bottom:1px solid var(--line)}
+.qa .qh{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:16px 2px;font-size:14px;font-weight:600}
+.qa .qh .pm{font-size:20px;color:var(--teal);flex:none;transition:.25s}
+.qa.open .qh .pm{transform:rotate(45deg)}
+.qa .ans{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.qa .ans div{padding:0 2px 16px;font-size:13px;color:var(--muted);line-height:1.55}
+
+footer{background:var(--ink);color:#fff;text-align:center;padding:30px 22px 36px}
+footer .logo{height:30px;margin:0 auto 14px;filter:brightness(0) invert(1)}
+footer .links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font-size:12px;opacity:.85;margin-bottom:14px}
+footer p{font-size:11px;opacity:.6;max-width:280px;margin:0 auto;line-height:1.6}
+
+.stickybar{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:390px;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(30,80,90,.12);padding:10px 14px;display:flex;align-items:center;gap:11px;z-index:80;transition:transform .3s ease}
+.stickybar.show{transform:translateX(-50%) translateY(0)}
+.stickybar .sp{width:44px;height:44px;border-radius:8px;background:var(--teal-lt);overflow:hidden;flex:none}
+.stickybar .sp img{width:100%;height:100%;object-fit:cover}
+.stickybar .si{flex:1;min-width:0}
+.stickybar .si .nm{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stickybar .si .pr{font-size:12px;color:var(--teal-dk);font-weight:700}
+.stickybar .sb{background:var(--teal);color:#fff;font-weight:700;font-size:14px;padding:13px 20px;border-radius:9px;flex:none}
+.pagepad{height:70px}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <div class="announce">🏆 2026 Teton-Tested · Free shipping over $100 · 60-day risk-free trial</div>
+
+  <header class="hdr">
+    <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <img class="logo" src="https://getthemozy.com/cdn/shop/files/Copy_of_Copy_of_Logo_150x.png" alt="Mozy">
+    <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M6 8h12l-1 12H7L6 8z" stroke="currentColor" stroke-width="1.4"/><path d="M9 8a3 3 0 016 0" stroke="currentColor" stroke-width="1.4"/></svg>
+  </header>
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <div class="slides" id="slides">
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0275/6506/4307/files/3_70584a94-0acb-49a3-8aab-fa85d98b81b0.png" alt="Wearing the Mozy thermal wrap"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0275/6506/4307/files/4_b5c1196b-f21c-405a-bed0-f7c2d3dae7ad.png" alt="Mozy folds compact, wear it in a camp chair"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0275/6506/4307/files/Listing_Image_7.jpg" alt="Mozy in every season"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0275/6506/4307/files/1_0ad1c62f-d0fa-4d9c-9251-33ff0b38c513.png" alt="Heat you can feel — 5X warmer than a blanket"></div>
+      <div class="slide contain"><img src="https://cdn.shopify.com/s/files/1/0275/6506/4307/files/61ygLywUJrL._AC_SL1200.png" alt="Mozy detail — pockets and fit"></div>
+    </div>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="thumbs" id="thumbs"></div>
+
+  <!-- BUY ZONE -->
+  <div class="buy">
+    <div class="eyebrow">Weatherproof Lower-Body Warmth</div>
+    <h1 class="title">Mozy Wearable Thermal Wrap</h1>
+    <div class="rating"><span class="stars">★★★★★</span><a href="#reviews">4.96 · 52 reviews</a></div>
+
+    <div class="benefits">
+      <div class="b"><span class="em">📈</span>5× warmer than a stadium blanket</div>
+      <div class="b"><span class="em">🖐️</span>Wearable — stays on hands-free</div>
+      <div class="b"><span class="em">🌧️</span>Wind &amp; weatherproof — sit anywhere</div>
+      <div class="b"><span class="em">🔋</span>No batteries — uses your own body heat</div>
+      <div class="b"><span class="em">🔒</span>Large pockets + carabiner clip</div>
+    </div>
+
+    <!-- Bundle selector (PRIMARY fix — clean pricing) -->
+    <div class="opt" style="margin-top:18px"><div class="lbl">Choose your bundle</div></div>
+    <div class="bundles" id="bundles">
+      <div class="bundle" data-qty="1" data-per="129" data-total="129">
+        <span class="radio"></span>
+        <div class="bi"><div class="nm">Solo</div><div class="sub">1 wrap · free shipping</div></div>
+        <div class="pr"><div class="per">$129</div><div class="tot">$129 total</div></div>
+      </div>
+      <div class="bundle on" data-qty="2" data-per="96.75" data-total="193.50">
+        <span class="pop">Most Popular</span>
+        <span class="radio"></span>
+        <div class="bi"><div class="nm">Duo <span class="deal">BOGO 50% OFF</span></div><div class="sub">2 wraps · free gift ×2</div></div>
+        <div class="pr"><div class="per">$96.75<small>/ea</small></div><div class="tot"><s>$258</s> $193.50</div></div>
+      </div>
+      <div class="bundle" data-qty="3" data-per="86" data-total="258">
+        <span class="pop">Best Value</span>
+        <span class="radio"></span>
+        <div class="bi"><div class="nm">Crew <span class="deal">BUY 2 GET 1 FREE</span></div><div class="sub">3 wraps · free gift ×3</div></div>
+        <div class="pr"><div class="per">$86<small>/ea</small></div><div class="tot"><s>$387</s> $258</div></div>
+      </div>
+    </div>
+
+    <div class="opts">
+      <div class="opt"><div class="lbl">Size <span id="sizev">500 (Adult Regular)</span></div><div class="row" id="sizes">
+        <button class="chip on">500 · Hip 28–46"</button><button class="chip">700 · Hip 38–58"</button>
+      </div></div>
+      <div class="opt"><div class="lbl">Color <span id="colorv">Black</span></div><div class="row" id="colors">
+        <button class="sw on" style="background:#2b2b2b" data-c="Black"></button>
+        <button class="sw" style="background:#3a5e86" data-c="Blue"></button>
+        <button class="sw" style="background:#9aa0a6" data-c="Grey"></button>
+      </div></div>
+    </div>
+
+    <button class="atc" id="atc">Add to Cart — <span id="atcPrice">$193.50</span></button>
+    <div class="atcsub">Ships from Bethlehem, PA 🇺🇸 · 60-day risk-free trial</div>
+    <div class="guarantees">
+      <span><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Free Shipping $100+</span>
+      <span><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>5-Year Warranty</span>
+      <span><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Easy Returns</span>
+    </div>
+  </div>
+
+  <!-- How it works (SECONDARY surfaced) -->
+  <section class="how">
+    <div class="eyebrow" style="text-align:center">How it works</div>
+    <div class="h2">Wrap on. Warm up.<br>No batteries needed.</div>
+    <div class="howgrid">
+      <div class="howcard"><div class="ic">⚡</div><div><h4>Fast-acting</h4><p>5× the warmth of a stadium blanket in under 30 seconds.</p></div></div>
+      <div class="howcard"><div class="ic">🔋</div><div><h4>Completely safe</h4><p>Uses the laws of thermodynamics to seal in your own body heat — no batteries or external power.</p></div></div>
+      <div class="howcard"><div class="ic">🪢</div><div><h4>Easy on / off</h4><p>Wrap around your waist and go. Velcro closure, no hassle — and it stays on hands-free.</p></div></div>
+      <div class="howcard"><div class="ic">🛡️</div><div><h4>Protects</h4><p>Windproof against the biting cold, weatherproof to sit on any wet surface.</p></div></div>
+    </div>
+  </section>
+
+  <!-- Proof image -->
+  <section class="proof">
+    <div class="eyebrow" style="text-align:center">Heat you can feel</div>
+    <div class="h2">5× warmer than a blanket</div>
+    <p class="lede">Thermal imaging shows how Mozy retains body heat and prevents heat loss — keeping your lower body toasty.</p>
+    <div class="proofimg"><img src="https://cdn.shopify.com/s/files/1/0275/6506/4307/files/1_0ad1c62f-d0fa-4d9c-9251-33ff0b38c513.png" alt="Thermal imaging — heat retention with Mozy"></div>
+  </section>
+
+  <!-- Size -->
+  <section class="size">
+    <div class="eyebrow" style="text-align:center">Find your fit</div>
+    <div class="h2">Two sizes, one perfect Mozy</div>
+    <p class="lede">Size 500 fits hips 28–46" (adult S–L). Size 700 fits 38–58" (XL–3XL). Both fit heights 4'10"–5'10" and weigh under 1.5 lbs.</p>
+    <div class="sizeimg"><img src="https://cdn.shopify.com/s/files/1/0275/6506/4307/files/Listing_Image_Sizing.jpg" alt="Mozy size guide"></div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews" id="reviews">
+    <div class="rhead">
+      <div class="big">4.96</div>
+      <div class="st">★★★★★</div>
+      <div class="c">Based on 52 reviews</div>
+    </div>
+    <div class="rcar">
+      <div class="rcard"><div class="st">★★★★★</div><h5>So toasty warm</h5><p>"Used the Mozy at a very cold track meet for the first time AND I WAS SO TOASTY WARM! I've been telling everyone about this product since!"</p><div class="who"><b>Stacy P.</b> · Verified Buyer</div></div>
+      <div class="rcard"><div class="st">★★★★★</div><h5>Will never go without</h5><p>"Love that I can put it on and it stays on hands-free — up, down, to/from the car, to/from the concession stand. Will never go without!"</p><div class="who"><b>Shawn F.</b> · Verified Buyer</div></div>
+      <div class="rcard"><div class="st">★★★★★</div><h5>Best sports-parent hack</h5><p>"The Mozy is the ultimate sports parent hack. For tennis matches it saves me from the wind and cold!"</p><div class="who"><b>Randi M.</b> · Verified Buyer</div></div>
+      <div class="rcard"><div class="st">★★★★★</div><h5>Cold weather go-to</h5><p>"No more bulky pants and long underwear that overheat you and can't be taken off on the go. Mozy is my cold weather go-to."</p><div class="who"><b>Dianne R.</b> · Verified Buyer</div></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="h2">Questions? We've got you</div>
+    <div style="margin-top:14px">
+      <div class="qa" data-acc><div class="qh">Is Mozy heated?<span class="pm">+</span></div><div class="ans"><div>No — and that's the magic. Mozy uses the laws of heat transfer to seal in your own body heat, so there are no batteries, cords, or external power to worry about. Just wrap it on.</div></div></div>
+      <div class="qa" data-acc><div class="qh">How does sizing work?<span class="pm">+</span></div><div class="ans"><div>Size 500 fits hips 28–46" (adult S–L); Size 700 fits 38–58" (XL–3XL). Both are designed for heights 4'10"–5'10". When in doubt, size up.</div></div></div>
+      <div class="qa" data-acc><div class="qh">How heavy is it?<span class="pm">+</span></div><div class="ans"><div>Mozy weighs in at just under 1.5 pounds and folds down compact — far easier to carry than a bulky blanket.</div></div></div>
+      <div class="qa" data-acc><div class="qh">How does Mozy close &amp; how do I care for it?<span class="pm">+</span></div><div class="ans"><div>A simple Velcro closure wraps around your waist for easy on/off. Mozy is machine washable, so cleanup is effortless.</div></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <img class="logo" src="https://getthemozy.com/cdn/shop/files/Copy_of_Copy_of_Logo_150x.png" alt="Mozy">
+    <div class="links"><a href="#">Shop</a><a href="#reviews">Reviews</a><a href="#">How It Works</a><a href="#">Support</a></div>
+    <p>Weatherproof, wearable lower-body warmth. 5× warmer than a blanket. Made for the cold — backed by a 60-day trial.</p>
+  </footer>
+
+  <div class="pagepad"></div>
+
+  <div class="stickybar" id="sticky">
+    <div class="sp"><img src="https://cdn.shopify.com/s/files/1/0275/6506/4307/files/3_70584a94-0acb-49a3-8aab-fa85d98b81b0.png" alt=""></div>
+    <div class="si"><div class="nm">Mozy — <span id="sbB">Duo</span></div><div class="pr" id="sbPr">$193.50</div></div>
+    <button class="sb" onclick="document.getElementById('atc').click()">Add</button>
+  </div>
+
+</div>
+
+<script>
+// Gallery
+(function(){
+  var slides=document.getElementById('slides'), els=[].slice.call(slides.children);
+  var dots=document.getElementById('dots'), thumbs=document.getElementById('thumbs');
+  els.forEach(function(s,i){
+    var d=document.createElement('span'); d.className='dot'+(i===0?' on':''); d.onclick=function(){slides.scrollTo({left:slides.clientWidth*i,behavior:'smooth'});}; dots.appendChild(d);
+    var t=document.createElement('button'); t.className='thumb'+(i===0?' on':''); t.innerHTML='<img src="'+s.querySelector('img').src+'">';
+    t.onclick=function(){slides.scrollTo({left:slides.clientWidth*i,behavior:'smooth'});}; thumbs.appendChild(t);
+  });
+  slides.addEventListener('scroll',function(){
+    var i=Math.round(slides.scrollLeft/slides.clientWidth);
+    [].forEach.call(dots.children,function(d,j){d.classList.toggle('on',j===i);});
+    [].forEach.call(thumbs.children,function(t,j){t.classList.toggle('on',j===i);});
+  },{passive:true});
+})();
+
+// Bundle + price
+var bundle={qty:2,total:193.50,name:'Duo'};
+function fmt(n){return '$'+(n%1===0?n.toFixed(0):n.toFixed(2));}
+function render(){
+  document.getElementById('atcPrice').textContent=fmt(bundle.total);
+  document.getElementById('sbPr').textContent=fmt(bundle.total);
+  document.getElementById('sbB').textContent=bundle.name;
+}
+document.querySelectorAll('#bundles .bundle').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#bundles .bundle').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');
+    bundle={qty:+b.dataset.qty,total:parseFloat(b.dataset.total),name:b.querySelector('.nm').childNodes[0].textContent.trim()};
+    render();
+  });
+});
+render();
+
+// Size + color
+document.querySelectorAll('#sizes .chip').forEach(function(c){c.addEventListener('click',function(){document.querySelectorAll('#sizes .chip').forEach(function(x){x.classList.remove('on');});c.classList.add('on');document.getElementById('sizev').textContent=c.textContent.split(' ·')[0]==='500'?'500 (Adult Regular)':'700 (XL–3XL)';});});
+document.querySelectorAll('#colors .sw').forEach(function(s){s.addEventListener('click',function(){document.querySelectorAll('#colors .sw').forEach(function(x){x.classList.remove('on');});s.classList.add('on');document.getElementById('colorv').textContent=s.dataset.c;});});
+
+document.getElementById('atc').addEventListener('click',function(){var b=this,h=b.innerHTML;b.textContent='Added ✓';setTimeout(function(){b.innerHTML=h;},1300);});
+
+// FAQ
+document.querySelectorAll('[data-acc]').forEach(function(qa){
+  qa.querySelector('.qh').addEventListener('click',function(){
+    var open=qa.classList.toggle('open');
+    qa.querySelector('.ans').style.maxHeight=open?qa.querySelector('.ans').scrollHeight+'px':'0';
+  });
+});
+
+// Sticky bar
+(function(){
+  var atc=document.getElementById('atc'), bar=document.getElementById('sticky');
+  function upd(){ bar.classList.toggle('show', atc.getBoundingClientRect().bottom<50); }
+  window.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); upd();
+})();
+</script>
+</body>
+</html>
