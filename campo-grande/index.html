@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Ibérico Pork Box — Campo Grande</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Campo Grande display serif (real font from their CDN) */
+@font-face{font-family:'NevadaSerial';src:url('https://eatcampogrande.com/cdn/shop/t/23/assets/nevada-serial-light-regular.woff') format('woff');font-weight:300 400;font-display:swap}
+@font-face{font-family:'NevadaSerial';src:url('https://eatcampogrande.com/cdn/shop/t/23/assets/NevadaSerial-Medium.woff2') format('woff2');font-weight:500 700;font-display:swap}
+
+:root{
+  --terracotta:#C54B38; --terracotta-dark:#A23A29; --dark:#20211F; --darkred:#890303;
+  --cream:#F6EFE4; --cream2:#FBF7F0; --line:#E4D8C7; --ink:#211c18; --muted:#8a7d6c;
+  --serif:'NevadaSerial','Hoefler Text',Georgia,serif;
+  --sans:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#e3d8c6;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+
+.phone{max-width:390px;margin:0 auto;background:var(--cream);position:relative;overflow:hidden;min-height:100vh}
+@media(min-width:600px){
+  body{padding:24px 0}
+  .phone{box-shadow:0 24px 70px rgba(60,40,25,.25);border-radius:18px;min-height:auto;overflow:visible}
+  .phone>.announce{border-radius:18px 18px 0 0}
+}
+
+.announce{background:var(--dark);color:#fff;text-align:center;font-family:var(--serif);font-size:13px;letter-spacing:1px;padding:9px 14px;white-space:nowrap;overflow:hidden}
+
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;background:var(--terracotta);position:sticky;top:0;z-index:60}
+.hdr .ico{width:23px;height:23px;color:#fff}
+.hdr .logo{height:22px}
+
+/* Gallery */
+.gallery{position:relative;background:#efe7da}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.slides::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:1/0.68;background:#efe7da}
+.slide img{width:100%;height:100%;object-fit:cover}
+.instock{position:absolute;top:13px;left:13px;z-index:3;background:var(--cream);border:1px solid var(--terracotta);color:var(--terracotta);font-family:var(--serif);font-size:12px;letter-spacing:1.5px;padding:5px 13px;border-radius:20px}
+.dots{display:flex;gap:6px;justify-content:center;padding:9px 0 2px}
+.dot{width:7px;height:7px;border-radius:50%;background:#d6c7b2;transition:.25s}
+.dot.on{background:var(--terracotta);transform:scale(1.2)}
+.thumbs{display:flex;gap:7px;padding:5px 18px 2px;overflow-x:auto;scrollbar-width:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumb{flex:0 0 50px;height:50px;border-radius:5px;overflow:hidden;border:1.5px solid transparent;background:#efe7da}
+.thumb.on{border-color:var(--terracotta)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+
+/* Buy zone */
+.buy{padding:12px 20px 22px}
+h1.title{font-family:var(--serif);font-weight:400;font-size:32px;line-height:1;color:var(--ink);text-transform:uppercase;letter-spacing:1px;text-align:center}
+.rating{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:10px}
+.stars{color:var(--terracotta);font-size:15px;letter-spacing:1px}
+.rating a{font-size:13px;color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+.tagline{text-align:center;font-size:13px;color:var(--ink);margin-top:9px;line-height:1.45}
+
+/* what's in the box — surfaced (PRIMARY fix) */
+.inbox{margin:16px 0 0;background:var(--cream2);border:1px solid var(--line);border-radius:8px;padding:14px 15px}
+.inbox .hd{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:11px}
+.inbox .hd .t{font-family:var(--serif);font-size:15px;letter-spacing:1px;text-transform:uppercase;color:var(--ink)}
+.inbox .hd .wt{font-size:12px;font-weight:700;color:var(--terracotta)}
+.inbox ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.inbox li{display:flex;align-items:center;gap:10px;font-size:13px}
+.inbox li .ic{width:34px;height:34px;border-radius:5px;overflow:hidden;flex:none;background:#efe7da}
+.inbox li .ic img{width:100%;height:100%;object-fit:cover}
+.inbox li .nm{flex:1;color:var(--ink)}
+.inbox li .nm b{font-weight:600}
+.inbox li .oz{color:var(--muted);font-size:11.5px}
+
+.priceblock{margin:16px 0 0}
+.toggle{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:8px;padding:13px 14px;background:var(--cream2);margin-bottom:9px;transition:.18s}
+.toggle.on{border-color:var(--terracotta);background:#fff}
+.toggle .sw{width:42px;height:24px;border-radius:20px;background:#d6c7b2;flex:none;position:relative;transition:.2s}
+.toggle.on .sw{background:var(--terracotta)}
+.toggle .sw::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s}
+.toggle.on .sw::after{left:21px}
+.toggle .tl{flex:1}
+.toggle .tl .t{font-family:var(--serif);font-size:16px;color:var(--ink)}
+.toggle .tl .p{font-size:13px;margin-top:2px}
+.toggle .tl .p .was{text-decoration:line-through;color:var(--muted);margin-right:6px}
+.toggle .tl .p .now{font-weight:700;color:var(--terracotta)}
+.perks{display:flex;gap:14px;justify-content:center;font-size:11px;color:var(--muted);margin:4px 0 2px;flex-wrap:wrap}
+.perks span{display:flex;align-items:center;gap:4px}
+.perks span svg{width:11px;height:11px;color:var(--terracotta)}
+
+.ship{text-align:center;margin:14px 0 0;font-size:12.5px;color:var(--ink)}
+.ship .pill{display:inline-flex;align-items:center;gap:7px;background:#f0e4dd;border-radius:20px;padding:7px 14px;color:var(--terracotta);font-weight:600}
+.ship .by{display:block;color:var(--terracotta);font-weight:700;margin-top:7px;font-size:12px}
+
+.cartrow{display:flex;gap:10px;margin-top:15px;align-items:stretch}
+.qty{display:flex;align-items:center;border:1px solid var(--ink);border-radius:24px}
+.qty button{width:38px;font-size:18px;color:var(--ink)}
+.qty span{width:24px;text-align:center;font-size:14px}
+.atc{flex:1;background:var(--terracotta);color:#fff;font-family:var(--serif);font-size:17px;letter-spacing:1px;text-transform:uppercase;padding:15px;border-radius:24px;transition:.18s}
+.atc:active{background:var(--terracotta-dark)}
+
+.badges{display:flex;justify-content:space-between;gap:6px;margin-top:22px}
+.badges .bd{flex:1;text-align:center}
+.badges .bd .ring{width:54px;height:54px;border:1px solid var(--terracotta);border-radius:50%;margin:0 auto 5px;display:flex;align-items:center;justify-content:center;color:var(--terracotta);padding:6px}
+.badges .bd .ring span{font-family:var(--serif);font-size:8.5px;line-height:1.1;text-transform:uppercase;letter-spacing:.3px}
+.badges .bd .lb{font-size:8px;color:var(--muted)}
+
+section{padding:36px 20px}
+.eyebrow{font-family:var(--serif);text-align:center;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--terracotta);margin-bottom:10px}
+.h2{font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.15;color:var(--ink);text-align:center;text-transform:uppercase;letter-spacing:.5px}
+.lede{text-align:center;font-size:14.5px;color:var(--ink);max-width:330px;margin:13px auto 0;line-height:1.6}
+
+/* whats inside detailed */
+.inside{background:var(--cream2)}
+.cutcard{display:flex;gap:14px;align-items:center;padding:15px 0;border-bottom:1px solid var(--line)}
+.cutcard:last-child{border-bottom:none}
+.cutcard .pic{width:88px;height:88px;border-radius:8px;overflow:hidden;flex:none;background:#efe7da}
+.cutcard .pic img{width:100%;height:100%;object-fit:cover}
+.cutcard .info .nm{font-family:var(--serif);font-size:18px;color:var(--ink);text-transform:uppercase;letter-spacing:.5px}
+.cutcard .info .oz{font-size:12px;color:var(--terracotta);font-weight:700;margin:2px 0 5px}
+.cutcard .info .ds{font-size:12.5px;color:var(--muted);line-height:1.5}
+.sub-note{font-size:11px;color:var(--muted);text-align:center;margin-top:16px;font-style:italic}
+
+/* wagyu of pork */
+.special{background:var(--dark);color:var(--cream)}
+.special .eyebrow{color:#e3a18f}
+.special .h2{color:var(--cream)}
+.special p{color:#d8cdbf;text-align:center;font-size:15px;line-height:1.65;max-width:330px;margin:16px auto 0}
+.special .big{font-family:var(--serif);font-size:23px;color:#fff;text-align:center;line-height:1.3;margin:18px auto 0;max-width:320px}
+.special .tm{display:block;text-align:center;color:#e3a18f;font-family:var(--serif);font-size:14px;letter-spacing:2px;margin-top:18px;text-transform:uppercase}
+
+/* reviews */
+.reviews{background:var(--cream)}
+.rsummary{display:flex;gap:18px;align-items:center;margin-top:18px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.rsummary .big{text-align:center;flex:none}
+.rsummary .big .n{font-family:var(--serif);font-size:46px;color:var(--ink);line-height:.9}
+.rsummary .big .st{color:var(--terracotta);font-size:14px;letter-spacing:1px;margin-top:3px}
+.rsummary .big .c{font-size:11px;color:var(--muted);margin-top:3px}
+.histo{flex:1}
+.hrow{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);margin:2px 0}
+.hrow .lab{width:8px}
+.hbar{flex:1;height:6px;background:#e8dccb;border-radius:4px;overflow:hidden}
+.hbar i{display:block;height:100%;background:var(--terracotta)}
+.hrow .ct{width:26px;text-align:right}
+.aisum{background:var(--cream2);border:1px solid var(--line);border-radius:8px;padding:13px 14px;margin-top:16px;font-size:13px;line-height:1.55;color:var(--ink)}
+.aisum .lb{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--terracotta);font-weight:700;margin-bottom:5px}
+.review{padding:16px 0;border-bottom:1px solid var(--line)}
+.review .top{display:flex;justify-content:space-between;align-items:center}
+.review .st{color:var(--terracotta);font-size:13px;letter-spacing:1px}
+.review .vb{font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:#5a8f5a}
+.review .who{font-family:var(--serif);font-size:15px;color:var(--ink);margin:6px 0 4px}
+.review p{font-size:13px;color:var(--ink);line-height:1.5}
+
+/* faq */
+.faq{background:var(--cream2)}
+.qa{border-bottom:1px solid var(--line)}
+.qa .qh{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:17px 2px;font-family:var(--serif);font-size:16px;color:var(--ink)}
+.qa .qh .pm{font-size:20px;color:var(--terracotta);flex:none;transition:.25s}
+.qa.open .qh .pm{transform:rotate(45deg)}
+.qa .ans{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.qa .ans div{padding:0 2px 17px;font-size:13px;color:var(--muted);line-height:1.6}
+
+footer{background:var(--terracotta);color:#fff;text-align:center;padding:30px 22px 36px}
+footer .logo{height:24px;margin:0 auto 16px}
+footer .links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font-size:12px;opacity:.92;margin-bottom:14px}
+footer p{font-size:11px;opacity:.75;max-width:280px;margin:0 auto;line-height:1.6}
+
+/* sticky bar */
+.stickybar{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:390px;background:var(--cream);border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(60,40,25,.13);padding:10px 14px;display:flex;align-items:center;gap:11px;z-index:80;transition:transform .3s ease}
+.stickybar.show{transform:translateX(-50%) translateY(0)}
+.stickybar .sp{width:44px;height:44px;border-radius:6px;background:#efe7da;overflow:hidden;flex:none}
+.stickybar .sp img{width:100%;height:100%;object-fit:cover}
+.stickybar .si{flex:1;min-width:0}
+.stickybar .si .nm{font-family:var(--serif);font-size:15px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stickybar .si .pr{font-size:12px;color:var(--terracotta);font-weight:700}
+.stickybar .sb{background:var(--terracotta);color:#fff;font-family:var(--serif);font-size:14px;letter-spacing:1px;text-transform:uppercase;padding:13px 18px;border-radius:22px;flex:none}
+.pagepad{height:70px}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <div class="announce">FREE SHIPPING ON ORDERS $248+ · SHIPS NEXT DAY</div>
+
+  <header class="hdr">
+    <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <img class="logo" src="https://cdn.shopify.com/s/files/1/0610/7450/5917/files/header-logo.svg" alt="Campo Grande">
+    <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M6 8h12l-1 12H7L6 8z" stroke="currentColor" stroke-width="1.4"/><path d="M9 8a3 3 0 016 0" stroke="currentColor" stroke-width="1.4"/></svg>
+  </header>
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <span class="instock">IN STOCK</span>
+    <div class="slides" id="slides">
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0510/9527/3672/files/CampograndeFeb23web3.jpg" alt="Ibérico Pork Box"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0510/9527/3672/files/Campo-Grande--4-Rib-Rack_345132b9-7a0c-44e7-a68b-a8e41cb72f8a_2_1.jpg" alt="Ibérico 4-Rib Rack"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0510/9527/3672/products/iberico-pork-secreto-cut.jpg" alt="Ibérico Secreto"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0510/9527/3672/files/IBERICOPORK_RAW_LOWRES_PRESASTEAK.jpg" alt="Ibérico Presa"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0510/9527/3672/files/PORKRAW_PORKBELLYSECRETO_Optimizada_1_1.jpg" alt="Ibérico Pork Belly Secreto"></div>
+    </div>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="thumbs" id="thumbs"></div>
+
+  <!-- BUY ZONE -->
+  <div class="buy">
+    <h1 class="title">Ibérico Pork Box</h1>
+    <div class="rating"><span class="stars">★★★★★</span><a href="#reviews">4.84 (600 reviews)</a></div>
+    <div class="tagline">A curated box for anyone new to Ibérico — the most flavorful, richly marbled cuts that made Spain's heirloom breed world-famous.</div>
+
+    <!-- What's in the box, surfaced at the buy decision (PRIMARY fix) -->
+    <div class="inbox">
+      <div class="hd"><span class="t">In the box</span><span class="wt">4 cuts · ~5–6.5 lbs</span></div>
+      <ul>
+        <li><span class="ic"><img src="https://cdn.shopify.com/s/files/1/0510/9527/3672/files/Campo-Grande--4-Rib-Rack_345132b9-7a0c-44e7-a68b-a8e41cb72f8a_2_1.jpg" alt=""></span><span class="nm"><b>Ibérico 4-Rib Rack</b></span><span class="oz">24–33 oz</span></li>
+        <li><span class="ic"><img src="https://cdn.shopify.com/s/files/1/0510/9527/3672/files/PORKRAW_PORKBELLYSECRETO_Optimizada_1_1.jpg" alt=""></span><span class="nm"><b>Pork Belly Secreto</b></span><span class="oz">21–28 oz</span></li>
+        <li><span class="ic"><img src="https://cdn.shopify.com/s/files/1/0510/9527/3672/files/IBERICOPORK_RAW_LOWRES_PRESASTEAK.jpg" alt=""></span><span class="nm"><b>Denver 'Presa' Steak</b></span><span class="oz">20–24 oz</span></li>
+        <li><span class="ic"><img src="https://cdn.shopify.com/s/files/1/0510/9527/3672/products/iberico-pork-secreto-cut.jpg" alt=""></span><span class="nm"><b>Ibérico Secreto</b></span><span class="oz">14–21 oz</span></li>
+      </ul>
+    </div>
+
+    <div class="priceblock">
+      <div class="toggle" id="toggle">
+        <span class="sw"></span>
+        <div class="tl"><div class="t">Subscribe &amp; Save 10%</div><div class="p"><span class="was">$169.00</span><span class="now">$152.10</span></div></div>
+      </div>
+      <div class="perks">
+        <span><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Save 10%</span>
+        <span><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Choose frequency</span>
+        <span><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Modify anytime</span>
+      </div>
+    </div>
+
+    <div class="ship">
+      <span class="pill">🚚 Want it shipped by Jun 17?</span>
+      <span class="by">Order by Jun 16, 6 PM EST</span>
+    </div>
+
+    <div class="cartrow">
+      <div class="qty"><button id="qminus">−</button><span id="qval">1</span><button id="qplus">+</button></div>
+      <button class="atc" id="atc">Add to Cart · <span id="atcPrice">$169.00</span></button>
+    </div>
+
+    <div class="badges">
+      <div class="bd"><div class="ring"><span>Antibiotic Free</span></div></div>
+      <div class="bd"><div class="ring"><span>Free Range</span></div></div>
+      <div class="bd"><div class="ring"><span>No Added Hormones</span></div></div>
+      <div class="bd"><div class="ring"><span>Family-Owned Farms</span></div></div>
+      <div class="bd"><div class="ring"><span>Slow Growth</span></div></div>
+    </div>
+  </div>
+
+  <!-- What's inside (detailed) -->
+  <section class="inside">
+    <div class="eyebrow">What's inside</div>
+    <div class="h2">Four best-selling cuts</div>
+    <div style="margin-top:18px">
+      <div class="cutcard"><div class="pic"><img src="https://cdn.shopify.com/s/files/1/0510/9527/3672/files/Campo-Grande--4-Rib-Rack_345132b9-7a0c-44e7-a68b-a8e41cb72f8a_2_1.jpg" alt="4-Rib Rack"></div><div class="info"><div class="nm">Ibérico 4-Rib Rack</div><div class="oz">1 × 24–33 oz</div><div class="ds">Prime rib… but make it Ibérico.</div></div></div>
+      <div class="cutcard"><div class="pic"><img src="https://cdn.shopify.com/s/files/1/0510/9527/3672/files/PORKRAW_PORKBELLYSECRETO_Optimizada_1_1.jpg" alt="Pork Belly Secreto"></div><div class="info"><div class="nm">Pork Belly Secreto</div><div class="oz">1 × 21–28 oz</div><div class="ds">Succulent steak off the belly with a rich texture and remarkable aroma.</div></div></div>
+      <div class="cutcard"><div class="pic"><img src="https://cdn.shopify.com/s/files/1/0510/9527/3672/files/IBERICOPORK_RAW_LOWRES_PRESASTEAK.jpg" alt="Presa Steak"></div><div class="info"><div class="nm">Denver 'Presa' Steak</div><div class="oz">1 × 20–24 oz</div><div class="ds">A 2-inch cut from the shoulder with off-the-charts marbling — the Ibérico answer to the Denver steak.</div></div></div>
+      <div class="cutcard"><div class="pic"><img src="https://cdn.shopify.com/s/files/1/0510/9527/3672/products/iberico-pork-secreto-cut.jpg" alt="Secreto"></div><div class="info"><div class="nm">Ibérico Secreto</div><div class="oz">1 × 14–21 oz</div><div class="ds">The best-kept "secret" cut, according to Spanish butchers.</div></div></div>
+    </div>
+    <div class="sub-note">Box components are subject to substitutions of equal or greater value if unavailable.</div>
+  </section>
+
+  <!-- Wagyu of pork -->
+  <section class="special">
+    <div class="eyebrow">What makes Ibérico so special?</div>
+    <div class="h2" style="color:var(--cream)">They couldn't believe<br>it was pork</div>
+    <p>The natural umami, tenderness and superior marbling often leaves unsuspecting diners wondering if they were really eating pork — or a fine Wagyu steak.</p>
+    <div class="big">"Those who have savored Ibérico all agree on one thing: it doesn't taste like any pork they've had before."</div>
+    <span class="tm">The Wagyu of Pork™</span>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews" id="reviews">
+    <div class="eyebrow">What real customers say</div>
+    <div class="h2">4.84 out of 5</div>
+    <div class="rsummary">
+      <div class="big"><div class="n">4.84</div><div class="st">★★★★★</div><div class="c">600 reviews</div></div>
+      <div class="histo">
+        <div class="hrow"><span class="lab">5</span><span class="hbar"><i style="width:91%"></i></span><span class="ct">545</span></div>
+        <div class="hrow"><span class="lab">4</span><span class="hbar"><i style="width:5%"></i></span><span class="ct">30</span></div>
+        <div class="hrow"><span class="lab">3</span><span class="hbar"><i style="width:3%"></i></span><span class="ct">15</span></div>
+        <div class="hrow"><span class="lab">2</span><span class="hbar"><i style="width:1%"></i></span><span class="ct">6</span></div>
+        <div class="hrow"><span class="lab">1</span><span class="hbar"><i style="width:1%"></i></span><span class="ct">4</span></div>
+      </div>
+    </div>
+    <div class="aisum"><div class="lb">Customers say</div>Customers praise this premium pork as "the best they've ever tasted," highlighting exceptional flavor, tenderness, and marbling. Many compare it favorably to Wagyu beef, and note it cooks beautifully medium-rare with minimal seasoning.</div>
+    <div class="review"><div class="top"><span class="st">★★★★★</span><span class="vb">✓ Verified</span></div><div class="who">Joseph C.</div><p>"The pork Ibérico steak was delicious. Didn't taste like pork — tasted like a good steak. Very juicy and flavorful. A lot of good recipes in the cookbook, too!"</p></div>
+    <div class="review"><div class="top"><span class="st">★★★★★</span><span class="vb">✓ Verified</span></div><div class="who">Suzanne</div><p>"Tender and delicious — highly recommend. I followed the suggestion to keep it simple with just salt and pepper, and the results were amazing."</p></div>
+    <div class="review"><div class="top"><span class="st">★★★★★</span><span class="vb">✓ Verified</span></div><div class="who">Ellin</div><p>"Delicious pork! Will definitely order again."</p></div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="eyebrow">Questions about the box</div>
+    <div class="h2">Good to know</div>
+    <div style="margin-top:14px">
+      <div class="qa" data-acc><div class="qh">What does it taste like?<span class="pm">+</span></div><div class="ans"><div>Ibérico is a truly remarkable experience because it doesn't quite taste like pork. The natural umami, tenderness, and superior marbling leave unsuspecting guests wondering if they're eating pork or the finest Wagyu or Kobe steak.</div></div></div>
+      <div class="qa" data-acc><div class="qh">Is it humanely raised &amp; free of hormones?<span class="pm">+</span></div><div class="ans"><div>Yes. Our Ibérico is free-range and slow-grown on family-owned farms, with no added hormones and no antibiotics — the way this heirloom breed has been raised for generations.</div></div></div>
+      <div class="qa" data-acc><div class="qh">How should I cook it?<span class="pm">+</span></div><div class="ans"><div>Keep it simple — salt, pepper, and a hot pan, cooked to medium-rare to let the marbling shine. Every box includes our recipe guide with ideas for each cut.</div></div></div>
+      <div class="qa" data-acc><div class="qh">Why "The Wagyu of Pork™"?<span class="pm">+</span></div><div class="ans"><div>Like Wagyu beef, Ibérico is prized for its intense marbling and melt-in-your-mouth texture — the result of an heirloom breed raised slowly on a natural diet. Many diners genuinely can't tell it apart from a fine steak.</div></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <img class="logo" src="https://cdn.shopify.com/s/files/1/0610/7450/5917/files/header-logo.svg" alt="Campo Grande">
+    <div class="links"><a href="#">Shop</a><a href="#">Our Story</a><a href="#reviews">Reviews</a><a href="#">Recipes</a></div>
+    <p>Acorn-fed, free-range Ibérico pork from family-owned farms. Free shipping on orders $248+.</p>
+  </footer>
+
+  <div class="pagepad"></div>
+
+  <div class="stickybar" id="sticky">
+    <div class="sp"><img src="https://cdn.shopify.com/s/files/1/0510/9527/3672/files/CampograndeFeb23web3.jpg" alt=""></div>
+    <div class="si"><div class="nm">Ibérico Pork Box</div><div class="pr" id="sbPrice">$169.00</div></div>
+    <button class="sb" onclick="document.getElementById('atc').click()">Add</button>
+  </div>
+
+</div>
+
+<script>
+// Gallery
+(function(){
+  var slides=document.getElementById('slides'), els=[].slice.call(slides.children);
+  var dots=document.getElementById('dots'), thumbs=document.getElementById('thumbs');
+  els.forEach(function(s,i){
+    var d=document.createElement('span'); d.className='dot'+(i===0?' on':''); d.onclick=function(){slides.scrollTo({left:slides.clientWidth*i,behavior:'smooth'});}; dots.appendChild(d);
+    var t=document.createElement('button'); t.className='thumb'+(i===0?' on':''); t.innerHTML='<img src="'+s.querySelector('img').src+'">';
+    t.onclick=function(){slides.scrollTo({left:slides.clientWidth*i,behavior:'smooth'});}; thumbs.appendChild(t);
+  });
+  slides.addEventListener('scroll',function(){
+    var i=Math.round(slides.scrollLeft/slides.clientWidth);
+    [].forEach.call(dots.children,function(d,j){d.classList.toggle('on',j===i);});
+    [].forEach.call(thumbs.children,function(t,j){t.classList.toggle('on',j===i);});
+  },{passive:true});
+})();
+
+// Pricing
+var state={sub:false, qty:1, base:169.00};
+function fmt(n){return '$'+n.toFixed(2);}
+function render(){
+  var unit=state.sub?state.base*0.9:state.base;
+  var total=unit*state.qty;
+  document.getElementById('atcPrice').textContent=fmt(total);
+  document.getElementById('sbPrice').textContent=fmt(total);
+  document.getElementById('qval').textContent=state.qty;
+}
+document.getElementById('toggle').addEventListener('click',function(){
+  state.sub=!state.sub; this.classList.toggle('on',state.sub); render();
+});
+document.getElementById('qplus').addEventListener('click',function(){state.qty++;render();});
+document.getElementById('qminus').addEventListener('click',function(){if(state.qty>1){state.qty--;render();}});
+render();
+
+document.getElementById('atc').addEventListener('click',function(){
+  var b=this,h=b.innerHTML; b.textContent='Added ✓';
+  setTimeout(function(){b.innerHTML=h;},1300);
+});
+
+// FAQ
+document.querySelectorAll('[data-acc]').forEach(function(qa){
+  qa.querySelector('.qh').addEventListener('click',function(){
+    var open=qa.classList.toggle('open');
+    qa.querySelector('.ans').style.maxHeight=open?qa.querySelector('.ans').scrollHeight+'px':'0';
+  });
+});
+
+// Sticky bar
+(function(){
+  var atc=document.getElementById('atc'), bar=document.getElementById('sticky');
+  function upd(){ bar.classList.toggle('show', atc.getBoundingClientRect().bottom<50); }
+  window.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); upd();
+})();
+</script>
+</body>
+</html>
