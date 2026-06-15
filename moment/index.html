@@ -107,12 +107,15 @@ h1,h2,h3{margin:0}
 
 .atc{width:100%;margin-top:16px;border:none;background:var(--pink);color:#fff;font-family:var(--inst);font-weight:700;font-size:16px;letter-spacing:.05em;padding:18px;cursor:pointer;text-transform:uppercase;border-radius:12px;transition:.15s;box-shadow:0 8px 24px rgba(255,0,173,.28)}
 .atc:hover{background:#e6009c}
-.daily{text-align:center;font-size:12px;color:var(--mut);margin-top:10px}
-.bicons{display:flex;justify-content:space-between;gap:8px;margin:16px 0 2px}
-.bicon{flex:1;text-align:center}
-.bicon .c{width:46px;height:46px;border-radius:50%;background:var(--lav);display:flex;align-items:center;justify-content:center;margin:0 auto 7px}
-.bicon .c svg{width:24px;height:24px;stroke:var(--lav-deep);fill:none;stroke-width:1.7}
-.bicon span{font-family:var(--inst);font-size:10px;font-weight:700;letter-spacing:.03em;color:var(--ink);line-height:1.25;display:block;text-transform:uppercase}
+.pdp-icons-with-text{margin:14px 0 0}
+.pdp-icons-with-text h4{font-family:var(--body);font-size:14px;font-weight:400;line-height:1.5;margin:0 0 10px;text-align:center;color:var(--ink)}
+.pdp-icon--main{display:flex;flex-wrap:wrap;justify-content:center;row-gap:10px}
+.pdp-icon--block{width:33.33%;padding:0 6px;box-sizing:border-box}
+.pdp-icon--inner{display:flex;flex-direction:column;align-items:center}
+.pdp-icon--img{width:100%;max-width:52px;margin:0 auto}
+.pdp-icon--img img{width:100%;height:auto;display:block;object-fit:contain}
+.pdp-icon--text{text-align:center;margin-top:10px}
+.pdp-icon--text h5{margin:0;font-family:var(--inst);font-size:10px;font-weight:700;line-height:1.3;color:var(--pink);text-transform:uppercase;letter-spacing:.02em}
 
 .why{margin:18px 16px 0;background:var(--lav);border-radius:18px;padding:16px}
 .why .wt{font-family:var(--bergen);font-size:19px;font-weight:700;text-transform:lowercase;margin-bottom:3px}
@@ -136,12 +139,41 @@ h1,h2,h3{margin:0}
 .press{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;padding:4px 0}
 .press img{height:22px;width:auto;opacity:.62;filter:grayscale(1)}
 
-.bot-list{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.bot-list span{font-family:var(--inst);font-size:12px;font-weight:600;background:#fff;border:1px solid var(--line);padding:8px 14px;border-radius:30px}
+/* botanicals carousel */
+.ingredients-sec{padding:36px 0 44px;overflow:hidden;background:#fff}
+.ingredients-sec h2.bot-h2{font-family:var(--bergen);font-size:38px;font-weight:700;text-align:center;text-transform:lowercase;line-height:1;margin-bottom:16px;position:relative;z-index:3}
+.ing-carousel-wrap{position:relative}
+.ing-carousel{overflow-x:auto;overflow-y:hidden;touch-action:pan-x;scroll-snap-type:x mandatory;scroll-padding-left:8px;scrollbar-width:none}
+.ing-carousel::-webkit-scrollbar{display:none}
+.ing-track{display:flex;padding:0 18px 0 8px;will-change:scroll-position}
+.ing-slide{flex:0 0 44%;padding:0 4px;box-sizing:border-box;text-align:center;scroll-snap-align:start}
+.ing-slide-inner{position:relative;min-height:176px;padding:24px 0 0;display:flex;align-items:flex-end;justify-content:center}
+.ing-slide:not(.is-selected){opacity:1}
+.ing-slide.is-selected{opacity:1}
+.ing-title{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:3}
+.circleText{width:112%;max-width:178px;margin:0 auto;animation:botSpin 18s linear infinite;transform-origin:center}
+.circleText text{font-family:var(--bergen);font-weight:700;fill:var(--ink);text-transform:lowercase;letter-spacing:.04em}
+@keyframes botSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.ing-img{width:78%;max-width:118px;margin:0 auto;display:block;position:relative;z-index:2}
 
-.ritual{text-align:center}
-.ritual .big{font-family:var(--bergen);font-size:30px;font-weight:700;text-transform:lowercase;line-height:1.08}
-.ritual .big em{font-style:normal;color:var(--pink)}
+/* ritual / no-list */
+.no-list{position:relative;padding:40px 16px 52px;overflow:hidden;background:#fff}
+.no-wave-wrap{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:130%;max-width:520px;pointer-events:none;z-index:1}
+.no-wave{width:100%;display:block}
+.no-wave-blur{position:absolute;inset:-60px -20px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:2}
+.no-headlines{position:relative;z-index:3;text-align:center;max-width:320px;margin:0 auto 24px}
+.no-headlines h2{font-family:var(--bergen);font-size:34px;font-weight:700;text-transform:lowercase;line-height:1.05;margin:0}
+.no-headlines h2+h2{margin-top:12px}
+.no-body{position:relative;z-index:3;display:flex;flex-direction:column-reverse;align-items:center;gap:8px;max-width:340px;margin:0 auto}
+.no-can{padding:8px 0 4px}
+.no-can img{width:100%;max-width:240px;margin:0 auto}
+.no-items{list-style:none;margin:0;padding:0;font-family:var(--bergen);font-weight:700;text-transform:lowercase;line-height:1.3}
+.no-items li{font-size:28px;display:flex;align-items:center;margin:12px 0}
+.noStrike-wrap{position:relative;margin-left:10px;display:inline-block}
+.noStrike-wrap .noStrike{width:100%;height:3px;background:var(--ink);position:absolute;top:50%;left:0;transform:scaleX(0);transform-origin:left center;transition:transform .85s cubic-bezier(.4,0,.2,1)}
+.no-list.in-view .no-items li:nth-child(1) .noStrike{transform:scaleX(1);transition-delay:.1s}
+.no-list.in-view .no-items li:nth-child(2) .noStrike{transform:scaleX(1);transition-delay:.45s}
+.no-list.in-view .no-items li:nth-child(3) .noStrike{transform:scaleX(1);transition-delay:.8s}
 
 .timeline{display:flex;flex-direction:column;gap:0;border-left:2px solid var(--pink-line);margin-left:8px;padding-left:18px}
 .tnode{position:relative;padding:6px 0 18px}
@@ -154,12 +186,42 @@ h1,h2,h3{margin:0}
 .rewards .ri:last-child{border-bottom:none}
 .rewards .ri b{color:var(--pink)}
 
-.revagg{text-align:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px 18px}
-.revagg .big{font-family:var(--bergen);font-size:50px;font-weight:700;line-height:1;color:var(--pink)}
-.revagg .st{font-size:18px;letter-spacing:3px;margin:5px 0;color:var(--pink)}
-.revagg .ct{font-size:13px;color:var(--mut)}
-.revbadges{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:16px}
-.revbadges span{font-family:var(--inst);font-size:10.5px;font-weight:600;background:var(--lav);padding:7px 12px;border-radius:30px;color:#5b5266}
+/* reviews / yotpo-style */
+.reviews-sec{padding:28px 16px 40px;background:#fff}
+.reviews-sec h2{font-family:var(--bergen);font-size:34px;font-weight:700;text-align:center;text-transform:lowercase;line-height:1.2;margin:0 auto 24px;max-width:320px}
+.yotpo-summary{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px}
+.yotpo-score{font-family:var(--bergen);font-size:42px;font-weight:700;line-height:1}
+.yotpo-summary-right{text-align:left}
+.yotpo-stars{display:flex;gap:2px;margin-bottom:4px}
+.yotpo-stars svg{width:18px;height:18px}
+.yotpo-count{font-size:13px;color:var(--ink)}
+.yotpo-write{width:100%;border:none;background:#ff86d8;color:#000;font-family:var(--inst);font-weight:700;font-size:14px;padding:12px;border-radius:4px;cursor:pointer;margin-bottom:24px}
+.yotpo-write:hover{background:#000;color:#fff}
+.yotpo-media-head{font-family:var(--inst);font-weight:700;font-size:14px;margin-bottom:10px}
+.yotpo-media-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:20px;scrollbar-width:none}
+.yotpo-media-row::-webkit-scrollbar{display:none}
+.yotpo-media-row img{width:110px;height:110px;object-fit:cover;border-radius:4px;flex:0 0 auto}
+.yotpo-filters{display:flex;gap:8px;margin-bottom:16px;align-items:center}
+.yotpo-search{flex:1;display:flex;align-items:center;border:1px solid #949494;border-radius:4px;padding:0 8px;height:36px}
+.yotpo-search input{flex:1;border:none;background:none;font-family:var(--inst);font-size:13px;outline:none;padding:0 6px}
+.yotpo-filters-btn{display:flex;align-items:center;gap:6px;border:1px solid #eaeaea;background:#fff;border-radius:4px;padding:8px 12px;font-family:var(--inst);font-size:13px;cursor:pointer;white-space:nowrap}
+.yotpo-sort{margin-left:auto;font-family:var(--inst);font-size:13px;color:var(--ink);white-space:nowrap}
+.yotpo-sort b{color:#ff86d8}
+.yotpo-list{list-style:none;margin:0;padding:0}
+.yotpo-item{padding:20px 0;border-top:1px solid #e3e3e3}
+.yotpo-reviewer{font-family:var(--inst);font-weight:700;font-size:14px;margin-bottom:4px}
+.yotpo-verified{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:400;color:var(--ink);margin-bottom:10px}
+.yotpo-verified svg{flex:0 0 auto}
+.yotpo-item-stars{display:flex;gap:2px;margin-bottom:8px}
+.yotpo-item-stars svg{width:16px;height:16px}
+.yotpo-item-title{font-family:var(--inst);font-weight:700;font-size:14px;margin:0 0 8px}
+.yotpo-item-body{font-size:13px;line-height:1.55;color:var(--ink);margin:0 0 8px}
+.yotpo-readmore{background:none;border:none;padding:0;font-family:var(--inst);font-size:13px;font-weight:700;text-decoration:underline;cursor:pointer;color:var(--ink)}
+.yotpo-thumbs{display:flex;gap:6px;margin:10px 0}
+.yotpo-thumbs img{width:72px;height:72px;object-fit:cover;border-radius:4px}
+.yotpo-date{font-size:12px;color:var(--mut);margin-top:10px}
+.yotpo-loadmore{display:block;width:100%;margin-top:20px;border:1px solid #eaeaea;background:#fff;font-family:var(--inst);font-weight:700;font-size:14px;padding:12px;border-radius:4px;cursor:pointer}
+.yotpo-loadmore:hover{background:#f3f3f3}
 
 .acc .item{border-bottom:1px solid var(--line)}
 .acc .q{padding:16px 2px;display:flex;justify-content:space-between;gap:12px;cursor:pointer;font-family:var(--inst);font-weight:700;font-size:14px;align-items:center}
@@ -223,7 +285,7 @@ h1,h2,h3{margin:0}
     <div class="eyebrow"><span>sparkling soda</span><span id="packLabel">12 pack</span></div>
     <h1 class="title" id="title">blackberry lavender</h1>
     <div class="rrow" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'})">
-      <span class="stars">★★★★★</span><span class="rt">4.8 · 8,870 reviews</span>
+      <span class="stars">★★★★★</span><span class="rt">4.8 · 8,872 reviews</span>
     </div>
 
     <!-- SIZE (segmented selector part 1) -->
@@ -275,12 +337,41 @@ h1,h2,h3{margin:0}
     </div>
 
     <button class="atc" onclick="addToCart()" id="atcBtn">Add to Cart — <span id="atcPrice">$34</span></button>
-    <div class="daily">most effective when consumed daily ✨</div>
 
-    <div class="bicons">
-      <div class="bicon"><div class="c"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/><circle cx="12" cy="12" r="9"/></svg></div><span>zero added sugar</span></div>
-      <div class="bicon"><div class="c"><svg viewBox="0 0 24 24"><path d="M7 3v6a5 5 0 0 0 10 0V3M9 21h6"/></svg></div><span>10–20 calories</span></div>
-      <div class="bicon"><div class="c"><svg viewBox="0 0 24 24"><path d="M4 8h13a3 3 0 0 1 0 6h-1M4 8v8h12M6 4v2M10 4v2"/></svg></div><span>zero caffeine</span></div>
+    <div class="pdp-icons-with-text">
+      <h4>Most effective if consumed daily.</h4>
+      <div class="pdp-icon--main">
+        <div class="pdp-icon--block">
+          <div class="pdp-icon--inner">
+            <div class="pdp-icon--img">
+              <img src="https://drinkmoment.com/cdn/shop/files/Group_24.svg?v=1737025220" alt="">
+            </div>
+            <div class="pdp-icon--text">
+              <h5>ZERO ADDED SUGAR</h5>
+            </div>
+          </div>
+        </div>
+        <div class="pdp-icon--block">
+          <div class="pdp-icon--inner">
+            <div class="pdp-icon--img">
+              <img src="https://drinkmoment.com/cdn/shop/files/Group_893.svg?v=1737025220" alt="">
+            </div>
+            <div class="pdp-icon--text">
+              <h5>10-20 CALORIES</h5>
+            </div>
+          </div>
+        </div>
+        <div class="pdp-icon--block">
+          <div class="pdp-icon--inner">
+            <div class="pdp-icon--img">
+              <img src="https://drinkmoment.com/cdn/shop/files/Group_25.svg?v=1737025220" alt="">
+            </div>
+            <div class="pdp-icon--text">
+              <h5>ZERO CAFFEINE</h5>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -292,7 +383,7 @@ h1,h2,h3{margin:0}
       <div class="adapt"><div class="ai">🍵</div><div><div class="an">L-theanine <em>· the zen-master</em></div><div class="ad">Found in green tea. Increases alpha brainwaves — the same ones you get when meditating — reducing stress and improving mental clarity.</div></div></div>
       <div class="adapt"><div class="ai">🌿</div><div><div class="an">Ashwagandha <em>· the guru</em></div><div class="ad">Ancient ayurvedic root. Studies show it boosts brain function, lowers cortisol, and helps fight stress.</div></div></div>
     </div>
-    <div class="proofbar"><span class="stars" style="font-size:12px">★★★★★</span> <b>4.8</b> · <b>8,870</b> reviews <span class="dot"></span> as seen on <b>Shark Tank</b></div>
+    <div class="proofbar"><span class="stars" style="font-size:12px">★★★★★</span> <b>4.8</b> · <b>8,872</b> reviews <span class="dot"></span> as seen on <b>Shark Tank</b></div>
   </div>
 
   <!-- DESCRIPTION -->
@@ -305,18 +396,34 @@ h1,h2,h3{margin:0}
   </div>
 
   <!-- BOTANICALS -->
-  <div class="sec lav">
-    <div class="kicker">our botanicals</div>
-    <h2>what's inside</h2>
-    <p class="lead">a functional blend, not a flavor lab.</p>
-    <div class="bot-list"><span>ashwagandha</span><span>L-theanine</span><span>apple cider vinegar</span><span>tulsi</span><span>cardamom</span><span>meyer lemon</span></div>
+  <div class="sec lav ingredients-sec">
+    <h2 class="bot-h2">our botanicals</h2>
+    <div class="ing-carousel-wrap">
+      <div class="ing-carousel" id="ingCarousel">
+        <div class="ing-track" id="ingTrack"></div>
+      </div>
+    </div>
   </div>
 
   <!-- RITUAL -->
-  <div class="sec">
-    <div class="ritual">
-      <div class="big">all of the <em>ritual</em>,<br>none of the <em>regret</em>.</div>
-      <p class="lead" style="margin-top:14px">zero added sugar · 10–20 calories · zero caffeine — a feel-good drink you can have every day.</p>
+  <div class="no-list" id="noList">
+    <div class="no-wave-wrap">
+      <img class="no-wave" src="https://drinkmoment.com/cdn/shop/t/201/assets/wave-orange.svg?v=76805010282712856511769584893" alt="">
+      <div class="no-wave-blur"></div>
+    </div>
+    <div class="no-headlines">
+      <h2>all of the ritual</h2>
+      <h2>none of the regret</h2>
+    </div>
+    <div class="no-body">
+      <div class="no-can">
+        <img src="https://drinkmoment.com/cdn/shop/files/moment_orange_can_9192f250-f2d4-4280-8eaa-d853bfaa4525_1024x.png?v=1616095158" alt="moment drink can with fresh oranges">
+      </div>
+      <ul class="no-items">
+        <li>no <span class="noStrike-wrap">caffeine<span class="noStrike"></span></span></li>
+        <li>no <span class="noStrike-wrap">added sugars<span class="noStrike"></span></span></li>
+        <li>no <span class="noStrike-wrap">artificial flavors<span class="noStrike"></span></span></li>
+      </ul>
     </div>
   </div>
 
@@ -351,13 +458,97 @@ h1,h2,h3{margin:0}
   </div>
 
   <!-- REVIEWS -->
-  <div class="sec lav" id="reviews">
-    <div class="revagg">
-      <div class="big">4.8</div>
-      <div class="st">★★★★★</div>
-      <div class="ct">based on 8,870 verified reviews</div>
-      <div class="revbadges"><span>★ Verified by Yotpo</span><span>8,870 reviews</span><span>as seen on Shark Tank</span></div>
+  <div class="reviews-sec" id="reviews">
+    <h2>everyone’s taking a moment</h2>
+    <div class="yotpo-summary">
+      <div class="yotpo-score">4.8</div>
+      <div class="yotpo-summary-right">
+        <div class="yotpo-stars" aria-label="4.8 out of 5 stars">
+          <svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg>
+          <svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg>
+          <svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg>
+          <svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg>
+          <svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg>
+        </div>
+        <div class="yotpo-count">Based on 8872 reviews</div>
+      </div>
     </div>
+    <button type="button" class="yotpo-write">Write A Review</button>
+
+    <div class="yotpo-media-head">Reviews with images</div>
+    <div class="yotpo-media-row">
+      <img src="https://cdn-yotpo-images-production.yotpo.com/Review/842003067/851328845/original.jpg?1779362143&format=webp&height=160&width=160" alt="">
+      <img src="https://cdn-yotpo-images-production.yotpo.com/Review/839514799/849811712/original.jpg?1778885455&format=webp&height=160&width=160" alt="">
+      <img src="https://cdn-yotpo-images-production.yotpo.com/Review/835624684/846641881/original.jpg?1777749815&format=webp&height=160&width=160" alt="">
+      <img src="https://cdn-yotpo-images-production.yotpo.com/Review/837711491/848483122/original.jpg?1778372019&format=webp&height=160&width=160" alt="">
+    </div>
+
+    <div class="yotpo-filters">
+      <div class="yotpo-search">
+        <svg width="15" height="15" viewBox="0 0 13 13" fill="#000"><path d="M10.2694 9.38563L12.9462 12.0619L12.0619 12.9462L9.38563 10.2694C8.38984 11.0676 7.15125 11.5018 5.875 11.5C2.77 11.5 0.25 8.98 0.25 5.875C0.25 2.77 2.77 0.25 5.875 0.25C8.98 0.25 11.5 2.77 11.5 5.875C11.5018 7.15125 11.0676 8.38984 10.2694 9.38563Z"/></svg>
+        <input type="search" placeholder="Search reviews">
+      </div>
+      <button type="button" class="yotpo-filters-btn">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="#2C2C2C"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.88051 1.4H13.3C13.6866 1.4 14 1.7134 14 2.1C14 2.4866 13.6866 2.8 13.3 2.8H6.88051C6.59222 3.61563 5.81435 4.2 4.9 4.2C3.98565 4.2 3.20778 3.61563 2.91949 2.8H0.7C0.313401 2.8 0 2.4866 0 2.1C0 1.7134 0.313401 1.4 0.7 1.4H2.91949C3.20778 0.584365 3.98565 0 4.9 0C5.81435 0 6.59222 0.584365 6.88051 1.4Z"/></svg>
+        Filters
+      </button>
+    </div>
+    <div class="yotpo-sort">Sort by: <b>Most relevant</b></div>
+
+    <ul class="yotpo-list">
+      <li class="yotpo-item">
+        <div class="yotpo-reviewer">Krystal H.</div>
+        <div class="yotpo-verified"><svg width="15" height="15" viewBox="0 0 15 15"><circle cx="7.5" cy="7.5" r="7.5" fill="#ff86d8"/><path d="M4 7.22222L6.72269 10L11.5 5.5" stroke="white" stroke-width="1.5" fill="none"/></svg>Verified Buyer</div>
+        <div class="yotpo-item-stars"><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg></div>
+        <p class="yotpo-item-title">Soft flavor, delightful to drink</p>
+        <p class="yotpo-item-body">They werent like I had originally thought they'd taste. They're a soft flavored sparkling drink, easy on an tummy used to herbal drinks and such. I really enjoyed this Strawberry Rose as it was a unique taste and the herbal pause I needed when I had ...</p>
+        <button type="button" class="yotpo-readmore">Read more</button>
+        <div class="yotpo-thumbs">
+          <img src="https://cdn-yotpo-images-production.yotpo.com/Review/835624684/846641881/original.jpg?1777749815&format=webp&height=160&width=160" alt="">
+          <img src="https://cdn-yotpo-images-production.yotpo.com/Review/835624684/846641869/original.jpg?1777749803&format=webp&height=160&width=160" alt="">
+          <img src="https://cdn-yotpo-images-production.yotpo.com/Review/835624684/846641874/original.jpg?1777749810&format=webp&height=160&width=160" alt="">
+        </div>
+        <div class="yotpo-date">05/02/26</div>
+      </li>
+      <li class="yotpo-item">
+        <div class="yotpo-reviewer">Malika F.</div>
+        <div class="yotpo-verified"><svg width="15" height="15" viewBox="0 0 15 15"><circle cx="7.5" cy="7.5" r="7.5" fill="#ff86d8"/><path d="M4 7.22222L6.72269 10L11.5 5.5" stroke="white" stroke-width="1.5" fill="none"/></svg>Verified Buyer</div>
+        <div class="yotpo-item-stars"><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg></div>
+        <p class="yotpo-item-title">Surprisingly calming and actually works</p>
+        <p class="yotpo-item-body">I honestly really enjoy this drink. I was having a full-on panic attack at work and decided to try one, and within about 20 minutes I noticed myself calming down significantly. I’m already a believer in ashwagandha, so I do think the ingredients make...</p>
+        <button type="button" class="yotpo-readmore">Read more</button>
+        <div class="yotpo-thumbs"><img src="https://cdn-yotpo-images-production.yotpo.com/Review/837711491/848483122/original.jpg?1778372019&format=webp&height=160&width=160" alt=""></div>
+        <div class="yotpo-date">05/10/26</div>
+      </li>
+      <li class="yotpo-item">
+        <div class="yotpo-reviewer">David R.</div>
+        <div class="yotpo-verified"><svg width="15" height="15" viewBox="0 0 15 15"><circle cx="7.5" cy="7.5" r="7.5" fill="#ff86d8"/><path d="M4 7.22222L6.72269 10L11.5 5.5" stroke="white" stroke-width="1.5" fill="none"/></svg>Verified Buyer</div>
+        <div class="yotpo-item-stars"><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg></div>
+        <p class="yotpo-item-title">Delicious in all flavors</p>
+        <p class="yotpo-item-body">Okay. I was skeptical. But I love it. Have had as afternoon break, but recently enjoyed in the evening, instead of my wine. And trust me, I love my wine. I’ve enjoyed every flavor so far. Not sure I feel mental clarity or stress relief, but it’s enj...</p>
+        <button type="button" class="yotpo-readmore">Read more</button>
+        <div class="yotpo-date">05/17/26</div>
+      </li>
+      <li class="yotpo-item">
+        <div class="yotpo-reviewer">Jamie B.</div>
+        <div class="yotpo-verified"><svg width="15" height="15" viewBox="0 0 15 15"><circle cx="7.5" cy="7.5" r="7.5" fill="#ff86d8"/><path d="M4 7.22222L6.72269 10L11.5 5.5" stroke="white" stroke-width="1.5" fill="none"/></svg>Verified Buyer</div>
+        <div class="yotpo-item-stars"><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg></div>
+        <p class="yotpo-item-title">Great flavors, will definitely be a repeat customer</p>
+        <p class="yotpo-item-body">I was pleasantly surprised at how much I enjoyed the flavors and I ended up with two distinct favorites. I am obsessed with the blackberry lavender and the cherry hibiscus. The others were also very good, and the lychee mojito is right up there! I’m ...</p>
+        <button type="button" class="yotpo-readmore">Read more</button>
+        <div class="yotpo-date">05/24/26</div>
+      </li>
+      <li class="yotpo-item">
+        <div class="yotpo-reviewer">Chintal P.</div>
+        <div class="yotpo-verified"><svg width="15" height="15" viewBox="0 0 15 15"><circle cx="7.5" cy="7.5" r="7.5" fill="#ff86d8"/><path d="M4 7.22222L6.72269 10L11.5 5.5" stroke="white" stroke-width="1.5" fill="none"/></svg>Verified Buyer</div>
+        <div class="yotpo-item-stars"><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#000"/></svg><svg viewBox="0 0 18 18"><path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="none" stroke="#000"/></svg></div>
+        <p class="yotpo-item-title">AWESOME!!</p>
+        <p class="yotpo-item-body">Love them!! These really help me wind down before bed, I love that they are low calorie, no sugar and have amazing flavors. This is the perfect thing I need to relax and enjoy. The only reason I'm giving 4 instead of 5 is because of the price point. ...</p>
+        <button type="button" class="yotpo-readmore">Read more</button>
+        <div class="yotpo-date">05/19/26</div>
+      </li>
+    </ul>
+    <button type="button" class="yotpo-loadmore">Load more reviews</button>
   </div>
 
   <div class="footer">
@@ -461,6 +652,54 @@ function addToCart(){
   setTimeout(function(){b.innerHTML=old;b.style.background='';},1500);
 }
 function accT(q){q.parentElement.classList.toggle('open');}
+
+var INGREDIENTS=[
+  {name:'ashwagandha',img:'https://drinkmoment.com/cdn/shop/files/ashwagonda_blur_600x.png?v=1613674161'},
+  {name:'apple cider vinegar',img:'https://drinkmoment.com/cdn/shop/files/ing_acv_600x.png?v=1616711188'},
+  {name:'L-theanine',img:'https://drinkmoment.com/cdn/shop/files/theanine_blur_600x.png?v=1613674111'},
+  {name:'tulsi',img:'https://drinkmoment.com/cdn/shop/files/ing_tulsi_600x.png?v=1616710534'},
+  {name:'cardamon',img:'https://drinkmoment.com/cdn/shop/files/ing_cardamon_600x.png?v=1616710605'},
+  {name:'meyer lemon',img:'https://drinkmoment.com/cdn/shop/files/ing_lemon_600x.png?v=1616710668'}
+];
+(function(){
+  var track=document.getElementById('ingTrack');
+  track.innerHTML=INGREDIENTS.map(function(ing,i){
+    return '<div class="ing-slide"><div class="ing-slide-inner"><div class="ing-title"><svg class="circleText" viewBox="0 0 500 500" xmlns:xlink="http://www.w3.org/1999/xlink"><path id="textcircle-'+i+'" fill="none" d="M50,250c0-110.5,89.5-200,200-200s200,89.5,200,200s-89.5,200-200,200S50,360.5,50,250"/><text dy="-5"><textPath xlink:href="#textcircle-'+i+'" font-size="60">'+ing.name+' </textPath></text></svg></div><img class="ing-img" src="'+ing.img+'" alt="'+ing.name+'"></div></div>';
+  }).join('');
+})();
+(function(){
+  var el=document.getElementById('ingCarousel'),raf;
+  function setSelected(){
+    var center=el.scrollLeft+(el.clientWidth/2),closest=0,closestDist=Infinity;
+    document.querySelectorAll('.ing-slide').forEach(function(slide,i){
+      var slideCenter=slide.offsetLeft+(slide.offsetWidth/2);
+      var dist=Math.abs(slideCenter-center);
+      if(dist<closestDist){closestDist=dist;closest=i;}
+    });
+    document.querySelectorAll('.ing-slide').forEach(function(slide,i){
+      slide.classList.toggle('is-selected',i===closest);
+      slide.setAttribute('aria-hidden',i===closest?'false':'true');
+    });
+  }
+  el.addEventListener('scroll',function(){
+    cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(setSelected);
+  },{passive:true});
+  window.addEventListener('resize',setSelected);
+  setSelected();
+})();
+
+(function(){
+  var noList=document.getElementById('noList');
+  if(!noList)return;
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries,o){
+      entries.forEach(function(e){
+        if(e.isIntersecting){noList.classList.add('in-view');o.unobserve(e.target);}
+      });
+    },{threshold:.35}).observe(noList);
+  }else{noList.classList.add('in-view');}
+})();
 
 var buyzone=document.getElementById('buyzone'),sticky=document.getElementById('sticky');
 function onScroll(){var r=buyzone.getBoundingClientRect();sticky.classList.toggle('show',r.bottom<130);}
