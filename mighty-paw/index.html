@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All-Natural Yak Cheese Dog Chews | Mighty Paw</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+/* ===== Brand fonts (exact: Veneer display from brand CDN, Poppins body) ===== */
+@font-face{
+  font-family:'Veneer';
+  src:url('https://mightypaw.com/cdn/shop/t/65/assets/Veneer.woff2') format('woff2');
+  font-weight:400; font-style:normal; font-display:swap;
+}
+
+/* ===== Brand tokens (harvested via getComputedStyle on live PDP) ===== */
+:root{
+  --cream:#F5F1E9;       /* page background */
+  --slate:#263238;       /* text + announcement bar */
+  --slate-soft:#54616a;
+  --orange:#FF7104;      /* primary CTA */
+  --ink:#1A1F24;         /* button text */
+  --gold:#FFC62B;        /* subscribe / save accent */
+  --white:#ffffff;
+  --line:#e7e0d2;
+  --green:#3c7a4e;       /* in-stock / save chips */
+  --radius:6px;
+  --shadow:0 4px 18px rgba(38,50,56,.08);
+  --display:'Veneer','Bebas Neue',sans-serif;
+  --body:'Poppins',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  font-family:var(--body);
+  color:var(--slate);
+  background:#e9e3d6; /* neutral desktop backdrop behind the phone frame */
+  line-height:1.5;
+}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+a{color:inherit;text-decoration:none;}
+
+/* ===== Phone frame (mobile-only design, centered on desktop ≥600px) ===== */
+.frame{
+  max-width:390px;margin:0 auto;background:var(--cream);
+  position:relative;overflow:hidden;min-height:100vh;
+}
+@media(min-width:600px){
+  body{padding:26px 0;}
+  .frame{box-shadow:0 18px 60px rgba(38,50,56,.22);border-radius:22px;min-height:auto;}
+}
+
+.display{font-family:var(--display);font-weight:400;letter-spacing:-.2px;text-transform:uppercase;line-height:1.02;}
+
+/* ===== Announcement bar ===== */
+.announce{
+  background:var(--slate);color:#fff;text-align:center;
+  font-size:11.5px;font-weight:500;letter-spacing:.3px;
+  padding:8px 12px;white-space:nowrap;overflow:hidden;
+}
+.announce b{font-weight:700;}
+
+/* ===== Header ===== */
+.hdr{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:11px 16px;background:var(--cream);position:relative;z-index:30;
+  border-bottom:1px solid var(--line);
+}
+.hdr-left,.hdr-right{display:flex;align-items:center;gap:14px;}
+.hdr .logo{height:30px;width:auto;}
+.icon-btn svg{width:21px;height:21px;display:block;stroke:var(--slate);}
+.cart-wrap{position:relative;}
+.cart-count{
+  position:absolute;top:-7px;right:-8px;background:var(--orange);color:#fff;
+  font-size:9px;font-weight:700;width:15px;height:15px;border-radius:50%;
+  display:grid;place-items:center;
+}
+.nav-pill{
+  display:flex;gap:0;background:var(--cream);overflow-x:auto;scrollbar-width:none;
+  border-bottom:1px solid var(--line);padding:0 8px;
+}
+.nav-pill::-webkit-scrollbar{display:none;}
+.nav-pill a{
+  font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;
+  padding:11px 10px;white-space:nowrap;color:var(--slate);position:relative;
+}
+.nav-pill a.bundle{color:var(--orange);}
+
+/* ===== Gallery ===== */
+.gallery{background:#fff;padding:0 0 10px;}
+.gal-main{position:relative;aspect-ratio:1/1;background:#fff;overflow:hidden;}
+.gal-main img,.gal-main video{width:100%;height:100%;object-fit:contain;}
+.gal-main video{object-fit:cover;}
+.gal-badge{
+  position:absolute;top:12px;left:12px;background:var(--gold);color:var(--slate);
+  font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
+  padding:5px 10px;border-radius:40px;z-index:2;
+}
+.gal-thumbs{display:flex;gap:8px;padding:10px 14px 2px;overflow-x:auto;scrollbar-width:none;}
+.gal-thumbs::-webkit-scrollbar{display:none;}
+.gal-thumbs .thumb{
+  flex:0 0 58px;height:58px;border-radius:8px;overflow:hidden;border:2px solid transparent;
+  background:#f4efe6;position:relative;
+}
+.gal-thumbs .thumb.active{border-color:var(--orange);}
+.gal-thumbs .thumb img{width:100%;height:100%;object-fit:cover;}
+.thumb-play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.18);}
+.thumb-play svg{width:18px;height:18px;fill:#fff;}
+
+/* ===== Buy zone ===== */
+.buy{padding:16px 16px 18px;background:#fff;}
+.rating-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:7px;}
+.stars{color:#f5a623;font-size:14px;letter-spacing:1px;}
+.rating-row .rv{font-size:12px;font-weight:600;color:var(--slate);}
+.rating-row .rv a{text-decoration:underline;text-underline-offset:2px;}
+.sold-badge{
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;
+  color:var(--orange);background:#fff3e8;padding:3px 8px;border-radius:30px;
+}
+h1.title{font-family:var(--display);font-size:30px;letter-spacing:-.4px;text-transform:uppercase;color:var(--slate);line-height:1.02;margin-bottom:10px;}
+.subdesc{font-size:13px;color:var(--slate-soft);margin-bottom:14px;line-height:1.55;}
+
+/* Price block (fix: live price was only 13px) */
+.price-block{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;}
+.price-now{font-family:var(--display);font-size:34px;color:var(--slate);letter-spacing:-.5px;}
+.price-unit{font-size:12px;font-weight:600;color:var(--green);}
+.price-compare{font-size:14px;color:#9aa3a8;text-decoration:line-through;}
+
+/* USP icons */
+.usps{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:18px;}
+.usp{flex:1;text-align:center;padding:11px 6px;border-right:1px solid var(--line);}
+.usp:last-child{border-right:none;}
+.usp img{width:30px;height:30px;object-fit:contain;margin:0 auto 5px;}
+.usp span{font-size:9.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:var(--slate);display:block;line-height:1.25;}
+
+/* Selectors */
+.sel-label{font-size:12px;font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
+.sel-label .pick{color:var(--slate-soft);font-weight:500;}
+.size-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:18px;}
+.size-opt{
+  border:1.5px solid var(--line);border-radius:var(--radius);background:#fff;
+  padding:9px 4px;text-align:center;transition:.15s;
+}
+.size-opt .sn{font-size:13px;font-weight:700;display:block;}
+.size-opt .sw{font-size:9px;color:var(--slate-soft);display:block;margin-top:2px;}
+.size-opt.active{border-color:var(--slate);background:#fbf8f2;box-shadow:inset 0 0 0 1px var(--slate);}
+
+/* PRIMARY FIX: pack options now show price + per-chew cost + savings */
+.pack-list{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
+.pack-opt{
+  display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);
+  border-radius:10px;background:#fff;padding:11px 13px;transition:.15s;position:relative;text-align:left;width:100%;
+}
+.pack-opt.active{border-color:var(--orange);background:#fff8f2;}
+.pack-opt:disabled,.pack-opt.soldout{opacity:.5;}
+.pack-radio{width:18px;height:18px;border-radius:50%;border:2px solid #cdd3d6;flex:0 0 auto;position:relative;}
+.pack-opt.active .pack-radio{border-color:var(--orange);}
+.pack-opt.active .pack-radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--orange);}
+.pack-main{flex:1;min-width:0;}
+.pack-qty{font-size:14px;font-weight:700;display:block;}
+.pack-each{font-size:11px;color:var(--slate-soft);display:block;margin-top:1px;}
+.pack-right{text-align:right;flex:0 0 auto;}
+.pack-price{font-size:15px;font-weight:700;display:block;}
+.pack-save{font-size:10px;font-weight:700;color:var(--green);display:block;margin-top:1px;}
+.pack-save.soldlabel{color:#b0392b;}
+.best-flag{
+  position:absolute;top:-8px;right:12px;background:var(--green);color:#fff;
+  font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;
+  padding:2px 7px;border-radius:30px;
+}
+
+/* Purchase mode (subscribe vs once) */
+.buy-mode{display:flex;flex-direction:column;gap:9px;margin-bottom:14px;}
+.mode-opt{border:1.5px solid var(--line);border-radius:10px;padding:12px 13px;position:relative;transition:.15s;}
+.mode-opt.active{border-color:var(--slate);background:#fbf8f2;}
+.mode-top{display:flex;align-items:center;gap:9px;}
+.mode-radio{width:18px;height:18px;border-radius:50%;border:2px solid #cdd3d6;flex:0 0 auto;position:relative;}
+.mode-opt.active .mode-radio{border-color:var(--slate);}
+.mode-opt.active .mode-radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--slate);}
+.mode-name{font-size:13.5px;font-weight:700;flex:1;}
+.mode-price{font-size:14px;font-weight:700;}
+.mode-price .was{font-size:11px;color:#9aa3a8;text-decoration:line-through;margin-right:5px;font-weight:500;}
+.mode-sub{font-size:11px;color:var(--slate-soft);margin-top:5px;padding-left:27px;}
+.save-tag{
+  position:absolute;top:-8px;right:12px;background:var(--gold);color:var(--slate);
+  font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;padding:2px 8px;border-radius:30px;
+}
+.deliver-row{display:flex;align-items:center;gap:8px;margin-top:9px;padding-left:27px;}
+.deliver-row select{
+  font-family:inherit;font-size:11.5px;font-weight:600;color:var(--slate);
+  border:1px solid var(--line);border-radius:6px;padding:6px 8px;background:#fff;flex:1;
+}
+
+/* ATC */
+.qty-atc{display:flex;gap:9px;margin-bottom:10px;}
+.qty{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+.qty button{width:34px;height:48px;font-size:18px;color:var(--slate);}
+.qty span{width:26px;text-align:center;font-size:14px;font-weight:600;}
+.atc{
+  flex:1;background:var(--orange);color:var(--ink);border-radius:var(--radius);
+  font-size:13px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:.15s;box-shadow:0 3px 0 #d95f00;
+}
+.atc:active{transform:translateY(2px);box-shadow:0 1px 0 #d95f00;}
+.shoppay{
+  width:100%;background:#5a31f4;color:#fff;border-radius:var(--radius);
+  height:46px;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:8px;
+}
+.shoppay b{font-weight:800;letter-spacing:.2px;}
+.pay-alt{text-align:center;font-size:10.5px;color:var(--slate-soft);margin-bottom:14px;}
+.guarantee-row{display:flex;gap:10px;}
+.gtile{flex:1;display:flex;align-items:center;gap:7px;font-size:10.5px;font-weight:600;color:var(--slate);background:#fbf8f2;border-radius:8px;padding:9px 10px;}
+.gtile svg{width:17px;height:17px;flex:0 0 auto;stroke:var(--green);}
+
+/* ===== Generic section ===== */
+.section{padding:30px 16px;}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--orange);text-align:center;margin-bottom:6px;}
+.sec-title{font-family:var(--display);font-size:25px;text-transform:uppercase;text-align:center;color:var(--slate);line-height:1.05;margin-bottom:6px;}
+.sec-sub{font-size:13px;color:var(--slate-soft);text-align:center;max-width:300px;margin:0 auto 20px;line-height:1.55;}
+
+/* Story / calms+cleans */
+.story{background:var(--cream);}
+.story-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:14px;}
+.story-card video,.story-card img{width:100%;aspect-ratio:4/3;object-fit:cover;}
+.story-body{padding:16px 16px 18px;}
+.story-body h3{font-family:var(--display);font-size:19px;text-transform:uppercase;margin-bottom:7px;}
+.story-body p{font-size:12.5px;color:var(--slate-soft);line-height:1.6;}
+.tip{display:flex;gap:10px;align-items:flex-start;background:#fff8f2;border:1px dashed var(--orange);border-radius:10px;padding:12px 13px;margin-top:14px;}
+.tip svg{width:20px;height:20px;flex:0 0 auto;}
+.tip p{font-size:11.5px;line-height:1.55;color:var(--slate);}
+.tip b{color:var(--orange);}
+
+/* 3 steps */
+.steps{display:flex;flex-direction:column;gap:12px;}
+.step{display:flex;gap:13px;align-items:flex-start;background:#fff;border-radius:12px;padding:15px;box-shadow:var(--shadow);}
+.step-num{font-family:var(--display);font-size:30px;color:var(--orange);line-height:1;flex:0 0 auto;width:34px;}
+.step h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px;}
+.step p{font-size:12px;color:var(--slate-soft);line-height:1.55;}
+
+/* Comparison */
+.compare{background:var(--slate);color:#fff;}
+.compare .eyebrow{color:var(--gold);}
+.compare .sec-title{color:#fff;}
+.cmp{max-width:340px;margin:14px auto 0;background:rgba(255,255,255,.04);border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.1);}
+.cmp-head{display:grid;grid-template-columns:1fr 88px 88px;align-items:center;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.1);}
+.cmp-head .mp{font-family:var(--display);font-size:15px;color:var(--orange);text-align:center;}
+.cmp-head .ot{font-size:11px;font-weight:600;color:#aeb7bd;text-align:center;text-transform:uppercase;letter-spacing:.5px;}
+.cmp-row{display:grid;grid-template-columns:1fr 88px 88px;align-items:center;padding:13px 14px;border-bottom:1px solid rgba(255,255,255,.07);opacity:0;transform:translateY(8px);transition:.5s;}
+.cmp-row.in{opacity:1;transform:none;}
+.cmp-row:last-child{border-bottom:none;}
+.cmp-row .feat{font-size:12px;font-weight:600;}
+.cmp-row .feat small{display:block;font-weight:400;color:#9aa3a8;font-size:10px;margin-top:1px;}
+.cmp-cell{text-align:center;display:flex;justify-content:center;}
+.tick{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;}
+.tick.yes{background:var(--green);}
+.tick.no{background:rgba(255,255,255,.08);}
+.tick svg{width:13px;height:13px;stroke:#fff;}
+
+/* Founder */
+.founder{background:var(--cream);text-align:center;}
+.founder img{border-radius:14px;box-shadow:var(--shadow);margin-bottom:16px;}
+.founder-trust{display:flex;justify-content:center;gap:8px;margin-top:4px;}
+.ftile{flex:1;font-size:10.5px;font-weight:600;color:var(--slate);}
+.ftile .pw{font-size:16px;}
+
+/* Sizing */
+.sizing{background:#fff;}
+.sizing img{border-radius:12px;border:1px solid var(--line);}
+
+/* Reviews */
+.reviews{background:var(--cream);}
+.rev-summary{display:flex;gap:16px;align-items:center;background:#fff;border-radius:14px;padding:16px;box-shadow:var(--shadow);margin-bottom:14px;}
+.rev-big{text-align:center;flex:0 0 auto;}
+.rev-big .num{font-family:var(--display);font-size:42px;line-height:1;color:var(--slate);}
+.rev-big .stars{font-size:13px;}
+.rev-big .cnt{font-size:10.5px;color:var(--slate-soft);margin-top:3px;}
+.rev-bars{flex:1;display:flex;flex-direction:column;gap:4px;}
+.rev-bar{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--slate-soft);}
+.rev-bar .b{flex:1;height:6px;background:#eee5d6;border-radius:4px;overflow:hidden;}
+.rev-bar .b i{display:block;height:100%;background:#f5a623;border-radius:4px;}
+.topics{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;margin-bottom:14px;}
+.topics::-webkit-scrollbar{display:none;}
+.topic{flex:0 0 auto;font-size:11px;font-weight:600;border:1.5px solid var(--line);background:#fff;border-radius:30px;padding:6px 13px;transition:.15s;text-transform:capitalize;}
+.topic.active{background:var(--slate);color:#fff;border-color:var(--slate);}
+.media-row{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-bottom:14px;}
+.media-row::-webkit-scrollbar{display:none;}
+.media-row img{flex:0 0 92px;height:92px;border-radius:10px;object-fit:cover;}
+.rev-card{background:#fff;border-radius:12px;padding:14px 15px;box-shadow:var(--shadow);margin-bottom:10px;}
+.rev-card .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
+.rev-card .stars{font-size:12px;}
+.rev-card .date{font-size:10.5px;color:#9aa3a8;}
+.rev-card h5{font-size:13px;font-weight:700;margin-bottom:4px;}
+.rev-card p{font-size:12px;color:var(--slate-soft);line-height:1.55;margin-bottom:8px;}
+.rev-card .who{font-size:11px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.rev-card .vb{font-size:9.5px;font-weight:700;color:var(--green);background:#eaf3ec;padding:2px 7px;border-radius:20px;text-transform:uppercase;letter-spacing:.3px;}
+
+/* Subscribe value */
+.subval{background:var(--gold);}
+.subval .eyebrow{color:var(--slate);}
+.subval .sec-title{color:var(--slate);}
+.subval-list{max-width:320px;margin:8px auto 0;}
+.subval-list li{display:flex;gap:10px;align-items:flex-start;font-size:13px;font-weight:500;color:var(--slate);padding:9px 0;border-bottom:1px solid rgba(38,50,56,.12);list-style:none;}
+.subval-list li:last-child{border-bottom:none;}
+.subval-list svg{width:19px;height:19px;flex:0 0 auto;stroke:var(--slate);}
+.subval .mini-cta{display:block;text-align:center;background:var(--slate);color:#fff;border-radius:var(--radius);font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:14px;margin:18px auto 0;max-width:320px;}
+
+/* FAQ */
+.faq{background:#fff;}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;padding:15px 2px;font-size:13px;font-weight:600;color:var(--slate);}
+.faq-q .pm{flex:0 0 auto;width:18px;height:18px;position:relative;transition:.2s;}
+.faq-q .pm::before,.faq-q .pm::after{content:"";position:absolute;background:var(--orange);border-radius:2px;}
+.faq-q .pm::before{top:8px;left:1px;right:1px;height:2px;}
+.faq-q .pm::after{left:8px;top:1px;bottom:1px;width:2px;transition:.2s;}
+.faq-item.open .pm::after{opacity:0;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.faq-a p{font-size:12px;color:var(--slate-soft);line-height:1.6;padding:0 2px 15px;}
+
+/* Cross-sell */
+.xsell{background:var(--cream);}
+.xgrid{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;}
+.xgrid::-webkit-scrollbar{display:none;}
+.xcard{flex:0 0 168px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
+.xcard .xim{aspect-ratio:1/1;background:#f4efe6;}
+.xcard .xim img{width:100%;height:100%;object-fit:contain;}
+.xcard .xb{padding:11px 12px 13px;}
+.xcard h4{font-size:12px;font-weight:700;line-height:1.3;margin-bottom:5px;min-height:31px;}
+.xcard .xp{font-size:13px;font-weight:700;}
+.xcard .xp .xc{font-size:11px;color:#9aa3a8;text-decoration:line-through;font-weight:500;margin-left:5px;}
+.xcard .xadd{display:block;width:100%;text-align:center;margin-top:9px;border:1.5px solid var(--slate);border-radius:6px;padding:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+
+/* Footer */
+.foot{background:var(--slate);color:#cfd6da;padding:26px 16px 30px;text-align:center;}
+.foot img{height:26px;margin:0 auto 12px;filter:brightness(0) invert(1);opacity:.9;}
+.foot .links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;font-size:11px;margin-bottom:16px;}
+.foot .copy{font-size:10px;color:#7e8a90;line-height:1.6;}
+
+/* Sticky ATC */
+.sticky{
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(110%);
+  width:100%;max-width:390px;background:#fff;border-top:1px solid var(--line);
+  box-shadow:0 -6px 24px rgba(38,50,56,.14);padding:9px 12px;
+  display:flex;align-items:center;gap:11px;z-index:50;transition:transform .28s ease;
+}
+.sticky.show{transform:translateX(-50%) translateY(0);}
+.sticky img{width:42px;height:42px;border-radius:8px;object-fit:contain;background:#f4efe6;flex:0 0 auto;}
+.sticky .sinfo{flex:1;min-width:0;}
+.sticky .sname{font-size:11.5px;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sticky .sprice{font-size:11px;color:var(--slate-soft);}
+.sticky .sprice b{color:var(--slate);font-size:13px;}
+.sticky .satc{background:var(--orange);color:var(--ink);border-radius:var(--radius);font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:13px 18px;white-space:nowrap;}
+
+.reveal{opacity:0;transform:translateY(14px);transition:.6s ease;}
+.reveal.in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+<div class="frame" id="frame">
+
+  <!-- Announcement -->
+  <div class="announce">🐾 <b>Free Shipping</b> on Orders Over $25!</div>
+
+  <!-- Header -->
+  <header class="hdr">
+    <div class="hdr-left">
+      <button class="icon-btn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+    <img class="logo" src="https://mightypaw.com/cdn/shop/files/MightyPaw_Logo.png" alt="Mighty Paw" width="120" height="30">
+    <div class="hdr-right">
+      <button class="icon-btn" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg></button>
+      <button class="icon-btn cart-wrap" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-count" id="cartCount">0</span></button>
+    </div>
+  </header>
+  <nav class="nav-pill">
+    <a href="#">Shop</a><a href="#">Who We Are</a><a href="#subval">Subscribe &amp; Save</a><a href="#">Buy in Bulk</a><a href="#" class="bundle">🦴 Dog Chew Bundle</a>
+  </nav>
+
+  <!-- Gallery -->
+  <section class="gallery">
+    <div class="gal-main" id="galMain">
+      <span class="gal-badge">2 Million+ Sold</span>
+      <img id="galImg" src="https://mightypaw.com/cdn/shop/files/Large_4_Pack.png" alt="All-Natural Yak Cheese Dog Chews">
+    </div>
+    <div class="gal-thumbs" id="galThumbs">
+      <button class="thumb active" data-type="img" data-src="https://mightypaw.com/cdn/shop/files/Large_4_Pack.png"><img src="https://mightypaw.com/cdn/shop/files/Large_4_Pack.png" alt=""></button>
+      <button class="thumb" data-type="video" data-src="https://cdn.shopify.com/videos/c/o/v/63f1041c67fc48b0934922edfdaa1ad5.mp4"><img src="https://mightypaw.com/cdn/shop/files/Yak_Chews__TikTok_02.png" alt=""><span class="thumb-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+      <button class="thumb" data-type="img" data-src="https://mightypaw.com/cdn/shop/files/Yak_Chews__TikTok_04.png"><img src="https://mightypaw.com/cdn/shop/files/Yak_Chews__TikTok_04.png" alt=""></button>
+      <button class="thumb" data-type="img" data-src="https://mightypaw.com/cdn/shop/files/Yak_Chews__TikTok_07.png"><img src="https://mightypaw.com/cdn/shop/files/Yak_Chews__TikTok_07.png" alt=""></button>
+      <button class="thumb" data-type="img" data-src="https://mightypaw.com/cdn/shop/files/Yak_Chews__TikTok_02.png"><img src="https://mightypaw.com/cdn/shop/files/Yak_Chews__TikTok_02.png" alt=""></button>
+      <button class="thumb" data-type="img" data-src="https://mightypaw.com/cdn/shop/files/Yak_Chews__TikTok_10.png"><img src="https://mightypaw.com/cdn/shop/files/Yak_Chews__TikTok_10.png" alt=""></button>
+    </div>
+  </section>
+
+  <!-- Buy zone -->
+  <section class="buy">
+    <div class="rating-row">
+      <span class="stars">★★★★<span style="opacity:.45">★</span></span>
+      <span class="rv"><a href="#reviews">4.4 · 1,814 reviews</a></span>
+      <span class="sold-badge">2 Million+ Chews Sold</span>
+    </div>
+    <h1 class="title">All-Natural Yak Cheese Dog Chews</h1>
+    <p class="subdesc">Handcrafted in Nepal with just 3 ingredients — milk, salt &amp; lime juice. Long-lasting chews that support dental health, mental stimulation, and calm, happy chewing.</p>
+
+    <div class="price-block">
+      <span class="price-now" id="priceNow">$18.89</span>
+      <span class="price-unit" id="priceUnit">$4.72 / chew</span>
+      <span class="price-compare" id="priceCompare">$26.99</span>
+    </div>
+
+    <div class="usps">
+      <div class="usp"><img src="https://mightypaw.com/cdn/shop/files/icon_1_cheese.webp" alt=""><span>Only 3<br>Ingredients</span></div>
+      <div class="usp"><img src="https://mightypaw.com/cdn/shop/files/icon_2_long-lasting.webp" alt=""><span>Long-<br>Lasting</span></div>
+      <div class="usp"><img src="https://mightypaw.com/cdn/shop/files/icon_3_anxiety.webp" alt=""><span>Eases<br>Anxiety</span></div>
+    </div>
+
+    <!-- Chew size -->
+    <div class="sel-label"><span>Chew Size</span><span class="pick" id="sizePick">Large · 30–75 lb dog</span></div>
+    <div class="size-grid" id="sizeGrid">
+      <button class="size-opt" data-size="Small"><span class="sn">Small</span><span class="sw">&lt;15 lb</span></button>
+      <button class="size-opt" data-size="Medium"><span class="sn">Medium</span><span class="sw">15–30 lb</span></button>
+      <button class="size-opt active" data-size="Large"><span class="sn">Large</span><span class="sw">30–75 lb</span></button>
+      <button class="size-opt" data-size="Monster"><span class="sn">Monster</span><span class="sw">45–90 lb</span></button>
+    </div>
+
+    <!-- PACK SIZE — primary fix: price + per-chew + savings now visible per option -->
+    <div class="sel-label"><span>Pack Size</span><span class="pick">Bigger packs = lower per-chew price</span></div>
+    <div class="pack-list" id="packList"><!-- injected --></div>
+
+    <!-- Purchase mode -->
+    <div class="buy-mode" id="buyMode">
+      <div class="mode-opt active" data-mode="sub">
+        <span class="save-tag">Save up to 30%</span>
+        <div class="mode-top">
+          <span class="mode-radio"></span>
+          <span class="mode-name">Subscribe &amp; Save</span>
+          <span class="mode-price"><span class="was" id="subWas">$26.99</span><span id="subPrice">$18.89</span></span>
+        </div>
+        <p class="mode-sub">Save 30% on your first box, then 15% off every delivery. Skip or cancel anytime.</p>
+        <div class="deliver-row">
+          <span style="font-size:11.5px;font-weight:600;">Deliver every</span>
+          <select aria-label="Delivery frequency"><option>1 month — save 30%</option><option>2 months</option><option>3 months</option></select>
+        </div>
+      </div>
+      <div class="mode-opt" data-mode="once">
+        <div class="mode-top">
+          <span class="mode-radio"></span>
+          <span class="mode-name">Buy Once</span>
+          <span class="mode-price" id="oncePrice">$26.99</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="qty-atc">
+      <div class="qty"><button id="qMinus" aria-label="Decrease">−</button><span id="qVal">1</span><button id="qPlus" aria-label="Increase">+</button></div>
+      <button class="atc" id="atcBtn">Add to Cart · <span id="atcPrice">$18.89</span></button>
+    </div>
+    <button class="shoppay" id="shoppay">Buy with <b>Shop</b>&nbsp;Pay</button>
+    <div class="pay-alt">More payment options</div>
+
+    <div class="guarantee-row">
+      <div class="gtile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6z"/></svg>30-Day Satisfaction Guarantee</div>
+      <div class="gtile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="1" y="6" width="13" height="11" rx="1"/><path d="M14 9h4l3 3v5h-7z"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Free Shipping $25+</div>
+    </div>
+  </section>
+
+  <!-- Story: calms & cleans -->
+  <section class="section story">
+    <div class="eyebrow">The Chew That Calms &amp; Cleans</div>
+    <h2 class="sec-title">More than a treat</h2>
+    <div class="story-card reveal">
+      <video src="https://cdn.shopify.com/videos/c/o/v/7b7957ee4d1a476d96804f3e13083b7c.mp4" poster="https://mightypaw.com/cdn/shop/files/Yak_Chews__TikTok_02.png" muted loop playsinline autoplay preload="metadata"></video>
+      <div class="story-body">
+        <h3>Pure, Simple Ingredients</h3>
+        <p>Handcrafted in Nepal and hand-inspected at our headquarters in Rochester, NY, Mighty Paw Yak Chews are made with just three ingredients: milk, salt, and lime juice. No fillers, no artificial additives — just pure, wholesome goodness that helps reduce stress and anxiety while naturally cleaning teeth to reduce plaque and tartar.</p>
+        <div class="tip">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#FF7104" stroke-width="2"/><path d="M12 7v6M12 16.5h.01" stroke="#FF7104" stroke-width="2" stroke-linecap="round"/></svg>
+          <p><b>Don't waste the end piece!</b> Soak it in water for 5 minutes, then microwave for 45–60 seconds to puff it into a crunchy cheese treat your dog will love.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 steps -->
+  <section class="section" style="background:#fff;">
+    <div class="eyebrow">The Treat That Keeps On Giving</div>
+    <h2 class="sec-title">Two treats in one</h2>
+    <p class="sec-sub">One chew delivers hours of fun — then transforms into a second snack.</p>
+    <div class="steps">
+      <div class="step reveal"><span class="step-num">1</span><div><h4>Choose the perfect size</h4><p>From Small to Monster, there's a Yak Cheese Chew for every pup. The right size means longer-lasting fun.</p></div></div>
+      <div class="step reveal"><span class="step-num">2</span><div><h4>Enjoy hours of chew time</h4><p>Yak Cheese Chews keep your dog engaged, happy, and calm. Always supervise for extra peace of mind.</p></div></div>
+      <div class="step reveal"><span class="step-num">3</span><div><h4>Transform into a puff</h4><p>Once it's down to a small piece, soak &amp; microwave it into a crunchy cheese puff. Zero waste.</p></div></div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="section compare">
+    <div class="eyebrow">The Mighty Paw Difference</div>
+    <h2 class="sec-title">Not all yak cheese<br>are equal</h2>
+    <div class="cmp" id="cmp">
+      <div class="cmp-head"><span></span><span class="mp">Mighty Paw</span><span class="ot">Others</span></div>
+      <div class="cmp-row"><span class="feat">Only 3 Ingredients<small>Mystery ingredients</small></span><span class="cmp-cell"><span class="tick yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span></span><span class="cmp-cell"><span class="tick no"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg></span></span></div>
+      <div class="cmp-row"><span class="feat">Long-Lasting<small>Short-lived</small></span><span class="cmp-cell"><span class="tick yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span></span><span class="cmp-cell"><span class="tick no"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg></span></span></div>
+      <div class="cmp-row"><span class="feat">High Protein<small>Low nutritional value</small></span><span class="cmp-cell"><span class="tick yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span></span><span class="cmp-cell"><span class="tick no"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg></span></span></div>
+      <div class="cmp-row"><span class="feat">All Natural<small>Fillers &amp; preservatives</small></span><span class="cmp-cell"><span class="tick yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span></span><span class="cmp-cell"><span class="tick no"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg></span></span></div>
+    </div>
+  </section>
+
+  <!-- Founder -->
+  <section class="section founder">
+    <img src="https://mightypaw.com/cdn/shop/files/Yak_Chews__TikTok_10.png" alt="Crafted with care by Corey & Barley">
+    <div class="eyebrow">Power Chewer? No Problem</div>
+    <h2 class="sec-title">Built to last hours<br>— even days</h2>
+    <p class="sec-sub">Tough enough for real power chewers. Our 55-lb dog Barley needs multiple 45-minute sessions to finish one chew.</p>
+    <div class="founder-trust">
+      <div class="ftile"><div class="pw">🐾</div>Inspected in Rochester, NY</div>
+      <div class="ftile"><div class="pw">🐾</div>Hand-checked for quality</div>
+      <div class="ftile"><div class="pw">🐾</div>Trusted by dog parents nationwide</div>
+    </div>
+  </section>
+
+  <!-- Sizing -->
+  <section class="section sizing">
+    <div class="eyebrow">Find the Right Fit</div>
+    <h2 class="sec-title">Sizing guide</h2>
+    <p class="sec-sub">Match the chew to your dog's weight for the longest-lasting, safest chew.</p>
+    <img src="https://mightypaw.com/cdn/shop/files/Yak_Chews__TikTok_09.png" alt="Yak chew size chart by dog weight">
+  </section>
+
+  <!-- Reviews -->
+  <section class="section reviews" id="reviews">
+    <div class="eyebrow">Trusted by Pet Parents</div>
+    <h2 class="sec-title">Tails are wagging</h2>
+    <div class="rev-summary reveal">
+      <div class="rev-big">
+        <div class="num">4.4</div>
+        <div class="stars" style="color:#f5a623">★★★★<span style="opacity:.45">★</span></div>
+        <div class="cnt">1,814 reviews</div>
+      </div>
+      <div class="rev-bars">
+        <div class="rev-bar"><span>5</span><span class="b"><i style="width:69%"></i></span><span>1251</span></div>
+        <div class="rev-bar"><span>4</span><span class="b"><i style="width:14%"></i></span><span>258</span></div>
+        <div class="rev-bar"><span>3</span><span class="b"><i style="width:7%"></i></span><span>133</span></div>
+        <div class="rev-bar"><span>2</span><span class="b"><i style="width:5%"></i></span><span>91</span></div>
+        <div class="rev-bar"><span>1</span><span class="b"><i style="width:4%"></i></span><span>81</span></div>
+      </div>
+    </div>
+    <div class="topics" id="topics">
+      <button class="topic active" data-topic="all">All ratings</button>
+      <button class="topic" data-topic="size">Size</button>
+      <button class="topic" data-topic="quality">Quality</button>
+      <button class="topic" data-topic="value">Value</button>
+      <button class="topic" data-topic="smell">Smell</button>
+      <button class="topic" data-topic="shipping">Shipping</button>
+    </div>
+    <div class="media-row">
+      <img src="https://mightypaw.com/cdn/shop/files/Yak_Chews__TikTok_02.png" alt="Dog with yak chew">
+      <img src="https://mightypaw.com/cdn/shop/files/Yak_Chews__TikTok_07.png" alt="Power chewer">
+      <img src="https://mightypaw.com/cdn/shop/files/Yak_Chews__TikTok_10.png" alt="Corey and Barley">
+      <img src="https://mightypaw.com/cdn/shop/files/Large_4_Pack.png" alt="Yak cheese chews">
+    </div>
+    <div id="revList">
+      <div class="rev-card reveal">
+        <div class="top"><span class="stars" style="color:#f5a623">★★★★★</span><span class="date">10/15/25</span></div>
+        <h5>Dogs love Yaks</h5>
+        <p>Our dogs love Yaks. The little one takes it away from the big one. He does the same. They've created a fun game when they are treated to their cheesies.</p>
+        <div class="who">Lora W. 🇺🇸 <span class="vb">Verified Buyer</span></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="top"><span class="stars" style="color:#f5a623">★★★★★</span><span class="date">09/13/25</span></div>
+        <h5>Amazing!!</h5>
+        <p>My dog loves these! We got one in our gift bag when adopting him from the SC humane society and we are now on an auto-ship plan for them. Keeps him busy and helps with his teething! He also loves them once small and turned into a puff. No waste for him.</p>
+        <div class="who">AKris <span class="vb">Verified Buyer</span></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="top"><span class="stars" style="color:#f5a623">★★★★★</span><span class="date">09/26/25</span></div>
+        <h5>PLUTO loves Yak Cheese Chew</h5>
+        <p>I must say that Pluto loves your Yak Cheese Chew. I will be getting him some more Yak Cheese Chew.</p>
+        <div class="who">Charles S. 🇺🇸 <span class="vb">Verified Buyer</span></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="top"><span class="stars" style="color:#f5a623">★★★★★</span><span class="date">07/28/25</span></div>
+        <h5>These are amazing!!!</h5>
+        <p>Omg!! They absolutely love these!! Our new favorite for sure!!!!!</p>
+        <div class="who">Darlene A. 🇺🇸 <span class="vb">Verified Buyer</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe value -->
+  <section class="section subval" id="subval">
+    <div class="eyebrow">The Smarter Way to Shop</div>
+    <h2 class="sec-title">Subscribe &amp; Save 30%</h2>
+    <ul class="subval-list">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> 30% off your first delivery, 15% off every one after</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg> Never run out — auto-delivered on your schedule</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg> No commitment — skip, pause, or cancel anytime</li>
+    </ul>
+    <a href="#top" class="mini-cta" id="subCta">Start Subscribing &amp; Save</a>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq">
+    <div class="eyebrow">Need More Answers?</div>
+    <h2 class="sec-title">Yak chew FAQ</h2>
+    <div style="margin-top:14px;">
+      <div class="faq-item"><button class="faq-q">Where are your Yak Cheese Chews made?<span class="pm"></span></button><div class="faq-a"><p>They're handcrafted by dairy farmers in Nepal following an ancient Himalayan recipe. Once shipped to our US headquarters in Rochester, NY, we hand-inspect and bag them ourselves — so you get the best quality and tastiest chews.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How long do your Yak Cheese Chews last?<span class="pm"></span></button><div class="faq-a"><p>Every dog's chewing style is different, but it took our 55-pound dog Barley multiple 45-minute sessions to get through one Yak Cheese Chew.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What are your Yak Cheese Chews made of?<span class="pm"></span></button><div class="faq-a"><p>Just 3 simple ingredients: milk, lime juice, and salt. The lactose is removed during the curing process, which makes our chews lactose-free. Lime is rich in Vitamin C, and salt helps a dog's cells function properly.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What if the chew is too big for my dog?<span class="pm"></span></button><div class="faq-a"><p>Give your dog one piece at a time and do not cut it into smaller pieces — your dog could choke if the pieces are too small. Size down to the chew that matches their weight instead.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Are Yak Cheese chews safe for daily chewing?<span class="pm"></span></button><div class="faq-a"><p>Yes! Made with just milk, salt, and lime juice, our chews are fully digestible and free from lactose, grains, gluten, chemicals, and preservatives. They're a natural, healthy alternative to rawhide that's safe for everyday enjoyment.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What type of dogs benefit most?<span class="pm"></span></button><div class="faq-a"><p>Any dog who loves to chew! They're especially great for dogs with sensitive stomachs and anxious chewers who need a calm, satisfying outlet.</p></div></div>
+    </div>
+  </section>
+
+  <!-- Cross-sell -->
+  <section class="section xsell">
+    <div class="eyebrow">More Chews to Love</div>
+    <h2 class="sec-title">You may also like</h2>
+    <div class="xgrid" style="margin-top:14px;">
+      <div class="xcard">
+        <div class="xim"><img src="https://cdn.shopify.com/s/files/1/0011/0775/5059/files/BundleMain.png" alt="All-N-One Dog Chew Bundle"></div>
+        <div class="xb"><h4>All-N-One Dog Chew Bundle</h4><div class="xp">$39.00<span class="xc">$120.00</span></div><a class="xadd" href="#">Quick Add</a></div>
+      </div>
+      <div class="xcard">
+        <div class="xim"><img src="https://cdn.shopify.com/s/files/1/0011/0775/5059/files/Kneecaps.png" alt="All-Natural Cow Knee Cap Chews"></div>
+        <div class="xb"><h4>All-Natural Cow Knee Cap Chews</h4><div class="xp">$28.99</div><a class="xadd" href="#">Quick Add</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="foot">
+    <img src="https://mightypaw.com/cdn/shop/files/MightyPaw_Logo.png" alt="Mighty Paw">
+    <div class="links"><a href="#">Shop</a><a href="#">Who We Are</a><a href="#subval">Subscribe &amp; Save</a><a href="#">Buy in Bulk</a><a href="#">Contact</a></div>
+    <div class="copy">For one chewer or one shelter — Mighty Paw.<br>© Mighty Paw · Rochester, NY</div>
+  </footer>
+
+  <!-- Sticky ATC -->
+  <div class="sticky" id="sticky">
+    <img src="https://mightypaw.com/cdn/shop/files/Large_4_Pack.png" alt="">
+    <div class="sinfo">
+      <div class="sname">Yak Cheese Chews · <span id="sSize">Large</span>/<span id="sPack">4</span></div>
+      <div class="sprice"><b id="sPrice">$18.89</b> <span id="sMode">Subscribe</span></div>
+    </div>
+    <button class="satc" id="sAtc">Add</button>
+  </div>
+
+</div>
+
+<script>
+/* ===== Real variant data (from products.json — prices & availability verified) ===== */
+const SIZES = {
+  Small:   { label:'<15 lb dog',  range:'Under 15 lb', packs:[{n:5,price:21.99,avail:true},{n:12,price:28.99,avail:true}] },
+  Medium:  { label:'15–30 lb dog',range:'15–30 lb',    packs:[{n:4,price:25.99,avail:true},{n:12,price:49.99,avail:false}] },
+  Large:   { label:'30–75 lb dog',range:'30–75 lb',    packs:[{n:4,price:26.99,avail:true},{n:8,price:49.99,avail:false},{n:12,price:69.99,avail:false}] },
+  Monster: { label:'45–90 lb dog',range:'45–90 lb',    packs:[{n:1,price:16.49,avail:true},{n:4,price:39.99,avail:true},{n:12,price:89.99,avail:true}] }
+};
+let state = { size:'Large', packIdx:0, mode:'sub', qty:1 };
+
+const $ = s => document.querySelector(s);
+const money = v => '$' + v.toFixed(2);
+
+function currentPack(){ return SIZES[state.size].packs[state.packIdx]; }
+
+/* Render pack options with price + per-chew + savings (the primary CRO fix) */
+function renderPacks(){
+  const size = SIZES[state.size];
+  const avail = size.packs.filter(p=>p.avail);
+  const baseEach = Math.max(...avail.map(p=>p.price/p.n)); // smallest pack = highest per-chew
+  const list = $('#packList');
+  list.innerHTML = '';
+  size.packs.forEach((p,i)=>{
+    const each = p.price/p.n;
+    const save = Math.round((1 - each/baseEach)*100);
+    const isBest = p.avail && avail.length>1 && each === Math.min(...avail.map(x=>x.price/x.n));
+    const btn = document.createElement('button');
+    btn.className = 'pack-opt' + (i===state.packIdx?' active':'') + (p.avail?'':' soldout');
+    btn.disabled = !p.avail;
+    btn.innerHTML =
+      (isBest?'<span class="best-flag">Best value</span>':'') +
+      '<span class="pack-radio"></span>'+
+      '<span class="pack-main"><span class="pack-qty">'+p.n+' Pack</span><span class="pack-each">'+money(each)+' / chew</span></span>'+
+      '<span class="pack-right"><span class="pack-price">'+money(p.price)+'</span>'+
+        (p.avail ? (save>0?'<span class="pack-save">Save '+save+'%</span>':'') : '<span class="pack-save soldlabel">Sold out</span>')+
+      '</span>';
+    if(p.avail) btn.addEventListener('click',()=>{ state.packIdx=i; renderPacks(); renderPrice(); });
+    list.appendChild(btn);
+  });
+}
+
+function renderPrice(){
+  const p = currentPack();
+  const once = p.price;
+  const sub = +(p.price*0.7).toFixed(2);      // 30% off first delivery
+  const active = state.mode==='sub' ? sub : once;
+  const each = active/p.n;
+  $('#priceNow').textContent = money(active);
+  $('#priceUnit').textContent = money(each)+' / chew';
+  $('#priceCompare').style.display = state.mode==='sub' ? '' : 'none';
+  $('#priceCompare').textContent = money(once);
+  // subscribe box figures
+  $('#subWas').textContent = money(once);
+  $('#subPrice').textContent = money(sub);
+  $('#oncePrice').textContent = money(once);
+  $('#atcPrice').textContent = money(active*state.qty);
+  // sticky
+  $('#sSize').textContent = state.size;
+  $('#sPack').textContent = p.n;
+  $('#sPrice').textContent = money(active*state.qty);
+  $('#sMode').textContent = state.mode==='sub'?'Subscribe':'One-time';
+  $('#sizePick').textContent = state.size+' · '+SIZES[state.size].range+' dog';
+}
+
+/* Size selection */
+$('#sizeGrid').querySelectorAll('.size-opt').forEach(b=>{
+  b.addEventListener('click',()=>{
+    $('#sizeGrid').querySelector('.active').classList.remove('active');
+    b.classList.add('active');
+    state.size=b.dataset.size; state.packIdx=0;
+    renderPacks(); renderPrice();
+  });
+});
+
+/* Purchase mode */
+$('#buyMode').querySelectorAll('.mode-opt').forEach(m=>{
+  m.addEventListener('click',()=>{
+    $('#buyMode').querySelector('.active').classList.remove('active');
+    m.classList.add('active'); state.mode=m.dataset.mode; renderPrice();
+  });
+});
+
+/* Qty */
+$('#qMinus').addEventListener('click',()=>{ if(state.qty>1){state.qty--; $('#qVal').textContent=state.qty; renderPrice();} });
+$('#qPlus').addEventListener('click',()=>{ state.qty++; $('#qVal').textContent=state.qty; renderPrice(); });
+
+/* Add to cart (prototype) */
+let cart=0;
+function addToCart(){ cart+=state.qty; $('#cartCount').textContent=cart; const b=$('#atcBtn'); const t=b.innerHTML; b.innerHTML='✓ Added'; setTimeout(()=>b.innerHTML=t,1100); }
+$('#atcBtn').addEventListener('click',addToCart);
+$('#sAtc').addEventListener('click',addToCart);
+$('#shoppay').addEventListener('click',e=>{e.preventDefault();});
+$('#subCta').addEventListener('click',e=>{ e.preventDefault(); $('#buyMode').querySelector('[data-mode="sub"]').click(); window.scrollTo({top:0,behavior:'smooth'}); });
+
+/* Gallery */
+$('#galThumbs').querySelectorAll('.thumb').forEach(t=>{
+  t.addEventListener('click',()=>{
+    $('#galThumbs').querySelector('.active').classList.remove('active');
+    t.classList.add('active');
+    const main=$('#galMain'); const old=$('#galImg');
+    const node = t.dataset.type==='video'
+      ? Object.assign(document.createElement('video'),{src:t.dataset.src,poster:t.querySelector('img')?.src||'',muted:true,loop:true,autoplay:true,playsInline:true})
+      : Object.assign(document.createElement('img'),{src:t.dataset.src,alt:''});
+    node.id='galImg';
+    if(t.dataset.type==='video'){ node.setAttribute('playsinline',''); }
+    old.replaceWith(node);
+  });
+});
+
+/* FAQ */
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.closest('.faq-item'); const a=item.querySelector('.faq-a');
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null;});
+    if(!open){ item.classList.add('open'); a.style.maxHeight=a.scrollHeight+'px'; }
+  });
+});
+
+/* Review topic pills (visual filter) */
+$('#topics').querySelectorAll('.topic').forEach(t=>{
+  t.addEventListener('click',()=>{ $('#topics').querySelector('.active').classList.remove('active'); t.classList.add('active'); });
+});
+
+/* Sticky ATC — scroll-driven via getBoundingClientRect (not IntersectionObserver) */
+const buyBtn = $('#atcBtn'), sticky=$('#sticky');
+function onScroll(){
+  const r = buyBtn.getBoundingClientRect();
+  sticky.classList.toggle('show', r.bottom < 0);
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+
+/* Comparison row + reveal animations */
+const io = new IntersectionObserver((ents)=>{
+  ents.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.18});
+document.querySelectorAll('.cmp-row,.reveal').forEach(el=>io.observe(el));
+
+/* init */
+renderPacks();
+/* default to Large/4-pack — match the live PDP default; show subscribe price */
+renderPrice();
+onScroll();
+</script>
+</body>
+</html>
