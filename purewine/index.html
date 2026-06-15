@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>The Original Wand® Wine Purifier | PureWine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wine:#A2293F; --wine-deep:#7C1F2E; --ink:#211b1c; --muted:#7c6f70;
+  --cream:#FAF4F0; --cream2:#F6EDE7; --blush:#F4E6E6; --line:# E9DCD7; --line:#EADFDA;
+  --gold:#B08A3E;
+  --sans:'Montserrat',-apple-system,BlinkMacSystemFont,sans-serif;
+  --head:'Inter',-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#e7dfdb;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+
+.phone{max-width:390px;margin:0 auto;background:#fff;position:relative;overflow:hidden;min-height:100vh}
+@media(min-width:600px){
+  body{padding:24px 0}
+  .phone{box-shadow:0 24px 70px rgba(80,25,40,.22);border-radius:26px;min-height:auto;overflow:visible}
+  .phone>.announce{border-radius:26px 26px 0 0}
+}
+
+.announce{background:var(--wine-deep);color:#fff;text-align:center;font-size:11px;letter-spacing:.2px;padding:10px 14px;white-space:nowrap;overflow:hidden;font-weight:600}
+
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:#fff;position:sticky;top:0;z-index:60;border-bottom:1px solid var(--line)}
+.hdr .ico{width:23px;height:23px;color:var(--ink)}
+.hdr .logo{height:30px}
+
+/* Gallery */
+.gallery{position:relative;background:#fff}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.slides::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:1/0.8;background:#fff;display:flex;align-items:center;justify-content:center}
+.slide img{width:100%;height:100%;object-fit:contain}
+.slide.cover img{object-fit:cover}
+.gbadge{position:absolute;top:12px;left:12px;background:var(--wine);color:#fff;font-size:10px;font-weight:700;letter-spacing:.5px;padding:6px 11px;border-radius:20px;z-index:3;text-transform:uppercase}
+.dots{display:flex;gap:6px;justify-content:center;padding:8px 0 2px}
+.dot{width:7px;height:7px;border-radius:50%;background:#dac9c4;transition:.25s}
+.dot.on{background:var(--wine);transform:scale(1.2)}
+.thumbs{display:flex;gap:8px;padding:6px 16px 2px;overflow-x:auto;scrollbar-width:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumb{flex:0 0 52px;height:52px;border-radius:9px;overflow:hidden;border:1.5px solid transparent;background:#f4ece8}
+.thumb.on{border-color:var(--wine)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+
+/* Buy zone */
+.buy{padding:14px 18px 20px}
+.eyebrow-pill{display:inline-block;background:var(--blush);color:var(--wine);font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;padding:5px 11px;border-radius:20px}
+.rating{display:flex;align-items:center;gap:8px;margin:11px 0 7px}
+.stars{color:var(--wine);font-size:14px;letter-spacing:1px}
+.rating b{font-weight:700;font-size:13px}
+.rating a{font-size:12.5px;color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+h1.title{font-family:var(--head);font-weight:700;font-size:27px;line-height:1.1;color:var(--wine)}
+.subtitle{font-size:14px;color:var(--ink);margin-top:5px}
+.pitch{margin-top:13px}
+.pitch b{font-family:var(--head);font-weight:700;font-size:16px;color:var(--ink);display:block}
+.pitch span{font-size:13.5px;color:var(--muted)}
+.benefits{margin:14px 0 4px;display:flex;flex-direction:column;gap:8px}
+.benefits .b{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink)}
+.benefits .b .ck{width:21px;height:21px;border-radius:50%;background:var(--wine);color:#fff;flex:none;display:flex;align-items:center;justify-content:center;font-size:12px}
+
+/* purchase toggle */
+.ptoggle{display:flex;border:1.5px solid var(--line);border-radius:13px;overflow:hidden;margin:18px 0 14px;position:relative}
+.ptoggle button{flex:1;padding:13px 8px;font-weight:700;font-size:13.5px;color:var(--muted);background:#fff;display:flex;flex-direction:column;align-items:center;gap:2px;transition:.2s}
+.ptoggle button.on{background:var(--blush);color:var(--wine)}
+.ptoggle button .save{font-size:10px;font-weight:700;color:#fff;background:var(--wine);padding:1px 7px;border-radius:10px;letter-spacing:.2px}
+.ptoggle button.on .save{background:var(--wine)}
+.ptoggle button:not(.on) .save{background:#2e8b6f}
+.subnote{background:var(--cream);border-radius:11px;padding:11px 13px;margin:-4px 0 14px;font-size:12.5px;color:var(--wine);display:none;align-items:center;gap:8px;font-weight:600}
+.subnote.show{display:flex}
+.subnote select{margin-left:auto;font-family:inherit;font-size:12.5px;border:1px solid var(--line);border-radius:8px;padding:6px 8px;background:#fff;color:var(--ink)}
+
+/* pack selector with per-wand pricing (PRIMARY FIX) */
+.sectlbl{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--ink);margin:4px 0 10px;display:flex;align-items:center;gap:7px}
+.sectlbl em{font-style:normal;color:var(--muted);font-weight:600;text-transform:none;letter-spacing:0}
+.packs{display:flex;flex-direction:column;gap:9px}
+.pack{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:13px;padding:12px 13px;position:relative;transition:.18s;background:#fff}
+.pack.on{border-color:var(--wine);background:#fdf6f7;box-shadow:0 2px 0 rgba(162,41,63,.06)}
+.pack .radio{width:19px;height:19px;border-radius:50%;border:2px solid #cdbdb8;flex:none;position:relative;transition:.18s}
+.pack.on .radio{border-color:var(--wine)}
+.pack.on .radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--wine)}
+.pack .pinfo{flex:1;min-width:0}
+.pack .pname{font-weight:700;font-size:14.5px;color:var(--ink)}
+.pack .pper{font-size:11.5px;color:var(--muted);margin-top:1px}
+.pack .pprice{text-align:right;flex:none}
+.pack .pprice .now{font-weight:800;font-size:15px;color:var(--ink)}
+.pack .savebadge{position:absolute;top:-8px;right:12px;font-size:9.5px;font-weight:700;letter-spacing:.3px;color:#fff;background:var(--wine);padding:2px 8px;border-radius:11px;text-transform:uppercase}
+.pack .savebadge.best{background:var(--gold)}
+
+/* color */
+.colorpick{padding:12px 18px 4px}
+.colors{display:flex;gap:11px;margin:6px 0 2px;flex-wrap:wrap}
+.sw{width:36px;height:36px;border-radius:50%;border:1px solid rgba(0,0,0,.12);transition:.18s;position:relative}
+.sw.on{box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--wine)}
+
+.pricerow{display:flex;align-items:baseline;gap:10px;margin:18px 0 0}
+.pricerow .now{font-size:24px;font-weight:800;color:var(--wine)}
+.pricerow .was{font-size:15px;color:#b3a3a0;text-decoration:line-through}
+.pricerow .perwand{font-size:12px;color:var(--muted);margin-left:auto}
+
+.atc{width:100%;background:var(--wine);color:#fff;font-weight:700;font-size:15.5px;letter-spacing:.5px;text-transform:uppercase;padding:17px;border-radius:12px;margin-top:13px;transition:.18s}
+.atc:active{transform:scale(.99)}
+.prime{width:100%;background:#1c7ed6;color:#fff;font-weight:600;font-size:14.5px;padding:15px;border-radius:12px;margin-top:9px;display:flex;align-items:center;justify-content:center;gap:3px}
+.prime b{font-weight:800}
+.prime .smile{display:inline-block;width:22px;height:8px;margin-left:3px;border-bottom:2.5px solid #ff9900;border-bottom-right-radius:8px;position:relative}
+.prime .smile::after{content:"";position:absolute;right:-1px;bottom:-3px;border-left:5px solid #ff9900;border-top:3px solid transparent;border-bottom:3px solid transparent;transform:rotate(35deg)}
+.guarantees{display:flex;justify-content:center;gap:18px;margin-top:13px;font-size:11.5px;color:var(--muted)}
+.guarantees span{display:flex;align-items:center;gap:5px}
+
+/* marquee */
+.marquee{background:var(--wine);color:#fff;overflow:hidden;white-space:nowrap;padding:11px 0;font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase}
+.marquee .track{display:inline-flex;gap:28px;animation:scroll 22s linear infinite}
+.marquee .track span{display:inline-flex;gap:28px}
+.marquee .track i{font-style:normal;opacity:.55}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+section{padding:34px 18px}
+.h2{font-family:var(--head);font-weight:700;font-size:25px;line-height:1.15;color:var(--wine);text-align:center}
+.h2.left{text-align:left}
+.lede{text-align:center;color:var(--muted);font-size:14px;max-width:320px;margin:10px auto 0;line-height:1.55}
+
+/* benefits grid */
+.bgrid{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.bcard{background:var(--cream);border-radius:15px;padding:17px 16px}
+.bcard h3{font-family:var(--head);font-weight:700;font-size:16px;color:var(--ink);margin-bottom:4px}
+.bcard p{font-size:13.5px;color:var(--muted);line-height:1.5}
+.bcard .stat{color:var(--wine);font-weight:700}
+
+/* stats band */
+.statband{background:var(--wine-deep);color:#fff;text-align:center}
+.statband .h2{color:#fff}
+.statrow{display:flex;gap:8px;margin-top:20px}
+.statrow .s{flex:1;background:rgba(255,255,255,.08);border-radius:13px;padding:16px 6px}
+.statrow .s .n{font-family:var(--head);font-weight:800;font-size:30px;line-height:1}
+.statrow .s .l{font-size:10.5px;opacity:.85;margin-top:7px;line-height:1.3}
+.statband .note{font-size:11px;opacity:.7;margin-top:16px;font-style:italic}
+
+/* how to use */
+.howto{background:var(--cream)}
+.step{display:flex;gap:15px;align-items:flex-start;padding:16px 0;border-bottom:1px solid #ECE0DB}
+.step:last-child{border-bottom:none}
+.step .no{width:40px;height:40px;border-radius:50%;background:#fff;border:2px solid var(--wine);color:var(--wine);font-family:var(--head);font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;flex:none}
+.step h4{font-family:var(--head);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.step p{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* loves you back */
+.loves{background:#fff}
+.lovesimg{border-radius:16px;overflow:hidden;margin-top:18px;aspect-ratio:4/3}
+.lovesimg img{width:100%;height:100%;object-fit:cover}
+.loveslist{margin-top:18px;display:flex;flex-direction:column;gap:11px}
+.loveslist .l{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:var(--ink)}
+.loveslist .l .ck{color:var(--wine);font-weight:800;flex:none}
+
+/* trust stats */
+.trust4{background:var(--cream2);text-align:center}
+.t4grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.t4grid .t{background:#fff;border-radius:14px;padding:18px 10px}
+.t4grid .t .n{font-family:var(--head);font-weight:800;font-size:26px;color:var(--wine);line-height:1}
+.t4grid .t .l{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.3}
+
+/* press */
+.press{background:#fff;text-align:center;padding:24px 18px}
+.press .lbl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.press .logos{display:flex;gap:26px;justify-content:center;align-items:center}
+.press .logos img{height:24px;opacity:.6;filter:grayscale(1)}
+
+/* reviews */
+.reviews{background:var(--cream)}
+.rhead{text-align:center;margin-bottom:6px}
+.rhead .big{font-family:var(--head);font-weight:800;font-size:40px;color:var(--wine);line-height:1}
+.rhead .st{color:var(--wine);font-size:16px;letter-spacing:2px;margin:5px 0}
+.rhead .c{font-size:12px;color:var(--muted)}
+.rcarousel{display:flex;gap:12px;overflow-x:auto;margin-top:18px;scrollbar-width:none;scroll-snap-type:x mandatory;padding-bottom:4px}
+.rcarousel::-webkit-scrollbar{display:none}
+.rcard{flex:0 0 88%;scroll-snap-align:center;background:#fff;border-radius:15px;padding:18px;border:1px solid var(--line)}
+.rcard .st{color:var(--wine);font-size:13px;letter-spacing:1px}
+.rcard p{font-size:13.5px;color:var(--ink);line-height:1.55;margin:9px 0 12px}
+.rcard .who{font-size:12.5px;font-weight:700;color:var(--ink)}
+.rcard .who .vb{font-weight:600;color:#2e8b6f;font-size:10.5px;margin-left:6px}
+.rcard .prod{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* video ugc */
+.ugc{background:#fff}
+.vrow{display:flex;gap:11px;overflow-x:auto;margin-top:18px;scrollbar-width:none;scroll-snap-type:x mandatory;padding-bottom:4px}
+.vrow::-webkit-scrollbar{display:none}
+.vcard{flex:0 0 156px;scroll-snap-align:start;border-radius:14px;overflow:hidden;position:relative;aspect-ratio:9/15;background:#000;cursor:pointer}
+.vcard img,.vcard video{width:100%;height:100%;object-fit:cover}
+.vcard .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2}
+.vcard .play .pc{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center}
+.vcard .play .pc::after{content:"";border-left:14px solid var(--wine);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.vcard .tag{position:absolute;top:9px;left:9px;font-size:9px;font-weight:700;letter-spacing:.4px;background:var(--wine);color:#fff;padding:3px 8px;border-radius:11px;z-index:2}
+.vcard.playing .play,.vcard.playing .tag{display:none}
+
+/* faq */
+.faq{background:var(--cream)}
+.qa{border-bottom:1px solid #EADFDA}
+.qa .qh{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:17px 2px;font-size:14px;font-weight:600;color:var(--ink)}
+.qa .qh .pm{font-size:21px;font-weight:300;color:var(--wine);flex:none;transition:.25s}
+.qa.open .qh .pm{transform:rotate(45deg)}
+.qa .ans{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.qa .ans div{padding:0 2px 17px;font-size:13px;color:var(--muted);line-height:1.6}
+
+/* cross sell */
+.cross{background:#fff}
+.xrow{display:flex;gap:12px;overflow-x:auto;margin-top:16px;scrollbar-width:none;padding-bottom:4px}
+.xrow::-webkit-scrollbar{display:none}
+.xcard{flex:0 0 144px}
+.xcard .pic{background:var(--cream);border-radius:13px;aspect-ratio:1/1;overflow:hidden;position:relative}
+.xcard .pic img{width:100%;height:100%;object-fit:cover}
+.xcard .sv{position:absolute;top:7px;left:7px;font-size:9px;font-weight:700;background:var(--wine);color:#fff;padding:3px 7px;border-radius:11px}
+.xcard .nm{font-size:12px;font-weight:700;color:var(--ink);margin-top:9px;line-height:1.25}
+.xcard .pr{font-size:12.5px;margin-top:4px}
+.xcard .pr .n{font-weight:700;color:var(--wine)}
+.xcard .pr .w{color:#b3a3a0;text-decoration:line-through;font-size:11px;margin-left:4px}
+
+footer{background:var(--wine-deep);color:#fff;text-align:center;padding:30px 20px 34px}
+footer img{height:26px;margin:0 auto 14px;filter:brightness(0) invert(1);opacity:.95}
+footer .links{display:flex;gap:18px;justify-content:center;font-size:12px;margin-bottom:14px;flex-wrap:wrap;opacity:.9}
+footer p{font-size:11px;opacity:.7;max-width:280px;margin:0 auto;line-height:1.6}
+
+/* sticky bar */
+.stickybar{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:390px;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(80,25,40,.1);padding:10px 14px;display:flex;align-items:center;gap:11px;z-index:80;transition:transform .3s ease}
+.stickybar.show{transform:translateX(-50%) translateY(0)}
+.stickybar .sp{width:44px;height:44px;border-radius:9px;background:var(--cream);overflow:hidden;flex:none}
+.stickybar .sp img{width:100%;height:100%;object-fit:contain}
+.stickybar .si{flex:1;min-width:0}
+.stickybar .si .nm{font-size:11.5px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stickybar .si .pr{font-size:13px;font-weight:800;color:var(--wine)}
+.stickybar .sb{background:var(--wine);color:#fff;font-weight:700;font-size:13px;letter-spacing:.4px;text-transform:uppercase;padding:13px 18px;border-radius:11px;flex:none}
+.pagepad{height:70px}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <div class="announce">Each Wand purifies up to 3 glasses · Ships in 1–2 days</div>
+
+  <header class="hdr">
+    <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <img class="logo" src="https://drinkpurewine.com/cdn/shop/files/PureWine_Sign_Rev-ai.svg" alt="PureWine">
+    <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M6 8h12l-1 12H7L6 8z" stroke="currentColor" stroke-width="1.5"/><path d="M9 8a3 3 0 016 0" stroke="currentColor" stroke-width="1.5"/></svg>
+  </header>
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <span class="gbadge">#1-Selling Worldwide</span>
+    <div class="slides" id="slides">
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/1071/5272/files/VINO8_Hero_Revised4_600x_7e6d6c5e-0bd5-4215-aaa0-be157a84f28e.webp" alt="The Wand in red and white wine with packaging"></div>
+      <div class="slide cover"><img src="https://cdn.shopify.com/s/files/1/1071/5272/files/Color_Lineup_-min_c463d9d7-75c0-455b-9ec0-3d2a185c7a66.jpg" alt="The Wand color options in glasses of wine"></div>
+      <div class="slide cover"><img src="https://cdn.shopify.com/s/files/1/1071/5272/files/A88I0093-min_44bedaa9-e6d5-4bba-aa71-450e4490ac3a.jpg" alt="Friends toasting wine"></div>
+      <div class="slide cover"><img src="https://cdn.shopify.com/s/files/1/1071/5272/files/142A9430-min_dd510c81-e288-41a1-b98b-05b1a1b6095d.jpg" alt="Couple enjoying wine by the fire"></div>
+    </div>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="thumbs" id="thumbs"></div>
+
+  <!-- Color selector (under the carousel — changing color updates the image) -->
+  <div class="colorpick">
+    <div class="sectlbl" style="margin:0 0 9px">Color <em id="colorName">— Silver</em></div>
+    <div class="colors" id="colors">
+      <button class="sw on" style="background:#C7C7C7" data-name="Silver" data-img="https://cdn.shopify.com/s/files/1/1071/5272/files/VINO8_Hero_Revised4_600x_7e6d6c5e-0bd5-4215-aaa0-be157a84f28e.webp" aria-label="Silver"></button>
+      <button class="sw" style="background:#EBB7C6" data-name="Pink" data-img="https://cdn.shopify.com/s/files/1/1071/5272/files/pink.jpg" aria-label="Pink"></button>
+      <button class="sw" style="background:linear-gradient(135deg,#cfcfcf 50%,#c6a14e 50%)" data-name="Silver &amp; Gold" data-img="https://cdn.shopify.com/s/files/1/1071/5272/files/VINO8SG_Hero_600x_1ea47329-e226-4441-bc89-4a41f6a24eac.webp" aria-label="Silver and Gold"></button>
+      <button class="sw" style="background:#C0392B" data-name="Red" data-img="https://cdn.shopify.com/s/files/1/1071/5272/files/VINO8R_Hero_600x_073db922-6a01-4758-968f-77c6b7952882.webp" aria-label="Red"></button>
+      <button class="sw" style="background:#9DA86F" data-name="Eco" data-img="https://cdn.shopify.com/s/files/1/1071/5272/files/VINO8Wicons_600x_1c7dad77-ed48-4d37-8343-6c255ad678af.webp" aria-label="Eco"></button>
+      <button class="sw" style="background:linear-gradient(135deg,#3c3b6e 50%,#b22234 50%)" data-name="USA" data-img="https://cdn.shopify.com/s/files/1/1071/5272/files/VINO30USA_545cb74f-97c5-45d6-bff2-703d463326cd.jpg" aria-label="USA"></button>
+    </div>
+  </div>
+
+  <!-- BUY ZONE -->
+  <div class="buy">
+    <span class="eyebrow-pill">#1-Selling Wine Purifier Worldwide</span>
+    <div class="rating"><span class="stars">★★★★★</span><b>4.76</b><a href="#reviews">(500 reviews)</a></div>
+    <h1 class="title">The Original Wand® Wine Purifier</h1>
+    <div class="subtitle">Purifies &amp; aerates all types of wine — instantly.</div>
+
+    <div class="pitch"><b>Celebrate Tonight. Feel Great Tomorrow.</b><span>Works before you drink — no powders or pills needed.</span></div>
+
+    <div class="benefits">
+      <div class="b"><span class="ck">✓</span>Prevents hangovers, headaches &amp; skin flush</div>
+      <div class="b"><span class="ck">✓</span>Removes histamines &amp; sulfites</div>
+      <div class="b"><span class="ck">✓</span>1 Wand purifies up to 3 glasses</div>
+    </div>
+
+    <!-- One-time vs Subscription (SECONDARY FIX: surface 25% save) -->
+    <div class="ptoggle" id="ptoggle">
+      <button class="on" data-mode="onetime">One-time</button>
+      <button data-mode="sub">Subscribe <span class="save">SAVE 25%</span></button>
+    </div>
+    <div class="subnote" id="subnote">
+      <span>✓ 25% off every delivery · skip or cancel anytime</span>
+      <select id="freq"><option>Every 30 days</option><option>Every 60 days</option><option>Every 90 days</option></select>
+    </div>
+
+    <!-- PRIMARY FIX: pack selector with per-wand pricing + savings -->
+    <div class="sectlbl">Choose your pack <em>— bigger packs, lower per-wand price</em></div>
+    <div class="packs" id="packs">
+      <div class="pack on" data-pack="8" data-price="23.99" data-per="3.00">
+        <span class="savebadge">Most Popular</span>
+        <span class="radio"></span>
+        <div class="pinfo"><div class="pname">8-Pack</div><div class="pper">$3.00 per wand</div></div>
+        <div class="pprice"><div class="now">$23.99</div></div>
+      </div>
+      <div class="pack" data-pack="30" data-price="69.99" data-per="2.33">
+        <span class="savebadge">Save 22%</span>
+        <span class="radio"></span>
+        <div class="pinfo"><div class="pname">30-Pack</div><div class="pper">$2.33 per wand · save 22%</div></div>
+        <div class="pprice"><div class="now">$69.99</div></div>
+      </div>
+      <div class="pack" data-pack="90" data-price="179.99" data-per="2.00">
+        <span class="savebadge best">Best Value · Save 33%</span>
+        <span class="radio"></span>
+        <div class="pinfo"><div class="pname">90-Pack</div><div class="pper">$2.00 per wand · save 33%</div></div>
+        <div class="pprice"><div class="now">$179.99</div></div>
+      </div>
+    </div>
+
+    <div class="pricerow">
+      <span class="now" id="priceNow">$23.99</span>
+      <span class="was" id="priceWas">$29.99</span>
+      <span class="perwand" id="perWand">$3.00 / wand</span>
+    </div>
+
+    <button class="atc" id="atc">Add to Cart — <span id="atcPrice">$23.99</span></button>
+    <button class="prime">Buy with&nbsp;<b>prime</b><span class="smile"></span></button>
+    <div class="guarantees"><span>🔒 Secure checkout</span><span>↺ 60-day money-back</span></div>
+  </div>
+
+  <div class="marquee"><div class="track">
+    <span>Works in under 3 minutes <i>·</i> Removes histamines &amp; sulfites <i>·</i> Enhances quality &amp; flavor <i>·</i> One wand = up to 3 glasses <i>·</i></span>
+    <span>Works in under 3 minutes <i>·</i> Removes histamines &amp; sulfites <i>·</i> Enhances quality &amp; flavor <i>·</i> One wand = up to 3 glasses <i>·</i></span>
+  </div></div>
+
+  <!-- Benefits -->
+  <section>
+    <div class="h2">All the pleasure,<br>none of the headache</div>
+    <div class="bgrid">
+      <div class="bcard"><h3>No More Wine Headaches</h3><p>Up to <span class="stat">95% of histamines removed</span> — the compounds most linked to hangovers.</p></div>
+      <div class="bcard"><h3>Enhances Quality &amp; Flavor</h3><p>Naturally purifies &amp; aerates ALL types of wine, instantly.</p></div>
+      <div class="bcard"><h3>Keeps the Good Stuff</h3><p>Polyphenols and antioxidants — wine's natural health benefits stay in your glass.</p></div>
+      <div class="bcard"><h3>Eliminates Sulfite Reactions</h3><p>Say goodbye to skin flush and stuffy nose — thanks to <span class="stat">95% sulfite removal</span>.</p></div>
+      <div class="bcard"><h3>Scientifically Proven &amp; Safe</h3><p>No chemicals added. BPA-free, FDA-compliant — trusted by millions.</p></div>
+    </div>
+  </section>
+
+  <!-- Stats band -->
+  <section class="statband">
+    <div class="h2">Prevention beats recovery</div>
+    <div class="statrow">
+      <div class="s"><div class="n">95%</div><div class="l">of histamines &amp; sulfites removed in 8 minutes</div></div>
+      <div class="s"><div class="n">70%</div><div class="l">of tasters preferred filtered wine (blind test)</div></div>
+      <div class="s"><div class="n">0%</div><div class="l">change to the wine's character</div></div>
+    </div>
+    <div class="note">Independently tested for safety &amp; effectiveness.</div>
+  </section>
+
+  <!-- How to use -->
+  <section class="howto">
+    <div class="h2">How to use The Wand®</div>
+    <p class="lede">A discreet, chemical-free solution that lets you savor every sip, every time.</p>
+    <div style="margin-top:16px">
+      <div class="step"><div class="no">1</div><div><h4>Open</h4><p>Unwrap The Wand from its packaging. Each Wand is individually sealed for freshness and safety.</p></div></div>
+      <div class="step"><div class="no">2</div><div><h4>Stir</h4><p>Gently swirl for ~3 minutes in your glass. The motion activates the purification process and aerates the wine.</p></div></div>
+      <div class="step"><div class="no">3</div><div><h4>Enjoy</h4><p>Sip and savor — all the pleasure, none of the headache. The longer you stir, the more it purifies.</p></div></div>
+    </div>
+  </section>
+
+  <!-- Loves you back -->
+  <section class="loves">
+    <div class="h2">Finally, wine that<br>loves you back</div>
+    <p class="lede">Natural, healthy prevention. Nothing added to the wine.</p>
+    <div class="lovesimg"><img src="https://cdn.shopify.com/s/files/1/1071/5272/files/142A9430-min_dd510c81-e288-41a1-b98b-05b1a1b6095d.jpg" alt="Couple enjoying red wine"></div>
+    <div class="loveslist">
+      <div class="l"><span class="ck">✓</span>Enhances natural taste, aroma and color of wine</div>
+      <div class="l"><span class="ck">✓</span>Does not remove antioxidants</div>
+      <div class="l"><span class="ck">✓</span>Restores open, oxidized wine to its natural taste</div>
+    </div>
+  </section>
+
+  <!-- Trust stats -->
+  <section class="trust4">
+    <div class="h2">Trusted by millions</div>
+    <div class="t4grid">
+      <div class="t"><div class="n">25M+</div><div class="l">Glasses Purified</div></div>
+      <div class="t"><div class="n">10,000+</div><div class="l">5-Star Reviews</div></div>
+      <div class="t"><div class="n">95%</div><div class="l">Success Rate</div></div>
+      <div class="t"><div class="n">USA</div><div class="l">Made in USA · FDA Compliant</div></div>
+    </div>
+  </section>
+
+  <!-- Press -->
+  <div class="press">
+    <div class="lbl">As seen in</div>
+    <div class="logos">
+      <img src="https://drinkpurewine.com/cdn/shop/files/logo-cosmopolitan.png" alt="Cosmopolitan" style="filter:none;opacity:.55">
+      <img src="https://drinkpurewine.com/cdn/shop/files/27-276972today-show-white-logo-today-show-logo-black-removebg-preview_1_4d27281c-6f87-45b9-b0a2-7e6d25182957.png" alt="Today" style="filter:none;opacity:.55">
+    </div>
+  </div>
+
+  <!-- Reviews -->
+  <section class="reviews" id="reviews">
+    <div class="rhead">
+      <div class="big">4.76</div>
+      <div class="st">★★★★★</div>
+      <div class="c">Based on 500 verified reviews</div>
+    </div>
+    <div class="h2" style="font-size:20px;margin-top:8px">Real people. Real relief. Real joy.</div>
+    <div class="rcarousel">
+      <div class="rcard"><div class="st">★★★★★</div><p>"I drink a LOT of wine. Wine headaches were a nightmare. I tried these out and was blown away — I haven't had a SINGLE headache since using The Wand. They're amazing."</p><div class="who">Jennifer T. <span class="vb">✓ Verified</span></div><div class="prod">The Original Wand®</div></div>
+      <div class="rcard"><div class="st">★★★★★</div><p>"I always assumed I couldn't do wine — more than one glass meant a guaranteed migraine. I had THREE glasses and felt… normal. Zero migraine. Used the same wand for all 3 glasses."</p><div class="who">Kevin <span class="vb">✓ Verified</span></div><div class="prod">The Original Wand®</div></div>
+      <div class="rcard"><div class="st">★★★★★</div><p>"I would always get flushing, stuffy nose, then a wine headache. These wands work — no wine headache even on New Year's when the wine was flowing. Just bought another 30-pack x2."</p><div class="who">Maria W. <span class="vb">✓ Verified</span></div><div class="prod">The Original Wand®</div></div>
+      <div class="rcard"><div class="st">★★★★★</div><p>"This was the first time in years that I could drink red wine without having some kind of allergic reaction or headache, thanks to these wand thingies."</p><div class="who">Matt <span class="vb">✓ Verified</span></div><div class="prod">The Original Wand®</div></div>
+      <div class="rcard"><div class="st">★★★★★</div><p>"This is the first time in my life I didn't get a red face from drinking wine. I bought it more as a gag, not thinking they'd work — but they 100% do. Highly recommend."</p><div class="who">Kendall <span class="vb">✓ Verified</span></div><div class="prod">The Original Wand®</div></div>
+    </div>
+  </section>
+
+  <!-- UGC video -->
+  <section class="ugc">
+    <div class="h2">Seeing is believing</div>
+    <p class="lede">Watch real customers share their PureWine stories.</p>
+    <div class="vrow" id="vrow"></div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="h2">Frequently asked questions</div>
+    <div style="margin-top:14px">
+      <div class="qa" data-acc><div class="qh">How do I use The Wand?<span class="pm">+</span></div><div class="ans"><div>Remove The Wand from the packaging and place it in a 6 oz glass of wine for at least 3 minutes. With gentle stirring it removes over 50% of histamines and sulfites; after 8 minutes, as much as 95%. Leave it in as long as you like — the longer it stays, the more it purifies. Then just open, stir and enjoy.</div></div></div>
+      <div class="qa" data-acc><div class="qh">How safe are the products?<span class="pm">+</span></div><div class="ans"><div>The patented PureWine® purification technology works without adding any chemicals to your wine. All components are tested to FDA standards, made with food-grade-quality components sourced in the USA, and are BPA-free.</div></div></div>
+      <div class="qa" data-acc><div class="qh">What are the products made from? Can they be recycled?<span class="pm">+</span></div><div class="ans"><div>The handles of The Wand® are made from food-grade, BPA-free polypropylene and are 100% recyclable — just remove the filter from the handle and place the handle in the recycling.</div></div></div>
+      <div class="qa" data-acc><div class="qh">Do the products also purify beer or other drinks?<span class="pm">+</span></div><div class="ans"><div>PureWine®'s filtration technology is designed specifically for wine — it targets the histamines and sulfites found in wine that most commonly trigger headaches and reactions.</div></div></div>
+      <div class="qa" data-acc><div class="qh">Where are the products made?<span class="pm">+</span></div><div class="ans"><div>PureWine® products are made in the USA with food-grade, FDA-compliant, BPA-free components.</div></div></div>
+    </div>
+  </section>
+
+  <!-- Cross-sell -->
+  <section class="cross">
+    <div class="h2" style="font-size:20px">You may also like</div>
+    <div class="xrow">
+      <div class="xcard"><div class="pic"><span class="sv">Save $3</span><img src="https://cdn.shopify.com/s/files/1/1071/5272/files/VINO3_Hero.jpg" alt="The Wand 3-Pack"></div><div class="nm">The Wand® 3-Pack</div><div class="pr"><span class="n">from $11.99</span><span class="w">$14.99</span></div></div>
+      <div class="xcard"><div class="pic"><span class="sv">25% Off</span><img src="https://cdn.shopify.com/s/files/1/1071/5272/files/The_wand_30pack.jpg" alt="The Wand 30-Pack"></div><div class="nm">The Wand® 30-Pack</div><div class="pr"><span class="n">$64.49</span><span class="w">$80.99</span></div></div>
+      <div class="xcard"><div class="pic"><span class="sv">Save $6</span><img src="https://cdn.shopify.com/s/files/1/1071/5272/files/VINO8_Hero_Revised4_600x_7e6d6c5e-0bd5-4215-aaa0-be157a84f28e.webp" alt="The Wand 8-Pack"></div><div class="nm">The Wand® 8-Pack</div><div class="pr"><span class="n">$23.99</span><span class="w">$29.99</span></div></div>
+      <div class="xcard"><div class="pic"><img src="https://cdn.shopify.com/s/files/1/1071/5272/files/Wand_90_Pack_USA.jpg" alt="The Wand 90-Pack USA"></div><div class="nm">The Wand® 90-Pack USA</div><div class="pr"><span class="n">$179.99</span></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="https://drinkpurewine.com/cdn/shop/files/PureWine_Sign_Rev-ai.svg" alt="PureWine">
+    <div class="links"><a href="#">Shop</a><a href="#">How It Works</a><a href="#reviews">Reviews</a><a href="#">Our Story</a></div>
+    <p>No more wine headaches. 25M+ glasses purified · Made in the USA · 60-day money-back guarantee.</p>
+  </footer>
+
+  <div class="pagepad"></div>
+
+  <div class="stickybar" id="sticky">
+    <div class="sp"><img src="https://cdn.shopify.com/s/files/1/1071/5272/files/VINO8_Hero_Revised4_600x_7e6d6c5e-0bd5-4215-aaa0-be157a84f28e.webp" alt=""></div>
+    <div class="si"><div class="nm">The Original Wand® — <span id="sbPack">8-Pack</span></div><div class="pr" id="sbPrice">$23.99</div></div>
+    <button class="sb" onclick="document.getElementById('atc').click()">Add to Cart</button>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js"></script>
+<script>
+// Gallery dots + thumbs
+(function(){
+  var slides=document.getElementById('slides'), els=[].slice.call(slides.children);
+  var dots=document.getElementById('dots'), thumbs=document.getElementById('thumbs');
+  els.forEach(function(s,i){
+    var d=document.createElement('span'); d.className='dot'+(i===0?' on':''); d.onclick=function(){slides.scrollTo({left:slides.clientWidth*i,behavior:'smooth'});}; dots.appendChild(d);
+    var t=document.createElement('button'); t.className='thumb'+(i===0?' on':''); t.innerHTML='<img src="'+s.querySelector('img').src+'">';
+    t.onclick=function(){slides.scrollTo({left:slides.clientWidth*i,behavior:'smooth'});}; thumbs.appendChild(t);
+  });
+  slides.addEventListener('scroll',function(){
+    var i=Math.round(slides.scrollLeft/slides.clientWidth);
+    [].forEach.call(dots.children,function(d,j){d.classList.toggle('on',j===i);});
+    [].forEach.call(thumbs.children,function(t,j){t.classList.toggle('on',j===i);});
+  },{passive:true});
+})();
+
+// Pricing state
+var state={pack:'8', price:23.99, per:3.00, sub:false};
+var COMPARE={'3':14.99,'8':29.99,'30':80.99,'40':null,'90':null};
+function fmt(n){return '$'+n.toFixed(2);}
+function render(){
+  var p=state.price * (state.sub?0.75:1);
+  document.getElementById('priceNow').textContent=fmt(p);
+  var was=document.getElementById('priceWas');
+  if(state.sub){ was.textContent=fmt(state.price); was.style.display='inline'; }
+  else if(COMPARE[state.pack]){ was.textContent=fmt(COMPARE[state.pack]); was.style.display='inline'; }
+  else { was.style.display='none'; }
+  document.getElementById('perWand').textContent='$'+(p/(+state.pack)).toFixed(2)+' / wand';
+  document.getElementById('atcPrice').textContent=fmt(p);
+  document.getElementById('sbPack').textContent=state.pack+'-Pack';
+  document.getElementById('sbPrice').textContent=fmt(p);
+}
+// pack selection
+document.querySelectorAll('#packs .pack').forEach(function(pk){
+  pk.addEventListener('click',function(){
+    document.querySelectorAll('#packs .pack').forEach(function(x){x.classList.remove('on');});
+    pk.classList.add('on');
+    state.pack=pk.dataset.pack; state.price=parseFloat(pk.dataset.price); state.per=parseFloat(pk.dataset.per);
+    render();
+  });
+});
+// one-time vs sub
+document.querySelectorAll('#ptoggle button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#ptoggle button').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');
+    state.sub=b.dataset.mode==='sub';
+    document.getElementById('subnote').classList.toggle('show',state.sub);
+    render();
+  });
+});
+// color — selecting a color updates the hero image, first thumbnail & sticky image
+(function(){
+  var slides=document.getElementById('slides');
+  var heroImg=slides.querySelector('.slide img');
+  var firstThumb=document.querySelector('#thumbs .thumb img');
+  var stickyImg=document.querySelector('#sticky .sp img');
+  document.querySelectorAll('#colors .sw').forEach(function(s){
+    s.addEventListener('click',function(){
+      document.querySelectorAll('#colors .sw').forEach(function(x){x.classList.remove('on');});
+      s.classList.add('on');
+      document.getElementById('colorName').textContent='— '+s.dataset.name;
+      if(s.dataset.img){
+        heroImg.src=s.dataset.img;
+        if(firstThumb)firstThumb.src=s.dataset.img;
+        if(stickyImg)stickyImg.src=s.dataset.img;
+        slides.scrollTo({left:0,behavior:'smooth'}); // bring the updated hero into view
+      }
+    });
+  });
+})();
+render();
+
+// ATC feedback
+document.getElementById('atc').addEventListener('click',function(){
+  var b=this, h=b.innerHTML; b.textContent='Added ✓';
+  setTimeout(function(){b.innerHTML=h;},1300);
+});
+
+// FAQ
+document.querySelectorAll('[data-acc]').forEach(function(qa){
+  qa.querySelector('.qh').addEventListener('click',function(){
+    var open=qa.classList.toggle('open');
+    qa.querySelector('.ans').style.maxHeight=open?qa.querySelector('.ans').scrollHeight+'px':'0';
+  });
+});
+
+// UGC videos (HLS posters, play on click)
+(function(){
+  var ids=["6b8ddb972e244e06b65f11a2111079d7","1aa55963a4a746e29627b95f7a5b1bef","dec034b50ea14ddeb6c321dd3af92e37","8938f3d8a1da4437bce7c0140d114f0a","eee29adbad9c46ebb38a63934b5c48a9","05be08b74d964ddeb068dc7b1ee5082e","0bf754f092bf4ccc941442921a89f0d1"];
+  var tags=["No Migraine","Purifier","No Hangover","New","No Migraine","Purifier","No Hangover"];
+  var vrow=document.getElementById('vrow');
+  ids.forEach(function(id,i){
+    var poster='https://drinkpurewine.com/cdn/shop/products/'+id+'.thumbnail.0000000000_620x.jpg';
+    var src='https://drinkpurewine.com/cdn/shop/videos/c/vp/'+id+'/'+id+'.m3u8';
+    var c=document.createElement('div'); c.className='vcard';
+    c.innerHTML='<span class="tag">'+tags[i]+'</span><img src="'+poster+'" alt="Customer story"><div class="play"><div class="pc"></div></div>';
+    c.addEventListener('click',function(){
+      if(c.classList.contains('playing'))return;
+      var v=document.createElement('video'); v.controls=true; v.playsInline=true; v.poster=poster;
+      if(window.Hls && Hls.isSupported()){ var hls=new Hls(); hls.loadSource(src); hls.attachMedia(v); hls.on(Hls.Events.MANIFEST_PARSED,function(){v.play();}); }
+      else if(v.canPlayType('application/vnd.apple.mpegurl')){ v.src=src; v.play(); }
+      c.classList.add('playing'); c.querySelector('img').replaceWith(v);
+    });
+    vrow.appendChild(c);
+  });
+})();
+
+// Sticky bar
+(function(){
+  var atc=document.getElementById('atc'), bar=document.getElementById('sticky');
+  function upd(){ bar.classList.toggle('show', atc.getBoundingClientRect().bottom<50); }
+  window.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); upd();
+})();
+</script>
+</body>
+</html>
