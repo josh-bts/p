@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Ease Cushion Gen 2 — Smart Pressure Sore Relief Wheelchair Cushion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#efefef;
+    --ink:#090321;
+    --ink-soft:#4a4658;
+    --gold:#c5a44e;
+    --gold-deep:#a9863a;
+    --dark:#0c0a1c;
+    --line:#e0dfe2;
+    --white:#ffffff;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Nunito Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:#d9d9dc;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  .serif{font-family:var(--serif);}
+
+  /* ---------- device frame (mobile-only design, centered on desktop) ---------- */
+  .device{
+    max-width:390px;
+    margin:0 auto;
+    background:var(--bg);
+    position:relative;
+    min-height:100vh;
+    overflow:hidden;
+  }
+  @media(min-width:600px){
+    body{padding:28px 0;}
+    .device{
+      border-radius:30px;
+      box-shadow:0 30px 80px rgba(9,3,33,.28);
+      overflow:hidden;
+      min-height:auto;
+    }
+  }
+
+  /* ---------- top trust bar ---------- */
+  .topbar{
+    background:var(--dark);
+    color:#f4efe2;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    font-weight:700;
+    text-align:center;
+    padding:8px 10px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .topbar b{color:var(--gold);}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:40;
+    background:rgba(239,239,239,.92);
+    backdrop-filter:saturate(160%) blur(10px);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 18px;border-bottom:1px solid var(--line);
+  }
+  header .logo{height:30px;width:auto;}
+  header .h-right{display:flex;align-items:center;gap:16px;}
+  .icon-btn{background:none;border:none;color:var(--ink);cursor:pointer;display:flex;align-items:center;}
+  .icon-btn svg{width:22px;height:22px;}
+  .cart-dot{position:relative;}
+  .cart-dot span{position:absolute;top:-6px;right:-7px;background:var(--gold);color:#1a1300;font-size:10px;font-weight:800;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;}
+
+  /* ---------- generic section ---------- */
+  section{padding:38px 20px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--gold-deep);background:#f6f1e2;border:1px solid #ebe0c4;
+    padding:6px 12px;border-radius:999px;margin-bottom:16px;
+  }
+  h2.title{font-family:var(--serif);font-weight:600;font-size:30px;line-height:1.08;letter-spacing:-.01em;}
+  .lede{color:var(--ink-soft);font-size:15px;margin-top:12px;}
+
+  /* ---------- gallery ---------- */
+  .gallery{padding:14px 16px 0;}
+  .g-main{
+    position:relative;border-radius:var(--radius);overflow:hidden;background:#fff;
+    aspect-ratio:1/1;border:1px solid var(--line);
+  }
+  .g-main img,.g-main video{width:100%;height:100%;object-fit:cover;}
+  .g-main .play-badge{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;
+  }
+  .g-main .play-badge svg{width:54px;height:54px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4));opacity:.95;}
+  .g-thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;}
+  .g-thumbs::-webkit-scrollbar{display:none;}
+  .g-thumbs .thumb{
+    flex:0 0 auto;width:60px;height:60px;border-radius:11px;overflow:hidden;border:2px solid transparent;
+    background:#fff;cursor:pointer;position:relative;
+  }
+  .g-thumbs .thumb.active{border-color:var(--ink);}
+  .g-thumbs .thumb img{width:100%;height:100%;object-fit:cover;}
+  .g-thumbs .thumb .vtag{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(9,3,33,.25);}
+  .g-thumbs .thumb .vtag svg{width:18px;height:18px;fill:#fff;}
+
+  /* ---------- buy box ---------- */
+  .buy{padding:20px 20px 34px;}
+  .buy h1{font-family:var(--serif);font-weight:600;font-size:23px;line-height:1.15;letter-spacing:-.01em;margin-bottom:8px;}
+  .rating{display:flex;align-items:center;gap:8px;margin-bottom:14px;font-size:13px;}
+  .stars{color:var(--gold);font-size:15px;letter-spacing:1px;}
+  .rating a{color:var(--ink-soft);text-decoration:underline;text-underline-offset:2px;}
+  .price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;}
+  .price{font-family:var(--serif);font-weight:600;font-size:30px;}
+  .compare{color:#9a96a6;text-decoration:line-through;font-size:17px;}
+  .save-pill{background:#eaf3ec;color:#1f7a44;font-weight:800;font-size:11px;padding:3px 8px;border-radius:6px;letter-spacing:.02em;}
+  .perday{color:var(--ink-soft);font-size:13px;margin-bottom:20px;}
+
+  .step-label{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:18px 0 10px;}
+  .step-num{background:var(--ink);color:#fff;width:19px;height:19px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-family:var(--sans);}
+  .step-label .sg{margin-left:auto;font-weight:700;font-size:11px;color:var(--gold-deep);text-transform:none;letter-spacing:0;text-decoration:underline;cursor:pointer;}
+
+  .sizes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .size-btn{
+    border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:10px 4px;text-align:center;cursor:pointer;transition:.15s;
+  }
+  .size-btn .s-name{font-weight:800;font-size:15px;}
+  .size-btn .s-dim{font-size:9.5px;color:var(--ink-soft);margin-top:2px;letter-spacing:.01em;}
+  .size-btn.active{border-color:var(--ink);background:var(--ink);}
+  .size-btn.active .s-name{color:#fff;}
+  .size-btn.active .s-dim{color:#cfc9da;}
+
+  .bundles{display:flex;flex-direction:column;gap:10px;}
+  .bundle{
+    border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:14px 14px 14px 44px;position:relative;cursor:pointer;transition:.15s;
+  }
+  .bundle.active{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink);}
+  .bundle .radio{position:absolute;left:15px;top:16px;width:18px;height:18px;border-radius:50%;border:2px solid #c7c3d2;}
+  .bundle.active .radio{border-color:var(--ink);background:radial-gradient(circle,var(--ink) 0 5px,#fff 6px);}
+  .bundle .b-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+  .bundle .b-name{font-weight:800;font-size:14.5px;}
+  .bundle .b-price{font-weight:800;font-size:15px;white-space:nowrap;}
+  .bundle .b-price s{color:#a7a3b2;font-weight:600;font-size:12.5px;margin-right:4px;}
+  .bundle .b-desc{font-size:12px;color:var(--ink-soft);margin-top:5px;line-height:1.45;}
+  .bundle .b-badge{position:absolute;right:12px;top:-9px;background:var(--gold);color:#1a1300;font-size:10px;font-weight:800;letter-spacing:.04em;padding:3px 8px;border-radius:6px;text-transform:uppercase;}
+
+  .plans{display:flex;flex-direction:column;gap:8px;}
+  .plan{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:11px 13px;cursor:pointer;font-size:13px;}
+  .plan.active{border-color:var(--ink);}
+  .plan .pcheck{width:18px;height:18px;border-radius:5px;border:2px solid #c7c3d2;flex:0 0 auto;display:flex;align-items:center;justify-content:center;}
+  .plan.active .pcheck{background:var(--ink);border-color:var(--ink);}
+  .plan .pcheck svg{width:11px;height:11px;fill:#fff;opacity:0;}
+  .plan.active .pcheck svg{opacity:1;}
+  .plan .p-name{font-weight:700;}
+  .plan .p-sub{color:var(--ink-soft);font-size:11.5px;}
+  .plan .p-price{margin-left:auto;font-weight:800;font-size:13px;white-space:nowrap;}
+  .plan .p-price.free{color:#1f7a44;}
+  .plan .tag{font-size:9.5px;font-weight:800;color:var(--gold-deep);background:#f6f1e2;border-radius:5px;padding:2px 6px;text-transform:uppercase;letter-spacing:.04em;margin-left:6px;}
+
+  .due-row{display:flex;justify-content:space-between;align-items:baseline;margin:18px 0 6px;font-size:13px;color:var(--ink-soft);}
+  .due-row .due-total{font-family:var(--serif);font-weight:600;font-size:22px;color:var(--ink);}
+  .recurring-note{font-size:11.5px;color:var(--ink-soft);margin-bottom:14px;min-height:0;}
+
+  .atc{
+    width:100%;border:none;border-radius:14px;background:var(--ink);color:#fff;
+    font-family:var(--sans);font-weight:800;font-size:16px;letter-spacing:.01em;
+    padding:17px;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .atc:active{transform:scale(.99);}
+  .atc.warn{background:var(--gold-deep);}
+  .finder-link{display:block;text-align:center;margin-top:13px;font-size:13px;font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:3px;}
+  .reassure{display:flex;justify-content:center;gap:16px;margin-top:18px;flex-wrap:wrap;}
+  .reassure div{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--ink-soft);}
+  .reassure svg{width:14px;height:14px;stroke:var(--gold-deep);fill:none;stroke-width:2;}
+  .hsa{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:14px;font-size:11.5px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:14px;}
+  .hsa img{height:15px;width:auto;}
+
+  /* ---------- problem / stats section ---------- */
+  .dark-sec{background:var(--bg);}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px;}
+  .stat{background:var(--dark);border-radius:14px;padding:18px 14px;text-align:center;}
+  .stat .num{font-family:var(--serif);font-weight:600;font-size:30px;color:var(--gold);font-style:italic;}
+  .stat .lbl{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#cfc9da;margin-top:6px;}
+  .stages{margin-top:26px;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff;}
+  .stages img{width:100%;}
+  .stages .cap{font-size:11.5px;color:var(--ink-soft);font-style:italic;padding:10px 12px;line-height:1.45;}
+
+  /* ---------- HAPT / mechanism ---------- */
+  .mech{background:var(--dark);color:#f4f1ea;}
+  .mech .eyebrow{background:rgba(197,164,78,.14);border-color:rgba(197,164,78,.3);color:var(--gold);}
+  .mech h2.title{color:#fff;}
+  .mech .lede{color:#c8c3d4;}
+  .videoblock{margin-top:20px;border-radius:14px;overflow:hidden;background:#000;}
+  .videoblock video{width:100%;display:block;}
+
+  /* ---------- features ---------- */
+  .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px;}
+  .feat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 15px;}
+  .feat .fi{width:34px;height:34px;border-radius:9px;background:#f6f1e2;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+  .feat .fi svg{width:19px;height:19px;stroke:var(--gold-deep);fill:none;stroke-width:1.8;}
+  .feat h3{font-family:var(--serif);font-weight:600;font-size:16px;line-height:1.2;}
+  .feat p{font-size:12.5px;color:var(--ink-soft);margin-top:7px;line-height:1.5;}
+
+  /* ---------- reviews ---------- */
+  .rev-head{display:flex;align-items:center;gap:16px;margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;}
+  .rev-head .big{font-family:var(--serif);font-weight:600;font-size:40px;line-height:1;}
+  .rev-head .stars{font-size:18px;}
+  .rev-head .sub{font-size:12px;color:var(--ink-soft);margin-top:3px;}
+  .testi{display:flex;flex-direction:column;gap:12px;margin-top:16px;}
+  .quote{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;}
+  .quote .stars{font-size:13px;margin-bottom:8px;}
+  .quote .qt{font-family:var(--serif);font-weight:500;font-size:16px;line-height:1.35;font-style:italic;}
+  .quote .qb{font-size:12.5px;color:var(--ink-soft);margin-top:8px;line-height:1.5;}
+  .quote .who{display:flex;align-items:center;gap:7px;margin-top:11px;font-size:12px;font-weight:800;}
+  .quote .who .vb{color:#1f7a44;font-weight:700;font-size:10.5px;background:#eaf3ec;padding:2px 7px;border-radius:5px;}
+  .buyers{margin-top:18px;}
+  .buyers .bh{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px;}
+  .buyers .row{display:flex;gap:7px;flex-wrap:wrap;}
+  .buyers .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:11.5px;font-weight:700;display:flex;align-items:center;gap:5px;}
+  .buyers .chip svg{width:11px;height:11px;fill:var(--gold);}
+
+  /* ---------- promise / story ---------- */
+  .promise{background:#f6f1e2;}
+  .promise .eyebrow{background:#fff;border-color:#ebe0c4;}
+  .promise p{font-size:14px;color:var(--ink-soft);margin-top:14px;line-height:1.6;}
+  .promise .phone{display:inline-flex;align-items:center;gap:7px;margin-top:18px;font-weight:800;font-size:14px;color:var(--ink);text-decoration:none;}
+  .promise .phone svg{width:16px;height:16px;stroke:var(--gold-deep);fill:none;stroke-width:2;}
+
+  /* ---------- faq ---------- */
+  .faq details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow:hidden;}
+  .faq summary{list-style:none;cursor:pointer;padding:15px 16px;font-weight:800;font-size:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary .plus{font-size:20px;color:var(--gold-deep);font-weight:400;transition:.2s;}
+  .faq details[open] summary .plus{transform:rotate(45deg);}
+  .faq .ans{padding:0 16px 16px;font-size:13px;color:var(--ink-soft);line-height:1.55;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--dark);color:#bdb8c9;padding:34px 20px 40px;text-align:center;}
+  footer img{height:30px;margin:0 auto 14px;}
+  footer p{font-size:11.5px;line-height:1.6;}
+  footer .fine{margin-top:14px;font-size:10.5px;color:#6f6a82;}
+
+  /* ---------- sticky buy bar ---------- */
+  .sticky{
+    position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);
+    width:100%;max-width:390px;z-index:60;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(10px);
+    border-top:1px solid var(--line);box-shadow:0 -8px 28px rgba(9,3,33,.12);
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    display:flex;align-items:center;gap:11px;transition:transform .32s cubic-bezier(.4,0,.2,1);
+  }
+  .sticky.show{transform:translateX(-50%) translateY(0);}
+  .sticky img{width:44px;height:44px;border-radius:9px;object-fit:cover;flex:0 0 auto;background:#fff;border:1px solid var(--line);}
+  .sticky .s-info{flex:1;min-width:0;}
+  .sticky .s-info .s-t{font-weight:800;font-size:12px;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .sticky .s-info .s-p{font-weight:800;font-size:13px;}
+  .sticky .s-info .s-p s{color:#a7a3b2;font-weight:600;font-size:11px;margin-left:4px;}
+  .sticky select{
+    border:1.5px solid var(--line);border-radius:9px;font-family:var(--sans);font-weight:800;font-size:12px;padding:8px 6px;background:#fff;color:var(--ink);
+  }
+  .sticky button{
+    border:none;border-radius:11px;background:var(--ink);color:#fff;font-family:var(--sans);font-weight:800;font-size:13px;padding:12px 16px;cursor:pointer;white-space:nowrap;
+  }
+
+  /* ---------- toast ---------- */
+  .toast{
+    position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(20px);
+    background:var(--ink);color:#fff;font-size:13px;font-weight:700;padding:12px 18px;border-radius:12px;
+    opacity:0;pointer-events:none;transition:.3s;z-index:80;max-width:330px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.3);
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+<div class="device" id="device">
+
+  <div class="topbar">1-Year Warranty &nbsp;·&nbsp; <b>30-Day Trial</b> &nbsp;·&nbsp; Free U.S. Returns</div>
+
+  <header>
+    <img class="logo" src="https://cdn.shopify.com/s/files/1/0555/9110/8741/files/ease-logo-transp-black.webp" alt="Ease Cushion" width="110" height="30">
+    <div class="h-right">
+      <button class="icon-btn" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></button>
+      <button class="icon-btn cart-dot" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M6 6 5 3H2"/></svg><span id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <!-- ============ GALLERY + BUY BOX (moved to first screen) ============ -->
+  <div class="gallery">
+    <div class="g-main" id="gMain">
+      <img id="gMainImg" src="https://cdn.shopify.com/s/files/1/0555/9110/8741/files/Screenshot_2026-03-20_at_11.53.07_AM.png" alt="Ease Cushion Gen 2">
+    </div>
+    <div class="g-thumbs" id="gThumbs"></div>
+  </div>
+
+  <div class="buy">
+    <h1>Ease Cushion Gen 2 — Smart Pressure&nbsp;Sore Relief Wheelchair Cushion</h1>
+    <div class="rating">
+      <span class="stars">★★★★★</span>
+      <strong>4.8</strong>
+      <a href="#reviews">1,385 reviews</a>
+    </div>
+    <div class="price-row">
+      <span class="price" id="priceMain">$899</span>
+      <span class="compare" id="compareMain">$999</span>
+      <span class="save-pill">Save $100</span>
+    </div>
+    <div class="perday">≈ <strong>$2.99/day</strong> over a year — protection that moves when you can't.</div>
+
+    <!-- size -->
+    <div class="step-label"><span class="step-num">1</span> Choose your size <span class="sg" onclick="toast('Size guide: measure your current cushion or seat width.')">Size guide</span></div>
+    <div class="sizes" id="sizes">
+      <button class="size-btn" data-size="S"><div class="s-name">S</div><div class="s-dim">16×16×3"</div></button>
+      <button class="size-btn" data-size="M"><div class="s-name">M</div><div class="s-dim">18×18×3"</div></button>
+      <button class="size-btn" data-size="L"><div class="s-name">L</div><div class="s-dim">20×20×3"</div></button>
+      <button class="size-btn" data-size="XL"><div class="s-name">XL</div><div class="s-dim">22×22×3"</div></button>
+    </div>
+
+    <!-- bundle -->
+    <div class="step-label"><span class="step-num">2</span> Select your bundle</div>
+    <div class="bundles" id="bundles">
+      <div class="bundle active" data-price="899" data-compare="999" data-label="Core System">
+        <span class="radio"></span>
+        <div class="b-top"><span class="b-name">Core System</span><span class="b-price"><s>$999</s>$899</span></div>
+        <div class="b-desc">Just the Ease Cushion Gen 2 smart pressure-sore-relief wheelchair cushion.</div>
+      </div>
+      <div class="bundle" data-price="999" data-compare="1149" data-label="Complete Bundle">
+        <span class="b-badge">Best value</span>
+        <span class="radio"></span>
+        <div class="b-top"><span class="b-name">Complete Bundle</span><span class="b-price"><s>$1,149</s>$999</span></div>
+        <div class="b-desc">Ease Cushion Gen 2 + Waterproof Incontinence Cover (4 colors) + Cooling Gel Insert. ≈ $2.50/day for protection &amp; freedom.</div>
+      </div>
+    </div>
+
+    <!-- protection plan -->
+    <div class="step-label"><span class="step-num">3</span> Protection plan</div>
+    <div class="plans">
+      <div class="plan active" data-plan="warranty" data-monthly="0">
+        <span class="pcheck"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span>
+        <div><div class="p-name">Free 1-Year Warranty</div><div class="p-sub">Included with purchase</div></div>
+        <span class="p-price free">FREE</span>
+      </div>
+      <div class="plan" data-plan="care" data-monthly="29.99">
+        <span class="pcheck"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span>
+        <div><div class="p-name">Unlimited Care Plan <span class="tag">Recommended</span></div><div class="p-sub">Cancel anytime</div></div>
+        <span class="p-price">+$29.99/mo</span>
+      </div>
+    </div>
+
+    <div class="due-row"><span>Due today</span><span class="due-total" id="dueToday">$899</span></div>
+    <div class="recurring-note" id="recurNote"></div>
+
+    <button class="atc" id="atcMain">Add to cart</button>
+    <a class="finder-link" href="#finder">Not sure which size? Take the 30-second finder →</a>
+
+    <div class="reassure">
+      <div><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6z"/></svg> 1-Year Warranty</div>
+      <div><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M12 7v5l3 2"/></svg> 30-Day Trial</div>
+      <div><svg viewBox="0 0 24 24"><path d="M3 7h13v10H3z"/><path d="M16 10h4l1 3v4h-5z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg> Free U.S. Returns</div>
+    </div>
+    <div class="hsa"><img src="https://static.truemed.com/widgets/truemed-navy.svg" alt="TrueMed">HSA / FSA eligible at checkout</div>
+  </div>
+
+  <!-- ============ PROBLEM + STATS (the story, right below the buy box) ============ -->
+  <section class="dark-sec">
+    <span class="eyebrow">⚠ Know these numbers</span>
+    <h2 class="title">60,000 deaths.<br>$70,000 bills.<br>Under $3 a day to protect against it.</h2>
+    <p class="lede">Pressure injuries are among the most preventable complications in wheelchair use — yet remain one of the most common.</p>
+    <p class="lede">Sitting still cuts off circulation. Tissue needs movement to survive. That's not a medical claim — that's biology. EASE is designed around that one fact.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="num">60K</div><div class="lbl">Deaths per year</div></div>
+      <div class="stat"><div class="num">$70K</div><div class="lbl">Up to, per sore</div></div>
+      <div class="stat"><div class="num">$2.99</div><div class="lbl">Per day with Ease</div></div>
+      <div class="stat"><div class="num">95%</div><div class="lbl">Are preventable</div></div>
+    </div>
+    <div class="stages">
+      <img src="https://cdn.shopify.com/s/files/1/0555/9110/8741/files/dd7a98_1527a4a2168d46978fc4b2d30a5b25e8_mv2.avif" alt="Pressure sore stages 1 to 4">
+      <div class="cap">Stage 1 (redness) → Stage 2 (open sore) → Stage 3 (tissue exposed) → Stage 4 (bone exposed, surgical emergency).</div>
+    </div>
+  </section>
+
+  <!-- ============ HAPT / mechanism ============ -->
+  <section class="mech">
+    <span class="eyebrow">World-first technology</span>
+    <h2 class="title">The only HAPT-patented medical device in the world</h2>
+    <p class="lede">When you can't move, lift or shift, Ease does it for you.</p>
+    <p class="lede">There are hundreds of foam and gel cushions under $100. None of them move on their own. None hold a global patent. And none can protect your skin when you can't move yourself. EASE does — automatically, every 8–12 minutes. Foam + Air + Gel + a smart computer.</p>
+    <div class="videoblock">
+      <video controls muted playsinline preload="metadata"
+        poster="https://easeseatingsystems.com/cdn/shop/files/preview_images/ba2ecbb95d924727a169cd0a8e4b66d1.thumbnail.0000000000.jpg"
+        src="https://cdn.shopify.com/videos/c/vp/ba2ecbb95d924727a169cd0a8e4b66d1/ba2ecbb95d924727a169cd0a8e4b66d1.HD-1080p-2.5Mbps-77573070.mp4"></video>
+    </div>
+  </section>
+
+  <!-- ============ How it works ============ -->
+  <section>
+    <span class="eyebrow">How it works</span>
+    <h2 class="title">Automatic offloading, every 8–12 minutes</h2>
+    <p class="lede">See the cushion shift pressure on its own — no effort from the user.</p>
+    <div class="videoblock">
+      <video controls muted playsinline preload="metadata"
+        poster="https://easeseatingsystems.com/cdn/shop/files/preview_images/00b0142e5edb40ca8a00af342bb8d77c.thumbnail.0000000000.jpg"
+        src="https://cdn.shopify.com/videos/c/vp/00b0142e5edb40ca8a00af342bb8d77c/00b0142e5edb40ca8a00af342bb8d77c.HD-1080p-4.8Mbps-56930456.mp4"></video>
+    </div>
+  </section>
+
+  <!-- ============ Features ============ -->
+  <section class="dark-sec">
+    <span class="eyebrow">Smarter tech. Seamless comfort.</span>
+    <h2 class="title">Built like medical equipment, lives like a cushion</h2>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="fi"><svg viewBox="0 0 24 24"><path d="M3 12h3l2-5 4 14 3-9h6"/></svg></div>
+        <h3>Quieter, Gentler Feel</h3>
+        <p>Gen 2 shifts pressure so smoothly you barely notice it working.</p>
+      </div>
+      <div class="feat">
+        <div class="fi"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></div>
+        <h3>Magnetic Charging</h3>
+        <p>A magnetic connector snaps into place — no fiddly ports to line up.</p>
+      </div>
+      <div class="feat">
+        <div class="fi"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6z"/></svg></div>
+        <h3>Military-Grade Reliability</h3>
+        <p>Engineered to keep protecting, day after day, without fail.</p>
+      </div>
+      <div class="feat">
+        <div class="fi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
+        <h3>Intelligent Monitoring</h3>
+        <p>A smart computer manages the Foam + Air + Gel system in the background.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Reviews ============ -->
+  <section id="reviews">
+    <span class="eyebrow">Real, unsolicited, unpaid stories</span>
+    <h2 class="title">Loved by the people who need it most</h2>
+    <div class="rev-head">
+      <div>
+        <div class="big">4.8</div>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div>
+        <div style="font-weight:800;font-size:15px;">1,385 verified reviews</div>
+        <div class="sub">Across Ease Cushion customers · powered by Loox</div>
+      </div>
+    </div>
+
+    <div class="testi">
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <div class="qt">"It is a lifesaver."</div>
+        <div class="qb">The cushion does the lifting and shifting for you.</div>
+        <div class="who">Sarah M. <span class="vb">Verified buyer</span></div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <div class="qt">"I believe it's just impossible to get a sore with this cushion."</div>
+        <div class="who">John S. <span class="vb">Verified buyer</span></div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <div class="qt">"It can save someone's life."</div>
+        <div class="qb">I want to spread the word because it can save someone's life. Thanks for all the hard work you guys do.</div>
+        <div class="who">Mark <span class="vb">Verified buyer</span></div>
+      </div>
+    </div>
+
+    <div class="buyers">
+      <div class="bh">Recent verified buyers</div>
+      <div class="row" id="buyerRow"></div>
+    </div>
+  </section>
+
+  <!-- ============ Promise / story ============ -->
+  <section class="promise">
+    <span class="eyebrow">Our promise</span>
+    <h2 class="title">When wildfires hit, we didn't stop.</h2>
+    <p>California wildfires destroyed what we built — but our customers still needed protection. So we kept going. That's the standard we hold ourselves to: the people who rely on Ease can't afford for us to quit.</p>
+    <a class="phone" href="tel:8105456553"><svg viewBox="0 0 24 24"><path d="M4 4h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 2 6a2 2 0 0 1 2-2z"/></svg> Talk to a human: (810) 545-6553</a>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="faq">
+    <span class="eyebrow">Good to know</span>
+    <h2 class="title">Common questions</h2>
+    <details><summary>What's the trial and warranty? <span class="plus">+</span></summary><div class="ans">Every Ease Cushion Gen 2 comes with a 30-day trial and a free 1-year warranty. Returns are free within the U.S. as per the returns policy.</div></details>
+    <details><summary>How often does it shift pressure? <span class="plus">+</span></summary><div class="ans">Automatically, every 8–12 minutes — offloading pressure for you even when you can't move, lift or shift on your own.</div></details>
+    <details><summary>Which size should I choose? <span class="plus">+</span></summary><div class="ans">Sizes run S (16×16×3"), M (18×18×3"), L (20×20×3") and XL (22×22×3"). Measure your current cushion or seat width — or use the 30-second size finder above.</div></details>
+    <details><summary>Can I use HSA / FSA funds? <span class="plus">+</span></summary><div class="ans">Yes — Ease is HSA/FSA eligible at checkout via TrueMed.</div></details>
+  </section>
+
+  <footer>
+    <img src="https://cdn.shopify.com/s/files/1/0555/9110/8741/files/ease-logo-transp-white.png" alt="Ease Cushion">
+    <p>Smart pressure-sore-relief wheelchair cushion.<br>1-Year Warranty · 30-Day Trial · Free U.S. Returns.</p>
+    <p class="fine">Concept redesign prototype for demonstration. Product imagery, videos, reviews and copy belong to Ease Seating Systems.</p>
+  </footer>
+
+  <!-- sticky buy bar -->
+  <div class="sticky" id="sticky">
+    <img src="https://cdn.shopify.com/s/files/1/0555/9110/8741/files/Screenshot_2026-03-20_at_11.53.07_AM.png" alt="">
+    <div class="s-info">
+      <div class="s-t">Ease Cushion Gen 2</div>
+      <div class="s-p"><span id="stickyPrice">$899</span> <s id="stickyCompare">$999</s></div>
+    </div>
+    <select id="stickySize" aria-label="Size">
+      <option value="">Size</option>
+      <option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option>
+    </select>
+    <button id="atcSticky">Add</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script>
+(function(){
+  // ---------- gallery ----------
+  var media=[
+    {type:'img',src:'Screenshot_2026-03-20_at_11.53.07_AM.png'},
+    {type:'vid',poster:'ba2ecbb95d924727a169cd0a8e4b66d1.thumbnail.0000000000.jpg',vsrc:'https://cdn.shopify.com/videos/c/vp/ba2ecbb95d924727a169cd0a8e4b66d1/ba2ecbb95d924727a169cd0a8e4b66d1.HD-1080p-2.5Mbps-77573070.mp4'},
+    {type:'img',src:'100_1.jpg'},
+    {type:'img',src:'Ease_-_Heading.png'},
+    {type:'img',src:'Ease_Explain_Img.png'},
+    {type:'vid',poster:'048e7ee77a6443619d26ebf240fb8e55.thumbnail.0000000000.jpg',vsrc:'https://cdn.shopify.com/videos/c/vp/048e7ee77a6443619d26ebf240fb8e55/048e7ee77a6443619d26ebf240fb8e55.SD-480p-0.9Mbps-56934754.mp4'},
+    {type:'img',src:'16.webp'},
+    {type:'img',src:'CM37758.webp_1_501e2d76-4bd9-4dd0-984b-a6adc867ec71.webp'},
+    {type:'img',src:'Screenshot_2026-03-20_at_11.48.29_AM.png'}
+  ];
+  var CDN='https://cdn.shopify.com/s/files/1/0555/9110/8741/files/';
+  var POSTER='https://easeseatingsystems.com/cdn/shop/files/preview_images/';
+  var gMain=document.getElementById('gMain'),gThumbs=document.getElementById('gThumbs');
+  var playSVG='<svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="12" r="11" fill="rgba(9,3,33,.55)"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg>';
+  function showMedia(i){
+    var m=media[i];
+    if(m.type==='img'){gMain.innerHTML='<img id="gMainImg" src="'+CDN+m.src+'" alt="Ease Cushion Gen 2">';}
+    else{gMain.innerHTML='<video controls autoplay muted playsinline src="'+m.vsrc+'" poster="'+POSTER+m.poster+'" style="width:100%;height:100%;object-fit:cover"></video>';}
+    [].forEach.call(gThumbs.children,function(c,j){c.classList.toggle('active',j===i);});
+  }
+  media.forEach(function(m,i){
+    var t=document.createElement('div');t.className='thumb'+(i===0?' active':'');
+    var img=(m.type==='img')?CDN+m.src:POSTER+m.poster;
+    t.innerHTML='<img src="'+img+'" alt="">'+(m.type==='vid'?'<span class="vtag">'+playSVG+'</span>':'');
+    t.onclick=function(){showMedia(i);};
+    gThumbs.appendChild(t);
+  });
+
+  // ---------- buy state ----------
+  var state={size:'',bundle:899,compare:999,bundleLabel:'Core System',monthly:0};
+  function money(n){return '$'+Number(n).toLocaleString();}
+  function render(){
+    document.getElementById('priceMain').textContent=money(state.bundle);
+    document.getElementById('compareMain').textContent=money(state.compare);
+    document.getElementById('dueToday').textContent=money(state.bundle);
+    document.getElementById('stickyPrice').textContent=money(state.bundle);
+    document.getElementById('stickyCompare').textContent=money(state.compare);
+    var note=document.getElementById('recurNote');
+    note.textContent = state.monthly>0 ? 'Then $29.99/mo for the Unlimited Care Plan — cancel anytime. Cushion is a one-time charge.' : '';
+  }
+  // sizes
+  document.querySelectorAll('#sizes .size-btn').forEach(function(b){
+    b.onclick=function(){
+      document.querySelectorAll('#sizes .size-btn').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');state.size=b.dataset.size;
+      document.getElementById('stickySize').value=state.size;
+      document.getElementById('atcMain').classList.remove('warn');
+      document.getElementById('atcMain').textContent='Add to cart';
+    };
+  });
+  document.getElementById('stickySize').onchange=function(){
+    var v=this.value;state.size=v;
+    document.querySelectorAll('#sizes .size-btn').forEach(function(x){x.classList.toggle('active',x.dataset.size===v);});
+  };
+  // bundles
+  document.querySelectorAll('#bundles .bundle').forEach(function(b){
+    b.onclick=function(){
+      document.querySelectorAll('#bundles .bundle').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      state.bundle=+b.dataset.price;state.compare=+b.dataset.compare;state.bundleLabel=b.dataset.label;
+      render();
+    };
+  });
+  // plans
+  document.querySelectorAll('.plan').forEach(function(p){
+    p.onclick=function(){
+      document.querySelectorAll('.plan').forEach(function(x){x.classList.remove('active');});
+      p.classList.add('active');state.monthly=+p.dataset.monthly;render();
+    };
+  });
+
+  // ---------- add to cart ----------
+  var count=0;
+  function addToCart(){
+    if(!state.size){
+      var a=document.getElementById('atcMain');a.classList.add('warn');a.textContent='Choose a size first ↑';
+      document.getElementById('sizes').scrollIntoView({behavior:'smooth',block:'center'});
+      toast('Pick a size to continue');
+      return;
+    }
+    count++;document.getElementById('cartCount').textContent=count;
+    var msg='Added: '+state.bundleLabel+' · Size '+state.size+' · '+money(state.bundle);
+    if(state.monthly>0)msg+=' + Care Plan';
+    toast(msg);
+  }
+  document.getElementById('atcMain').onclick=addToCart;
+  document.getElementById('atcSticky').onclick=addToCart;
+
+  // ---------- toast ----------
+  var toastEl=document.getElementById('toast'),toastT;
+  window.toast=function(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove('show');},2600);};
+
+  // ---------- sticky bar (getBoundingClientRect-driven) ----------
+  var buyBox=document.querySelector('.buy'),sticky=document.getElementById('sticky');
+  function onScroll(){
+    var r=buyBox.getBoundingClientRect();
+    // show once the main buy box has scrolled out of view; hide near very bottom (footer)
+    var pastBuy=r.bottom<80;
+    var footRect=document.querySelector('footer').getBoundingClientRect();
+    var atFooter=footRect.top<window.innerHeight-40;
+    sticky.classList.toggle('show',pastBuy&&!atFooter);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);onScroll();
+
+  // ---------- verified buyer chips (real Loox reviewer names, no fabricated text) ----------
+  var names=['Kenneth T.','Lynda T.','Clifton S.','Steve H.','Mark M.','Spencer H.','Ella D.','Juli-ann S.','Bentley B.','Brad S.','Scott M.','Daniel R.'];
+  var star='<svg viewBox="0 0 24 24"><path d="M12 2l3 6 7 .9-5 4.7 1.3 6.9L12 17l-6.3 3.4L7 13.6 2 8.9 9 8z"/></svg>';
+  var row=document.getElementById('buyerRow');
+  names.forEach(function(n){var c=document.createElement('span');c.className='chip';c.innerHTML=star+n;row.appendChild(c);});
+
+  render();
+})();
+</script>
+</body>
+</html>
