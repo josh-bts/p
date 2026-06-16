@@ -226,6 +226,9 @@ footer p{font-size:11px;opacity:.6;max-width:280px;margin:0 auto;line-height:1.6
         <button class="sw" style="background:#3a5e86" data-c="Blue"></button>
         <button class="sw" style="background:#9aa0a6" data-c="Grey"></button>
       </div></div>
+      <div class="opt"><div class="lbl">Packaging <span id="packv">Clear Poly Bag</span></div><div class="row" id="packs">
+        <button class="chip on" data-p="poly" data-add="0">Clear Poly Bag · Free</button><button class="chip" data-p="gift" data-add="3.99">🎁 Mozy Gift Box · +$3.99 ea</button>
+      </div></div>
     </div>
 
     <button class="atc" id="atc">Add to Cart — <span id="atcPrice">$193.50</span></button>
@@ -326,10 +329,12 @@ footer p{font-size:11px;opacity:.6;max-width:280px;margin:0 auto;line-height:1.6
 
 // Bundle + price
 var bundle={qty:2,total:193.50,name:'Duo'};
+var packAdd=0; // Mozy Gift Box upcharge, per wrap
 function fmt(n){return '$'+(n%1===0?n.toFixed(0):n.toFixed(2));}
 function render(){
-  document.getElementById('atcPrice').textContent=fmt(bundle.total);
-  document.getElementById('sbPr').textContent=fmt(bundle.total);
+  var total=bundle.total + packAdd*bundle.qty;
+  document.getElementById('atcPrice').textContent=fmt(total);
+  document.getElementById('sbPr').textContent=fmt(total);
   document.getElementById('sbB').textContent=bundle.name;
 }
 document.querySelectorAll('#bundles .bundle').forEach(function(b){
@@ -345,6 +350,7 @@ render();
 // Size + color
 document.querySelectorAll('#sizes .chip').forEach(function(c){c.addEventListener('click',function(){document.querySelectorAll('#sizes .chip').forEach(function(x){x.classList.remove('on');});c.classList.add('on');document.getElementById('sizev').textContent=c.textContent.split(' ·')[0]==='500'?'500 (Adult Regular)':'700 (XL–3XL)';});});
 document.querySelectorAll('#colors .sw').forEach(function(s){s.addEventListener('click',function(){document.querySelectorAll('#colors .sw').forEach(function(x){x.classList.remove('on');});s.classList.add('on');document.getElementById('colorv').textContent=s.dataset.c;});});
+document.querySelectorAll('#packs .chip').forEach(function(c){c.addEventListener('click',function(){document.querySelectorAll('#packs .chip').forEach(function(x){x.classList.remove('on');});c.classList.add('on');packAdd=parseFloat(c.dataset.add)||0;document.getElementById('packv').textContent=c.dataset.p==='gift'?'Mozy Gift Box (+$3.99/ea)':'Clear Poly Bag';render();});});
 
 document.getElementById('atc').addEventListener('click',function(){var b=this,h=b.innerHTML;b.textContent='Added ✓';setTimeout(function(){b.innerHTML=h;},1300);});
 
