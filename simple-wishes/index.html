@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Adjustable Size Hands Free Pumping Bra – Simple Wishes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f5efe6;
+  --cream-2:#faf6f0;
+  --sage:#7a816c;
+  --sage-dark:#646a55;
+  --rose:#c08c85;
+  --rose-soft:#f3e3df;
+  --ink:#423f34;
+  --muted:#8a8576;
+  --line:#e7e0d4;
+  --frameW:390px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;color:var(--ink);background:#fff;line-height:1.55;font-weight:400;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+h1,h2,h3,h4{font-family:'Cabin',sans-serif;font-weight:600;line-height:1.18;color:var(--ink);}
+button{font-family:inherit;cursor:pointer;border:none;}
+a{color:inherit;}
+
+.frame{max-width:var(--frameW);margin:0 auto;background:#fff;position:relative;overflow-x:hidden;}
+@media(min-width:600px){
+  body{background:#ddd6ca;padding:24px 0;}
+  .frame{box-shadow:0 22px 60px rgba(66,63,52,.25);border-radius:24px;overflow:hidden;}
+}
+
+/* announcement */
+.announce{background:var(--rose);color:#fff;font-size:12px;font-weight:600;letter-spacing:.6px;text-align:center;padding:9px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;}
+.announce a{text-decoration:underline;}
+
+/* header */
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--cream);position:sticky;top:0;z-index:60;}
+.hdr .ic{width:24px;color:var(--ink);}
+.hdr .burger{display:flex;flex-direction:column;gap:5px;width:24px;}
+.hdr .burger span{height:2px;background:var(--ink);border-radius:2px;}
+.hdr .logo{height:34px;width:auto;}
+.hdr .right{display:flex;gap:16px;align-items:center;}
+
+/* GALLERY — compact so title/price/reviews land on first screen */
+.gallery{background:#eceae4;}
+.gtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;}
+.gtrack::-webkit-scrollbar{display:none;}
+.gslide{flex:0 0 100%;scroll-snap-align:center;height:54vh;max-height:430px;min-height:330px;background:#eceae4;}
+.gslide img{width:100%;height:100%;object-fit:cover;}
+.dots{display:flex;gap:6px;justify-content:center;padding:10px 0 2px;background:#fff;}
+.dots b{width:7px;height:7px;border-radius:50%;background:#d9d3c6;transition:.2s;}
+.dots b.on{background:var(--sage);width:20px;border-radius:4px;}
+.thumbs{display:flex;gap:8px;padding:8px 16px 2px;overflow-x:auto;scrollbar-width:none;background:#fff;}
+.thumbs::-webkit-scrollbar{display:none;}
+.thumbs img{flex:0 0 54px;width:54px;height:54px;object-fit:cover;border:2px solid transparent;opacity:.55;transition:.15s;border-radius:2px;}
+.thumbs img.on{border-color:var(--sage);opacity:1;}
+
+/* BUY ZONE */
+.buy{padding:14px 16px 8px;}
+h1.title{font-size:23px;font-weight:700;margin-bottom:7px;}
+.revline{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:10px;}
+.revline .stars{color:#e8a33d;letter-spacing:1px;}
+.revline .n{font-weight:700;}
+.revline a{color:var(--muted);text-decoration:underline;text-underline-offset:2px;}
+.price{display:flex;align-items:baseline;gap:8px;margin-bottom:14px;}
+.price .now{font-size:24px;font-weight:700;font-family:'Cabin';}
+.price .note{font-size:12px;color:var(--muted);font-weight:500;}
+
+/* quick benefit chips on first screen */
+.qchips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px;}
+.qchips span{display:inline-flex;align-items:center;gap:5px;background:var(--cream);border:1px solid var(--line);border-radius:30px;padding:6px 11px;font-size:11px;font-weight:600;color:var(--ink);}
+.qchips span svg{width:13px;height:13px;color:var(--sage);}
+
+.selrow{margin-bottom:16px;}
+.sellabel{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:8px;color:var(--ink);display:flex;justify-content:space-between;align-items:center;}
+.sellabel .guide{color:var(--sage);text-decoration:underline;text-transform:none;letter-spacing:0;font-size:12px;cursor:pointer;}
+.sellabel .val{color:var(--muted);font-weight:600;text-transform:none;letter-spacing:0;}
+.colors{display:flex;gap:12px;}
+.colors button{width:38px;height:38px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line);transition:.15s;position:relative;}
+.colors button.on{box-shadow:0 0 0 2.4px var(--sage);}
+.colors button::after{content:attr(data-c);position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:600;color:var(--muted);}
+
+/* SIZE selector with inline explainers (secondary improvement) */
+.sizes{display:flex;flex-direction:column;gap:8px;}
+.sizes button{display:flex;align-items:center;justify-content:space-between;text-align:left;padding:11px 13px;border:1.5px solid var(--line);background:#fff;transition:.15s;border-radius:2px;}
+.sizes button.on{border-color:var(--sage);background:var(--cream-2);}
+.sizes button .sl{display:flex;flex-direction:column;gap:1px;}
+.sizes button .sl b{font-size:13.5px;font-weight:700;}
+.sizes button .sl small{font-size:11px;color:var(--muted);font-weight:500;}
+.sizes button .sp{font-size:12.5px;font-weight:700;color:var(--sage);}
+.sizes button .sp.free{color:var(--muted);font-weight:500;}
+
+.atc{width:100%;background:var(--sage);color:var(--cream);font-weight:600;font-size:15px;letter-spacing:1px;padding:16px;text-transform:uppercase;transition:.15s;margin-top:4px;border-radius:2px;}
+.atc:active{background:var(--sage-dark);}
+.express{width:100%;background:#5a31e1;color:#fff;font-weight:600;font-size:14px;padding:14px;border-radius:4px;margin-top:9px;display:flex;align-items:center;justify-content:center;gap:7px;letter-spacing:.3px;}
+.morepay{text-align:center;font-size:12px;color:var(--muted);text-decoration:underline;margin-top:9px;}
+
+/* trust strip */
+.trust{display:flex;flex-direction:column;gap:9px;background:var(--cream-2);padding:16px;margin:16px 0 0;border-radius:4px;}
+.trust .t{display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;}
+.trust .t svg{flex:0 0 18px;width:18px;height:18px;color:var(--sage);}
+
+/* sections */
+section{padding:30px 16px;}
+.sec-h{font-size:21px;text-align:center;margin-bottom:6px;font-weight:700;}
+.sec-sub{text-align:center;font-size:13px;color:var(--muted);margin-bottom:20px;font-weight:400;}
+.eyebrow{text-align:center;font-size:10.5px;font-weight:700;letter-spacing:2px;color:var(--rose);text-transform:uppercase;margin-bottom:7px;}
+.cream-bg{background:var(--cream);}
+.rose-bg{background:var(--rose-soft);}
+
+/* feature cards */
+.feats{display:flex;flex-direction:column;gap:14px;}
+.feat{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:6px;padding:16px;}
+.feat .fi{flex:0 0 44px;width:44px;height:44px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;}
+.feat .fi svg{width:22px;height:22px;color:var(--sage);}
+.feat h4{font-size:15px;font-weight:700;margin-bottom:3px;}
+.feat p{font-size:12.5px;color:var(--muted);line-height:1.5;}
+
+/* feature image w/ caption */
+.fimg{border-radius:6px;overflow:hidden;border:1px solid var(--line);margin-top:16px;}
+
+/* brand band */
+.band{background:var(--sage);color:var(--cream);text-align:center;padding:34px 24px;}
+.band h3{color:var(--cream);font-size:22px;font-style:italic;font-weight:500;}
+.band p{font-size:13px;opacity:.85;margin-top:8px;}
+
+/* accordions */
+.acc{border-top:1px solid var(--line);}
+.acc .item{border-bottom:1px solid var(--line);}
+.acc .q{display:flex;align-items:center;justify-content:space-between;padding:16px 2px;font-weight:700;font-size:13px;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;font-family:'Cabin';}
+.acc .q .pm{color:var(--sage);font-size:20px;font-weight:400;transition:.2s;}
+.acc .item.open .pm{transform:rotate(45deg);}
+.acc .a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.acc .a .inner{padding:0 2px 16px;font-size:13px;color:var(--muted);line-height:1.6;}
+
+/* review widget */
+.rw-top{display:flex;gap:18px;align-items:center;margin-bottom:18px;}
+.rw-score{text-align:center;flex:0 0 auto;}
+.rw-score .big{font-size:40px;font-weight:700;font-family:'Cabin';line-height:1;}
+.rw-score .st{color:#e8a33d;letter-spacing:2px;font-size:14px;margin:4px 0 2px;}
+.rw-score .ct{font-size:11px;color:var(--muted);font-weight:600;}
+.rw-hist{flex:1;display:flex;flex-direction:column;gap:5px;}
+.rw-bar{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:var(--muted);}
+.rw-bar .lab{width:28px;text-align:right;}
+.rw-bar .track{flex:1;height:7px;background:var(--cream);border-radius:5px;overflow:hidden;}
+.rw-bar .fill{height:100%;background:#e8a33d;border-radius:5px;}
+.rw-bar .cnt{width:38px;text-align:left;}
+.pills{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:10px;margin-bottom:4px;}
+.pills::-webkit-scrollbar{display:none;}
+.pills button{flex:0 0 auto;padding:8px 14px;border-radius:30px;background:#fff;border:1.4px solid var(--line);font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap;}
+.pills button.on{background:var(--sage);border-color:var(--sage);color:#fff;}
+.rlist{display:flex;flex-direction:column;gap:12px;}
+.rev{background:#fff;border:1px solid var(--line);border-radius:6px;padding:15px;}
+.rev .rh{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
+.rev .rs{color:#e8a33d;letter-spacing:1px;font-size:12px;}
+.rev .rd{font-size:11px;color:#b3ad9f;font-weight:600;}
+.rev .rt{font-weight:700;font-size:13.5px;margin:3px 0 4px;font-family:'Cabin';}
+.rev p{font-size:12.5px;color:var(--muted);line-height:1.55;}
+.rev .ra{margin-top:9px;font-size:11.5px;font-weight:700;display:flex;align-items:center;gap:6px;}
+.rev .ra .vb{color:var(--sage);font-size:9px;font-weight:700;letter-spacing:.4px;}
+
+/* footer */
+.foot{background:var(--ink);color:rgba(245,239,230,.7);padding:28px 18px 96px;text-align:center;font-size:12px;}
+.foot img{height:30px;margin:0 auto 12px;filter:brightness(0) invert(1);opacity:.92;}
+.foot a{color:rgba(245,239,230,.7);text-decoration:underline;margin:0 7px;}
+
+/* sticky bar (control has one — kept) */
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:var(--frameW);background:var(--cream);border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(66,63,52,.14);padding:10px 14px calc(10px + env(safe-area-inset-bottom));z-index:90;transition:transform .28s cubic-bezier(.4,0,.2,1);}
+.sticky.show{transform:translateX(-50%) translateY(0);}
+.sticky .row{display:flex;align-items:center;gap:11px;}
+.sticky img{width:44px;height:44px;border-radius:3px;object-fit:cover;flex:0 0 44px;}
+.sticky .sm{flex:1;min-width:0;}
+.sticky .sm .nm{font-size:12.5px;font-weight:700;font-family:'Cabin';line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sticky .sm .pp{font-size:12px;font-weight:600;color:var(--muted);}
+.sticky .sbtn{flex:0 0 auto;background:var(--sage);color:var(--cream);font-weight:600;font-size:12.5px;letter-spacing:.6px;padding:13px 18px;text-transform:uppercase;border-radius:2px;}
+
+.toast{position:fixed;top:14px;left:50%;transform:translateX(-50%) translateY(-160%);background:var(--ink);color:var(--cream);padding:12px 20px;border-radius:30px;font-size:12.5px;font-weight:600;z-index:120;transition:transform .3s;box-shadow:0 8px 24px rgba(0,0,0,.25);}
+.toast.show{transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+<div class="frame" id="frame">
+
+  <div class="announce">Get up to 3 Free Bras + Free Shipping &middot; <a href="#">Learn more</a></div>
+
+  <header class="hdr">
+    <div class="burger"><span></span><span></span><span></span></div>
+    <img class="logo" src="https://simplewishes.com/cdn/shop/files/logo_DARK_v8_tinypng_aa66ea7f-711d-48ff-b32a-a159c34c1975.png" alt="Simple Wishes" width="150" height="34">
+    <div class="right">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+    </div>
+  </header>
+
+  <!-- Gallery (compact height so buy info lands on screen 1) -->
+  <div class="gallery">
+    <div class="gtrack" id="gtrack">
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0352/3241/5880/files/adjustable-hands-free-pumping-bra-939281.jpg" alt="Adjustable Hands Free Pumping Bra in Black" loading="eager"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0352/3241/5880/files/adjustable-hands-free-pumping-bra-606992.jpg" alt="Hands free pumping in use"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0352/3241/5880/files/adjustable-hands-free-pumping-bra-593826.jpg" alt="11 inch velcro adjustable fit"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0352/3241/5880/files/adjustable-hands-free-pumping-bra-477446.jpg" alt="Adjustable pumping bra detail"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0352/3241/5880/files/adjustable-hands-free-pumping-bra-715885.jpg" alt="Pumping bra fit"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0352/3241/5880/files/adjustable-hands-free-pumping-bra-165706.jpg" alt="Five star review"></div>
+    </div>
+    <div class="dots" id="dots"></div>
+    <div class="thumbs" id="thumbs"></div>
+  </div>
+
+  <!-- Buy zone: name + rating + price all on first screen (primary improvement) -->
+  <div class="buy">
+    <h1 class="title">Adjustable Hands Free Pumping Bra</h1>
+    <div class="revline"><span class="stars">★★★★★</span><span class="n">4.79</span><a href="#reviews">7,626 reviews</a></div>
+    <div class="price"><span class="now" id="priceNow">$28.90</span><span class="note">Fits over your nursing bra &middot; one bra for your whole journey</span></div>
+
+    <div class="qchips">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg> Truly hands-free</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M2 12h20"/></svg> 11" adjustable fit</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l2.4 6.8H22l-6 4.4 2.3 7-6.3-4.6L5.7 20l2.3-7-6-4.4h7.6z"/></svg> Oeko-Tex fabric</span>
+    </div>
+
+    <!-- Color -->
+    <div class="selrow">
+      <div class="sellabel"><span>Color <span class="val" id="colorVal">— Black</span></span></div>
+      <div class="colors" id="colors" style="padding-bottom:18px;">
+        <button data-c="Black" class="on" style="background:#1d1d1d;"></button>
+        <button data-c="Pink" style="background:#e1b3ac;"></button>
+      </div>
+    </div>
+
+    <!-- Size with inline explainers (secondary improvement) -->
+    <div class="selrow">
+      <div class="sellabel"><span>Size</span><span class="guide" onclick="openChart()">Size Chart</span></div>
+      <div class="sizes" id="sizes">
+        <button data-s="XS-L" data-p="28.90" class="on"><span class="sl"><b>XS–L</b><small>Standard band &amp; cup range</small></span><span class="sp free">Included</span></button>
+        <button data-s="L-Plus" data-p="28.90"><span class="sl"><b>L-Plus</b><small>For larger band &amp; fuller cup sizes</small></span><span class="sp free">Included</span></button>
+        <button data-s="XS-L + 1&quot; Panel" data-p="31.90"><span class="sl"><b>XS–L + 1" Center Panel</b><small>Adds 1" of width for extra room</small></span><span class="sp">$31.90</span></button>
+        <button data-s="L-Plus + 1&quot; Panel" data-p="31.90"><span class="sl"><b>L-Plus + 1" Center Panel</b><small>L-Plus with 1" of extra width</small></span><span class="sp">$31.90</span></button>
+      </div>
+    </div>
+
+    <button class="atc" id="atc" onclick="addCart()">Add to Cart — <span id="atcPrice">$28.90</span></button>
+    <button class="express" onclick="addCart()"><b>Shop</b> Pay</button>
+    <div class="morepay">More payment options</div>
+
+    <!-- Trust -->
+    <div class="trust">
+      <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0z"/><path d="M8 12l3 3 5-6"/></svg> 60-Day Hassle Free Return — exchanges always free</div>
+      <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="15" height="11" rx="1"/><path d="M16 9h4l3 3v5h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="19" cy="18" r="1.6"/></svg> Free Shipping on USA orders over $75</div>
+      <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C7 6 5 9 5 13a7 7 0 0 0 14 0c0-4-2-7-7-11z"/></svg> Oeko-Tex Standard 100 — no harmful substances</div>
+    </div>
+  </div>
+
+  <!-- Why moms love it (added substance from real features) -->
+  <section class="cream-bg">
+    <div class="eyebrow">Designed by moms, for moms</div>
+    <h2 class="sec-h">Why Moms Love It</h2>
+    <div class="sec-sub">One hands-free pumping bra for your entire breastfeeding &amp; pumping journey.</div>
+    <div class="feats">
+      <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 12l4-4M3 12l4 4M21 12l-4-4M21 12l-4 4"/></svg></div><div><h4>11" Velcro Adjustable Fit</h4><p>Removable straps and an adjustable velcro panel mean the bra fits your changing body — through pregnancy, postpartum and beyond.</p></div></div>
+      <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="12" r="4"/><circle cx="17" cy="12" r="2.2"/></svg></div><div><h4>Patented Layered Flange Design</h4><p>A patented layered design at the pump insertion points holds your flanges securely and maintains suction throughout the whole session.</p></div></div>
+      <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M6 7v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7M9 7V5a3 3 0 0 1 6 0v2"/></svg></div><div><h4>Wears Over Your Nursing Bra</h4><p>Designed to fit securely over the nursing bra you already wear — slip it on, pump hands-free, slip it off.</p></div></div>
+      <div class="feat"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C7 6 5 9 5 13a7 7 0 0 0 14 0c0-4-2-7-7-11z"/></svg></div><div><h4>Soft, Oeko-Tex Certified Fabric</h4><p>A super-soft, supportive cotton-spandex blend, Oeko-Tex Standard 100 certified free from chemicals known to be harmful to humans.</p></div></div>
+    </div>
+    <div class="fimg"><img src="https://cdn.shopify.com/s/files/1/0352/3241/5880/files/adjustable-hands-free-pumping-bra-593826.jpg" alt="11 inch velcro adjustable fit"></div>
+  </section>
+
+  <!-- Brand band -->
+  <div class="band">
+    <h3>"Inspired by Motherhood.<br>Designed for Nurturing."</h3>
+    <p>Trusted by moms for over a decade.</p>
+  </div>
+
+  <!-- Details accordions (verbatim) -->
+  <section>
+    <h2 class="sec-h" style="margin-bottom:14px;">The Details</h2>
+    <div class="acc" id="acc">
+      <div class="item open"><div class="q">Details <span class="pm">+</span></div><div class="a"><div class="inner">If there's a must-have pumping bra for every Mom, this is it. Designed to fit securely over your nursing bra, freeing up your hands while pumping. The removable straps and adjustable velcro panel ensures that this bra will always fit your changing body. One hands-free pumping bra for your entire breastfeeding and pumping journey. With over 7k five star reviews, this bra is almost too good to be true!</div></div></div>
+      <div class="item"><div class="q">Fit &amp; Fabric <span class="pm">+</span></div><div class="a"><div class="inner"><b>Support:</b> Adjustable compression to fit your body. Patented layered design at pump insertion points maintains suction throughout the pumping session for optimal performance of pump.<br><br><b>Fabric:</b> Made of a super soft, supportive, cotton spandex blend fabric, Oeko-Tex Standard 100 certified to be free from chemicals known to be harmful to humans.</div></div></div>
+      <div class="item"><div class="q">Shipping Information <span class="pm">+</span></div><div class="a"><div class="inner">Standard Shipping (4–7 business days) — $7.99 USD<br>Expedited Shipping (3–5 business days) — $11.00 USD<br>Free Standard Shipping (4–7 business days) on orders over $75. USA only.</div></div></div>
+      <div class="item"><div class="q">60-Day Hassle Free Return <span class="pm">+</span></div><div class="a"><div class="inner">We accept returns within 60 days of the order date by mail. Exchanges and returns for store credit are always free!</div></div></div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="cream-bg" id="reviews">
+    <h2 class="sec-h" style="margin-bottom:18px;">Customer Reviews</h2>
+    <div class="rw-top">
+      <div class="rw-score"><div class="big">4.79</div><div class="st">★★★★★</div><div class="ct">7,626 reviews</div></div>
+      <div class="rw-hist">
+        <div class="rw-bar"><span class="lab">5★</span><span class="track"><span class="fill" style="width:84.6%"></span></span><span class="cnt">6,451</span></div>
+        <div class="rw-bar"><span class="lab">4★</span><span class="track"><span class="fill" style="width:10.2%"></span></span><span class="cnt">775</span></div>
+        <div class="rw-bar"><span class="lab">3★</span><span class="track"><span class="fill" style="width:5.1%"></span></span><span class="cnt">389</span></div>
+        <div class="rw-bar"><span class="lab">2★</span><span class="track"><span class="fill" style="width:0.5%"></span></span><span class="cnt">3</span></div>
+        <div class="rw-bar"><span class="lab">1★</span><span class="track"><span class="fill" style="width:0.5%"></span></span><span class="cnt">8</span></div>
+      </div>
+    </div>
+    <div class="pills" id="pills">
+      <button class="on" data-f="all">All Reviews</button>
+      <button data-f="comfort">Comfort</button>
+      <button data-f="fit">Fit &amp; Sizing</button>
+      <button data-f="suction">Holds Suction</button>
+      <button data-f="work">Pumping at Work</button>
+    </div>
+    <div class="rlist" id="rlist"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="foot">
+    <img src="https://simplewishes.com/cdn/shop/files/logo_DARK_v8_tinypng_aa66ea7f-711d-48ff-b32a-a159c34c1975.png" alt="Simple Wishes">
+    <div>Inspired by Motherhood. Designed for Nurturing.</div>
+    <div style="margin-top:10px;"><a href="#reviews">Reviews</a><a href="#top" onclick="scrollTop()">Shop</a><a href="#">Contact</a></div>
+    <div style="margin-top:14px;opacity:.55;font-size:11px;">© Simple Wishes</div>
+  </footer>
+
+  <!-- Sticky bar (control has one) -->
+  <div class="sticky" id="sticky">
+    <div class="row">
+      <img src="https://cdn.shopify.com/s/files/1/0352/3241/5880/files/adjustable-hands-free-pumping-bra-939281.jpg" alt="">
+      <div class="sm">
+        <div class="nm">Hands Free Pumping Bra <span id="stkVar" style="font-weight:500;color:var(--muted);">· Black / XS–L</span></div>
+        <div class="pp">★ 4.79 (7,626) · <b id="stkPrice">$28.90</b></div>
+      </div>
+      <button class="sbtn" onclick="addCart()">Add</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Added to cart ✓</div>
+</div>
+
+<script>
+const track=document.getElementById('gtrack');
+const slides=[...track.children];
+const dotsWrap=document.getElementById('dots'), thumbsWrap=document.getElementById('thumbs');
+slides.forEach((s,i)=>{
+  const d=document.createElement('b'); if(i===0)d.classList.add('on'); d.onclick=()=>track.scrollTo({left:track.clientWidth*i,behavior:'smooth'}); dotsWrap.appendChild(d);
+  const t=document.createElement('img'); t.src=s.querySelector('img').src; if(i===0)t.classList.add('on'); t.onclick=()=>track.scrollTo({left:track.clientWidth*i,behavior:'smooth'}); thumbsWrap.appendChild(t);
+});
+const dots=[...dotsWrap.children], thumbs=[...thumbsWrap.children];
+track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.clientWidth);dots.forEach((d,j)=>d.classList.toggle('on',j===i));thumbs.forEach((t,j)=>t.classList.toggle('on',j===i));},{passive:true});
+
+let sel={color:'Black',size:'XS–L',price:'28.90'};
+document.querySelectorAll('#colors button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#colors button').forEach(x=>x.classList.remove('on'));b.classList.add('on');sel.color=b.dataset.c;document.getElementById('colorVal').textContent='— '+sel.color;syncVar();});
+document.querySelectorAll('#sizes button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#sizes button').forEach(x=>x.classList.remove('on'));b.classList.add('on');sel.size=b.querySelector('b').textContent;sel.price=b.dataset.p;document.getElementById('atcPrice').textContent='$'+sel.price;document.getElementById('priceNow').textContent='$'+sel.price;syncVar();});
+function syncVar(){document.getElementById('stkVar').textContent='· '+sel.color+' / '+sel.size;document.getElementById('stkPrice').textContent='$'+sel.price;}
+
+function addCart(){const t=document.getElementById('toast');t.textContent='Added: '+sel.color+' / '+sel.size+' ✓';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+
+document.querySelectorAll('.acc .q').forEach(q=>q.onclick=()=>{const item=q.parentElement,a=q.nextElementSibling;const open=item.classList.toggle('open');a.style.maxHeight=open?a.scrollHeight+'px':'0';});
+document.querySelectorAll('.acc .item.open').forEach(it=>{const a=it.querySelector('.a');a.style.maxHeight=a.scrollHeight+'px';});
+
+const REVIEWS=[
+ {s:5,d:'Jun 13, 2026',a:'Gabriela',t:'',b:'Great bra, the size customization makes it perfect. Comfy and holds the flanges down perfectly.',f:['comfort','fit','suction']},
+ {s:5,d:'May 21, 2026',a:'Kathryn',t:'Excellent pumping bra',b:'This pumping bra is comfortable and easy to wear. Love that it is strapless. It also holds the flanges/containers more securely than other pumping bras I\'ve tried — I am not constantly adjusting it. Great purchase!',f:['comfort','suction']},
+ {s:4,d:'May 14, 2026',a:'Leah Dougherty',t:'Pretty good pumping bra',b:'After 3 uses, this has become my preferred pumping bra. I enjoy the adjustability and how tight I can make it. Other pumping bras have loosened over time and don\'t hold the flanges in as well. I purchased this as a pumping-specific bra to use back at the office — it\'s been great.',f:['fit','suction','work']},
+ {s:5,d:'Mar 1, 2026',a:'Danielle',t:'Must-have for exclusive pumpers!',b:'I wish I had found this sooner! I appreciate the high quality material and ability to adjust the fit to my exact size. The double layered openings keep the flanges secure for an efficient pump session.',f:['fit','suction']},
+ {s:5,d:'Feb 3, 2026',a:'Elle Hamilton',t:'The BEST',b:'This pumping bra is perfect for my pumps first thing in the morning and before bed when baby is (hopefully) asleep. Thank you!!!',f:['comfort']},
+ {s:5,d:'Jan 9, 2026',a:'Heather M',t:'Love this bra!',b:'It\'s comfortable, easy to use, holds the pump flanges in place, and I can rest easy knowing the bra meets the Oeko-Tex standard.',f:['comfort','suction']},
+ {s:5,d:'Aug 27, 2025',a:'Kristin Gilbert',t:'Perfect for the office',b:'I keep this bra in my pumping bag. It\'s perfect for pumping at work, regardless of which bra I wear to work.',f:['work']},
+ {s:5,d:'Jun 12, 2025',a:'Olivia',t:'Truly hands free!',b:'I don\'t usually write reviews, but I am very happy with this. It is a truly hands-free bra and has made pumping so much easier.',f:['comfort','work']},
+ {s:5,d:'Jan 6, 2025',a:'Julia Liz',t:'Love the velcro',b:'Love the Velcro! Easy to use and nicely made.',f:['fit']}
+];
+const rlist=document.getElementById('rlist');
+function renderReviews(f){
+  const items=REVIEWS.filter(r=>f==='all'||r.f.includes(f));
+  rlist.innerHTML=items.map(r=>`<div class="rev"><div class="rh"><span class="rs">${'★'.repeat(r.s)}${'☆'.repeat(5-r.s)}</span><span class="rd">${r.d}</span></div>${r.t?`<div class="rt">${r.t}</div>`:''}<p>${r.b}</p><div class="ra">${r.a} <span class="vb">✔ VERIFIED BUYER</span></div></div>`).join('');
+}
+renderReviews('all');
+document.querySelectorAll('#pills button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#pills button').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderReviews(b.dataset.f);});
+
+const atc=document.getElementById('atc'), sticky=document.getElementById('sticky');
+function onScroll(){const r=atc.getBoundingClientRect();sticky.classList.toggle('show', r.bottom<0);}
+window.addEventListener('scroll',onScroll,{passive:true});
+window.addEventListener('resize',onScroll); onScroll();
+function scrollTop(){window.scrollTo({top:0,behavior:'smooth'});}
+function openChart(){alert('Size Chart — XS–L fits most. Choose L-Plus for larger band & fuller cup sizes. Add the 1\" Center Panel for an extra inch of width if you are between sizes or need more room.');}
+</script>
+</body>
+</html>
