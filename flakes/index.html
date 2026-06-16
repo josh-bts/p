@@ -116,9 +116,12 @@ section{padding:34px 18px;}
 .statement .feats div{font-size:11px;font-weight:600;color:var(--teal);text-transform:uppercase;letter-spacing:.6px;}
 
 /* ingredients */
-.ing{display:flex;flex-direction:column;gap:1px;border-top:1px solid var(--line);}
-.icard{padding:18px 4px;border-bottom:1px solid var(--line);}
-.icard h4{font-size:15px;font-weight:700;font-family:'Hanken Grotesk';letter-spacing:.5px;color:var(--cream);margin-bottom:5px;}
+.ing{display:flex;flex-direction:column;gap:14px;}
+.icard{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.025);}
+.icard .ic-img{width:100%;height:108px;object-fit:cover;display:block;}
+.icard .ic-b{padding:15px 16px 17px;}
+.icard h4{font-size:14px;font-weight:700;font-family:'Hanken Grotesk';letter-spacing:.6px;color:var(--cream);margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+.icard h4 .pill{font-size:9px;font-weight:800;color:var(--navy);background:var(--teal);padding:3px 8px;border-radius:20px;letter-spacing:.4px;text-transform:uppercase;}
 .icard p{font-size:13px;color:var(--muted);line-height:1.5;}
 
 /* timeline */
@@ -201,13 +204,13 @@ section{padding:34px 18px;}
   <div class="buy" id="buy">
     <div class="eyebrow">Hair Growth &amp; Scalp Health Serum</div>
     <h1 class="title">Night Shift</h1>
-    <div class="revline"><span class="stars">★★★★★</span><span>Dermatologist-designed · Over 1M bottles sold</span></div>
+    <div class="revline"><span class="stars">★★★★★</span><span>(1) · Dermatologist designed &amp; tested</span></div>
 
-    <!-- proof strip (brought up to the buy decision) -->
+    <!-- proof strip (existing credentials brought up to the buy decision) -->
     <div class="proof">
-      <div class="p"><span class="n">1M+</span><span class="l">Bottles Sold</span></div>
       <div class="p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 20l-4.9 2.6.9-5.5-4-3.9L9.5 7z"/></svg><span class="l">Dermatologist Designed</span></div>
       <div class="p"><span class="n">2%</span><span class="l">Pyrithione Zinc</span></div>
+      <div class="p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg><span class="l">No Sulfates or Harsh</span></div>
       <div class="p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span class="l">Free Scalp Brush</span></div>
     </div>
 
@@ -258,7 +261,7 @@ section{padding:34px 18px;}
   <!-- Statement -->
   <div class="statement">
     <h3>A formula cleaner than<br>a monk's conscience.</h3>
-    <p>No sulfates, parabens, PEGs, or any harsh ingredients.<br>Over a million bottles sold. Consistently rated 5 stars.</p>
+    <p>No sulfates, parabens, PEGs, or any harsh ingredients &mdash; just clinically studied actives that do the work.</p>
     <div class="feats"><div>✓ Dermatologist Designed</div><div>✓ Clinically Studied</div></div>
   </div>
 
@@ -268,12 +271,12 @@ section{padding:34px 18px;}
     <h2 class="sec-h">Backed by the actives.</h2>
     <div class="sec-sub">Clinically studied ingredients designed for hair growth &amp; scalp health.</div>
     <div class="ing">
-      <div class="icard"><h4>PIROCTONE OLAMINE</h4><p>Clinically studied to help reduce shedding and support thicker-looking hair.</p></div>
-      <div class="icard"><h4>SAW PALMETTO</h4><p>Helps support fuller-looking hair by addressing DHT at the scalp level.</p></div>
-      <div class="icard"><h4>BIOTIN PEPTIDES</h4><p>Supports stronger-feeling strands and improved follicle anchoring for denser-looking hair.</p></div>
-      <div class="icard"><h4>COPPER PEPTIDES</h4><p>Helps support healthy-looking hair density and overall scalp revitalization.</p></div>
-      <div class="icard"><h4>NIACINAMIDE</h4><p>Helps strengthen the scalp barrier and support a healthier environment for hair.</p></div>
-      <div class="icard"><h4>HYALURONIC ACID</h4><p>Deeply hydrates the scalp so it stays comfortable, balanced, and ready for healthy hair growth.</p></div>
+      <div class="icard"><img class="ic-img" src="https://www.byeflakes.com/cdn/shop/files/Frame_2568.jpg?width=760" alt="Piroctone Olamine" loading="lazy"><div class="ic-b"><h4>PIROCTONE OLAMINE</h4><p>Clinically studied to help reduce shedding and support thicker-looking hair.</p></div></div>
+      <div class="icard"><img class="ic-img" src="https://www.byeflakes.com/cdn/shop/files/Frame_2569.jpg?width=760" alt="Saw Palmetto" loading="lazy"><div class="ic-b"><h4>SAW PALMETTO</h4><p>Helps support fuller-looking hair by addressing DHT at the scalp level.</p></div></div>
+      <div class="icard"><img class="ic-img" src="https://www.byeflakes.com/cdn/shop/files/Frame_2570.jpg?width=760" alt="Biotin Peptides" loading="lazy"><div class="ic-b"><h4>BIOTIN PEPTIDES</h4><p>Supports stronger-feeling strands and improved follicle anchoring for denser-looking hair.</p></div></div>
+      <div class="icard"><img class="ic-img" src="https://www.byeflakes.com/cdn/shop/files/Frame_2571_9f50a97b-b4dd-4d3d-ac16-03065accbfcb.jpg?width=760" alt="Copper Peptides" loading="lazy"><div class="ic-b"><h4>COPPER PEPTIDES</h4><p>Helps support healthy-looking hair density and overall scalp revitalization.</p></div></div>
+      <div class="icard"><img class="ic-img" src="https://www.byeflakes.com/cdn/shop/files/Frame_2572.jpg?width=760" alt="Niacinamide" loading="lazy"><div class="ic-b"><h4>NIACINAMIDE</h4><p>Helps strengthen the scalp barrier and support a healthier environment for hair.</p></div></div>
+      <div class="icard"><img class="ic-img" src="https://www.byeflakes.com/cdn/shop/files/Frame_2573.jpg?width=760" alt="Hyaluronic Acid" loading="lazy"><div class="ic-b"><h4>HYALURONIC ACID</h4><p>Deeply hydrates the scalp so it stays comfortable, balanced, and ready for healthy hair growth.</p></div></div>
     </div>
   </section>
 
