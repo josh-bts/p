@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Pomona First Responder Sunglasses | Frontline Optics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#10141b;
+  --blue:#07369c;
+  --lime:#4cdc26;
+  --lime-d:#3fc01f;
+  --muted:#6b7280;
+  --line:#e7e9ee;
+  --paper:#f4f5f7;
+  --frameW:390px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:#fff;line-height:1.55;font-weight:400;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+h1,h2,h3,h4{font-weight:800;line-height:1.1;letter-spacing:-.5px;}
+button{font-family:inherit;cursor:pointer;border:none;}
+a{color:inherit;text-decoration:none;}
+
+.frame{max-width:var(--frameW);margin:0 auto;background:#fff;position:relative;overflow-x:hidden;}
+@media(min-width:600px){
+  body{background:#d4d7dd;padding:24px 0;}
+  .frame{box-shadow:0 22px 60px rgba(16,20,27,.25);border-radius:24px;overflow:hidden;}
+}
+
+.marquee{background:var(--blue);color:#fff;overflow:hidden;white-space:nowrap;padding:9px 0;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.marquee .mq{display:inline-block;animation:scroll 20s linear infinite;}
+.marquee .mq span{margin:0 22px;}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:#fff;position:sticky;top:0;z-index:60;border-bottom:1px solid var(--line);}
+.hdr .burger{display:flex;flex-direction:column;gap:5px;width:22px;}
+.hdr .burger span{height:2.4px;background:var(--ink);border-radius:2px;}
+.hdr .logo{display:flex;align-items:center;gap:7px;font-weight:900;font-size:18px;letter-spacing:-.5px;}
+.hdr .logo .mk{display:inline-flex;gap:2px;}
+.hdr .logo .mk i{width:7px;height:16px;background:var(--ink);display:block;transform:skewX(-12deg);}
+.hdr .logo .mk i:last-child{height:11px;align-self:flex-end;}
+.hdr .right{display:flex;gap:15px;align-items:center;}
+.hdr .right svg{width:22px;color:var(--ink);}
+
+.gallery{position:relative;background:var(--paper);}
+.gtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;}
+.gtrack::-webkit-scrollbar{display:none;}
+.gslide{flex:0 0 100%;scroll-snap-align:center;aspect-ratio:1/1;background:var(--paper);}
+.gslide img{width:100%;height:100%;object-fit:cover;}
+.dots{display:flex;gap:6px;justify-content:center;padding:12px 0 4px;}
+.dots b{width:7px;height:7px;border-radius:50%;background:#d0d3da;transition:.2s;}
+.dots b.on{background:var(--ink);width:20px;border-radius:4px;}
+
+.buy{padding:16px 16px 8px;}
+.titlerow{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+h1.title{font-size:32px;font-weight:800;}
+.rate{flex:0 0 auto;font-size:13px;font-weight:700;white-space:nowrap;padding-top:6px;}
+.rate .s{color:#f5a623;}
+.rate a{color:var(--muted);text-decoration:underline;}
+.price{font-size:24px;font-weight:800;margin:6px 0 14px;}
+.price .u{font-size:13px;color:var(--muted);font-weight:600;}
+
+/* credential strip (secondary improvement) */
+.creds{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:18px;}
+.creds .c{background:var(--paper);border-radius:10px;padding:10px 4px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;min-height:62px;justify-content:center;}
+.creds .c svg{width:18px;height:18px;color:var(--blue);}
+.creds .c .n{font-size:12px;font-weight:800;line-height:1;}
+.creds .c .l{font-size:8.3px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.2px;line-height:1.15;}
+
+.sublabel{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;margin-bottom:9px;}
+.sublabel .v{color:var(--muted);font-weight:600;text-transform:none;letter-spacing:0;}
+.colors{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.colors button{width:38px;height:38px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line);transition:.15s;}
+.colors button.on{box-shadow:0 0 0 2.4px var(--ink);}
+
+.feat{display:flex;flex-direction:column;gap:9px;margin-bottom:18px;}
+.feat .f{display:flex;gap:9px;align-items:flex-start;font-size:13px;font-weight:500;}
+.feat .f svg{flex:0 0 17px;width:17px;height:17px;color:var(--blue);margin-top:2px;}
+
+/* bundle selector */
+.bundles{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+.bundle{border:1.6px solid var(--line);border-radius:12px;padding:13px 14px;cursor:pointer;transition:.15s;position:relative;display:flex;align-items:center;gap:12px;}
+.bundle.on{border-color:var(--lime-d);background:#f6fff2;}
+.bundle .radio{flex:0 0 19px;width:19px;height:19px;border-radius:50%;border:2px solid #cfd3da;position:relative;}
+.bundle.on .radio{border-color:var(--lime-d);}
+.bundle.on .radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--lime-d);}
+.bundle .bt{flex:1;}
+.bundle .bt b{font-size:14px;font-weight:800;display:block;}
+.bundle .bt small{font-size:11px;color:var(--muted);font-weight:600;}
+.bundle .bp{text-align:right;}
+.bundle .bp .pr{font-size:16px;font-weight:800;}
+.bundle .bp .was{font-size:11px;color:var(--muted);text-decoration:line-through;}
+.bundle .tag{position:absolute;top:-9px;right:12px;background:var(--blue);color:#fff;font-size:9px;font-weight:800;padding:3px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.4px;}
+.bundle.best .tag{background:var(--lime-d);color:#fff;}
+
+/* addon */
+.addon{display:flex;align-items:center;gap:11px;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:11px;cursor:pointer;transition:.15s;}
+.addon.on{border-color:var(--blue);background:#f3f6ff;}
+.addon .chk{flex:0 0 20px;width:20px;height:20px;border-radius:5px;border:2px solid #cfd3da;display:flex;align-items:center;justify-content:center;}
+.addon.on .chk{background:var(--blue);border-color:var(--blue);}
+.addon .chk svg{width:12px;height:12px;color:#fff;opacity:0;}
+.addon.on .chk svg{opacity:1;}
+.addon .at{flex:1;font-size:13px;font-weight:700;}
+.addon .at small{display:block;font-size:11px;color:var(--muted);font-weight:500;}
+.addon .ap{font-size:13px;font-weight:800;}
+
+.atc{width:100%;background:var(--lime);color:#06210a;font-weight:800;font-size:16px;padding:17px;border-radius:300px;font-family:'Inter';transition:.12s;letter-spacing:.2px;}
+.atc:active{transform:scale(.985);background:var(--lime-d);}
+.stock{text-align:center;font-size:12px;color:var(--muted);font-weight:600;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px;}
+.stock .dot{width:7px;height:7px;border-radius:50%;background:var(--lime-d);}
+
+section{padding:32px 16px;}
+.sec-h{font-size:24px;font-weight:800;text-align:center;margin-bottom:10px;letter-spacing:-.5px;}
+.sec-h.left{text-align:left;}
+.sec-p{font-size:13.5px;color:var(--muted);line-height:1.6;}
+.paper-bg{background:var(--paper);}
+.dark-bg{background:var(--ink);color:#fff;}
+.dark-bg .sec-h,.dark-bg h3{color:#fff;}
+.dark-bg .sec-p{color:rgba(255,255,255,.7);}
+
+.repl{display:flex;flex-direction:column;gap:10px;margin-top:16px;}
+.repl .r{display:flex;gap:10px;align-items:flex-start;font-size:13px;}
+.repl .r svg{flex:0 0 18px;width:18px;height:18px;color:var(--lime);margin-top:2px;}
+
+/* reviews */
+.rw-top{display:flex;gap:18px;align-items:center;margin-bottom:18px;}
+.rw-score{text-align:center;flex:0 0 auto;}
+.rw-score .big{font-size:40px;font-weight:800;line-height:1;}
+.rw-score .st{color:#f5a623;letter-spacing:2px;font-size:14px;margin:3px 0 2px;}
+.rw-score .ct{font-size:11px;color:var(--muted);font-weight:600;}
+.rw-hist{flex:1;display:flex;flex-direction:column;gap:5px;}
+.rw-bar{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:var(--muted);}
+.rw-bar .lab{width:26px;text-align:right;}
+.rw-bar .track{flex:1;height:7px;background:var(--line);border-radius:5px;overflow:hidden;}
+.rw-bar .fill{height:100%;background:#f5a623;border-radius:5px;}
+.rw-bar .cnt{width:30px;text-align:left;}
+.rlist{display:flex;flex-direction:column;gap:12px;}
+.rev{border:1px solid var(--line);border-radius:12px;padding:15px;}
+.rev .rh{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
+.rev .rs{color:#f5a623;letter-spacing:1px;font-size:12px;}
+.rev .rd{font-size:11px;color:#a6abb5;font-weight:600;}
+.rev .rt{font-weight:800;font-size:13.5px;margin:2px 0 4px;}
+.rev p{font-size:12.5px;color:var(--muted);line-height:1.5;}
+.rev .ra{margin-top:8px;font-size:11.5px;font-weight:800;display:flex;gap:6px;align-items:center;}
+.rev .ra .vb{color:var(--lime-d);font-size:9px;letter-spacing:.3px;}
+
+.foot{background:var(--ink);color:rgba(255,255,255,.6);padding:28px 18px 96px;text-align:center;font-size:12px;}
+.foot .fl{font-weight:900;font-size:17px;color:#fff;letter-spacing:-.5px;margin-bottom:12px;}
+.foot a{color:rgba(255,255,255,.6);text-decoration:underline;margin:0 8px;}
+
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(130%);width:100%;max-width:var(--frameW);background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(16,20,27,.14);padding:10px 14px calc(10px + env(safe-area-inset-bottom));z-index:90;transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:11px;}
+.sticky.show{transform:translateX(-50%) translateY(0);}
+.sticky img{width:42px;height:42px;border-radius:8px;object-fit:cover;flex:0 0 42px;background:var(--paper);}
+.sticky .si{flex:1;min-width:0;}
+.sticky .si .nm{font-size:13px;font-weight:800;line-height:1;}
+.sticky .si .pp{font-size:12px;color:var(--muted);font-weight:600;}
+.sticky .si .pp b{color:var(--ink);font-weight:800;}
+.sticky .sbtn{flex:0 0 auto;background:var(--lime);color:#06210a;font-weight:800;font-size:13.5px;padding:13px 20px;border-radius:300px;}
+
+.toast{position:fixed;top:14px;left:50%;transform:translateX(-50%) translateY(-160%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:30px;font-size:12.5px;font-weight:700;z-index:120;transition:transform .3s;box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.toast.show{transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+<div class="frame" id="frame">
+
+  <div class="marquee"><div class="mq">
+    <span>★ "No Questions Asked" Replacement Program</span><span>|</span><span>Free US Shipping</span><span>|</span><span>Supports First Responders Children's Foundation</span><span>|</span>
+    <span>★ "No Questions Asked" Replacement Program</span><span>|</span><span>Free US Shipping</span><span>|</span><span>Supports First Responders Children's Foundation</span><span>|</span>
+  </div></div>
+
+  <header class="hdr">
+    <div class="burger"><span></span><span></span><span></span></div>
+    <div class="logo"><span class="mk"><i></i><i></i></span> FRONTLINE&nbsp;OPTICS</div>
+    <div class="right">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+    </div>
+  </header>
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <div class="gtrack" id="gtrack">
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-1-3.jpg?width=820" alt="Pomona sunglasses" loading="eager"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-_Frontline_Optics-_Sunglasses.jpg?width=820" alt="Pomona on duty"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-1-1.jpg?width=820" alt="Pomona angle"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-1-7hinge.jpg?width=820" alt="Pomona hinge detail"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-2-1_with_shield.jpg?width=820" alt="Pomona with Z87+ side shields"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-1-5-size.jpg?width=820" alt="Pomona size guide"></div>
+    </div>
+    <div class="dots" id="dots"></div>
+  </div>
+
+  <!-- Buy zone -->
+  <div class="buy" id="buy">
+    <div class="titlerow">
+      <h1 class="title">Pomona</h1>
+      <div class="rate"><span class="s">★</span> 4.7 <a href="#reviews">(237)</a></div>
+    </div>
+    <div class="price">$85.00 <span class="u">USD</span></div>
+
+    <!-- credential strip (secondary improvement) -->
+    <div class="creds">
+      <div class="c"><span class="n">Z87+</span><span class="l">Impact Rated</span></div>
+      <div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12a4 4 0 0 1 8 0"/></svg><span class="l">Polarized FLOVEX™</span></div>
+      <div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M9 12l2 2 4-4"/></svg><span class="l">No-Q-Asked Replace</span></div>
+      <div class="c"><span class="n">4.7★</span><span class="l">237 Reviews</span></div>
+    </div>
+
+    <!-- color -->
+    <div class="sublabel">Color <span class="v">— Pomona (Black)</span></div>
+    <div class="colors" id="colors">
+      <button class="on" style="background:#161616;" title="Pomona"></button>
+      <button style="background:#b23b2e;" title="Crimson"></button>
+      <button style="background:#2f6fb0;" title="Blue"></button>
+      <button style="background:#1f8a78;" title="Celtic"></button>
+      <button style="background:#6c4d9e;" title="Valor"></button>
+      <button style="background:#c9a227;" title="Commander"></button>
+      <button style="background:#e8e8e8;" title="Clear"></button>
+    </div>
+
+    <!-- features -->
+    <div class="feat">
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Polarized Z87 FLOVEX™ polycarbonate lens technology</div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Scratch-resistant and AR lens coatings</div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Each purchase supports the First Responders Children's Foundation</div>
+    </div>
+
+    <!-- bundle selector -->
+    <div class="sublabel">Bundle &amp; Save</div>
+    <div class="bundles" id="bundles">
+      <div class="bundle on" data-b="one" data-p="85" onclick="pickB(this)">
+        <div class="radio"></div>
+        <div class="bt"><b>One Pair</b><small>Single Pomona</small></div>
+        <div class="bp"><span class="pr">$85</span></div>
+      </div>
+      <div class="bundle best" data-b="crew" data-p="170" onclick="pickB(this)">
+        <span class="tag">Buy 2 Get 1 Free</span>
+        <div class="radio"></div>
+        <div class="bt"><b>The Crew Pack</b><small>3 shades + free shipping</small></div>
+        <div class="bp"><span class="pr">$170</span><span class="was">$255</span></div>
+      </div>
+      <div class="bundle" data-b="batt" data-p="255" onclick="pickB(this)">
+        <span class="tag">Buy 3 Get 2 Free</span>
+        <div class="radio"></div>
+        <div class="bt"><b>The Battalion Bundle</b><small>5 shades + free accessories ($18)</small></div>
+        <div class="bp"><span class="pr">$255</span><span class="was">$425</span></div>
+      </div>
+    </div>
+
+    <!-- addon -->
+    <div class="addon" id="shieldAddon" onclick="toggleShield()">
+      <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="at">Make 'em Z87+?<small>Add Black Z87+ Protective Side Shields</small></div>
+      <div class="ap">+$10</div>
+    </div>
+
+    <button class="atc" id="atc" onclick="addCart()">Add to Cart — <span id="atcPrice">$85</span></button>
+    <div class="stock"><span class="dot"></span> In stock · Ships free in the US</div>
+  </div>
+
+  <!-- Description -->
+  <section class="paper-bg">
+    <h2 class="sec-h left">Impact-Resistant Sunglasses Built for Tough Jobs</h2>
+    <p class="sec-p">The Pomona sunglasses are engineered to withstand the rigors of your demanding job, offering the perfect balance of comfort, durability, and style. Constructed from high-strength polycarbonate, these sunglasses are designed to stay securely in place, even during the most intense situations. Paired with black polycarbonate polarized lenses, they deliver a clean, professional look whether you're on or off duty. The Pomona meets ANSI Z.87 impact requirements and satisfies OSHA specifications for jobs that do not require side impact or chemical splash resistance.</p>
+  </section>
+
+  <!-- FLOVEX -->
+  <section class="dark-bg">
+    <h2 class="sec-h">True-To-Life Vision with FLOVEX™ Lens Tech</h2>
+    <p class="sec-p" style="text-align:center;max-width:330px;margin:0 auto;">Instead of dulling or enhancing colors, FLOVEX™ maintains a natural, true-to-life visual experience while drastically reducing glare. The result is clean, comfortable optics you can wear all day — so natural, you may forget you're wearing them.</p>
+  </section>
+
+  <!-- Replacement -->
+  <section>
+    <h2 class="sec-h left">Lost or Damaged? No Problem.</h2>
+    <p class="sec-p">Sunglasses lost or destroyed in the line of duty? We've got your back — no questions asked. When the time comes, just pay a small $19.99 processing fee and provide your original order number to verify your purchase.</p>
+    <div class="repl">
+      <div class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Damaged replacement covered</div>
+      <div class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Lost replacement covered</div>
+      <div class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Prescription sunglasses limited to 1 year</div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="paper-bg" id="reviews">
+    <h2 class="sec-h">Customer Reviews</h2>
+    <div class="rw-top">
+      <div class="rw-score"><div class="big">4.70</div><div class="st">★★★★★</div><div class="ct">237 reviews</div></div>
+      <div class="rw-hist">
+        <div class="rw-bar"><span class="lab">5★</span><span class="track"><span class="fill" style="width:84.4%"></span></span><span class="cnt">200</span></div>
+        <div class="rw-bar"><span class="lab">4★</span><span class="track"><span class="fill" style="width:8.4%"></span></span><span class="cnt">20</span></div>
+        <div class="rw-bar"><span class="lab">3★</span><span class="track"><span class="fill" style="width:1.7%"></span></span><span class="cnt">4</span></div>
+        <div class="rw-bar"><span class="lab">2★</span><span class="track"><span class="fill" style="width:3.4%"></span></span><span class="cnt">8</span></div>
+        <div class="rw-bar"><span class="lab">1★</span><span class="track"><span class="fill" style="width:2.1%"></span></span><span class="cnt">5</span></div>
+      </div>
+    </div>
+    <div class="rlist">
+      <div class="rev"><div class="rh"><span class="rs">★★★★★</span><span class="rd">Jun 13, 2026</span></div><div class="rt">Great Quality!</div><p>These glasses are great! Came in quickly and look awesome!</p><div class="ra">Rylea <span class="vb">✔ VERIFIED</span></div></div>
+      <div class="rev"><div class="rh"><span class="rs">★★★★★</span><span class="rd">Jun 9, 2026</span></div><div class="rt">10/10</div><p>Great sunglasses.</p><div class="ra">Justin Cave <span class="vb">✔ VERIFIED</span></div></div>
+      <div class="rev"><div class="rh"><span class="rs">★★★★★</span><span class="rd">Jun 5, 2026</span></div><div class="rt">Very comfortable</div><p>Very comfortable — wear them all day on shift.</p><div class="ra">Luke <span class="vb">✔ VERIFIED</span></div></div>
+      <div class="rev"><div class="rh"><span class="rs">★★★★☆</span><span class="rd">Jun 5, 2026</span></div><div class="rt">Great price and quality</div><p>The price for these quality glasses is right in my budget.</p><div class="ra">Marten S <span class="vb">✔ VERIFIED</span></div></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="fl">⫻ FRONTLINE OPTICS</div>
+    <div>Impact-rated eyewear for those who serve.</div>
+    <div style="margin-top:10px;"><a href="#reviews">Reviews</a><a href="#buy" onclick="goBuy(event)">Shop</a><a href="#">Replacement Program</a></div>
+    <div style="margin-top:14px;opacity:.5;font-size:11px;">© Frontline Optics · Supporting the First Responders Children's Foundation</div>
+  </footer>
+
+  <!-- Sticky -->
+  <div class="sticky" id="sticky">
+    <img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-1-3.jpg?width=120" alt="">
+    <div class="si"><div class="nm">Pomona</div><div class="pp"><span id="stkB">One Pair</span> · <b id="stkPrice">$85</b></div></div>
+    <button class="sbtn" onclick="addCart()">Add to Cart</button>
+  </div>
+
+  <div class="toast" id="toast">Added to cart ✓</div>
+</div>
+
+<script>
+const track=document.getElementById('gtrack');
+const slides=[...track.children];
+const dotsWrap=document.getElementById('dots');
+slides.forEach((s,i)=>{const d=document.createElement('b');if(i===0)d.classList.add('on');d.onclick=()=>track.scrollTo({left:track.clientWidth*i,behavior:'smooth'});dotsWrap.appendChild(d);});
+const dots=[...dotsWrap.children];
+track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.clientWidth);dots.forEach((d,j)=>d.classList.toggle('on',j===i));},{passive:true});
+
+document.querySelectorAll('#colors button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#colors button').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.querySelector('.sublabel .v').textContent='— '+b.title+(b.title==='Pomona'?' (Black)':'');});
+
+let sel={b:'one',base:85,shield:false};
+const labels={one:'One Pair',crew:'Crew Pack',batt:'Battalion Bundle'};
+function total(){return sel.base+(sel.shield?10:0);}
+function refresh(){const t='$'+total();document.getElementById('atcPrice').textContent=t;document.getElementById('stkPrice').textContent=t;document.getElementById('stkB').textContent=labels[sel.b];}
+function pickB(el){document.querySelectorAll('.bundle').forEach(x=>x.classList.remove('on'));el.classList.add('on');sel.b=el.dataset.b;sel.base=+el.dataset.p;refresh();}
+function toggleShield(){sel.shield=!sel.shield;document.getElementById('shieldAddon').classList.toggle('on',sel.shield);refresh();}
+function addCart(){const t=document.getElementById('toast');t.textContent=labels[sel.b]+(sel.shield?' + Z87+ shields':'')+' — $'+total()+' ✓';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+function goBuy(e){if(e)e.preventDefault();document.getElementById('buy').scrollIntoView({behavior:'smooth'});}
+
+const buy=document.getElementById('buy'),sticky=document.getElementById('sticky');
+function onScroll(){const r=buy.getBoundingClientRect();sticky.classList.toggle('show', r.bottom<0);}
+window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);onScroll();
+</script>
+</body>
+</html>
