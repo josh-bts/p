@@ -85,15 +85,23 @@ h1.title{font-size:23px;font-weight:700;margin-bottom:7px;}
 .colors button.on{box-shadow:0 0 0 2.4px var(--sage);}
 .colors button::after{content:attr(data-c);position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:600;color:var(--muted);}
 
-/* SIZE selector with inline explainers (secondary improvement) */
-.sizes{display:flex;flex-direction:column;gap:8px;}
-.sizes button{display:flex;align-items:center;justify-content:space-between;text-align:left;padding:11px 13px;border:1.5px solid var(--line);background:#fff;transition:.15s;border-radius:2px;}
+/* SIZE selector: two base sizes + a center-panel add-on toggle */
+.sizes{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.sizes button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;padding:12px 13px;border:1.5px solid var(--line);background:#fff;transition:.15s;border-radius:2px;}
 .sizes button.on{border-color:var(--sage);background:var(--cream-2);}
-.sizes button .sl{display:flex;flex-direction:column;gap:1px;}
-.sizes button .sl b{font-size:13.5px;font-weight:700;}
-.sizes button .sl small{font-size:11px;color:var(--muted);font-weight:500;}
-.sizes button .sp{font-size:12.5px;font-weight:700;color:var(--sage);}
-.sizes button .sp.free{color:var(--muted);font-weight:500;}
+.sizes button b{font-size:14px;font-weight:700;}
+.sizes button small{font-size:10.5px;color:var(--muted);font-weight:500;line-height:1.25;}
+/* center-panel add-on toggle */
+.addon{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:11px;padding:13px;border:1.5px solid var(--line);border-radius:2px;background:#fff;cursor:pointer;transition:.15s;}
+.addon.on{border-color:var(--sage);background:var(--cream-2);}
+.addon .axl b{font-size:13px;font-weight:700;display:block;}
+.addon .axl small{font-size:10.5px;color:var(--muted);font-weight:500;line-height:1.3;}
+.addon .axr{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
+.addon .axp{font-size:13px;font-weight:700;color:var(--sage);}
+.switch{width:42px;height:24px;border-radius:20px;background:#d9d3c6;position:relative;transition:.2s;flex:0 0 42px;display:inline-block;}
+.switch span{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.25);}
+.addon.on .switch{background:var(--sage);}
+.addon.on .switch span{left:20px;}
 
 .atc{width:100%;background:var(--sage);color:var(--cream);font-weight:600;font-size:15px;letter-spacing:1px;padding:16px;text-transform:uppercase;transition:.15s;margin-top:4px;border-radius:2px;}
 .atc:active{background:var(--sage-dark);}
@@ -232,14 +240,16 @@ section{padding:30px 16px;}
       </div>
     </div>
 
-    <!-- Size with inline explainers (secondary improvement) -->
+    <!-- Size: two base sizes + an optional center-panel add-on (clearer buy box) -->
     <div class="selrow">
-      <div class="sellabel"><span>Size</span><span class="guide" onclick="openChart()">Size Chart</span></div>
+      <div class="sellabel"><span>Size <span class="val" id="sizeVal">— XS–L</span></span><span class="guide" onclick="openChart()">Size Chart</span></div>
       <div class="sizes" id="sizes">
-        <button data-s="XS-L" data-p="28.90" class="on"><span class="sl"><b>XS–L</b><small>Standard band &amp; cup range</small></span><span class="sp free">Included</span></button>
-        <button data-s="L-Plus" data-p="28.90"><span class="sl"><b>L-Plus</b><small>For larger band &amp; fuller cup sizes</small></span><span class="sp free">Included</span></button>
-        <button data-s="XS-L + 1&quot; Panel" data-p="31.90"><span class="sl"><b>XS–L + 1" Center Panel</b><small>Adds 1" of width for extra room</small></span><span class="sp">$31.90</span></button>
-        <button data-s="L-Plus + 1&quot; Panel" data-p="31.90"><span class="sl"><b>L-Plus + 1" Center Panel</b><small>L-Plus with 1" of extra width</small></span><span class="sp">$31.90</span></button>
+        <button data-s="XS-L" class="on"><b>XS–L</b><small>Standard band &amp; cup range</small></button>
+        <button data-s="L-Plus"><b>L-Plus</b><small>Larger band &amp; fuller cups</small></button>
+      </div>
+      <div class="addon" id="panelAddon" onclick="togglePanel()">
+        <div class="axl"><b>Add a 1" Center Panel</b><small>+1" of extra width — ideal if you're between sizes</small></div>
+        <div class="axr"><span class="axp">+$3</span><span class="switch" id="panelSwitch"><span></span></span></div>
       </div>
     </div>
 
@@ -343,10 +353,14 @@ slides.forEach((s,i)=>{
 const dots=[...dotsWrap.children], thumbs=[...thumbsWrap.children];
 track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.clientWidth);dots.forEach((d,j)=>d.classList.toggle('on',j===i));thumbs.forEach((t,j)=>t.classList.toggle('on',j===i));},{passive:true});
 
-let sel={color:'Black',size:'XS–L',price:'28.90'};
+let sel={color:'Black',size:'XS–L',panel:false};
+const BASE=28.90, PANEL=3.00;
+const curPrice=()=>(BASE+(sel.panel?PANEL:0)).toFixed(2);
+function refreshPrice(){const p='$'+curPrice();document.getElementById('atcPrice').textContent=p;document.getElementById('priceNow').textContent=p;document.getElementById('stkPrice').textContent=p;}
 document.querySelectorAll('#colors button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#colors button').forEach(x=>x.classList.remove('on'));b.classList.add('on');sel.color=b.dataset.c;document.getElementById('colorVal').textContent='— '+sel.color;syncVar();});
-document.querySelectorAll('#sizes button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#sizes button').forEach(x=>x.classList.remove('on'));b.classList.add('on');sel.size=b.querySelector('b').textContent;sel.price=b.dataset.p;document.getElementById('atcPrice').textContent='$'+sel.price;document.getElementById('priceNow').textContent='$'+sel.price;syncVar();});
-function syncVar(){document.getElementById('stkVar').textContent='· '+sel.color+' / '+sel.size;document.getElementById('stkPrice').textContent='$'+sel.price;}
+document.querySelectorAll('#sizes button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#sizes button').forEach(x=>x.classList.remove('on'));b.classList.add('on');sel.size=b.querySelector('b').textContent;document.getElementById('sizeVal').textContent='— '+sel.size;syncVar();});
+function togglePanel(){sel.panel=!sel.panel;document.getElementById('panelAddon').classList.toggle('on',sel.panel);refreshPrice();syncVar();}
+function syncVar(){const label=sel.size+(sel.panel?' + 1" Panel':'');document.getElementById('stkVar').textContent='· '+sel.color+' / '+label;document.getElementById('stkPrice').textContent='$'+curPrice();}
 
 function addCart(){const t=document.getElementById('toast');t.textContent='Added: '+sel.color+' / '+sel.size+' ✓';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
 
