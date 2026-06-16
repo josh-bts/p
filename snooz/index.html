@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>SNOOZ Pro - White Noise Machine with Real Fan Inside</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --mint:#6cd7bd;
+  --mint-d:#4cbfa3;
+  --mint-tint:#e7f7f2;
+  --slate:#2f394e;
+  --muted:#545a71;
+  --soft:rgba(47,57,78,.66);
+  --line:#e9ebef;
+  --paper:#f6f7f9;
+  --frameW:390px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--slate);background:#fff;line-height:1.55;font-weight:400;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;color:var(--slate);line-height:1.14;font-weight:700;letter-spacing:-.4px;}
+button{font-family:inherit;cursor:pointer;border:none;}
+a{color:inherit;text-decoration:none;}
+
+.frame{max-width:var(--frameW);margin:0 auto;background:#fff;position:relative;overflow-x:hidden;}
+@media(min-width:600px){
+  body{background:#dfe2e6;padding:24px 0;}
+  .frame{box-shadow:0 22px 60px rgba(47,57,78,.22);border-radius:24px;overflow:hidden;}
+}
+
+.announce{background:var(--mint-tint);color:var(--slate);font-size:12px;font-weight:600;text-align:center;padding:9px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:#fff;position:sticky;top:0;z-index:60;border-bottom:1px solid var(--line);}
+.hdr .burger{display:flex;flex-direction:column;gap:5px;width:24px;}
+.hdr .burger span{height:2.4px;background:var(--slate);border-radius:2px;}
+.hdr .logo{height:26px;width:auto;}
+.hdr .cart{width:25px;color:var(--slate);}
+
+.gallery{position:relative;background:var(--paper);}
+.gtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;}
+.gtrack::-webkit-scrollbar{display:none;}
+.gslide{flex:0 0 100%;scroll-snap-align:center;aspect-ratio:1/1;background:var(--paper);}
+.gslide img{width:100%;height:100%;object-fit:cover;}
+.dots{display:flex;gap:6px;justify-content:center;padding:12px 0 4px;}
+.dots b{width:7px;height:7px;border-radius:50%;background:#d3d6dc;transition:.2s;}
+.dots b.on{background:var(--mint-d);width:20px;border-radius:4px;}
+
+.buy{padding:16px 18px 8px;}
+.rate{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;margin-bottom:8px;}
+.rate .s{color:#f5a623;letter-spacing:1px;}
+.rate a{color:var(--soft);text-decoration:underline;}
+h1.title{font-size:27px;font-weight:700;margin-bottom:8px;}
+.hsa{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft);font-weight:500;margin-bottom:10px;}
+.hsa b{background:#1b2a5e;color:#fff;font-size:11px;font-weight:800;padding:3px 7px;border-radius:5px;font-family:'Poppins';}
+.price{font-size:25px;font-weight:800;font-family:'Poppins';margin-bottom:16px;}
+
+/* trust strip (secondary improvement) */
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:18px;}
+.trust .t{background:var(--paper);border-radius:11px;padding:10px 4px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:5px;min-height:66px;justify-content:center;}
+.trust .t svg{width:19px;height:19px;color:var(--mint-d);}
+.trust .t .l{font-size:8.6px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.2px;line-height:1.2;}
+
+.feat{display:flex;flex-direction:column;gap:11px;margin-bottom:18px;}
+.feat .f{display:flex;gap:11px;align-items:center;font-size:14px;font-weight:600;}
+.feat .f .fi{flex:0 0 30px;width:30px;height:30px;border-radius:8px;background:var(--mint-tint);display:flex;align-items:center;justify-content:center;}
+.feat .f .fi svg{width:17px;height:17px;color:var(--mint-d);}
+
+.sublabel{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;margin-bottom:9px;font-family:'Poppins';}
+.sublabel .v{color:var(--soft);font-weight:600;text-transform:none;letter-spacing:0;}
+.colors{display:flex;gap:12px;margin-bottom:18px;}
+.colors button{width:40px;height:40px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line);transition:.15s;position:relative;}
+.colors button.on{box-shadow:0 0 0 2.5px var(--mint-d);}
+.colors button.soldout{opacity:.4;cursor:not-allowed;}
+.colors button.soldout::after{content:"";position:absolute;top:50%;left:-3px;right:-3px;height:1.5px;background:#9aa0ad;transform:rotate(-20deg);}
+
+.atc{width:100%;background:var(--mint);color:#0f3b31;font-weight:800;font-size:16px;padding:17px;border-radius:31px;font-family:'Poppins';transition:.12s;}
+.atc:active{background:var(--mint-d);}
+.morepay{text-align:center;font-size:12px;color:var(--soft);text-decoration:underline;margin-top:11px;}
+
+/* bundles */
+.bms{margin:22px 0 4px;}
+.bms .bh{font-size:13px;font-weight:800;font-family:'Poppins';margin-bottom:10px;}
+.bundle{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:12px;padding:13px;margin-bottom:9px;cursor:pointer;transition:.15s;}
+.bundle.on{border-color:var(--mint-d);background:var(--mint-tint);}
+.bundle .bt{flex:1;}
+.bundle .bt b{font-size:14px;font-weight:700;font-family:'Poppins';display:block;}
+.bundle .bt small{font-size:11.5px;color:var(--soft);}
+.bundle .bp{text-align:right;}
+.bundle .bp .pr{font-size:16px;font-weight:800;font-family:'Poppins';}
+.bundle .bp .sv{display:block;font-size:9.5px;font-weight:800;color:var(--mint-d);text-transform:uppercase;}
+
+section{padding:34px 18px;}
+.sec-h{font-size:24px;font-weight:700;text-align:center;margin-bottom:10px;letter-spacing:-.4px;}
+.sec-h.left{text-align:left;}
+.sec-p{font-size:13.5px;color:var(--soft);line-height:1.6;}
+.sec-p.c{text-align:center;max-width:330px;margin:0 auto;}
+.paper-bg{background:var(--paper);}
+.mint-bg{background:var(--mint-tint);}
+
+.fanimg{border-radius:16px;overflow:hidden;margin-bottom:16px;}
+.why{display:flex;flex-direction:column;gap:11px;margin-top:8px;}
+.why .w{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;}
+.why .w svg{flex:0 0 18px;width:18px;height:18px;color:var(--mint-d);margin-top:2px;}
+
+.hl{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:8px;}
+.hl .h{text-align:center;}
+.hl .h .ci{width:46px;height:46px;border-radius:50%;background:var(--mint-tint);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;}
+.hl .h .ci svg{width:24px;height:24px;color:var(--mint-d);}
+.hl .h span{font-size:11px;font-weight:700;font-family:'Poppins';line-height:1.2;display:block;}
+
+.steps{display:flex;flex-direction:column;gap:0;}
+.step{display:flex;gap:15px;padding-bottom:22px;position:relative;}
+.step:not(:last-child)::before{content:"";position:absolute;left:16px;top:36px;bottom:0;width:2px;background:var(--mint-tint);}
+.step .num{flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:var(--mint);color:#0f3b31;display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Poppins';z-index:1;}
+.step .sc h4{font-size:15px;margin-bottom:4px;}
+.step .sc p{font-size:12.5px;color:var(--soft);line-height:1.5;}
+
+.guar{display:flex;flex-direction:column;gap:16px;}
+.gcard{text-align:center;}
+.gcard h3{font-size:18px;margin-bottom:6px;}
+.gcard p{font-size:13px;color:var(--soft);line-height:1.55;}
+
+/* comparison */
+.cmp{width:100%;border-collapse:collapse;font-size:12px;border:1.5px solid var(--line);border-radius:14px;overflow:hidden;}
+.cmp th,.cmp td{padding:11px 8px;text-align:center;border:1px solid var(--line);}
+.cmp th{font-family:'Poppins';font-weight:800;font-size:12px;background:var(--paper);}
+.cmp th.pro{background:var(--mint);color:#0f3b31;}
+.cmp td:first-child,.cmp th:first-child{text-align:left;font-weight:600;color:var(--slate);font-size:11.5px;}
+.cmp .y{color:var(--mint-d);font-weight:800;font-size:14px;}
+.cmp .n{color:#c3c7cf;}
+.cmp .sm{font-size:10.5px;color:var(--soft);}
+
+.press{display:flex;gap:11px;overflow-x:auto;scrollbar-width:none;}
+.press::-webkit-scrollbar{display:none;}
+.press .pc{flex:0 0 80%;scroll-snap-align:center;background:var(--paper);border-radius:14px;padding:18px;font-size:14px;font-style:italic;font-weight:500;color:var(--slate);line-height:1.45;}
+
+.tcard{background:var(--mint-tint);border-radius:14px;padding:18px;text-align:center;}
+.tcard p{font-size:14.5px;font-style:italic;font-weight:500;line-height:1.5;}
+.tcard .who{margin-top:9px;font-size:12px;font-weight:700;font-family:'Poppins';}
+.tcard .who span{color:var(--mint-d);font-size:10px;}
+
+.acc{border-top:1px solid var(--line);}
+.acc .item{border-bottom:1px solid var(--line);}
+.acc .q{display:flex;align-items:center;justify-content:space-between;padding:15px 2px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:'Poppins';gap:12px;}
+.acc .q .pm{color:var(--mint-d);font-size:20px;flex:0 0 auto;transition:.2s;}
+.acc .item.open .pm{transform:rotate(45deg);}
+.acc .a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.acc .a .inner{padding:0 2px 15px;font-size:12.5px;color:var(--soft);line-height:1.6;}
+
+.foot{background:var(--slate);color:rgba(255,255,255,.6);padding:28px 18px 96px;text-align:center;font-size:12px;}
+.foot img{height:24px;margin:0 auto 12px;}
+.foot a{color:rgba(255,255,255,.6);text-decoration:underline;margin:0 8px;}
+
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(130%);width:100%;max-width:var(--frameW);background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(47,57,78,.14);padding:10px 14px calc(10px + env(safe-area-inset-bottom));z-index:90;transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:11px;}
+.sticky.show{transform:translateX(-50%) translateY(0);}
+.sticky img{width:42px;height:42px;border-radius:8px;object-fit:cover;flex:0 0 42px;background:var(--paper);}
+.sticky .si{flex:1;min-width:0;}
+.sticky .si .nm{font-size:13px;font-weight:800;font-family:'Poppins';line-height:1;}
+.sticky .si .pp{font-size:12px;color:var(--soft);font-weight:600;}
+.sticky .si .pp b{color:var(--slate);font-weight:800;}
+.sticky .sbtn{flex:0 0 auto;background:var(--mint);color:#0f3b31;font-weight:800;font-size:13.5px;padding:13px 20px;border-radius:31px;}
+
+.toast{position:fixed;top:14px;left:50%;transform:translateX(-50%) translateY(-160%);background:var(--slate);color:#fff;padding:12px 20px;border-radius:30px;font-size:12.5px;font-weight:700;z-index:120;transition:transform .3s;box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.toast.show{transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+<div class="frame" id="frame">
+
+  <div class="announce">Real fan inside &middot; 100-night risk-free trial &middot; HSA/FSA eligible</div>
+
+  <header class="hdr">
+    <div class="burger"><span></span><span></span><span></span></div>
+    <img class="logo" src="https://getsnooz.com/cdn/shop/files/SNOOZ-Logo-PNG.png?width=200" alt="SNOOZ" height="26">
+    <svg class="cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+  </header>
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <div class="gtrack" id="gtrack">
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/1378/8621/files/snooz-pro-white-noise-machine-cotton_a58e46f1-7c1e-4da9-8302-018bbfabcccf.jpg?width=820" alt="SNOOZ Pro in Cotton" loading="eager"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/1378/8621/products/snooz-pro-white-noise-sound-machine-fan-sound.jpg?width=820" alt="Real fan inside"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/1378/8621/files/snz-pro-hero-midnight-2000.jpg?width=820" alt="SNOOZ Pro in Midnight"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/1378/8621/products/snooz-pro-white-noise-sound-machine-app_7808018e-7727-4a39-8cc0-4fed90db7425.jpg?width=820" alt="SNOOZ companion app"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/1378/8621/products/snooz-pro-white-noise-sound-machine-adjustable.jpg?width=820" alt="Adjustable tone knob"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/1378/8621/products/snooz-pro-white-noise-sound-machine-travel.jpg?width=820" alt="Travel case included"></div>
+    </div>
+    <div class="dots" id="dots"></div>
+  </div>
+
+  <!-- Buy zone -->
+  <div class="buy" id="buy">
+    <div class="rate"><span class="s">★★★★★</span><a href="#reviews">82 reviews</a></div>
+    <h1 class="title">SNOOZ Pro White Noise Machine</h1>
+    <div class="hsa">Pay using HSA / FSA with <b>flex</b></div>
+    <div class="price">$119.99</div>
+
+    <!-- trust strip (secondary improvement) -->
+    <div class="trust">
+      <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.5"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3M6.5 6.5l2 2M15.5 15.5l2 2M17.5 6.5l-2 2M8.5 15.5l-2 2"/></svg><span class="l">Real Fan Inside</span></div>
+      <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2 4 4 .5-3 3 .8 4-3.8-2-3.8 2 .8-4-3-3 4-.5z"/></svg><span class="l">100-Night Trial</span></div>
+      <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="14" height="11" rx="1"/><path d="M15 9h4l3 3v5h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg><span class="l">Free Ship &amp; Returns</span></div>
+      <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span class="l">HSA/FSA Eligible</span></div>
+    </div>
+
+    <!-- benefits -->
+    <div class="feat">
+      <div class="f"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 5c2 0 3 2 2 4M12 19c-2 0-3-2-2-4M5 12c0-2 2-3 4-2M19 12c0 2-2 3-4 2"/></svg></div> Sleep-inducing whooooosh from a real fan</div>
+      <div class="f"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div> Control without leaving your bed</div>
+      <div class="f"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14v6M9 9v11M14 4v16M19 11v9"/></svg></div> Customizable tone and 10 volume levels</div>
+    </div>
+
+    <!-- color -->
+    <div class="sublabel">Color <span class="v">— Cotton</span></div>
+    <div class="colors" id="colors">
+      <button class="on" data-c="Cotton" style="background:#f0eeea;" title="Cotton"></button>
+      <button data-c="Midnight" style="background:#1b1c22;" title="Midnight"></button>
+      <button class="soldout" data-c="Dusk" style="background:#6c8a9b;" title="Dusk — sold out"></button>
+      <button class="soldout" data-c="Blush" style="background:#e0b6b0;" title="Blush — sold out"></button>
+    </div>
+
+    <button class="atc" id="atc" onclick="addCart()">Add to Cart — $119.99</button>
+    <div class="morepay">More payment options</div>
+
+    <!-- bundles -->
+    <div class="bms">
+      <div class="bh">Buy More &amp; Save</div>
+      <div class="bundle" data-p="230" data-l="2-Pack" onclick="pickB(this)"><div class="bt"><b>SNOOZ Pro 2-Pack</b><small>One for every room</small></div><div class="bp"><span class="pr">$230</span><span class="sv">Save $10</span></div></div>
+      <div class="bundle" data-p="345" data-l="3-Pack" onclick="pickB(this)"><div class="bt"><b>SNOOZ Pro 3-Pack</b><small>The whole house</small></div><div class="bp"><span class="pr">$345</span><span class="sv">Save $15</span></div></div>
+    </div>
+  </div>
+
+  <!-- Testimonial -->
+  <section>
+    <div class="tcard"><p>"I have used this every night since it arrived. It has definitely helped me sleep better. The sound is perfect."</p><div class="who">Krishna W <span>· ✔ Verified Buyer</span></div></div>
+  </section>
+
+  <!-- Real fan -->
+  <section class="paper-bg">
+    <div class="fanimg"><img src="https://cdn.shopify.com/s/files/1/1378/8621/products/snooz-pro-white-noise-sound-machine-fan-sound.jpg?width=760" alt="Real fan inside SNOOZ Pro"></div>
+    <h2 class="sec-h">A real fan, not a speaker.</h2>
+    <p class="sec-p c">No cheap speakers, no looping tracks — just the soothing, natural sound of moving air. Fall asleep and stay asleep to a whoooosh that never repeats.</p>
+    <div class="why">
+      <div class="w"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M20 6L9 17l-5-5"/></svg> SNOOZ sounds better than anything else</div>
+      <div class="w"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M20 6L9 17l-5-5"/></svg> It uses a real fan, not a speaker — no loops, just moving air</div>
+      <div class="w"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M20 6L9 17l-5-5"/></svg> Schedule it and forget it with the free companion app</div>
+      <div class="w"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M20 6L9 17l-5-5"/></svg> Travel-friendly, no unwanted cold air, a fraction of the energy of a fan</div>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section>
+    <h2 class="sec-h">Everything the Pro does</h2>
+    <div class="hl">
+      <div class="h"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 4v3M4 12h3M20 12h-3M12 20v-3"/></svg></div><span>Real Fan Sound</span></div>
+      <div class="h"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12c4-6 14-6 18 0M3 12c4 6 14 6 18 0"/></svg></div><span>No Looping Tracks</span></div>
+      <div class="h"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/></svg></div><span>Free App</span></div>
+      <div class="h"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-12 6 12M7 13h6M16 5h4v4"/></svg></div><span>Travel Friendly</span></div>
+      <div class="h"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><span>Programmable</span></div>
+      <div class="h"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg></div><span>Suits Any Decor</span></div>
+    </div>
+  </section>
+
+  <!-- How to use -->
+  <section class="mint-bg">
+    <h2 class="sec-h">Using SNOOZ Pro is simple.</h2>
+    <div class="steps" style="margin-top:18px;">
+      <div class="step"><div class="num">1</div><div class="sc"><h4>Tap the power button</h4><p>Touch the power button to create an instant soothing fan sound. Adjust the volume (fan speed) to your comfort.</p></div></div>
+      <div class="step"><div class="num">2</div><div class="sc"><h4>Adjust the tone</h4><p>Twist the easy-set tone knob to change from a light fan sound (think table fan) to a deep fan drone (think airplane cabin) and everything in between.</p></div></div>
+      <div class="step"><div class="num">3</div><div class="sc"><h4>Set it and forget it</h4><p>Program it to turn on/off automatically — or fade in/fade out — with the free SNOOZ app. Set up to 7 different schedules a day.</p></div></div>
+    </div>
+  </section>
+
+  <!-- Guarantee -->
+  <section>
+    <div class="guar">
+      <div class="gcard"><h3>Free Returns Within 100 Nights</h3><p>We're so confident you'll find SNOOZ the sleepiest sound machine that should you not love it (and we know you will) we'll take it back and pay for the return shipping.</p></div>
+      <div class="gcard"><h3>Fast, Free Shipping — No Minimum</h3><p>Every order ships fast and free because we want you sleeping better ASAP.</p></div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="paper-bg">
+    <h2 class="sec-h">Which SNOOZ is right for you?</h2>
+    <table class="cmp" style="margin-top:8px;">
+      <thead><tr><th></th><th class="pro">SNOOZ Pro</th><th>Original</th></tr></thead>
+      <tbody>
+        <tr><td>Real Fan Sound</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Adjustable Tone &amp; Volume</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>App Remote &amp; Scheduling</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Easy-Set Tone Control Knob</td><td class="y">✓</td><td class="n">—</td></tr>
+        <tr><td>Improved Build Quality</td><td class="y">✓</td><td class="n">—</td></tr>
+        <tr><td>Travel Case Included</td><td class="y">✓</td><td class="n">—</td></tr>
+        <tr><td>App Timers</td><td class="sm">Up to 7/day</td><td class="sm">1/day</td></tr>
+        <tr><td>Colors</td><td class="sm">Cotton, Blush, Dusk, Midnight</td><td class="sm">Cloud, Charcoal</td></tr>
+        <tr><td>Warranty</td><td class="sm">Two Years</td><td class="sm">One Year</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Press -->
+  <section>
+    <h2 class="sec-h">In the press</h2>
+    <div class="press">
+      <div class="pc">"If this white noise machine can't get you a good night of shut-eye, nothing will."</div>
+      <div class="pc">"This sleek, compact white noise machine is bound to help you catch more Zs… Hello, uninterrupted sleep!"</div>
+      <div class="pc">"…a sleek, simple design that means it'll be inconspicuous among your bedroom decor."</div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="paper-bg" id="reviews">
+    <h2 class="sec-h">Frequently Asked Questions</h2>
+    <div class="acc" id="acc" style="margin-top:14px;">
+      <div class="item"><div class="q">What does the SNOOZ Pro sound like? <span class="pm">+</span></div><div class="a"><div class="inner">SNOOZ Pro sounds like a fan — because it has a real fan inside. You can adjust the tone from a light, airy fan sound (similar to a table fan) to a deep, low-pitched hum (similar to an airplane cabin) using the tone control knob on the bottom. The sound is continuous, natural, and never loops or repeats.</div></div></div>
+      <div class="item"><div class="q">How loud is the SNOOZ Pro? <span class="pm">+</span></div><div class="a"><div class="inner">SNOOZ Pro has 10 volume levels and produces sound ranging from 46 to 87 dBA measured at the device. It's powerful enough to mask noisy neighbors, city street noise, snoring, barking dogs, tinnitus, and office conversations. For best results, place it 3–6 feet from your head, between you and the noise source.</div></div></div>
+      <div class="item"><div class="q">What's the difference between the Pro and the Original? <span class="pm">+</span></div><div class="a"><div class="inner">Both use a real fan inside to generate natural, non-looping white noise. The Pro adds an upgraded build and fabric design, a new easy-set tone control knob on the bottom, expanded app functionality, and a protective travel case included. The sound quality and volume range (46–87 dBA) are the same across both models.</div></div></div>
+      <div class="item"><div class="q">Do I need the app to use it? <span class="pm">+</span></div><div class="a"><div class="inner">No. SNOOZ Pro works perfectly on its own — just plug it in and adjust the volume and tone manually. The free SNOOZ app (iOS and Android) is completely optional and adds remote control, scheduling with fade in/out, night light mode, nursery calibration, and button brightness control. There are no subscriptions — ever.</div></div></div>
+      <div class="item"><div class="q">Is the SNOOZ Pro safe for babies? <span class="pm">+</span></div><div class="a"><div class="inner">Many parents use the SNOOZ Pro in their nursery. The free app includes a nursery calibration feature that limits the volume to a level aligned with pediatric guidelines. The American Academy of Pediatrics recommends placing sound machines at least 7 feet from your baby's sleeping area and keeping the volume comfortable.</div></div></div>
+      <div class="item"><div class="q">Is it HSA or FSA eligible? <span class="pm">+</span></div><div class="a"><div class="inner">Yes. The SNOOZ Pro is HSA and FSA eligible — you can use your pre-tax health savings or flexible spending account benefits to purchase it.</div></div></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <img src="https://getsnooz.com/cdn/shop/files/SNOOZ-Logo-PNG.png?width=180" alt="SNOOZ">
+    <div>The sleepiest sound machine, powered by a real fan.</div>
+    <div style="margin-top:10px;"><a href="#reviews">Reviews</a><a href="#buy" onclick="goBuy(event)">Shop</a><a href="#">Support</a></div>
+    <div style="margin-top:14px;opacity:.5;font-size:11px;">© SNOOZ · 100-night risk-free trial</div>
+  </footer>
+
+  <!-- Sticky -->
+  <div class="sticky" id="sticky">
+    <img src="https://cdn.shopify.com/s/files/1/1378/8621/files/snooz-pro-white-noise-machine-cotton_a58e46f1-7c1e-4da9-8302-018bbfabcccf.jpg?width=120" alt="">
+    <div class="si"><div class="nm">SNOOZ Pro</div><div class="pp"><span id="stkOpt">Cotton</span> · <b id="stkPrice">$119.99</b></div></div>
+    <button class="sbtn" onclick="addCart()">Add to Cart</button>
+  </div>
+
+  <div class="toast" id="toast">Added to cart ✓</div>
+</div>
+
+<script>
+const track=document.getElementById('gtrack');
+const slides=[...track.children];
+const dotsWrap=document.getElementById('dots');
+slides.forEach((s,i)=>{const d=document.createElement('b');if(i===0)d.classList.add('on');d.onclick=()=>track.scrollTo({left:track.clientWidth*i,behavior:'smooth'});dotsWrap.appendChild(d);});
+const dots=[...dotsWrap.children];
+track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.clientWidth);dots.forEach((d,j)=>d.classList.toggle('on',j===i));},{passive:true});
+
+let sel={item:'single',price:119.99,color:'Cotton'};
+function setSticky(){document.getElementById('stkPrice').textContent='$'+(sel.price%1?sel.price.toFixed(2):sel.price);document.getElementById('stkOpt').textContent=sel.item==='single'?sel.color:sel.item;}
+document.querySelectorAll('#colors button:not(.soldout)').forEach(b=>b.onclick=()=>{document.querySelectorAll('#colors button').forEach(x=>x.classList.remove('on'));b.classList.add('on');sel.color=b.dataset.c;sel.item='single';sel.price=119.99;document.querySelector('.sublabel .v').textContent='— '+sel.color;document.querySelectorAll('.bundle').forEach(x=>x.classList.remove('on'));document.getElementById('atc').textContent='Add to Cart — $119.99';setSticky();});
+function pickB(el){document.querySelectorAll('.bundle').forEach(x=>x.classList.remove('on'));el.classList.add('on');sel.item=el.dataset.l;sel.price=+el.dataset.p;document.getElementById('atc').textContent='Add '+el.dataset.l+' — $'+sel.price;setSticky();}
+function addCart(){const t=document.getElementById('toast');t.textContent=(sel.item==='single'?'SNOOZ Pro ('+sel.color+')':sel.item)+' added ✓';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+function goBuy(e){if(e)e.preventDefault();document.getElementById('buy').scrollIntoView({behavior:'smooth'});}
+
+document.querySelectorAll('.acc .q').forEach(q=>q.onclick=()=>{const item=q.parentElement,a=q.nextElementSibling;const open=item.classList.toggle('open');a.style.maxHeight=open?a.scrollHeight+'px':'0';});
+
+const buy=document.getElementById('buy'),sticky=document.getElementById('sticky');
+function onScroll(){const r=buy.getBoundingClientRect();sticky.classList.toggle('show', r.bottom<0);}
+window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);onScroll();
+</script>
+</body>
+</html>
