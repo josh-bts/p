@@ -48,6 +48,14 @@ a{color:inherit;text-decoration:none;}
 .dots{display:flex;gap:6px;justify-content:center;padding:12px 0 4px;}
 .dots b{width:7px;height:7px;border-radius:50%;background:#d3d6dc;transition:.2s;}
 .dots b.on{background:var(--mint-d);width:20px;border-radius:4px;}
+.thumbs{display:flex;gap:8px;padding:8px 18px 2px;overflow-x:auto;scrollbar-width:none;background:#fff;}
+.thumbs::-webkit-scrollbar{display:none;}
+.thumbs img{flex:0 0 58px;width:58px;height:58px;object-fit:cover;border-radius:10px;border:2px solid transparent;opacity:.55;transition:.15s;background:var(--paper);}
+.thumbs img.on{border-color:var(--mint-d);opacity:1;}
+.stepimg{width:100%;height:150px;object-fit:cover;border-radius:12px;margin-bottom:12px;background:var(--paper);}
+.lifeimg{width:100%;border-radius:16px;overflow:hidden;margin-bottom:16px;border:1px solid var(--line);}
+.lifeimg img{width:100%;display:block;}
+.press .pc img.plogo{height:20px;width:auto;margin-bottom:12px;display:block;filter:saturate(0);opacity:.8;}
 
 .buy{padding:16px 18px 8px;}
 .rate{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;margin-bottom:8px;}
@@ -191,6 +199,7 @@ section{padding:34px 18px;}
     </div>
     <div class="dots" id="dots"></div>
   </div>
+  <div class="thumbs" id="thumbs"></div>
 
   <!-- Buy zone -->
   <div class="buy" id="buy">
@@ -225,13 +234,6 @@ section{padding:34px 18px;}
 
     <button class="atc" id="atc" onclick="addCart()">Add to Cart — $119.99</button>
     <div class="morepay">More payment options</div>
-
-    <!-- bundles -->
-    <div class="bms">
-      <div class="bh">Buy More &amp; Save</div>
-      <div class="bundle" data-p="230" data-l="2-Pack" onclick="pickB(this)"><div class="bt"><b>SNOOZ Pro 2-Pack</b><small>One for every room</small></div><div class="bp"><span class="pr">$230</span><span class="sv">Save $10</span></div></div>
-      <div class="bundle" data-p="345" data-l="3-Pack" onclick="pickB(this)"><div class="bt"><b>SNOOZ Pro 3-Pack</b><small>The whole house</small></div><div class="bp"><span class="pr">$345</span><span class="sv">Save $15</span></div></div>
-    </div>
   </div>
 
   <!-- Testimonial -->
@@ -269,10 +271,24 @@ section{padding:34px 18px;}
   <section class="mint-bg">
     <h2 class="sec-h">Using SNOOZ Pro is simple.</h2>
     <div class="steps" style="margin-top:18px;">
-      <div class="step"><div class="num">1</div><div class="sc"><h4>Tap the power button</h4><p>Touch the power button to create an instant soothing fan sound. Adjust the volume (fan speed) to your comfort.</p></div></div>
-      <div class="step"><div class="num">2</div><div class="sc"><h4>Adjust the tone</h4><p>Twist the easy-set tone knob to change from a light fan sound (think table fan) to a deep fan drone (think airplane cabin) and everything in between.</p></div></div>
-      <div class="step"><div class="num">3</div><div class="sc"><h4>Set it and forget it</h4><p>Program it to turn on/off automatically — or fade in/fade out — with the free SNOOZ app. Set up to 7 different schedules a day.</p></div></div>
+      <div class="step"><div class="num">1</div><div class="sc"><img class="stepimg" src="https://cdn.shopify.com/s/files/1/1378/8621/files/878_power_on_pro_lights_1_01a02a9d-ed2c-49c4-a43a-252f9fe106a2.jpg?width=760" alt="Tap the power button" loading="lazy"><h4>Tap the power button</h4><p>Touch the power button to create an instant soothing fan sound. Adjust the volume (fan speed) to your comfort.</p></div></div>
+      <div class="step"><div class="num">2</div><div class="sc"><img class="stepimg" src="https://cdn.shopify.com/s/files/1/1378/8621/files/884_tone_adjust_pro_1_4992b962-24bc-4f9f-9632-b32e11926108.jpg?width=760" alt="Adjust the tone" loading="lazy"><h4>Adjust the tone</h4><p>Twist the easy-set tone knob to change from a light fan sound (think table fan) to a deep fan drone (think airplane cabin) and everything in between.</p></div></div>
+      <div class="step"><div class="num">3</div><div class="sc"><img class="stepimg" src="https://cdn.shopify.com/s/files/1/1378/8621/files/app_pro_e658e6c9-af9e-417f-9637-b6b64f0c8ea7.jpg?width=760" alt="Set it and forget it with the app" loading="lazy"><h4>Set it and forget it</h4><p>Program it to turn on/off automatically — or fade in/fade out — with the free SNOOZ app. Set up to 7 different schedules a day.</p></div></div>
     </div>
+  </section>
+
+  <!-- Looks great in any room -->
+  <section>
+    <div class="lifeimg"><img src="https://cdn.shopify.com/s/files/1/1378/8621/files/592-snooz_pro_on_side_table_909cd100-b04f-4a2e-82e1-80e64d080c2c.jpg?width=760" alt="SNOOZ Pro on a bedside table" loading="lazy"></div>
+    <h2 class="sec-h">A sound machine you won't hide in a drawer.</h2>
+    <p class="sec-p c">Let's face it — most sleep machines are unsightly. With SNOOZ, you won't feel like you have to throw the thing in a drawer before the guests stop by.</p>
+  </section>
+
+  <!-- Travel -->
+  <section class="mint-bg">
+    <div class="lifeimg"><img src="https://cdn.shopify.com/s/files/1/1378/8621/files/3132-travel_case_b92147b7-dd65-44ea-b316-ae4a6676e3be.jpg?width=760" alt="SNOOZ Pro travel case" loading="lazy"></div>
+    <h2 class="sec-h">Make every hotel feel like home.</h2>
+    <p class="sec-p c">Never again worry about getting stuck next to the elevator, the ice machine, or the side of the hotel that faces the freeway. SNOOZ Pro comes with a durable travel case so you're always prepared for whatever noise is generously included with your stay.</p>
   </section>
 
   <!-- Guarantee -->
@@ -306,9 +322,9 @@ section{padding:34px 18px;}
   <section>
     <h2 class="sec-h">In the press</h2>
     <div class="press">
-      <div class="pc">"If this white noise machine can't get you a good night of shut-eye, nothing will."</div>
-      <div class="pc">"This sleek, compact white noise machine is bound to help you catch more Zs… Hello, uninterrupted sleep!"</div>
-      <div class="pc">"…a sleek, simple design that means it'll be inconspicuous among your bedroom decor."</div>
+      <div class="pc"><img class="plogo" src="https://cdn.shopify.com/s/files/1/1378/8621/files/33.png?width=240" alt="Bloomberg">"If this white noise machine can't get you a good night of shut-eye, nothing will."</div>
+      <div class="pc"><img class="plogo" src="https://cdn.shopify.com/s/files/1/1378/8621/files/Vector_9524449f-a705-4678-93f6-2b70c6bc18d4.png?width=240" alt="Good Housekeeping">"This sleek, compact white noise machine is bound to help you catch more Zs… Hello, uninterrupted sleep!"</div>
+      <div class="pc"><img class="plogo" src="https://cdn.shopify.com/s/files/1/1378/8621/files/Vector-1_6e2b7768-5d60-427d-a74e-f81886d3a057.png?width=240" alt="Forbes">"…a sleek, simple design that means it'll be inconspicuous among your bedroom decor."</div>
     </div>
   </section>
 
@@ -346,15 +362,18 @@ section{padding:34px 18px;}
 const track=document.getElementById('gtrack');
 const slides=[...track.children];
 const dotsWrap=document.getElementById('dots');
-slides.forEach((s,i)=>{const d=document.createElement('b');if(i===0)d.classList.add('on');d.onclick=()=>track.scrollTo({left:track.clientWidth*i,behavior:'smooth'});dotsWrap.appendChild(d);});
-const dots=[...dotsWrap.children];
-track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.clientWidth);dots.forEach((d,j)=>d.classList.toggle('on',j===i));},{passive:true});
+const thumbsWrap=document.getElementById('thumbs');
+slides.forEach((s,i)=>{
+  const d=document.createElement('b');if(i===0)d.classList.add('on');d.onclick=()=>track.scrollTo({left:track.clientWidth*i,behavior:'smooth'});dotsWrap.appendChild(d);
+  const t=document.createElement('img');t.src=s.querySelector('img').src;if(i===0)t.classList.add('on');t.onclick=()=>track.scrollTo({left:track.clientWidth*i,behavior:'smooth'});thumbsWrap.appendChild(t);
+});
+const dots=[...dotsWrap.children];const tnodes=[...thumbsWrap.children];
+track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.clientWidth);dots.forEach((d,j)=>d.classList.toggle('on',j===i));tnodes.forEach((t,j)=>t.classList.toggle('on',j===i));},{passive:true});
 
-let sel={item:'single',price:119.99,color:'Cotton'};
-function setSticky(){document.getElementById('stkPrice').textContent='$'+(sel.price%1?sel.price.toFixed(2):sel.price);document.getElementById('stkOpt').textContent=sel.item==='single'?sel.color:sel.item;}
-document.querySelectorAll('#colors button:not(.soldout)').forEach(b=>b.onclick=()=>{document.querySelectorAll('#colors button').forEach(x=>x.classList.remove('on'));b.classList.add('on');sel.color=b.dataset.c;sel.item='single';sel.price=119.99;document.querySelector('.sublabel .v').textContent='— '+sel.color;document.querySelectorAll('.bundle').forEach(x=>x.classList.remove('on'));document.getElementById('atc').textContent='Add to Cart — $119.99';setSticky();});
-function pickB(el){document.querySelectorAll('.bundle').forEach(x=>x.classList.remove('on'));el.classList.add('on');sel.item=el.dataset.l;sel.price=+el.dataset.p;document.getElementById('atc').textContent='Add '+el.dataset.l+' — $'+sel.price;setSticky();}
-function addCart(){const t=document.getElementById('toast');t.textContent=(sel.item==='single'?'SNOOZ Pro ('+sel.color+')':sel.item)+' added ✓';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+let sel={color:'Cotton'};
+function setSticky(){document.getElementById('stkPrice').textContent='$119.99';document.getElementById('stkOpt').textContent=sel.color;}
+document.querySelectorAll('#colors button:not(.soldout)').forEach(b=>b.onclick=()=>{document.querySelectorAll('#colors button').forEach(x=>x.classList.remove('on'));b.classList.add('on');sel.color=b.dataset.c;document.querySelector('.sublabel .v').textContent='— '+sel.color;setSticky();});
+function addCart(){const t=document.getElementById('toast');t.textContent='SNOOZ Pro ('+sel.color+') added ✓';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
 function goBuy(e){if(e)e.preventDefault();document.getElementById('buy').scrollIntoView({behavior:'smooth'});}
 
 document.querySelectorAll('.acc .q').forEach(q=>q.onclick=()=>{const item=q.parentElement,a=q.nextElementSibling;const open=item.classList.toggle('open');a.style.maxHeight=open?a.scrollHeight+'px':'0';});
