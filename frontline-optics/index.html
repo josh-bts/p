@@ -8,37 +8,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ink:#10141b;
-  --blue:#07369c;
-  --lime:#4cdc26;
-  --lime-d:#3fc01f;
-  --muted:#6b7280;
-  --line:#e7e9ee;
-  --paper:#f4f5f7;
-  --frameW:390px;
-}
+:root{--ink:#10141b;--blue:#07369c;--lime:#4cdc26;--lime-d:#3fc01f;--muted:#6b7280;--line:#e7e9ee;--paper:#f4f5f7;--frameW:390px;}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;color:var(--ink);background:#fff;line-height:1.55;font-weight:400;-webkit-font-smoothing:antialiased;}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased;}
 img{max-width:100%;display:block;}
 h1,h2,h3,h4{font-weight:800;line-height:1.1;letter-spacing:-.5px;}
 button{font-family:inherit;cursor:pointer;border:none;}
 a{color:inherit;text-decoration:none;}
-
 .frame{max-width:var(--frameW);margin:0 auto;background:#fff;position:relative;overflow-x:hidden;}
-@media(min-width:600px){
-  body{background:#d4d7dd;padding:24px 0;}
-  .frame{box-shadow:0 22px 60px rgba(16,20,27,.25);border-radius:24px;overflow:hidden;}
-}
+@media(min-width:600px){body{background:#d4d7dd;padding:24px 0;}.frame{box-shadow:0 22px 60px rgba(16,20,27,.25);border-radius:24px;overflow:hidden;}}
 
 .marquee{background:var(--blue);color:#fff;overflow:hidden;white-space:nowrap;padding:9px 0;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
 .marquee .mq{display:inline-block;animation:scroll 20s linear infinite;}
 .marquee .mq span{margin:0 22px;}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:#fff;position:sticky;top:0;z-index:60;border-bottom:1px solid var(--line);}
-.hdr .burger{display:flex;flex-direction:column;gap:5px;width:22px;}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 14px;background:#fff;position:sticky;top:0;z-index:60;border-bottom:1px solid var(--line);}
+.hdr .burger{display:flex;flex-direction:column;gap:4.5px;width:22px;}
 .hdr .burger span{height:2.4px;background:var(--ink);border-radius:2px;}
 .hdr .logo{display:flex;align-items:center;gap:7px;font-weight:900;font-size:18px;letter-spacing:-.5px;}
 .hdr .logo .mk{display:inline-flex;gap:2px;}
@@ -47,25 +34,25 @@ a{color:inherit;text-decoration:none;}
 .hdr .right{display:flex;gap:15px;align-items:center;}
 .hdr .right svg{width:22px;color:var(--ink);}
 
-.gallery{position:relative;background:var(--paper);}
+/* gallery + thumbnails */
+.gallery{background:var(--paper);}
 .gtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;}
 .gtrack::-webkit-scrollbar{display:none;}
 .gslide{flex:0 0 100%;scroll-snap-align:center;aspect-ratio:1/1;background:var(--paper);}
 .gslide img{width:100%;height:100%;object-fit:cover;}
-.dots{display:flex;gap:6px;justify-content:center;padding:12px 0 4px;}
-.dots b{width:7px;height:7px;border-radius:50%;background:#d0d3da;transition:.2s;}
-.dots b.on{background:var(--ink);width:20px;border-radius:4px;}
+.thumbs{display:flex;gap:8px;padding:10px 14px 4px;overflow-x:auto;scrollbar-width:none;background:#fff;}
+.thumbs::-webkit-scrollbar{display:none;}
+.thumbs img{flex:0 0 60px;width:60px;height:60px;object-fit:cover;border-radius:9px;border:2px solid transparent;opacity:.55;transition:.15s;background:var(--paper);}
+.thumbs img.on{border-color:var(--ink);opacity:1;}
 
 .buy{padding:16px 16px 8px;}
 .titlerow{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
 h1.title{font-size:32px;font-weight:800;}
 .rate{flex:0 0 auto;font-size:13px;font-weight:700;white-space:nowrap;padding-top:6px;}
-.rate .s{color:#f5a623;}
-.rate a{color:var(--muted);text-decoration:underline;}
+.rate .s{color:#f5a623;}.rate a{color:var(--muted);text-decoration:underline;}
 .price{font-size:24px;font-weight:800;margin:6px 0 14px;}
 .price .u{font-size:13px;color:var(--muted);font-weight:600;}
 
-/* credential strip (secondary improvement) */
 .creds{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:18px;}
 .creds .c{background:var(--paper);border-radius:10px;padding:10px 4px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;min-height:62px;justify-content:center;}
 .creds .c svg{width:18px;height:18px;color:var(--blue);}
@@ -74,16 +61,12 @@ h1.title{font-size:32px;font-weight:800;}
 
 .sublabel{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;margin-bottom:9px;}
 .sublabel .v{color:var(--muted);font-weight:600;text-transform:none;letter-spacing:0;}
-.colors{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
-.colors button{width:38px;height:38px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line);transition:.15s;}
-.colors button.on{box-shadow:0 0 0 2.4px var(--ink);}
-
 .feat{display:flex;flex-direction:column;gap:9px;margin-bottom:18px;}
 .feat .f{display:flex;gap:9px;align-items:flex-start;font-size:13px;font-weight:500;}
 .feat .f svg{flex:0 0 17px;width:17px;height:17px;color:var(--blue);margin-top:2px;}
 
 /* bundle selector */
-.bundles{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+.bundles{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
 .bundle{border:1.6px solid var(--line);border-radius:12px;padding:13px 14px;cursor:pointer;transition:.15s;position:relative;display:flex;align-items:center;gap:12px;}
 .bundle.on{border-color:var(--lime-d);background:#f6fff2;}
 .bundle .radio{flex:0 0 19px;width:19px;height:19px;border-radius:50%;border:2px solid #cfd3da;position:relative;}
@@ -96,17 +79,30 @@ h1.title{font-size:32px;font-weight:800;}
 .bundle .bp .pr{font-size:16px;font-weight:800;}
 .bundle .bp .was{font-size:11px;color:var(--muted);text-decoration:line-through;}
 .bundle .tag{position:absolute;top:-9px;right:12px;background:var(--blue);color:#fff;font-size:9px;font-weight:800;padding:3px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.4px;}
-.bundle.best .tag{background:var(--lime-d);color:#fff;}
+.bundle.best .tag{background:var(--lime-d);}
+
+/* pair-selector slots */
+.slots{margin:-2px 0 16px;}
+.slots .sh{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;}
+.slots .sh .cnt{color:var(--lime-d);}
+.slotgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
+.slot{border:1.5px solid var(--line);border-radius:11px;overflow:hidden;background:#fff;cursor:pointer;transition:.15s;position:relative;}
+.slot.filled{border-color:var(--ink);}
+.slot.empty{border-style:dashed;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:104px;gap:5px;color:var(--muted);}
+.slot.empty svg{width:22px;height:22px;color:var(--lime-d);}
+.slot.empty span{font-size:10.5px;font-weight:700;}
+.slot img{width:100%;height:74px;object-fit:contain;background:#fff;padding:4px;}
+.slot .sn{font-size:9.5px;font-weight:700;padding:6px 5px;text-align:center;line-height:1.15;}
+.slot .free{position:absolute;top:6px;left:6px;background:var(--lime-d);color:#fff;font-size:8px;font-weight:800;padding:2px 6px;border-radius:10px;text-transform:uppercase;}
+.slot .swap{position:absolute;top:6px;right:6px;background:rgba(16,20,27,.7);color:#fff;font-size:8.5px;font-weight:700;padding:2px 6px;border-radius:10px;}
 
 /* addon */
 .addon{display:flex;align-items:center;gap:11px;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:11px;cursor:pointer;transition:.15s;}
 .addon.on{border-color:var(--blue);background:#f3f6ff;}
 .addon .chk{flex:0 0 20px;width:20px;height:20px;border-radius:5px;border:2px solid #cfd3da;display:flex;align-items:center;justify-content:center;}
 .addon.on .chk{background:var(--blue);border-color:var(--blue);}
-.addon .chk svg{width:12px;height:12px;color:#fff;opacity:0;}
-.addon.on .chk svg{opacity:1;}
-.addon .at{flex:1;font-size:13px;font-weight:700;}
-.addon .at small{display:block;font-size:11px;color:var(--muted);font-weight:500;}
+.addon .chk svg{width:12px;height:12px;color:#fff;opacity:0;}.addon.on .chk svg{opacity:1;}
+.addon .at{flex:1;font-size:13px;font-weight:700;}.addon .at small{display:block;font-size:11px;color:var(--muted);font-weight:500;}
 .addon .ap{font-size:13px;font-weight:800;}
 
 .atc{width:100%;background:var(--lime);color:#06210a;font-weight:800;font-size:16px;padding:17px;border-radius:300px;font-family:'Inter';transition:.12s;letter-spacing:.2px;}
@@ -120,14 +116,22 @@ section{padding:32px 16px;}
 .sec-p{font-size:13.5px;color:var(--muted);line-height:1.6;}
 .paper-bg{background:var(--paper);}
 .dark-bg{background:var(--ink);color:#fff;}
-.dark-bg .sec-h,.dark-bg h3{color:#fff;}
-.dark-bg .sec-p{color:rgba(255,255,255,.7);}
+.dark-bg .sec-h,.dark-bg h3{color:#fff;}.dark-bg .sec-p{color:rgba(255,255,255,.7);}
+.secimg{border-radius:14px;overflow:hidden;margin-bottom:16px;border:1px solid var(--line);}
+.dark-bg .secimg{border-color:rgba(255,255,255,.12);}
+
+/* collection grid */
+.coll{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.cc{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;}
+.cc img{width:100%;height:130px;object-fit:contain;background:#fff;padding:8px;}
+.cc .ccb{padding:10px 11px 12px;}
+.cc .ccb b{font-size:13px;font-weight:800;display:block;}
+.cc .ccb .cp{font-size:12px;color:var(--muted);font-weight:700;margin-top:2px;}
 
 .repl{display:flex;flex-direction:column;gap:10px;margin-top:16px;}
 .repl .r{display:flex;gap:10px;align-items:flex-start;font-size:13px;}
 .repl .r svg{flex:0 0 18px;width:18px;height:18px;color:var(--lime);margin-top:2px;}
 
-/* reviews */
 .rw-top{display:flex;gap:18px;align-items:center;margin-bottom:18px;}
 .rw-score{text-align:center;flex:0 0 auto;}
 .rw-score .big{font-size:40px;font-weight:800;line-height:1;}
@@ -142,12 +146,9 @@ section{padding:32px 16px;}
 .rlist{display:flex;flex-direction:column;gap:12px;}
 .rev{border:1px solid var(--line);border-radius:12px;padding:15px;}
 .rev .rh{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
-.rev .rs{color:#f5a623;letter-spacing:1px;font-size:12px;}
-.rev .rd{font-size:11px;color:#a6abb5;font-weight:600;}
-.rev .rt{font-weight:800;font-size:13.5px;margin:2px 0 4px;}
-.rev p{font-size:12.5px;color:var(--muted);line-height:1.5;}
-.rev .ra{margin-top:8px;font-size:11.5px;font-weight:800;display:flex;gap:6px;align-items:center;}
-.rev .ra .vb{color:var(--lime-d);font-size:9px;letter-spacing:.3px;}
+.rev .rs{color:#f5a623;letter-spacing:1px;font-size:12px;}.rev .rd{font-size:11px;color:#a6abb5;font-weight:600;}
+.rev .rt{font-weight:800;font-size:13.5px;margin:2px 0 4px;}.rev p{font-size:12.5px;color:var(--muted);line-height:1.5;}
+.rev .ra{margin-top:8px;font-size:11.5px;font-weight:800;display:flex;gap:6px;align-items:center;}.rev .ra .vb{color:var(--lime-d);font-size:9px;letter-spacing:.3px;}
 
 .foot{background:var(--ink);color:rgba(255,255,255,.6);padding:28px 18px 96px;text-align:center;font-size:12px;}
 .foot .fl{font-weight:900;font-size:17px;color:#fff;letter-spacing:-.5px;margin-bottom:12px;}
@@ -158,9 +159,25 @@ section{padding:32px 16px;}
 .sticky img{width:42px;height:42px;border-radius:8px;object-fit:cover;flex:0 0 42px;background:var(--paper);}
 .sticky .si{flex:1;min-width:0;}
 .sticky .si .nm{font-size:13px;font-weight:800;line-height:1;}
-.sticky .si .pp{font-size:12px;color:var(--muted);font-weight:600;}
-.sticky .si .pp b{color:var(--ink);font-weight:800;}
+.sticky .si .pp{font-size:12px;color:var(--muted);font-weight:600;}.sticky .si .pp b{color:var(--ink);font-weight:800;}
 .sticky .sbtn{flex:0 0 auto;background:var(--lime);color:#06210a;font-weight:800;font-size:13.5px;padding:13px 20px;border-radius:300px;}
+
+/* picker sheet */
+.sheet-bg{position:fixed;inset:0;background:rgba(16,20,27,.5);z-index:100;opacity:0;pointer-events:none;transition:.2s;}
+.sheet-bg.show{opacity:1;pointer-events:auto;}
+.sheet{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(100%);width:100%;max-width:var(--frameW);max-height:82vh;background:#fff;border-radius:18px 18px 0 0;z-index:101;transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;}
+.sheet.show{transform:translateX(-50%) translateY(0);}
+.sheet .sh-h{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 12px;border-bottom:1px solid var(--line);}
+.sheet .sh-h b{font-size:17px;font-weight:800;}
+.sheet .sh-h .x{font-size:24px;color:var(--muted);line-height:1;}
+.sheet .grid{overflow-y:auto;padding:14px 14px 24px;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:max-content;align-content:start;gap:12px;}
+.pcard{border:1.5px solid var(--line);border-radius:13px;overflow:hidden;cursor:pointer;transition:.12s;background:#fff;}
+.pcard:active{transform:scale(.97);}
+.pcard img{width:100%;height:130px;object-fit:contain;background:#fff;padding:8px;}
+.pcard .pb{padding:9px 10px 11px;display:flex;align-items:center;justify-content:space-between;gap:6px;}
+.pcard .pb b{font-size:12px;font-weight:800;line-height:1.1;}
+.pcard .pb .pp{font-size:11px;color:var(--muted);font-weight:700;}
+.pcard .add{display:block;text-align:center;background:var(--lime);color:#06210a;font-weight:800;font-size:11.5px;padding:9px;}
 
 .toast{position:fixed;top:14px;left:50%;transform:translateX(-50%) translateY(-160%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:30px;font-size:12.5px;font-weight:700;z-index:120;transition:transform .3s;box-shadow:0 8px 24px rgba(0,0,0,.3);}
 .toast.show{transform:translateX(-50%) translateY(0);}
@@ -183,28 +200,24 @@ section{padding:32px 16px;}
     </div>
   </header>
 
-  <!-- Gallery -->
+  <!-- Gallery + thumbnails -->
   <div class="gallery">
     <div class="gtrack" id="gtrack">
       <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-1-3.jpg?width=820" alt="Pomona sunglasses" loading="eager"></div>
       <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-_Frontline_Optics-_Sunglasses.jpg?width=820" alt="Pomona on duty"></div>
       <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-1-1.jpg?width=820" alt="Pomona angle"></div>
-      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-1-7hinge.jpg?width=820" alt="Pomona hinge detail"></div>
-      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-2-1_with_shield.jpg?width=820" alt="Pomona with Z87+ side shields"></div>
-      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-1-5-size.jpg?width=820" alt="Pomona size guide"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-1-7hinge.jpg?width=820" alt="Hinge detail"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-2-1_with_shield.jpg?width=820" alt="With Z87+ side shields"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-1-5-size.jpg?width=820" alt="Size guide"></div>
     </div>
-    <div class="dots" id="dots"></div>
   </div>
+  <div class="thumbs" id="thumbs"></div>
 
   <!-- Buy zone -->
   <div class="buy" id="buy">
-    <div class="titlerow">
-      <h1 class="title">Pomona</h1>
-      <div class="rate"><span class="s">★</span> 4.7 <a href="#reviews">(237)</a></div>
-    </div>
+    <div class="titlerow"><h1 class="title">Pomona</h1><div class="rate"><span class="s">★</span> 4.7 <a href="#reviews">(237)</a></div></div>
     <div class="price">$85.00 <span class="u">USD</span></div>
 
-    <!-- credential strip (secondary improvement) -->
     <div class="creds">
       <div class="c"><span class="n">Z87+</span><span class="l">Impact Rated</span></div>
       <div class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12a4 4 0 0 1 8 0"/></svg><span class="l">Polarized FLOVEX™</span></div>
@@ -212,19 +225,6 @@ section{padding:32px 16px;}
       <div class="c"><span class="n">4.7★</span><span class="l">237 Reviews</span></div>
     </div>
 
-    <!-- color -->
-    <div class="sublabel">Color <span class="v">— Pomona (Black)</span></div>
-    <div class="colors" id="colors">
-      <button class="on" style="background:#161616;" title="Pomona"></button>
-      <button style="background:#b23b2e;" title="Crimson"></button>
-      <button style="background:#2f6fb0;" title="Blue"></button>
-      <button style="background:#1f8a78;" title="Celtic"></button>
-      <button style="background:#6c4d9e;" title="Valor"></button>
-      <button style="background:#c9a227;" title="Commander"></button>
-      <button style="background:#e8e8e8;" title="Clear"></button>
-    </div>
-
-    <!-- features -->
     <div class="feat">
       <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Polarized Z87 FLOVEX™ polycarbonate lens technology</div>
       <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Scratch-resistant and AR lens coatings</div>
@@ -232,54 +232,69 @@ section{padding:32px 16px;}
     </div>
 
     <!-- bundle selector -->
-    <div class="sublabel">Bundle &amp; Save</div>
+    <div class="sublabel">Bundle &amp; Save — Mix Any Styles</div>
     <div class="bundles" id="bundles">
-      <div class="bundle on" data-b="one" data-p="85" onclick="pickB(this)">
-        <div class="radio"></div>
-        <div class="bt"><b>One Pair</b><small>Single Pomona</small></div>
-        <div class="bp"><span class="pr">$85</span></div>
+      <div class="bundle on" data-b="one" onclick="pickB(this)">
+        <div class="radio"></div><div class="bt"><b>One Pair</b><small>Single pair, your color</small></div><div class="bp"><span class="pr">$85</span></div>
       </div>
-      <div class="bundle best" data-b="crew" data-p="170" onclick="pickB(this)">
+      <div class="bundle best" data-b="crew" onclick="pickB(this)">
         <span class="tag">Buy 2 Get 1 Free</span>
-        <div class="radio"></div>
-        <div class="bt"><b>The Crew Pack</b><small>3 shades + free shipping</small></div>
-        <div class="bp"><span class="pr">$170</span><span class="was">$255</span></div>
+        <div class="radio"></div><div class="bt"><b>The Crew Pack</b><small>Pick any 3 styles + free shipping</small></div><div class="bp"><span class="pr">$170</span><span class="was">$255</span></div>
       </div>
-      <div class="bundle" data-b="batt" data-p="255" onclick="pickB(this)">
+      <div class="bundle" data-b="batt" onclick="pickB(this)">
         <span class="tag">Buy 3 Get 2 Free</span>
-        <div class="radio"></div>
-        <div class="bt"><b>The Battalion Bundle</b><small>5 shades + free accessories ($18)</small></div>
-        <div class="bp"><span class="pr">$255</span><span class="was">$425</span></div>
+        <div class="radio"></div><div class="bt"><b>The Battalion Bundle</b><small>Pick any 5 styles + free gift</small></div><div class="bp"><span class="pr">$255</span><span class="was">$425</span></div>
       </div>
     </div>
 
-    <!-- addon -->
+    <!-- pair slots (shown for multi-packs) -->
+    <div class="slots" id="slots" style="display:none;">
+      <div class="sh"><span>Your shades</span><span class="cnt" id="slotCnt"></span></div>
+      <div class="slotgrid" id="slotgrid"></div>
+    </div>
+
+    <!-- single color (shown for One Pair) -->
+    <div class="selrow" id="colorRow">
+      <div class="sublabel">Color <span class="v" id="colorVal">— Pomona (Black)</span></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;" id="colors"></div>
+    </div>
+
     <div class="addon" id="shieldAddon" onclick="toggleShield()">
       <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
-      <div class="at">Make 'em Z87+?<small>Add Black Z87+ Protective Side Shields</small></div>
-      <div class="ap">+$10</div>
+      <div class="at">Make 'em Z87+?<small>Add Black Z87+ Protective Side Shields</small></div><div class="ap">+$10</div>
     </div>
 
     <button class="atc" id="atc" onclick="addCart()">Add to Cart — <span id="atcPrice">$85</span></button>
     <div class="stock"><span class="dot"></span> In stock · Ships free in the US</div>
   </div>
 
-  <!-- Description -->
+  <!-- Description w/ lifestyle image -->
   <section class="paper-bg">
+    <div class="secimg"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-_Frontline_Optics-_Sunglasses.jpg?width=760" alt="Pomona on the job"></div>
     <h2 class="sec-h left">Impact-Resistant Sunglasses Built for Tough Jobs</h2>
-    <p class="sec-p">The Pomona sunglasses are engineered to withstand the rigors of your demanding job, offering the perfect balance of comfort, durability, and style. Constructed from high-strength polycarbonate, these sunglasses are designed to stay securely in place, even during the most intense situations. Paired with black polycarbonate polarized lenses, they deliver a clean, professional look whether you're on or off duty. The Pomona meets ANSI Z.87 impact requirements and satisfies OSHA specifications for jobs that do not require side impact or chemical splash resistance.</p>
+    <p class="sec-p">The Pomona is engineered to withstand the rigors of your demanding job, offering the perfect balance of comfort, durability, and style. Constructed from high-strength polycarbonate with black polarized lenses, it stays securely in place even in the most intense situations. The Pomona meets ANSI Z.87 impact requirements and satisfies OSHA specifications for jobs that do not require side impact or chemical splash resistance.</p>
   </section>
 
   <!-- FLOVEX -->
   <section class="dark-bg">
-    <h2 class="sec-h">True-To-Life Vision with FLOVEX™ Lens Tech</h2>
-    <p class="sec-p" style="text-align:center;max-width:330px;margin:0 auto;">Instead of dulling or enhancing colors, FLOVEX™ maintains a natural, true-to-life visual experience while drastically reducing glare. The result is clean, comfortable optics you can wear all day — so natural, you may forget you're wearing them.</p>
+    <div class="secimg"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-1-7hinge.jpg?width=760" alt="FLOVEX lens detail"></div>
+    <h2 class="sec-h">True-To-Life Vision with FLOVEX™</h2>
+    <p class="sec-p" style="text-align:center;max-width:330px;margin:0 auto;">Instead of dulling or enhancing colors, FLOVEX™ maintains a natural, true-to-life visual experience while drastically reducing glare. Clean, comfortable optics you can wear all day — so natural, you may forget you're wearing them.</p>
+  </section>
+
+  <!-- COLLECTION (visual range — pulled in below) -->
+  <section>
+    <div class="sec-eye" style="text-align:center;font-size:11px;font-weight:800;letter-spacing:1.6px;color:var(--blue);text-transform:uppercase;margin-bottom:7px;">Mix &amp; Match Your Pack</div>
+    <h2 class="sec-h">14 Z87+ Styles to Choose From</h2>
+    <p class="sec-p" style="text-align:center;margin-bottom:20px;">Every style is impact-rated and polarized. Build a Crew Pack or Battalion Bundle from any combination.</p>
+    <div class="coll" id="coll"></div>
   </section>
 
   <!-- Replacement -->
-  <section>
+  <section class="paper-bg">
+    <div class="secimg"><img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-2-1_with_shield.jpg?width=760" alt="Pomona with Z87+ side shields"></div>
     <h2 class="sec-h left">Lost or Damaged? No Problem.</h2>
-    <p class="sec-p">Sunglasses lost or destroyed in the line of duty? We've got your back — no questions asked. When the time comes, just pay a small $19.99 processing fee and provide your original order number to verify your purchase.</p>
+    <p class="sec-p">Sunglasses lost or destroyed in the line of duty? We've got your back — no questions asked. When the time comes, just pay a small $19.99 processing fee and provide your original order number.</p>
     <div class="repl">
       <div class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Damaged replacement covered</div>
       <div class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Lost replacement covered</div>
@@ -288,7 +303,7 @@ section{padding:32px 16px;}
   </section>
 
   <!-- Reviews -->
-  <section class="paper-bg" id="reviews">
+  <section id="reviews">
     <h2 class="sec-h">Customer Reviews</h2>
     <div class="rw-top">
       <div class="rw-score"><div class="big">4.70</div><div class="st">★★★★★</div><div class="ct">237 reviews</div></div>
@@ -317,31 +332,89 @@ section{padding:32px 16px;}
 
   <!-- Sticky -->
   <div class="sticky" id="sticky">
-    <img src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-1-3.jpg?width=120" alt="">
+    <img id="stkImg" src="https://cdn.shopify.com/s/files/1/0536/7749/0371/files/Pomona-1-3.jpg?width=120" alt="">
     <div class="si"><div class="nm">Pomona</div><div class="pp"><span id="stkB">One Pair</span> · <b id="stkPrice">$85</b></div></div>
     <button class="sbtn" onclick="addCart()">Add to Cart</button>
+  </div>
+
+  <!-- picker sheet -->
+  <div class="sheet-bg" id="sheetBg" onclick="closeSheet()"></div>
+  <div class="sheet" id="sheet">
+    <div class="sh-h"><b>Pick Your Shades</b><span class="x" onclick="closeSheet()">×</span></div>
+    <div class="grid" id="pgrid"></div>
   </div>
 
   <div class="toast" id="toast">Added to cart ✓</div>
 </div>
 
 <script>
-const track=document.getElementById('gtrack');
-const slides=[...track.children];
-const dotsWrap=document.getElementById('dots');
-slides.forEach((s,i)=>{const d=document.createElement('b');if(i===0)d.classList.add('on');d.onclick=()=>track.scrollTo({left:track.clientWidth*i,behavior:'smooth'});dotsWrap.appendChild(d);});
-const dots=[...dotsWrap.children];
-track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.clientWidth);dots.forEach((d,j)=>d.classList.toggle('on',j===i));},{passive:true});
+const IMG='https://cdn.shopify.com/s/files/1/0536/7749/0371/files/';
+const MODELS=[
+ {n:'Pomona',p:85,img:'Pomona-1-3.jpg',sw:'#161616'},
+ {n:'North Island',p:78,img:'2.jpg',sw:'#1d1d1d'},
+ {n:'ACE',p:78,img:'Ace-2-left45i.jpg',sw:'#222'},
+ {n:'Pomona ClearGuard',p:70,img:'left45i.jpg',sw:'#e8e8e8'},
+ {n:'Glorietta Sunset',p:78,img:'Glorietta_45_degree.jpg',sw:'#c87f9e'},
+ {n:'NADO',p:78,img:'NADO-2_eff502c6-8227-4d4b-a39c-a5ca3ef14b89.jpg',sw:'#222'},
+ {n:'NADO Ghost',p:78,img:'NADOGhost-2_8d4d3c25-0d4d-407c-9f74-46a686dfccb6.jpg',sw:'#444'},
+ {n:'NADO Ice Ghost',p:78,img:'NADOIceGhost-2.jpg',sw:'#5aa6c4'},
+ {n:'NADO Sunset',p:78,img:'NADOSunset-2_dea55a8d-d718-47a7-9a6f-eea283db30b7.jpg',sw:'#d2654a'},
+ {n:'Pomona Celtic',p:85,img:'Pomona_Celtic-1-3.jpg',sw:'#1f8a78'},
+ {n:'Pomona Commander',p:85,img:'PomonaCommander-1-3.jpg',sw:'#c9a227'},
+ {n:'Pomona Crimson',p:85,img:'Pomona_Crimson-1-3.jpg',sw:'#b23b2e'},
+ {n:'Pomona Guardian',p:85,img:'Pomona_-1-3_ac1120fa-48d5-472b-9048-9c35b8f574dd.jpg',sw:'#2f6fb0'},
+ {n:'Pomona Valor',p:85,img:'PomonaValor-1-3.jpg',sw:'#6c4d9e'}
+];
 
-document.querySelectorAll('#colors button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#colors button').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.querySelector('.sublabel .v').textContent='— '+b.title+(b.title==='Pomona'?' (Black)':'');});
+/* gallery + thumbs */
+const track=document.getElementById('gtrack'),slides=[...track.children],thumbs=document.getElementById('thumbs');
+slides.forEach((s,i)=>{const t=document.createElement('img');t.src=s.querySelector('img').src;if(i===0)t.classList.add('on');t.onclick=()=>track.scrollTo({left:track.clientWidth*i,behavior:'smooth'});thumbs.appendChild(t);});
+const tnodes=[...thumbs.children];
+track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.clientWidth);tnodes.forEach((t,j)=>t.classList.toggle('on',j===i));},{passive:true});
 
-let sel={b:'one',base:85,shield:false};
-const labels={one:'One Pair',crew:'Crew Pack',batt:'Battalion Bundle'};
-function total(){return sel.base+(sel.shield?10:0);}
-function refresh(){const t='$'+total();document.getElementById('atcPrice').textContent=t;document.getElementById('stkPrice').textContent=t;document.getElementById('stkB').textContent=labels[sel.b];}
-function pickB(el){document.querySelectorAll('.bundle').forEach(x=>x.classList.remove('on'));el.classList.add('on');sel.b=el.dataset.b;sel.base=+el.dataset.p;refresh();}
-function toggleShield(){sel.shield=!sel.shield;document.getElementById('shieldAddon').classList.toggle('on',sel.shield);refresh();}
-function addCart(){const t=document.getElementById('toast');t.textContent=labels[sel.b]+(sel.shield?' + Z87+ shields':'')+' — $'+total()+' ✓';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+/* collection grid (visual range) */
+document.getElementById('coll').innerHTML=MODELS.map(m=>`<div class="cc"><img src="${IMG}${m.img}?width=420" loading="lazy" alt="${m.n}"><div class="ccb"><b>${m.n}</b><div class="cp">$${m.p} · Z87+</div></div></div>`).join('');
+
+/* single-pair color swatches */
+const COLORS=MODELS.filter(m=>/^Pomona($| )/.test(m.n)).slice(0,7);
+document.getElementById('colors').innerHTML=COLORS.map((m,i)=>`<button onclick="pickColor(${MODELS.indexOf(m)})" data-i="${MODELS.indexOf(m)}" class="${i===0?'on':''}" style="width:38px;height:38px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 ${i===0?'2.4px var(--ink)':'1.5px var(--line)'};background:${m.sw};" title="${m.n}"></button>`).join('');
+function pickColor(idx){document.querySelectorAll('#colors button').forEach(b=>b.style.boxShadow='0 0 0 1.5px var(--line)');const b=document.querySelector('#colors button[data-i="'+idx+'"]');if(b)b.style.boxShadow='0 0 0 2.4px var(--ink)';state.color=MODELS[idx].n;document.getElementById('colorVal').textContent='— '+MODELS[idx].n+(idx===0?' (Black)':'');document.getElementById('stkImg').src=IMG+MODELS[idx].img+'?width=120';refresh();}
+
+/* state */
+const state={bundle:'one',base:85,shield:false,color:'Pomona',slots:[],activeSlot:null};
+const BCOUNT={one:1,crew:3,batt:5}, BPRICE={one:85,crew:170,batt:255}, BLABEL={one:'One Pair',crew:'Crew Pack',batt:'Battalion Bundle'};
+function total(){return BPRICE[state.bundle]+(state.shield?10:0);}
+function refresh(){const t='$'+total();document.getElementById('atcPrice').textContent=t;document.getElementById('stkPrice').textContent=t;document.getElementById('stkB').textContent=BLABEL[state.bundle];}
+
+function pickB(el){
+  document.querySelectorAll('.bundle').forEach(x=>x.classList.remove('on'));el.classList.add('on');
+  state.bundle=el.dataset.b;state.base=BPRICE[state.bundle];
+  const n=BCOUNT[state.bundle];
+  if(n===1){document.getElementById('slots').style.display='none';document.getElementById('colorRow').style.display='';}
+  else{
+    document.getElementById('colorRow').style.display='none';
+    // init slots: first = current color (default Pomona), rest empty
+    if(state.slots.length!==n){state.slots=Array(n).fill(null);state.slots[0]=state.color;}
+    document.getElementById('slots').style.display='';
+    document.getElementById('slotCnt').textContent='Pick '+n+' — only pay for '+(state.bundle==='crew'?2:3);
+    renderSlots();
+  }
+  refresh();
+}
+function renderSlots(){
+  const g=document.getElementById('slotgrid');
+  g.innerHTML=state.slots.map((nm,i)=>{
+    if(nm){const m=MODELS.find(x=>x.n===nm)||MODELS[0];
+      return `<div class="slot filled" onclick="openSheet(${i})"><img src="${IMG}${m.img}?width=300" alt="${m.n}">${i>=( state.bundle==='crew'?2:3 )?'<span class="free">Free</span>':''}<span class="swap">Swap</span><div class="sn">${m.n}</div></div>`;}
+    return `<div class="slot empty" onclick="openSheet(${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><span>Choose</span></div>`;
+  }).join('');
+}
+function openSheet(i){state.activeSlot=i;document.getElementById('pgrid').innerHTML=MODELS.map((m,idx)=>`<div class="pcard" onclick="chooseModel(${idx})"><img src="${IMG}${m.img}?width=420" loading="lazy" alt="${m.n}"><div class="pb"><b>${m.n}</b><span class="pp">$${m.p}</span></div><div class="add">Add to pack</div></div>`).join('');document.getElementById('sheet').classList.add('show');document.getElementById('sheetBg').classList.add('show');}
+function closeSheet(){document.getElementById('sheet').classList.remove('show');document.getElementById('sheetBg').classList.remove('show');}
+function chooseModel(idx){if(state.activeSlot!=null){state.slots[state.activeSlot]=MODELS[idx].n;renderSlots();}closeSheet();}
+
+function toggleShield(){state.shield=!state.shield;document.getElementById('shieldAddon').classList.toggle('on',state.shield);refresh();}
+function addCart(){const t=document.getElementById('toast');let txt=BLABEL[state.bundle];if(state.bundle!=='one'){const f=state.slots.filter(Boolean).length;txt+=' ('+f+'/'+BCOUNT[state.bundle]+' picked)';}if(state.shield)txt+=' + shields';t.textContent=txt+' — $'+total()+' ✓';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2300);}
 function goBuy(e){if(e)e.preventDefault();document.getElementById('buy').scrollIntoView({behavior:'smooth'});}
 
 const buy=document.getElementById('buy'),sticky=document.getElementById('sticky');
