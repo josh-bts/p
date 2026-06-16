@@ -66,17 +66,18 @@ h1.title{font-family:var(--display);font-weight:400;font-size:42px;line-height:.
 /* style chips */
 .fieldlbl{font-family:var(--display);font-size:16px;letter-spacing:1.5px;color:var(--ink);margin:18px 0 9px;display:flex;justify-content:space-between;align-items:baseline}
 .fieldlbl .v{font-family:var(--body);font-size:13px;font-weight:600;color:var(--muted);letter-spacing:0}
-.styles{display:flex;gap:8px}
-.style{flex:1;border:1.5px solid var(--line);border-radius:8px;padding:9px 4px;text-align:center;font-size:12px;font-weight:600;transition:.15s}
-.style.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.styles{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.style{border:1.5px solid var(--line);border-radius:8px;padding:7px 2px 6px;font-size:10px;font-weight:600;transition:.15s;display:flex;flex-direction:column;align-items:center;gap:3px;background:#fff}
+.style img{width:42px;height:27px;object-fit:contain}
+.style.on{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset;color:var(--red)}
+/* color swatches (surfaced — real colorway photos) */
+.colors{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.cw{aspect-ratio:1/1;border-radius:8px;border:1.5px solid var(--line);background-size:cover;background-position:center;transition:.15s}
+.cw.on{border-color:var(--red);box-shadow:0 0 0 1.5px var(--red)}
 
-/* size grid (PRIMARY fix — surfaced near top) */
-.sizes{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
-.size{border:1.5px solid var(--line);border-radius:8px;padding:11px 2px;text-align:center;font-size:13px;font-weight:600;transition:.15s}
-.size.on{border-color:var(--ink);background:var(--ink);color:#fff}
-.size.sm{font-size:11px}
-.sizehint{font-size:11.5px;color:var(--muted);margin-top:8px;display:flex;justify-content:space-between}
-.sizehint a{text-decoration:underline}
+/* size — minimal dropdown */
+.sizesel{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:13px 14px;font-size:14px;font-weight:600;font-family:var(--body);background:#fff;color:var(--ink)}
+.szchart{font-family:var(--body);font-size:12px;font-weight:600;color:var(--muted);text-decoration:underline;letter-spacing:0}
 
 .atc{width:100%;background:var(--ink);color:#fff;font-family:var(--display);font-size:22px;letter-spacing:2px;padding:16px;border-radius:14px;margin-top:16px;transition:.15s}
 .atc:active{transform:scale(.99)}
@@ -204,23 +205,48 @@ footer p{font-size:11px;opacity:.6;max-width:280px;margin:0 auto;line-height:1.6
       <div class="d"><svg viewBox="0 0 20 20" fill="none"><path d="M10 3c3 4 5 6 5 9a5 5 0 01-10 0c0-3 2-5 5-9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Water-resistant materials</div>
     </div>
 
-    <div class="fieldlbl">Style <span class="v">Low-Top</span></div>
-    <div class="styles">
-      <button class="style on">Low-top</button>
-      <button class="style">High-top</button>
-      <button class="style">Split-sole</button>
-      <button class="style">Wedge</button>
+    <!-- Color (surfaced — was missing; real colorway photos) -->
+    <div class="fieldlbl">Color <span class="v" id="colorval">Black</span></div>
+    <div class="colors" id="colors">
+      <button class="cw" data-c="White" data-img="https://fuegodance.com/cdn/shop/files/fuego-dance-sneaker-white-39825196777702.jpg" style="background-image:url('https://fuegodance.com/cdn/shop/files/fuego-dance-sneaker-white-39825196777702.jpg')"></button>
+      <button class="cw" data-c="All-Black" data-img="https://fuegodance.com/cdn/shop/files/fuego-dance-sneaker-black-39650769830118.jpg" style="background-image:url('https://fuegodance.com/cdn/shop/files/fuego-dance-sneaker-black-39650769830118.jpg')"></button>
+      <button class="cw on" data-c="Black" data-img="https://fuegodance.com/cdn/shop/products/fuego-dance-sneaker-black-38112645480678.jpg" style="background-image:url('https://fuegodance.com/cdn/shop/products/fuego-dance-sneaker-black-38112645480678.jpg')"></button>
+      <button class="cw" data-c="Blue Jade" data-img="https://fuegodance.com/cdn/shop/files/blue-jade-low-top-1195563459.jpg" style="background-image:url('https://fuegodance.com/cdn/shop/files/blue-jade-low-top-1195563459.jpg')"></button>
+      <button class="cw" data-c="Jade" data-img="https://fuegodance.com/cdn/shop/products/fuego-dance-sneaker-jade-x-fuego-39191564353766.jpg" style="background-image:url('https://fuegodance.com/cdn/shop/products/fuego-dance-sneaker-jade-x-fuego-39191564353766.jpg')"></button>
+      <button class="cw" data-c="Lavender" data-img="https://fuegodance.com/cdn/shop/files/lavender-low-top-1198692547.jpg" style="background-image:url('https://fuegodance.com/cdn/shop/files/lavender-low-top-1198692547.jpg')"></button>
+      <button class="cw" data-c="Red" data-img="https://fuegodance.com/cdn/shop/files/red-low-top-1159568543.jpg" style="background-image:url('https://fuegodance.com/cdn/shop/files/red-low-top-1159568543.jpg')"></button>
+      <button class="cw" data-c="Mocha" data-img="https://fuegodance.com/cdn/shop/files/mocha-low-top-1198692559.jpg" style="background-image:url('https://fuegodance.com/cdn/shop/files/mocha-low-top-1198692559.jpg')"></button>
+      <button class="cw" data-c="Purple" data-img="https://fuegodance.com/cdn/shop/files/purple-low-top-1225935477.jpg" style="background-image:url('https://fuegodance.com/cdn/shop/files/purple-low-top-1225935477.jpg')"></button>
+      <button class="cw" data-c="Navy" data-img="https://fuegodance.com/cdn/shop/files/navy-low-top-1198692554.jpg" style="background-image:url('https://fuegodance.com/cdn/shop/files/navy-low-top-1198692554.jpg')"></button>
+      <button class="cw" data-c="Pink" data-img="https://fuegodance.com/cdn/shop/files/pink-low-top-1227221629.jpg" style="background-image:url('https://fuegodance.com/cdn/shop/files/pink-low-top-1227221629.jpg')"></button>
+      <button class="cw" data-c="Pastel" data-img="https://fuegodance.com/cdn/shop/files/pastel-low-top-1215840055.jpg" style="background-image:url('https://fuegodance.com/cdn/shop/files/pastel-low-top-1215840055.jpg')"></button>
+      <button class="cw" data-c="Champagne" data-img="https://fuegodance.com/cdn/shop/files/champagne-low-top-1216798953.jpg" style="background-image:url('https://fuegodance.com/cdn/shop/files/champagne-low-top-1216798953.jpg')"></button>
+      <button class="cw" data-c="Rose Gold" data-img="https://fuegodance.com/cdn/shop/files/rose-gold-low-top-1216798952.jpg" style="background-image:url('https://fuegodance.com/cdn/shop/files/rose-gold-low-top-1216798952.jpg')"></button>
     </div>
 
-    <!-- Size grid surfaced near the top (PRIMARY fix) -->
-    <div class="fieldlbl">Select a Size <span class="v" id="sizeval">—</span></div>
-    <div class="sizes" id="sizes">
-      <button class="size">5</button><button class="size">5.5</button><button class="size">6</button><button class="size">6.5</button>
-      <button class="size">7</button><button class="size">7.5</button><button class="size">8</button><button class="size">8.5</button>
-      <button class="size">9</button><button class="size">9.5</button><button class="size">10</button><button class="size">10.5</button>
-      <button class="size">11</button><button class="size">11.5</button><button class="size">12</button><button class="size">13</button>
+    <!-- Style — keep the icons (from the control) but small, 1-row 4-col -->
+    <div class="fieldlbl">Style <span class="v" id="styleval">Low-Top</span></div>
+    <div class="styles" id="styles">
+      <button class="style on" data-s="Low-Top"><img src="https://fuegodance.com/cdn/shop/files/low-top-icon-2.png" alt=""><span>Low-top</span></button>
+      <button class="style" data-s="High-Top"><img src="https://fuegodance.com/cdn/shop/files/high-top-icon.png" alt=""><span>High-top</span></button>
+      <button class="style" data-s="Split-Sole"><img src="https://fuegodance.com/cdn/shop/files/split-sole-icon.png" alt=""><span>Split-sole</span></button>
+      <button class="style" data-s="Wedge"><img src="https://fuegodance.com/cdn/shop/files/wedge-icon.png" alt=""><span>Wedge</span></button>
     </div>
-    <div class="sizehint"><span>US Men's · runs true to size</span><a href="#">Size chart</a></div>
+
+    <!-- Size — minimal dropdown (don't show 26 sizes inline) -->
+    <div class="fieldlbl">Size <a href="#" class="szchart">Size chart</a></div>
+    <select class="sizesel" id="sizesel">
+      <option value="">Select your size</option>
+      <option>US M5 / W6</option>
+      <option>US M6 / W7</option>
+      <option>US M7 / W8</option>
+      <option>US M8 / W9</option>
+      <option>US M9 / W10</option>
+      <option>US M10 / W11</option>
+      <option>US M11 / W12</option>
+      <option>US M12 / W13</option>
+      <option>US M13 / W14</option>
+    </select>
 
     <button class="atc" id="atc">Add to Cart</button>
     <div class="affirm">4 interest-free payments, or as low as <b>$15/mo</b> with Affirm</div>
@@ -325,31 +351,42 @@ footer p{font-size:11px;opacity:.6;max-width:280px;margin:0 auto;line-height:1.6
   },{passive:true});
 })();
 
+// Color selection (surfaced) — swaps the hero image to the chosen colorway
+(function(){
+  var slides=document.getElementById('slides');
+  var hero=slides.querySelector('.slide img');
+  var firstThumb=document.querySelector('#thumbs .thumb img');
+  var stickyImg=document.querySelector('#sticky .sp img');
+  document.querySelectorAll('#colors .cw').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('#colors .cw').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      document.getElementById('colorval').textContent=b.dataset.c;
+      if(b.dataset.img){hero.src=b.dataset.img; if(firstThumb)firstThumb.src=b.dataset.img; if(stickyImg)stickyImg.src=b.dataset.img; slides.scrollTo({left:0,behavior:'smooth'});}
+    });
+  });
+})();
+
 // Style chips
-document.querySelectorAll('.styles .style').forEach(function(b){
+document.querySelectorAll('#styles .style').forEach(function(b){
   b.addEventListener('click',function(){
-    document.querySelectorAll('.styles .style').forEach(function(x){x.classList.remove('on');});
+    document.querySelectorAll('#styles .style').forEach(function(x){x.classList.remove('on');});
     b.classList.add('on');
-    document.querySelector('.fieldlbl .v').textContent=b.textContent;
+    document.getElementById('styleval').textContent=b.dataset.s;
   });
 });
 
-// Size selection
+// Size dropdown (minimal)
 var sizePicked=null;
-document.querySelectorAll('#sizes .size').forEach(function(b){
-  b.addEventListener('click',function(){
-    document.querySelectorAll('#sizes .size').forEach(function(x){x.classList.remove('on');});
-    b.classList.add('on'); sizePicked=b.textContent;
-    document.getElementById('sizeval').textContent='US Men’s '+sizePicked;
-    document.getElementById('sbPr').textContent='$150 · Size '+sizePicked;
-  });
+document.getElementById('sizesel').addEventListener('change',function(){
+  sizePicked=this.value||null;
+  document.getElementById('sbPr').textContent=sizePicked? '$150 · '+sizePicked : '$150 · select size';
 });
 
 document.getElementById('atc').addEventListener('click',function(){
   if(!sizePicked){
-    var sz=document.querySelector('.fieldlbl .v#sizeval');
-    document.getElementById('sizes').scrollIntoView({behavior:'smooth',block:'center'});
-    var s=document.getElementById('sizes'); s.style.outline='2px solid var(--red)'; s.style.borderRadius='10px';
+    var s=document.getElementById('sizesel'); s.scrollIntoView({behavior:'smooth',block:'center'});
+    s.style.outline='2px solid var(--red)';
     setTimeout(function(){s.style.outline='none';},1200);
     return;
   }
