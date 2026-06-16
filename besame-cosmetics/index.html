@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Bésame Red Lipstick - 1920s Lipstick – Besame Cosmetics</title>
+<style>
+/* ---- Brand fonts (harvested from besamecosmetics.com) ---- */
+@font-face{font-family:'IvyPresto';src:url('https://cdn.shopify.com/s/files/1/0642/8495/files/IvyPresto_Display_Light.otf') format('opentype');font-weight:300;font-display:swap;}
+@font-face{font-family:'IvyPresto';src:url('https://cdn.shopify.com/s/files/1/0642/8495/files/IvyPresto_Display_Regular.otf') format('opentype');font-weight:400;font-display:swap;}
+@font-face{font-family:'IvyPresto';src:url('https://cdn.shopify.com/s/files/1/0642/8495/files/IvyPresto_Display_Italic.otf') format('opentype');font-weight:400;font-style:italic;font-display:swap;}
+
+:root{
+  --cream:#F0E6D8;       /* announcement/header rgb(240,230,216) */
+  --red:#C10016;         /* brand red rgb(193,0,22) */
+  --ink:#202926;         /* dark rgb(32,41,38) */
+  --gold:#B0904A;
+  --paper:#FFFFFF;
+  --soft:#F5F7F6;
+  --line:#e7e0d2;
+  --muted:#7a766e;
+  --serif:'IvyPresto',Georgia,'Times New Roman',serif;
+  --sans:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:var(--sans);color:var(--ink);background:#d7ccba;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+a{color:inherit;text-decoration:none;}
+
+.frame{max-width:390px;margin:0 auto;background:var(--paper);position:relative;min-height:100vh;overflow:hidden;}
+@media(min-width:600px){
+  body{padding:24px 0;}
+  .frame{box-shadow:0 18px 60px rgba(40,30,20,.30);min-height:auto;margin-bottom:24px;}
+}
+
+.announce{background:var(--cream);color:var(--ink);text-align:center;font-size:10.5px;letter-spacing:1.2px;
+  text-transform:uppercase;padding:9px 10px;white-space:nowrap;overflow:hidden;}
+.header{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;background:var(--cream);
+  position:sticky;top:0;z-index:40;}
+.header .ico{width:20px;height:20px;stroke:var(--ink);stroke-width:1.5;fill:none;}
+.header .logo img{height:26px;width:auto;}
+.header .grp{display:flex;gap:15px;align-items:center;}
+
+/* gallery */
+.gallery{background:#fff;}
+.gmain .slide{display:none;}
+.gmain .slide.on{display:block;}
+.gmain img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#fff;}
+.gthumbs{display:flex;gap:8px;overflow-x:auto;padding:10px 18px 4px;scrollbar-width:none;}
+.gthumbs::-webkit-scrollbar{display:none;}
+.gthumbs button{flex:0 0 56px;height:56px;border:1px solid var(--line);overflow:hidden;background:#fff;}
+.gthumbs button.on{border-color:var(--ink);}
+.gthumbs img{width:100%;height:100%;object-fit:cover;}
+
+/* product info */
+.pinfo{padding:18px 22px 0;}
+.prate{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.stars{color:var(--red);font-size:13px;letter-spacing:1px;}
+.prate a{font-size:12px;color:var(--ink);text-decoration:underline;text-underline-offset:2px;}
+.ptitle{font-family:var(--serif);font-weight:300;font-size:34px;line-height:1.05;margin:2px 0 10px;letter-spacing:.3px;}
+.price{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:14px;}
+.pdesc{font-size:13.5px;line-height:1.6;color:#403c36;margin:0 0 18px;}
+
+/* BENEFIT ROW — CRO improvement #1 */
+.benefits{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin:0 0 18px;}
+.benefits .b{display:flex;gap:9px;align-items:center;font-size:12px;line-height:1.2;color:var(--ink);}
+.benefits .b svg{width:18px;height:18px;flex:0 0 auto;color:var(--red);stroke-width:1.5;}
+
+/* SHADE STRIP — CRO improvement #2 */
+.shade{margin:0 0 20px;}
+.shade .lbl{font-family:var(--serif);font-size:15px;margin-bottom:4px;}
+.shade .sub{font-size:11.5px;color:var(--muted);margin-bottom:10px;}
+.shaderow{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;}
+.shaderow::-webkit-scrollbar{display:none;}
+.shaderow figure{flex:0 0 46%;margin:0;}
+.shaderow img{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line);}
+.shaderow figcaption{font-size:10.5px;color:var(--muted);text-align:center;margin-top:5px;letter-spacing:.3px;}
+
+/* GWP */
+.gwp{display:flex;align-items:center;gap:12px;border:1px solid var(--gold);background:#fbf7ef;padding:11px 13px;margin:0 0 16px;}
+.gwp img{width:42px;height:42px;object-fit:cover;flex:0 0 auto;}
+.gwp .gt .tag{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:2px;}
+.gwp .gt .nm{font-size:12.5px;letter-spacing:.5px;text-transform:uppercase;}
+
+/* qty + CTA */
+.qtyrow{display:flex;gap:10px;margin-bottom:10px;}
+.qty{display:flex;align-items:center;border:1px solid var(--ink);}
+.qty button{width:40px;height:48px;font-size:17px;}
+.qty span{width:30px;text-align:center;font-size:14px;}
+.atc{flex:1;background:var(--ink);color:#fff;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:15px;transition:.12s;}
+.atc:active{opacity:.85;}
+.shipnote{display:flex;align-items:center;gap:8px;font-size:12px;color:#403c36;margin-bottom:18px;}
+.shipnote svg{width:18px;height:18px;stroke:var(--ink);stroke-width:1.4;fill:none;}
+
+/* accordions */
+.acc{border-top:1px solid var(--line);margin:0 22px;}
+.acc .item{border-bottom:1px solid var(--line);}
+.acc .q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 2px;
+  font-size:12px;letter-spacing:1.5px;text-transform:uppercase;text-align:left;}
+.acc .q .pm{font-size:16px;transition:.2s;}
+.acc .item.open .q .pm{transform:rotate(45deg);}
+.acc .a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.acc .a .inner{padding:0 2px 16px;font-size:13px;line-height:1.65;color:#403c36;}
+.acc .a .inner b{color:var(--ink);}
+.acc .a ol{margin:8px 0 0;padding-left:18px;}
+.acc .a li{margin-bottom:5px;}
+
+/* reviews */
+.rev{padding:30px 22px 26px;background:var(--soft);margin-top:24px;}
+.rev h2{font-family:var(--serif);font-weight:300;font-size:26px;text-align:center;margin:0 0 16px;}
+.revsum{display:flex;gap:18px;align-items:center;margin-bottom:6px;}
+.revavg{text-align:center;flex:0 0 auto;}
+.revavg .big{font-family:var(--serif);font-size:38px;line-height:1;}
+.revavg .stars{color:var(--red);font-size:13px;}
+.revavg .cnt{font-size:10px;color:var(--muted);margin-top:3px;}
+.hist{flex:1;}
+.histrow{display:flex;align-items:center;gap:7px;margin-bottom:3px;font-size:10px;color:var(--muted);}
+.histrow .lbl{width:12px;text-align:right;}
+.histrow .st{color:var(--red);}
+.histbar{flex:1;height:6px;background:#e3ddd0;overflow:hidden;}
+.histbar i{display:block;height:100%;background:var(--ink);}
+.histrow .n{width:24px;text-align:right;}
+.recommend{font-size:12px;color:#403c36;text-align:center;margin:10px 0 2px;}
+.recommend b{font-family:var(--serif);font-size:15px;}
+.photostrip{display:flex;gap:7px;overflow-x:auto;padding:14px 0 4px;scrollbar-width:none;}
+.photostrip::-webkit-scrollbar{display:none;}
+.photostrip img{flex:0 0 80px;height:80px;object-fit:cover;}
+.rcard{border-top:1px solid var(--line);padding:15px 0;}
+.rhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;}
+.rname{font-size:12.5px;font-weight:600;}
+.rname .vb{font-size:9.5px;color:var(--muted);font-weight:400;margin-left:5px;}
+.rdate{font-size:10.5px;color:var(--muted);}
+.rstars{color:var(--red);font-size:12px;letter-spacing:1px;margin-bottom:5px;}
+.rtitle{font-family:var(--serif);font-size:15px;margin-bottom:4px;}
+.rbody{font-size:12.5px;line-height:1.55;color:#403c36;}
+.rmeta{font-size:10.5px;color:var(--muted);margin-top:7px;}
+.rmeta span{margin-right:12px;}
+.revmore{display:block;width:100%;text-align:center;border:1px solid var(--ink);padding:13px;font-size:11px;
+  letter-spacing:2px;text-transform:uppercase;margin-top:18px;}
+
+/* footer */
+.foot{background:var(--ink);color:#cfc9c0;padding:30px 22px 92px;}
+.foot .logo{height:24px;margin-bottom:16px;filter:brightness(0) invert(1);opacity:.92;}
+.footcols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.footcols h4{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#fff;margin:0 0 10px;}
+.footcols a{display:block;font-size:12px;color:#a8a39a;margin-bottom:7px;}
+.footnote{font-size:11px;color:#7a766e;margin-top:20px;border-top:1px solid rgba(255,255,255,.12);padding-top:14px;line-height:1.5;}
+
+/* sticky */
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:390px;z-index:60;
+  background:var(--cream);border-top:1px solid var(--line);padding:10px 14px;display:flex;align-items:center;gap:12px;transition:transform .28s ease;}
+.sticky.show{transform:translateX(-50%) translateY(0);}
+.sticky .sthumb{width:42px;height:42px;background:#fff;border:1px solid var(--line);flex:0 0 auto;overflow:hidden;}
+.sticky .sinfo{flex:1;min-width:0;}
+.sticky .snm{font-family:var(--serif);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sticky .sprice{font-size:12px;color:var(--muted);}
+.sticky .satc{background:var(--ink);color:#fff;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:12px 16px;flex:0 0 auto;}
+.spacer{height:20px;}
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <div class="announce">Free US Shipping Over $75</div>
+
+  <header class="header">
+    <svg class="ico" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <a class="logo" href="#"><img src="https://besamecosmetics.com/cdn/shop/files/besame_logo.png" alt="Bésame" height="26"></a>
+    <div class="grp">
+      <svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+      <svg class="ico" viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+    </div>
+  </header>
+
+  <!-- gallery -->
+  <div class="gallery">
+    <div class="gmain" id="gmain">
+      <div class="slide on"><img src="https://cdn.shopify.com/s/files/1/0642/8495/files/BesameRed25.jpg" alt="Bésame Red Lipstick"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0642/8495/products/swatches-besamered-2022.jpg" alt="Bésame Red swatches"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0642/8495/products/lipswatches_632436f1-6268-42d2-b6a6-1cc5a686fc3a.png" alt="Bésame Red on lips"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0642/8495/products/ScreenShot2022-05-16at3.04.03PM.png" alt="Bésame Red detail"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0642/8495/products/ScreenShot2022-05-16at3.04.43PM.png" alt="Bésame Red detail"></div>
+    </div>
+    <div class="gthumbs" id="gthumbs">
+      <button class="on"><img src="https://cdn.shopify.com/s/files/1/0642/8495/files/BesameRed25.jpg" alt=""></button>
+      <button><img src="https://cdn.shopify.com/s/files/1/0642/8495/products/swatches-besamered-2022.jpg" alt=""></button>
+      <button><img src="https://cdn.shopify.com/s/files/1/0642/8495/products/lipswatches_632436f1-6268-42d2-b6a6-1cc5a686fc3a.png" alt=""></button>
+      <button><img src="https://cdn.shopify.com/s/files/1/0642/8495/products/ScreenShot2022-05-16at3.04.03PM.png" alt=""></button>
+      <button><img src="https://cdn.shopify.com/s/files/1/0642/8495/products/ScreenShot2022-05-16at3.04.43PM.png" alt=""></button>
+    </div>
+  </div>
+
+  <!-- product info -->
+  <div class="pinfo">
+    <div class="prate"><span class="stars">★★★★★</span><a href="#reviews">337 Reviews</a></div>
+    <h1 class="ptitle">Bésame Red Lipstick</h1>
+    <div class="price">$36.00</div>
+    <p class="pdesc">Indulge in our unparalleled pigmentation and quality with a color inspired by the 1920's. A bright red with cool undertones that embodies unabashed confidence — the very first shade revived by our founder, inspired by her grandmother's beauty routine in Argentina. Made locally with the highest quality ingredients.</p>
+
+    <!-- BENEFIT ROW — CRO improvement #1 -->
+    <div class="benefits">
+      <div class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l2 5 5 .5-4 3.5 1.5 5L12 19l-4.5 3 1.5-5-4-3.5 5-.5z"/></svg>Triple-pigmented colour</div>
+      <div class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg>Feather-proof satin finish</div>
+      <div class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s-7-4.5-9-9a5 5 0 0 1 9-2 5 5 0 0 1 9 2c-2 4.5-9 9-9 9z"/></svg>Subtle vanilla scent</div>
+      <div class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3c4 4 6 7 6 10a6 6 0 0 1-12 0c0-3 2-6 6-10z"/></svg>Vitamin E + squalane</div>
+      <div class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>Safe for sensitive skin</div>
+      <div class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="8" y="3" width="8" height="18" rx="1"/><path d="M8 8h8"/></svg>Gold metal tube</div>
+    </div>
+
+    <!-- SHADE STRIP — CRO improvement #2 -->
+    <div class="shade">
+      <div class="lbl">See the shade</div>
+      <div class="sub">A true blue-red that flatters a wide range of complexions — see it swatched and on the lips.</div>
+      <div class="shaderow">
+        <figure><img src="https://cdn.shopify.com/s/files/1/0642/8495/products/swatches-besamered-2022.jpg" alt="Bésame Red swatched on a range of skin tones"><figcaption>Swatched on a range of skin tones</figcaption></figure>
+        <figure><img src="https://cdn.shopify.com/s/files/1/0642/8495/products/lipswatches_632436f1-6268-42d2-b6a6-1cc5a686fc3a.png" alt="Bésame Red on the lips"><figcaption>On the lips</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- GWP -->
+    <div class="gwp">
+      <img src="https://besamecosmetics.com/cdn/shop/files/Apricot_perfect_peachy_orange_shade.jpg" alt="Apricot Cream Blush">
+      <div class="gt"><div class="tag">Included on orders $120+</div><div class="nm">Apricot Cream Blush</div></div>
+    </div>
+
+    <!-- qty + CTA -->
+    <div class="qtyrow">
+      <div class="qty"><button id="qm">−</button><span id="qv">1</span><button id="qp">+</button></div>
+      <button class="atc" id="atc">Add to cart</button>
+    </div>
+    <div class="shipnote"><svg viewBox="0 0 24 24"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="1.5"/><circle cx="17.5" cy="17" r="1.5"/></svg>Free shipping on orders $75+ in the U.S.</div>
+  </div>
+
+  <!-- accordions -->
+  <div class="acc" id="acc">
+    <div class="item open"><button class="q">Description<span class="pm">+</span></button>
+      <div class="a"><div class="inner">One of the first colors our founder discovered on her mission to revive iconic cosmetic styles for modern women, <b>Bésame Red — 1920</b> is the cornerstone of our line of bold and beautiful lipstick shades. This true red with a cool-blue undertone compliments a wide range of complexions with a semi-matte look that stays perfectly in place from coffee shops to cocktail hours and everything in between. Enriched with squalane and Vitamin E, it feels great on the lips while delivering the unabashed confidence of the daring "New Woman" of the 1920s.</div></div>
+    </div>
+    <div class="item"><button class="q">How to Use<span class="pm">+</span></button>
+      <div class="a"><div class="inner">Our application guide follows a two-step process created in the 1940s by movie-industry make-up artists to give actresses perfect, camera-ready lips that last through a long day of filming.
+        <ol>
+          <li><b>Prepare lips:</b> Ensure lips are clean and hydrated, free of dryness.</li>
+          <li><b>Outline &amp; fill:</b> Define the lip line, then fill with colour and blot for long, even wear.</li>
+        </ol>
+      </div></div>
+    </div>
+    <div class="item"><button class="q">Ingredients<span class="pm">+</span></button>
+      <div class="a"><div class="inner">Caprylic/Capric Triglyceride, Trioctyldodecyl Citrate, Ozokerite Wax, Octyldodecanol, Kaolin, Squalane, Microcrystalline Wax, Beeswax (Cera Alba), Bis-diglyceryl Polyacyladipate-2, Cetyl Palmitate, Diisostearyl Malate, Copernicia Cerifera (Carnauba) Wax, Euphorbia Cerifera (Candelilla) Wax, Trihydroxystearin, Mica, Phenoxyethanol, Vanillin, Tocopheryl Acetate, Ethylhexylglycerin. May Contain +/- Iron Oxides, Titanium Dioxide, Red 7 Lake, Red 6.</div></div>
+    </div>
+  </div>
+
+  <!-- reviews -->
+  <section class="rev" id="reviews">
+    <h2>Loved by 337 women</h2>
+    <div class="revsum">
+      <div class="revavg"><div class="big">4.9</div><div class="stars">★★★★★</div><div class="cnt">337 reviews</div></div>
+      <div class="hist">
+        <div class="histrow"><span class="lbl">5</span><span class="st">★</span><span class="histbar"><i style="width:93%"></i></span><span class="n">314</span></div>
+        <div class="histrow"><span class="lbl">4</span><span class="st">★</span><span class="histbar"><i style="width:6%"></i></span><span class="n">20</span></div>
+        <div class="histrow"><span class="lbl">3</span><span class="st">★</span><span class="histbar"><i style="width:1%"></i></span><span class="n">3</span></div>
+        <div class="histrow"><span class="lbl">2</span><span class="st">★</span><span class="histbar"><i style="width:0%"></i></span><span class="n">0</span></div>
+        <div class="histrow"><span class="lbl">1</span><span class="st">★</span><span class="histbar"><i style="width:0%"></i></span><span class="n">0</span></div>
+      </div>
+    </div>
+    <div class="recommend"><b>99%</b> would recommend this product</div>
+    <div class="photostrip">
+      <img src="https://cdn.shopify.com/s/files/1/0642/8495/products/lipswatches_632436f1-6268-42d2-b6a6-1cc5a686fc3a.png" alt="">
+      <img src="https://cdn.shopify.com/s/files/1/0642/8495/products/swatches-besamered-2022.jpg" alt="">
+      <img src="https://cdn.shopify.com/s/files/1/0642/8495/products/ScreenShot2022-05-16at3.04.03PM.png" alt="">
+      <img src="https://cdn.shopify.com/s/files/1/0642/8495/products/ScreenShot2022-05-16at3.04.43PM.png" alt="">
+      <img src="https://cdn.shopify.com/s/files/1/0642/8495/products/ScreenShot2022-05-16at3.05.22PM.png" alt="">
+    </div>
+
+    <div class="rcard">
+      <div class="rhead"><span class="rname">Elizabeth G.<span class="vb">Verified Buyer</span></span><span class="rdate">4 months ago</span></div>
+      <div class="rstars">★★★★★</div>
+      <div class="rtitle">Gorgeous red that pops</div>
+      <div class="rbody">Besame Red is such a beautiful balanced red. It's not too cool or too orangey &amp; not too dark — it's a red that works well for me. I have fair skin &amp; gray hair and can look washed-out, but this red really livens up my face. It really pops, isn't drying, and has good staying power.</div>
+      <div class="rmeta"><span>Age: Over 65</span><span>Skin tone: Fair</span><span>Skin type: Combination</span></div>
+    </div>
+    <div class="rcard">
+      <div class="rhead"><span class="rname">Jordan W.<span class="vb">Verified Buyer</span></span><span class="rdate">Recommends this product</span></div>
+      <div class="rstars">★★★★★</div>
+      <div class="rtitle">Happy, strawberry red!</div>
+      <div class="rbody">Love this classic shade! It's a lovely, pink-leaning red that goes on very saturated, but can also function as a delightful strawberry lip stain!</div>
+    </div>
+    <div class="rcard">
+      <div class="rhead"><span class="rname">Lita M.<span class="vb">Verified Buyer</span></span><span class="rdate">Recommends this product</span></div>
+      <div class="rstars">★★★★★</div>
+      <div class="rtitle">This is a beautiful shade</div>
+      <div class="rbody">This is a beautiful shade of red. I absolutely love the look of the packaging and the feel of the lipstick going on — absolutely gorgeous.</div>
+    </div>
+    <div class="rcard">
+      <div class="rhead"><span class="rname">Delia S.<span class="vb">Verified Buyer</span></span><span class="rdate">Recommends this product</span></div>
+      <div class="rstars">★★★★★</div>
+      <div class="rtitle">I love this lipstick! Lovely</div>
+      <div class="rbody">I love this lipstick! Lovely color and texture.</div>
+    </div>
+    <a class="revmore" href="#">Read all 337 reviews</a>
+  </section>
+
+  <footer class="foot">
+    <img class="logo" src="https://besamecosmetics.com/cdn/shop/files/besame_logo.png" alt="Bésame">
+    <div class="footcols">
+      <div><h4>Shop</h4><a href="#">Bestsellers</a><a href="#">Lipsticks</a><a href="#">Shade Finder</a><a href="#">Shop All</a></div>
+      <div><h4>About</h4><a href="#">Gabriela's Story</a><a href="#">How to Use</a><a href="#">Ingredients</a><a href="#">Contact</a></div>
+    </div>
+    <div class="footnote">Reviving iconic cosmetic styles for modern women since 2004. Made locally with the highest quality ingredients.</div>
+  </footer>
+
+  <div class="spacer"></div>
+
+  <div class="sticky" id="sticky">
+    <div class="sthumb"><img src="https://cdn.shopify.com/s/files/1/0642/8495/files/BesameRed25.jpg" alt=""></div>
+    <div class="sinfo"><div class="snm">Bésame Red Lipstick</div><div class="sprice">$36.00</div></div>
+    <button class="satc" id="stAtc">Add to cart</button>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  // qty
+  var q=1, qv=document.getElementById('qv');
+  document.getElementById('qp').addEventListener('click',function(){q++;qv.textContent=q;});
+  document.getElementById('qm').addEventListener('click',function(){if(q>1){q--;qv.textContent=q;}});
+  // gallery
+  var slides=document.querySelectorAll('#gmain .slide'), thumbs=document.querySelectorAll('#gthumbs button');
+  thumbs.forEach(function(t,i){t.addEventListener('click',function(){
+    slides.forEach(function(s){s.classList.remove('on');});thumbs.forEach(function(x){x.classList.remove('on');});
+    slides[i].classList.add('on');t.classList.add('on');
+  });});
+  // accordions
+  document.querySelectorAll('.acc .q').forEach(function(qb){
+    qb.addEventListener('click',function(){
+      var item=qb.parentElement,a=item.querySelector('.a');
+      var open=item.classList.toggle('open');
+      a.style.maxHeight=open?a.scrollHeight+'px':'0px';
+    });
+  });
+  (function(){var d=document.querySelector('.acc .item.open .a');if(d)d.style.maxHeight=d.scrollHeight+'px';})();
+  // sticky
+  var atc=document.getElementById('atc'),sticky=document.getElementById('sticky');
+  function onScroll(){
+    var r=atc.getBoundingClientRect();
+    var nearFooter=document.querySelector('.foot').getBoundingClientRect().top<window.innerHeight-40;
+    sticky.classList.toggle('show', r.bottom<0 && !nearFooter);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);onScroll();
+})();
+</script>
+</body>
+</html>
