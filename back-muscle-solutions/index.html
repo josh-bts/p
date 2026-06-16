@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>QL Claw™ — Lower Back Muscle Release Device | Back Muscle Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#189cb9;
+    --teal-deep:#0f7d96;
+    --navy2:#0f3a4d;
+    --ink:#1f2a2e;
+    --soft:#5d6b70;
+    --bg:#ffffff;
+    --wash:#f1f7f9;
+    --line:#e3ebed;
+    --green:#1f9d57;
+    --sans:'Work Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);color:var(--ink);background:#d4dde0;line-height:1.5;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+
+  .device{max-width:390px;margin:0 auto;background:var(--bg);position:relative;min-height:100vh;overflow:hidden;}
+  @media(min-width:600px){body{padding:28px 0;}.device{border-radius:30px;box-shadow:0 30px 80px rgba(15,58,77,.22);min-height:auto;}}
+
+  .topbar{background:var(--navy2);color:#eaf5f8;font-size:11px;font-weight:600;letter-spacing:.03em;text-align:center;padding:8px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .topbar b{color:#7fe0f0;}
+
+  header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--line);}
+  header .logo{height:34px;width:auto;}
+  .icon-btn{background:none;border:none;color:var(--ink);cursor:pointer;display:flex;position:relative;}
+  .icon-btn svg{width:22px;height:22px;}
+  .icon-btn span{position:absolute;top:-7px;right:-8px;background:var(--teal);color:#fff;font-size:10px;font-weight:800;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;}
+
+  /* gallery */
+  .gallery{padding:14px 16px 0;}
+  .g-main{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--wash);aspect-ratio:1/1;border:1px solid var(--line);}
+  .g-main img{width:100%;height:100%;object-fit:cover;}
+  .g-main .usa{position:absolute;top:12px;left:12px;background:#fff;border:1px solid var(--line);border-radius:50px;padding:5px 11px;font-size:10.5px;font-weight:800;letter-spacing:.02em;display:flex;align-items:center;gap:5px;color:var(--navy2);}
+  .g-thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;}
+  .g-thumbs::-webkit-scrollbar{display:none;}
+  .g-thumbs .thumb{flex:0 0 auto;width:60px;height:60px;border-radius:10px;overflow:hidden;border:2px solid transparent;cursor:pointer;background:var(--wash);}
+  .g-thumbs .thumb.active{border-color:var(--teal);}
+  .g-thumbs .thumb img{width:100%;height:100%;object-fit:cover;}
+
+  /* buy box — clean modern, proof consolidated (PRIMARY) */
+  .buy{padding:20px 20px 30px;}
+  .buy h1{font-size:24px;font-weight:800;line-height:1.18;letter-spacing:-.01em;margin-bottom:10px;}
+  .rating{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:14px;}
+  .stars{color:#f3a712;font-size:15px;letter-spacing:1px;}
+  .rating a{color:var(--soft);text-decoration:underline;text-underline-offset:2px;}
+  .price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:16px;}
+  .price{font-size:28px;font-weight:800;}
+  .compare{color:#9aa6aa;text-decoration:line-through;font-size:17px;}
+  .save{background:#eafaf0;color:var(--green);font-weight:800;font-size:12px;padding:3px 9px;border-radius:6px;}
+
+  .benefits{list-style:none;margin-bottom:20px;display:flex;flex-direction:column;gap:9px;}
+  .benefits li{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;font-weight:500;}
+  .benefits li svg{width:18px;height:18px;flex:0 0 auto;margin-top:1px;fill:var(--teal);}
+
+  .opt-label{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:9px;}
+  .swatches{display:flex;gap:10px;margin-bottom:20px;}
+  .swatch{display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:12px;padding:9px 14px 9px 10px;cursor:pointer;font-size:13px;font-weight:600;transition:.15s;}
+  .swatch.active{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink);}
+  .swatch .dot{width:20px;height:20px;border-radius:50%;border:1px solid rgba(0,0,0,.12);}
+
+  .atc{width:100%;border:none;border-radius:14px;background:var(--teal);color:#fff;font-family:var(--sans);font-weight:800;font-size:16px;letter-spacing:.01em;padding:17px;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 22px rgba(24,156,185,.32);}
+  .atc:active{transform:scale(.99);}
+  .guarantee{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:13px;font-size:12.5px;font-weight:600;color:var(--soft);}
+  .guarantee svg{width:15px;height:15px;stroke:var(--green);fill:none;stroke-width:2;}
+
+  .trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px;border-top:1px solid var(--line);padding-top:18px;}
+  .trust{text-align:center;}
+  .trust .ic{width:30px;height:30px;margin:0 auto 7px;display:flex;align-items:center;justify-content:center;background:var(--wash);border-radius:9px;}
+  .trust .ic svg{width:17px;height:17px;stroke:var(--teal-deep);fill:none;stroke-width:1.8;}
+  .trust .t{font-size:10.5px;font-weight:700;line-height:1.25;color:var(--ink);}
+
+  /* sections */
+  section{padding:38px 20px;}
+  .wash{background:var(--wash);}
+  .eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:13px;}
+  h2.title{font-size:25px;font-weight:800;line-height:1.15;letter-spacing:-.01em;}
+  .lede{color:var(--soft);font-size:14.5px;margin-top:12px;line-height:1.6;}
+
+  .videoblock{margin-top:20px;border-radius:14px;overflow:hidden;background:#000;aspect-ratio:16/9;}
+  .videoblock iframe{width:100%;height:100%;border:0;display:block;}
+
+  .uses{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px;}
+  .use{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff;}
+  .use img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+  .use .cap{font-size:12px;font-weight:700;padding:10px 12px;}
+
+  .feat{display:flex;flex-direction:column;gap:12px;margin-top:22px;}
+  .feat .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 16px 16px 54px;position:relative;}
+  .feat .card .ic{position:absolute;left:15px;top:16px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:var(--wash);border-radius:8px;}
+  .feat .card .ic svg{width:16px;height:16px;stroke:var(--teal-deep);fill:none;stroke-width:1.8;}
+  .feat .card h3{font-size:15px;font-weight:800;}
+  .feat .card p{font-size:13px;color:var(--soft);margin-top:5px;line-height:1.5;}
+
+  .proof-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:22px;}
+  .proof-strip .p{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;}
+  .proof-strip .p .big{font-size:17px;font-weight:800;color:var(--navy2);}
+  .proof-strip .p .sub{font-size:11.5px;color:var(--soft);margin-top:4px;line-height:1.35;}
+
+  .rev-head{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:16px;}
+  .rev-head .big{font-size:42px;font-weight:800;line-height:1;}
+  .rev-head .stars{color:#f3a712;font-size:17px;}
+  .rev-head .sub{font-size:12px;color:var(--soft);margin-top:3px;}
+
+  .faq details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow:hidden;}
+  .faq summary{list-style:none;cursor:pointer;padding:15px 16px;font-weight:700;font-size:14px;display:flex;justify-content:space-between;gap:10px;align-items:center;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary .plus{font-size:20px;color:var(--teal-deep);font-weight:400;transition:.2s;}
+  .faq details[open] summary .plus{transform:rotate(45deg);}
+  .faq .ans{padding:0 16px 16px;font-size:13px;color:var(--soft);line-height:1.55;}
+
+  footer{background:var(--navy2);color:#a9c6cf;padding:32px 20px 40px;text-align:center;}
+  footer img{height:34px;margin:0 auto 14px;}
+  footer p{font-size:11.5px;line-height:1.6;}
+  footer .fine{margin-top:13px;font-size:10.5px;color:#5e8492;}
+
+  /* sticky cart (SECONDARY — control has none) */
+  .sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:390px;z-index:60;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -8px 28px rgba(15,58,77,.13);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:11px;transition:transform .32s cubic-bezier(.4,0,.2,1);}
+  .sticky.show{transform:translateX(-50%) translateY(0);}
+  .sticky img{width:44px;height:44px;border-radius:9px;object-fit:cover;flex:0 0 auto;border:1px solid var(--line);}
+  .sticky .si{flex:1;min-width:0;}
+  .sticky .si .t{font-weight:800;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .sticky .si .p{font-weight:800;font-size:13px;}
+  .sticky .si .p s{color:#9aa6aa;font-weight:500;font-size:11px;margin-left:4px;}
+  .sticky button{border:none;border-radius:12px;background:var(--teal);color:#fff;font-family:var(--sans);font-weight:800;font-size:13px;padding:13px 18px;cursor:pointer;white-space:nowrap;}
+
+  .toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%) translateY(20px);background:var(--navy2);color:#fff;font-size:13px;font-weight:600;padding:12px 18px;border-radius:12px;opacity:0;pointer-events:none;transition:.3s;z-index:80;max-width:330px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.3);}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+<div class="device" id="device">
+
+  <div class="topbar">30-Day Money-Back Guarantee &nbsp;·&nbsp; <b>100% Made in the USA</b></div>
+
+  <header>
+    <img class="logo" src="https://backmusclesolutions.com/cdn/shop/files/back_muscle_solutions_logo_transparent_f96867d9-ac3f-4362-b143-bb7710df4661_71x@2x.png" alt="Back Muscle Solutions">
+    <button class="icon-btn" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M6 6 5 3H2"/></svg><span id="cartCount">0</span></button>
+  </header>
+
+  <!-- gallery -->
+  <div class="gallery">
+    <div class="g-main" id="gMain">
+      <div class="usa">🇺🇸 Made in USA</div>
+      <img id="gMainImg" src="https://backmusclesolutions.com/cdn/shop/files/QL_Claw_Blue_NEW_Made_In_USA.png" alt="QL Claw">
+    </div>
+    <div class="g-thumbs" id="gThumbs"></div>
+  </div>
+
+  <!-- buy box -->
+  <div class="buy">
+    <h1>QL Claw™ — Lower Back Muscle Release Device</h1>
+    <div class="rating"><span class="stars">★★★★★</span><strong>4.82</strong><a href="#reviews">113 reviews</a></div>
+    <div class="price-row"><span class="price" id="price">$69.99</span><span class="compare">$79.99</span><span class="save">Save $10</span></div>
+
+    <ul class="benefits">
+      <li><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Release the specific muscles that cause lower back pain</li>
+      <li><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Lower back, hip &amp; glute relief — with a professional's intentionality</li>
+      <li><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Understand and overcome pain, right at home</li>
+      <li><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>100% made in the USA (MN, CO &amp; NV)</li>
+    </ul>
+
+    <div class="opt-label">Color</div>
+    <div class="swatches" id="swatches">
+      <div class="swatch active" data-color="Light Blue" data-img="QL_Claw_Blue_NEW_Made_In_USA.png"><span class="dot" style="background:#189cb9"></span>Light Blue</div>
+      <div class="swatch" data-color="Black" data-img="QLClawBlackMadeInUSA_c38b8309-ce4b-400f-a515-be7f4e37071e.png"><span class="dot" style="background:#1c1c1c"></span>Black</div>
+    </div>
+
+    <button class="atc" id="atc">Add to cart — <span id="atcPrice">$69.99</span></button>
+    <div class="guarantee"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6z"/><path d="M9 12l2 2 4-4"/></svg> 30-Day Money-Back Guarantee · Easy Returns</div>
+
+    <div class="trust-row">
+      <div class="trust"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6z"/></svg></div><div class="t">PT, LMT &amp; D.C. Approved</div></div>
+      <div class="trust"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6L5.7 21l2.3-7.2-6-4.4h7.6z"/></svg></div><div class="t">U.S. Patent #20220133590</div></div>
+      <div class="trust"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7h18v10H3z"/><path d="M3 11h18"/></svg></div><div class="t">American Made &amp; Manufactured</div></div>
+    </div>
+  </div>
+
+  <!-- how it works -->
+  <section class="wash">
+    <div class="eyebrow">How does QL Claw work?</div>
+    <h2 class="title">Deep, targeted release — exactly where the pain starts</h2>
+    <p class="lede">QL Claw releases deep muscles in and around your lower back that get tight, angry, and cause pain. If muscle tension is your problem, deep and targeted release with QL Claw is your solution. Built for back pain, but applicable anywhere.</p>
+    <div class="videoblock">
+      <iframe src="https://www.youtube-nocookie.com/embed/R3pqJ_VpLvc" title="See how professionals use the QL Claw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- ways to use -->
+  <section>
+    <div class="eyebrow">Ways to use the claw</div>
+    <h2 class="title">One tool, the muscles that matter most</h2>
+    <div class="uses">
+      <div class="use"><img src="https://backmusclesolutions.com/cdn/shop/files/Quadratus_Lumborum_Release-QL_Claw.jpg" alt="Quadratus lumborum release"><div class="cap">Quadratus Lumborum (QL)</div></div>
+      <div class="use"><img src="https://backmusclesolutions.com/cdn/shop/files/QL_Claw_Iliacus_Muscle_Release.jpg" alt="Iliacus release"><div class="cap">Iliacus</div></div>
+      <div class="use"><img src="https://backmusclesolutions.com/cdn/shop/files/Gluteus_Medius_Release-QL_Claw.jpg" alt="Gluteus medius release"><div class="cap">Gluteus Medius</div></div>
+      <div class="use"><img src="https://backmusclesolutions.com/cdn/shop/files/QL_Claw-The_Mark_Hip_Hook-Massage_Tool_For_Back.jpg" alt="Hip and lower back"><div class="cap">Hips &amp; Lower Back</div></div>
+    </div>
+  </section>
+
+  <!-- features / why -->
+  <section class="wash">
+    <div class="eyebrow">Reasons to love the QL Claw</div>
+    <h2 class="title">Built like a pro's hands — made to last</h2>
+    <div class="feat">
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div><h3>Professional-grade release</h3><p>Targets the QL, iliacus, glute and hip muscles a clinician would work — on your own floor, on your own schedule.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7h18v10H3z"/><path d="M3 11h18"/></svg></div><h3>American made &amp; built to last</h3><p>Manufactured in the USA (MN, CO &amp; NV) and protected by U.S. Patent #20220133590.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6z"/></svg></div><h3>PT, LMT &amp; D.C. approved</h3><p>Trusted by physical therapists, massage therapists and chiropractors — backed by a 30-day money-back guarantee.</p></div>
+    </div>
+    <div class="proof-strip">
+      <div class="p"><div class="big">4.82★</div><div class="sub">across 113 verified reviews</div></div>
+      <div class="p"><div class="big">30 Days</div><div class="sub">money-back guarantee</div></div>
+    </div>
+  </section>
+
+  <!-- reviews -->
+  <section id="reviews">
+    <div class="eyebrow">Customer reviews</div>
+    <h2 class="title">Loved by people who'd tried everything</h2>
+    <div class="rev-head">
+      <div><div class="big">4.82</div><div class="stars">★★★★★</div></div>
+      <div><div style="font-weight:800;font-size:15px;">113 verified reviews</div><div class="sub">PT, LMT &amp; D.C. approved · 30-day guarantee</div></div>
+    </div>
+  </section>
+
+  <!-- faq -->
+  <section class="faq wash">
+    <div class="eyebrow">Frequently asked questions</div>
+    <h2 class="title">Good to know</h2>
+    <details><summary>What does the QL Claw treat? <span class="plus">+</span></summary><div class="ans">It releases the deep muscles in and around your lower back — the QL, iliacus, gluteus medius and hip muscles — that get tight and cause pain. Built for back pain, but applicable anywhere muscle tension shows up.</div></details>
+    <details><summary>What's your return policy? <span class="plus">+</span></summary><div class="ans">Every QL Claw is backed by easy returns and a 30-day money-back guarantee. If it's not for you, send it back.</div></details>
+    <details><summary>Where is it made? <span class="plus">+</span></summary><div class="ans">100% made and manufactured in the USA — in Minnesota, Colorado and Nevada — and protected by U.S. Patent #20220133590.</div></details>
+    <details><summary>Which color should I choose? <span class="plus">+</span></summary><div class="ans">Light Blue and Black are the same device — pick whichever you prefer. Both ship with the same guarantee.</div></details>
+  </section>
+
+  <footer>
+    <img src="https://backmusclesolutions.com/cdn/shop/files/back_muscle_solutions_logo_transparent_f96867d9-ac3f-4362-b143-bb7710df4661_71x@2x.png" alt="Back Muscle Solutions" style="filter:brightness(0) invert(1)">
+    <p>Massage tools for back pain, at home.<br>30-Day Money-Back Guarantee · 100% Made in the USA.</p>
+    <p class="fine">Concept redesign prototype for demonstration. Product imagery, video and copy belong to Back Muscle Solutions.</p>
+  </footer>
+
+  <!-- sticky cart -->
+  <div class="sticky" id="sticky">
+    <img id="stickyImg" src="https://backmusclesolutions.com/cdn/shop/files/QL_Claw_Blue_NEW_Made_In_USA.png" alt="">
+    <div class="si">
+      <div class="t">QL Claw™ · <span id="stickyColor">Light Blue</span></div>
+      <div class="p">$69.99 <s>$79.99</s></div>
+    </div>
+    <button id="atcSticky">Add to cart</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script>
+(function(){
+  var CDN='https://backmusclesolutions.com/cdn/shop/files/';
+  var media=[
+    'QL_Claw_Blue_NEW_Made_In_USA.png',
+    'QLClawBlackMadeInUSA_c38b8309-ce4b-400f-a515-be7f4e37071e.png',
+    'Anna_QL_Muscle_Release_Hip_Hook_The_Mark.jpg',
+    'QLClawPsoRiteHipHookMassageToolsquare_cc286c80-4c14-41ec-9710-474418ad6960.jpg',
+    'Iliacus_Placement-QL_Claw-Pso-Rite_Release.jpg',
+    'Gluteus_Medius-QL_Claw-Chirp_Wheel_Release.jpg',
+    'QL_Claw-The_Mark_Hip_Hook-Massage_Tool_For_Back.jpg',
+    'Quadratus_Lumborum_Release-QL_Claw.jpg'
+  ];
+  var gThumbs=document.getElementById('gThumbs'),gMainImg=document.getElementById('gMainImg');
+  function show(i){gMainImg.src=CDN+media[i];[].forEach.call(gThumbs.children,function(c,j){c.classList.toggle('active',j===i);});}
+  media.forEach(function(f,i){var t=document.createElement('div');t.className='thumb'+(i===0?' active':'');t.innerHTML='<img src="'+CDN+f+'" alt="">';t.onclick=function(){show(i);};gThumbs.appendChild(t);});
+
+  // color swatches
+  document.querySelectorAll('#swatches .swatch').forEach(function(s){s.onclick=function(){
+    document.querySelectorAll('#swatches .swatch').forEach(function(x){x.classList.remove('active');});
+    s.classList.add('active');
+    gMainImg.src=CDN+s.dataset.img;
+    document.getElementById('stickyImg').src=CDN+s.dataset.img;
+    document.getElementById('stickyColor').textContent=s.dataset.color;
+    [].forEach.call(gThumbs.children,function(c){c.classList.remove('active');});
+  };});
+
+  // add to cart
+  var count=0;
+  function add(){count++;document.getElementById('cartCount').textContent=count;
+    var color=document.querySelector('#swatches .swatch.active').dataset.color;
+    toast('Added: QL Claw™ · '+color+' · $69.99');}
+  document.getElementById('atc').onclick=add;document.getElementById('atcSticky').onclick=add;
+
+  var toastEl=document.getElementById('toast'),tt;
+  window.toast=function(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('show');},2400);};
+
+  // sticky
+  var buy=document.querySelector('.buy'),sticky=document.getElementById('sticky');
+  function onScroll(){var r=buy.getBoundingClientRect();var foot=document.querySelector('footer').getBoundingClientRect();
+    sticky.classList.toggle('show', r.bottom<70 && foot.top>window.innerHeight-40);}
+  window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);onScroll();
+})();
+</script>
+</body>
+</html>
