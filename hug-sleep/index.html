@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Sleep Pod: The Adult Swaddle &amp; Wearable Blanket | Hug Sleep</title>
+<style>
+/* ============ FONTS (brand's real Avenir LT Std from theme assets) ============ */
+@font-face{font-family:'Avenir';src:url('https://hugsleep.com/cdn/shop/t/488/assets/AvenirLTStd-Light.woff2') format('woff2');font-weight:300;font-display:swap;}
+@font-face{font-family:'Avenir';src:url('https://hugsleep.com/cdn/shop/t/488/assets/AvenirLTStd-Book.woff2') format('woff2');font-weight:400;font-display:swap;}
+@font-face{font-family:'Avenir';src:url('https://hugsleep.com/cdn/shop/t/488/assets/AvenirLTStd-Medium.woff2') format('woff2');font-weight:500;font-display:swap;}
+@font-face{font-family:'Avenir';src:url('https://hugsleep.com/cdn/shop/t/488/assets/AvenirLTStd-Heavy.woff2') format('woff2');font-weight:800;font-display:swap;}
+@font-face{font-family:'Avenir';src:url('https://hugsleep.com/cdn/shop/t/488/assets/AvenirLTStd-Black.woff2') format('woff2');font-weight:900;font-display:swap;}
+
+:root{
+  --purple:#483285;        /* brand primary / ATC */
+  --purple-accent:#5a3fb5; /* lighter royal */
+  --lav:#ece9fb;           /* lavender panel / trust bar */
+  --lav-soft:#f6f4fe;      /* very light section bg */
+  --gold:#f0bf4c;          /* announcement bar */
+  --green:#399500;         /* sale badge / checks */
+  --ink:#121212;
+  --muted:rgba(18,18,18,.66);
+  --line:#eceaf2;
+  --frameW:390px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{font-family:'Avenir','Avenir Next','Segoe UI',sans-serif;color:var(--ink);background:#fff;line-height:1.5;font-weight:400;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+h1,h2,h3{font-weight:900;letter-spacing:-.4px;line-height:1.12;}
+button{font-family:inherit;cursor:pointer;border:none;}
+a{color:inherit;}
+
+/* desktop phone frame */
+.frame{max-width:var(--frameW);margin:0 auto;background:#fff;position:relative;overflow-x:hidden;}
+@media(min-width:600px){
+  body{background:#e9e7ee;padding:24px 0;}
+  .frame{box-shadow:0 22px 60px rgba(40,30,80,.22);border-radius:26px;overflow:hidden;}
+}
+
+/* ============ ANNOUNCEMENT BAR ============ */
+.announce{background:var(--gold);color:rgba(18,18,18,.82);font-size:12.5px;font-weight:800;letter-spacing:.2px;text-align:center;padding:9px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/* ============ HEADER ============ */
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;position:sticky;top:0;background:#fff;z-index:60;border-bottom:1px solid var(--line);}
+.hdr .burger{width:26px;display:flex;flex-direction:column;gap:5px;}
+.hdr .burger span{height:2.6px;background:var(--purple);border-radius:2px;}
+.hdr .logo{height:30px;width:auto;}
+.hdr .cart{width:27px;color:var(--purple);}
+
+/* trust ribbon */
+.ribbon{background:var(--lav);display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;padding:9px 12px;font-size:13px;font-weight:800;color:var(--purple);}
+.ribbon .stars{color:#f5a623;letter-spacing:1px;font-size:13px;}
+.ribbon .small{color:var(--muted);font-weight:700;}
+
+/* ============ GALLERY ============ */
+.gallery{position:relative;}
+.gtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;}
+.gtrack::-webkit-scrollbar{display:none;}
+.gslide{flex:0 0 100%;scroll-snap-align:center;aspect-ratio:1/1;background:#f4f3f7;position:relative;}
+.gslide img{width:100%;height:100%;object-fit:cover;}
+.gbadge{position:absolute;top:14px;right:14px;background:var(--green);color:#fff;font-size:11px;font-weight:900;letter-spacing:.4px;padding:7px 12px;border-radius:8px;text-transform:uppercase;box-shadow:0 4px 14px rgba(0,0,0,.12);}
+.gstar{position:absolute;top:64px;right:16px;width:96px;height:96px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;font-weight:900;font-size:10px;line-height:1.15;background:var(--purple-accent);clip-path:polygon(50% 0%,61% 12%,76% 6%,79% 23%,95% 25%,89% 41%,100% 50%,89% 59%,95% 75%,79% 77%,76% 94%,61% 88%,50% 100%,39% 88%,24% 94%,21% 77%,5% 75%,11% 59%,0% 50%,11% 41%,5% 25%,21% 23%,24% 6%,39% 12%);transform:rotate(-8deg);}
+.dots{display:flex;gap:6px;justify-content:center;padding:12px 0 4px;}
+.dots b{width:7px;height:7px;border-radius:50%;background:#d7d3e3;transition:.2s;}
+.dots b.on{background:var(--purple);width:20px;border-radius:4px;}
+.thumbs{display:flex;gap:8px;padding:8px 16px 4px;overflow-x:auto;scrollbar-width:none;}
+.thumbs::-webkit-scrollbar{display:none;}
+.thumbs img{flex:0 0 58px;width:58px;height:58px;border-radius:10px;object-fit:cover;border:2px solid transparent;opacity:.6;transition:.15s;}
+.thumbs img.on{border-color:var(--purple);opacity:1;}
+
+/* ============ BUY ZONE ============ */
+.buy{padding:16px 16px 6px;}
+.rev-line{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:6px;}
+.rev-line .stars{color:#f5a623;letter-spacing:1px;}
+.rev-line a{color:var(--muted);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+h1.title{font-size:29px;margin:2px 0 8px;text-transform:capitalize;}
+.price{display:flex;align-items:center;gap:11px;margin-bottom:12px;}
+.price .was{color:#a6a1b5;text-decoration:line-through;font-size:19px;font-weight:700;}
+.price .now{font-size:27px;font-weight:900;color:var(--ink);}
+.price .off{background:var(--green);color:#fff;font-size:12px;font-weight:900;padding:5px 10px;border-radius:7px;letter-spacing:.3px;}
+
+/* PROOF STRIP (secondary improvement) */
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:4px 0 16px;}
+.proof .p{background:var(--lav-soft);border:1px solid var(--line);border-radius:12px;padding:9px 4px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:64px;}
+.proof .p .n{font-size:14px;font-weight:900;color:var(--purple);line-height:1;}
+.proof .p .l{font-size:8.7px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.2px;line-height:1.15;}
+.proof .p img{height:18px;width:auto;display:inline-block;}
+.proof .p .st{color:#f5a623;font-size:12px;letter-spacing:.5px;}
+
+/* benefit icons */
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:0 0 18px;}
+.benefits .b{display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;}
+.benefits .b .ic{width:54px;height:54px;border-radius:50%;background:var(--lav);display:flex;align-items:center;justify-content:center;}
+.benefits .b .ic img{width:28px;height:28px;}
+.benefits .b span{font-size:10.5px;font-weight:800;color:var(--ink);line-height:1.2;}
+
+/* selectors */
+.selrow{margin-bottom:15px;}
+.sellabel{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:8px;}
+.sellabel .guide{color:var(--purple);text-decoration:underline;font-size:12px;cursor:pointer;}
+.sellabel .val{color:var(--muted);font-weight:700;}
+.sizes{display:flex;gap:8px;}
+.sizes button{flex:1;padding:12px 0;border:1.6px solid #ded9ea;border-radius:11px;background:#fff;font-weight:800;font-size:14px;color:var(--ink);transition:.15s;position:relative;}
+.sizes button.on{border-color:var(--purple);background:var(--purple);color:#fff;}
+.colors{display:flex;gap:12px;}
+.colors button{width:40px;height:40px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 0 0 1.6px #ded9ea;transition:.15s;position:relative;}
+.colors button.on{box-shadow:0 0 0 2.6px var(--purple);}
+.colors button::after{content:attr(data-c);position:absolute;bottom:-19px;left:50%;transform:translateX(-50%);font-size:9.5px;font-weight:700;color:var(--muted);white-space:nowrap;}
+
+/* BOGO callout (primary parity element, surfaced strongly) */
+.bogo{display:flex;gap:10px;align-items:flex-start;background:linear-gradient(100deg,#f4efff,#ece9fb);border:1.4px dashed var(--purple-accent);border-radius:13px;padding:11px 13px;margin:20px 0 14px;}
+.bogo .gift{font-size:20px;line-height:1;}
+.bogo .t{font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.35;}
+.bogo .t b{color:var(--purple);font-weight:900;}
+
+.qtyrow{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.qty{display:flex;align-items:center;border:1.6px solid #ded9ea;border-radius:11px;overflow:hidden;}
+.qty button{width:42px;height:46px;background:#fff;font-size:20px;font-weight:700;color:var(--purple);}
+.qty span{width:40px;text-align:center;font-weight:800;font-size:15px;}
+
+.atc{width:100%;background:var(--purple);color:#fff;font-weight:900;font-size:16px;letter-spacing:.6px;padding:17px;border-radius:11px;text-transform:capitalize;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 8px 22px rgba(72,50,133,.28);transition:transform .12s;}
+.atc:active{transform:scale(.985);}
+.atc .dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.6);}
+.assure{display:flex;flex-direction:column;gap:7px;margin:14px 0 6px;}
+.assure .a{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;color:var(--muted);}
+.assure .a svg{flex:0 0 16px;color:var(--green);}
+.hsa{display:flex;align-items:center;justify-content:center;gap:7px;background:var(--lav-soft);border-radius:10px;padding:9px;font-size:11.5px;font-weight:800;color:var(--purple);margin-top:8px;}
+
+/* ============ SECTIONS ============ */
+section{padding:30px 16px;}
+.sec-h{font-size:22px;text-align:center;margin-bottom:18px;}
+.sec-h.left{text-align:left;}
+.eyebrow{text-align:center;font-size:11px;font-weight:900;letter-spacing:1.5px;color:var(--purple-accent);text-transform:uppercase;margin-bottom:6px;}
+.lav-bg{background:var(--lav-soft);}
+
+/* video testimonials */
+.vidrow{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;}
+.vidrow::-webkit-scrollbar{display:none;}
+.vcard{flex:0 0 80%;scroll-snap-align:center;border-radius:16px;overflow:hidden;position:relative;background:linear-gradient(160deg,#5a3fb5,#2c1d5c);aspect-ratio:9/15;}
+.vcard video{width:100%;height:100%;object-fit:cover;}
+.vplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.12);cursor:pointer;transition:.2s;}
+.vplay svg{width:56px;height:56px;color:#fff;opacity:.92;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4));}
+.vplay.hide{opacity:0;pointer-events:none;}
+.vcap{position:absolute;left:0;right:0;bottom:0;padding:24px 14px 12px;background:linear-gradient(transparent,rgba(0,0,0,.55));color:#fff;font-size:12.5px;font-weight:800;line-height:1.25;pointer-events:none;}
+.vtag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);color:var(--purple);font-size:9.5px;font-weight:900;letter-spacing:.4px;padding:5px 9px;border-radius:20px;text-transform:uppercase;}
+
+/* quote testimonials */
+.qgrid{display:flex;flex-direction:column;gap:12px;}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:15px;padding:16px;box-shadow:0 5px 18px rgba(60,40,110,.05);}
+.qcard .qh{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;}
+.qcard .qt{font-weight:900;font-size:15px;color:var(--purple);}
+.qcard .vb{font-size:9.5px;font-weight:900;color:var(--green);letter-spacing:.5px;display:flex;align-items:center;gap:4px;}
+.qcard p{font-size:13.5px;color:var(--muted);line-height:1.55;font-weight:500;font-style:italic;}
+.qcard .who{margin-top:9px;font-size:12px;font-weight:800;color:var(--ink);}
+
+/* details / accordion */
+.acc{border-top:1px solid var(--line);}
+.acc .item{border-bottom:1px solid var(--line);}
+.acc .q{display:flex;align-items:center;justify-content:space-between;padding:16px 2px;font-weight:800;font-size:15px;cursor:pointer;}
+.acc .q .pm{color:var(--purple);font-size:22px;font-weight:400;transition:.2s;}
+.acc .item.open .pm{transform:rotate(45deg);}
+.acc .a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.acc .a .inner{padding:0 2px 16px;font-size:13.5px;color:var(--muted);line-height:1.6;font-weight:500;}
+.acc .a .inner li{margin:5px 0 5px 18px;}
+
+/* comparison table */
+.cmp{width:100%;border-collapse:collapse;font-size:13px;border:1.5px solid var(--lav);border-radius:14px;overflow:hidden;}
+.cmp th,.cmp td{padding:13px 8px;text-align:center;border:1px solid var(--lav);}
+.cmp th{color:var(--purple);font-weight:900;font-size:12.5px;background:var(--lav-soft);}
+.cmp td:first-child,.cmp th:first-child{text-align:left;font-weight:800;color:var(--ink);background:#fff;}
+.cmp .yes,.cmp .no{display:inline-flex;width:24px;height:24px;border-radius:7px;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:13px;}
+.cmp .yes{background:var(--green);}
+.cmp .no{background:#2b2b2b;}
+.cmp tr.hl td{background:#f6f3ff;}
+
+/* science steps */
+.steps{display:flex;flex-direction:column;gap:0;position:relative;}
+.step{display:flex;gap:14px;padding-bottom:22px;position:relative;}
+.step:not(:last-child)::before{content:"";position:absolute;left:17px;top:34px;bottom:0;width:2px;background:var(--lav);}
+.step .num{flex:0 0 36px;width:36px;height:36px;border-radius:50%;background:var(--purple);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;z-index:1;}
+.step .sc h4{font-size:15px;font-weight:900;margin-bottom:4px;}
+.step .sc p{font-size:13px;color:var(--muted);line-height:1.55;font-weight:500;}
+
+/* research benefit cards */
+.rcards{display:flex;flex-direction:column;gap:12px;}
+.rcard{background:#fff;border-radius:15px;padding:18px;border:1px solid var(--line);}
+.rcard h4{font-size:16px;font-weight:900;color:var(--purple);margin-bottom:6px;}
+.rcard p{font-size:13px;color:var(--muted);line-height:1.55;font-weight:500;}
+
+/* USP mini grid */
+.usp{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:18px;}
+.usp .u{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;}
+.usp .u h5{font-size:13.5px;font-weight:900;margin-bottom:4px;color:var(--ink);}
+.usp .u p{font-size:11.5px;color:var(--muted);line-height:1.45;font-weight:500;}
+
+/* shark tank */
+.shark{text-align:center;}
+.shark img{border-radius:18px;box-shadow:0 12px 34px rgba(60,40,110,.16);margin-bottom:18px;}
+.shark .sq{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:11px;text-align:left;}
+.shark .sq p{font-style:italic;font-size:14px;font-weight:700;line-height:1.45;}
+.shark .sq .by{margin-top:7px;font-size:12px;font-weight:900;color:var(--purple);}
+
+/* review widget */
+.rw-top{display:flex;gap:18px;align-items:center;margin-bottom:18px;}
+.rw-score{text-align:center;flex:0 0 auto;}
+.rw-score .big{font-size:42px;font-weight:900;color:var(--ink);line-height:1;}
+.rw-score .st{color:#f5a623;letter-spacing:2px;font-size:15px;margin:4px 0 2px;}
+.rw-score .ct{font-size:11px;color:var(--muted);font-weight:700;}
+.rw-hist{flex:1;display:flex;flex-direction:column;gap:5px;}
+.rw-bar{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:var(--muted);}
+.rw-bar .lab{width:32px;text-align:right;}
+.rw-bar .track{flex:1;height:8px;background:var(--lav);border-radius:5px;overflow:hidden;}
+.rw-bar .fill{height:100%;background:#f5a623;border-radius:5px;}
+.rw-bar .cnt{width:34px;text-align:left;}
+.pills{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:10px;margin-bottom:6px;}
+.pills::-webkit-scrollbar{display:none;}
+.pills button{flex:0 0 auto;padding:8px 15px;border-radius:30px;background:#fff;border:1.4px solid #ded9ea;font-size:12.5px;font-weight:800;color:var(--muted);white-space:nowrap;}
+.pills button.on{background:var(--purple);border-color:var(--purple);color:#fff;}
+.rcard-list{display:flex;flex-direction:column;gap:12px;}
+.rev{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;}
+.rev .rh{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
+.rev .rs{color:#f5a623;letter-spacing:1px;font-size:12px;}
+.rev .rd{font-size:11px;color:#a6a1b5;font-weight:700;}
+.rev .rt{font-weight:900;font-size:14px;margin:3px 0 5px;}
+.rev p{font-size:13px;color:var(--muted);line-height:1.55;font-weight:500;}
+.rev .ra{margin-top:9px;font-size:12px;font-weight:800;display:flex;align-items:center;gap:6px;}
+.rev .ra .vbadge{color:var(--green);font-size:9.5px;font-weight:900;letter-spacing:.4px;}
+
+/* press strip */
+.press{display:flex;gap:11px;overflow-x:auto;scrollbar-width:none;}
+.press::-webkit-scrollbar{display:none;}
+.press .pc{flex:0 0 78%;scroll-snap-align:center;background:var(--lav-soft);border-radius:15px;padding:18px;font-size:14.5px;font-weight:800;font-style:italic;color:var(--purple);line-height:1.4;}
+
+/* guarantee band */
+.guar{background:var(--purple);color:#fff;text-align:center;padding:30px 20px;}
+.guar img{height:74px;margin:0 auto 12px;filter:brightness(0) invert(1);}
+.guar h3{font-size:21px;margin-bottom:8px;color:#fff;}
+.guar p{font-size:13.5px;opacity:.85;max-width:300px;margin:0 auto;font-weight:500;}
+
+/* footer */
+.foot{background:#1a1430;color:rgba(255,255,255,.6);padding:28px 18px 90px;text-align:center;font-size:12px;}
+.foot .fl{height:26px;margin:0 auto 14px;filter:brightness(0) invert(1);opacity:.9;}
+.foot a{color:rgba(255,255,255,.6);text-decoration:underline;display:inline-block;margin:4px 8px;}
+
+/* ============ STICKY BUY BAR (primary improvement) ============ */
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:var(--frameW);background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 26px rgba(40,30,80,.14);padding:10px 14px calc(10px + env(safe-area-inset-bottom));z-index:90;transition:transform .28s cubic-bezier(.4,0,.2,1);}
+.sticky.show{transform:translateX(-50%) translateY(0);}
+.sticky .row{display:flex;align-items:center;gap:12px;}
+.sticky .si{flex:0 0 46px;}
+.sticky .si img{width:46px;height:46px;border-radius:10px;object-fit:cover;}
+.sticky .sm{flex:1;min-width:0;}
+.sticky .sm .nm{font-size:13px;font-weight:900;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sticky .sm .pp{font-size:12px;font-weight:700;color:var(--muted);}
+.sticky .sm .pp b{color:var(--green);}
+.sticky .sm .pp .ws{color:#b5b0c2;text-decoration:line-through;margin-right:4px;}
+.sticky .sbtn{flex:0 0 auto;background:var(--purple);color:#fff;font-weight:900;font-size:13.5px;letter-spacing:.4px;padding:13px 20px;border-radius:10px;box-shadow:0 6px 16px rgba(72,50,133,.3);}
+
+/* toast */
+.toast{position:fixed;top:14px;left:50%;transform:translateX(-50%) translateY(-150%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:30px;font-size:13px;font-weight:800;z-index:120;transition:transform .3s;box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.toast.show{transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+<div class="frame" id="frame">
+
+  <!-- Announcement -->
+  <div class="announce">FATHER'S DAY: Buy One Sleep Pod, Get a 2nd 50% OFF!</div>
+
+  <!-- Header -->
+  <header class="hdr">
+    <div class="burger"><span></span><span></span><span></span></div>
+    <img class="logo" src="https://hugsleep.com/cdn/shop/files/newlogohug.png" alt="Hug Sleep" width="150" height="30">
+    <svg class="cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+  </header>
+
+  <!-- Trust ribbon -->
+  <div class="ribbon"><span>800,000+ Happy Customers</span><span class="stars">★★★★★</span><span class="small">(4.8/5)</span></div>
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <div class="gtrack" id="gtrack">
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0013/6698/2692/products/download_1.jpg" alt="Sleep Pod in Graphite" loading="eager">
+        <div class="gbadge">HSA / FSA Accepted</div>
+        <div class="gstar">BOGO<br>50% OFF<br>ALL PODS</div>
+      </div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0013/6698/2692/files/MoveColordisplay.png" alt="Ruby, Turquoise and Graphite colors"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0013/6698/2692/products/download_2.jpg" alt="Sit up and move freely"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0013/6698/2692/files/Frame4nohood.png" alt="Sleep Pod in Turquoise"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0013/6698/2692/files/Frame5nohood.png" alt="Sleep Pod in Ruby"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0013/6698/2692/files/benefits_2be2dac3-0435-4fea-958e-ee881ec91b9f.png" alt="Sleep Pod benefits"></div>
+    </div>
+    <div class="dots" id="dots"></div>
+    <div class="thumbs" id="thumbs"></div>
+  </div>
+
+  <!-- Buy zone -->
+  <div class="buy">
+    <div class="rev-line"><span class="stars">★★★★★</span><a href="#reviews">1,465 reviews</a></div>
+    <h1 class="title">Sleep Pod</h1>
+    <div class="price"><span class="was">$99.99</span><span class="now">$89.99</span><span class="off">10% OFF</span></div>
+
+    <!-- PROOF STRIP (secondary improvement: credibility moved up to the buy decision) -->
+    <div class="proof">
+      <div class="p"><img src="https://hugsleep.com/cdn/shop/files/shark-tank-logo.svg" alt="As seen on Shark Tank"><span class="l">As Seen On</span></div>
+      <div class="p"><span class="n">800K+</span><span class="l">Happy Sleepers</span></div>
+      <div class="p"><span class="st">★★★★★</span><span class="l">4.8 · 1,465</span></div>
+      <div class="p"><span class="n">30</span><span class="l">Night Trial</span></div>
+    </div>
+
+    <!-- Benefit icons -->
+    <div class="benefits">
+      <div class="b"><div class="ic"><img src="https://hugsleep.com/cdn/shop/files/icon-temperature.svg" alt=""></div><span>Temperature Control</span></div>
+      <div class="b"><div class="ic"><img src="https://hugsleep.com/cdn/shop/files/icon-stress-anxiety.svg" alt=""></div><span>Stress &amp; Anxiety Relief</span></div>
+      <div class="b"><div class="ic"><img src="https://hugsleep.com/cdn/shop/files/icon-friendly.svg" alt=""></div><span>Travel Friendly</span></div>
+      <div class="b"><div class="ic"><img src="https://hugsleep.com/cdn/shop/files/icon-weight.svg" alt=""></div><span>Light Weight</span></div>
+    </div>
+
+    <!-- Size -->
+    <div class="selrow">
+      <div class="sellabel"><span>Size: <span class="val" id="sizeVal">Medium</span></span><span class="guide" onclick="openGuide()">Size Guide</span></div>
+      <div class="sizes" id="sizes">
+        <button data-s="Small">S</button>
+        <button data-s="Medium" class="on">M</button>
+        <button data-s="Large">L</button>
+        <button data-s="XL">XL</button>
+      </div>
+    </div>
+
+    <!-- Color -->
+    <div class="selrow">
+      <div class="sellabel"><span>Color: <span class="val" id="colorVal">Graphite</span></span></div>
+      <div class="colors" id="colors" style="padding-bottom:18px;">
+        <button data-c="Graphite" class="on" style="background:#565a60;"></button>
+        <button data-c="Turquoise" style="background:#41707d;"></button>
+        <button data-c="Ruby" style="background:#8c3a3f;"></button>
+      </div>
+    </div>
+
+    <!-- BOGO -->
+    <div class="bogo"><span class="gift">🎁</span><div class="t"><b>Father's Day BOGO:</b> Buy one Sleep Pod, get your second <b>50% off</b>. Add two Sleep Pods to your cart and the discount applies automatically.</div></div>
+
+    <!-- Qty + ATC -->
+    <div class="qtyrow">
+      <div class="qty"><button onclick="qchg(-1)">−</button><span id="qty">1</span><button onclick="qchg(1)">+</button></div>
+      <div style="font-size:11px;color:var(--muted);font-weight:700;line-height:1.3;">Add a 2nd pod<br>to unlock 50% off</div>
+    </div>
+    <button class="atc" id="atc" onclick="addCart()">Add to Cart <span class="dot"></span> $89.99</button>
+
+    <div class="assure">
+      <div class="a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> Delivery within 2–5 business days</div>
+      <div class="a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> Free Shipping on USA orders over $85</div>
+      <div class="a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg> 30-night sleep guarantee</div>
+    </div>
+    <div class="hsa">💳 HSA/FSA eligible · Save an average of 30%</div>
+  </div>
+
+  <!-- Video testimonials -->
+  <section class="lav-bg">
+    <div class="eyebrow">Real People, Real Sleep</div>
+    <h2 class="sec-h">Fall Asleep &amp; Stay Asleep</h2>
+    <div class="qgrid">
+      <div class="qcard"><div class="qh"><span class="qt">"Fall asleep and stay asleep"</span><span class="vb">✔ VERIFIED</span></div><p>"I've been using this product for about 6 months now — and will simply not sleep without it ever again... I've tried many different sleep products... I stay asleep when I use this... Great product and happy customer!"</p><div class="who">— Jack</div></div>
+      <div class="qcard"><div class="qh"><span class="qt">"Love it!"</span><span class="vb">✔ VERIFIED</span></div><p>"I've always had trouble with sleeping with restless legs... this thing is amazing. I kind of just get in there and I put it all the way up to my shoulders and I just knock out. I am obsessed with this thing."</p><div class="who">— Claire</div></div>
+      <div class="qcard"><div class="qh"><span class="qt">"The BEST way to fall asleep"</span><span class="vb">✔ VERIFIED</span></div><p>"I absolutely LOVE Hug Sleep... I sleep through the whole night and don't toss and turn... when sleeping in the sleep pod I can actually feel my anxiety lessen. I can't recommend this product enough!"</p><div class="who">— Marissa</div></div>
+    </div>
+  </section>
+
+  <!-- Product details -->
+  <section>
+    <h2 class="sec-h left">Product Details</h2>
+    <p style="font-size:14px;color:var(--muted);line-height:1.6;font-weight:500;margin-bottom:14px;">Dealing with anxiety and stress? You're not alone. Sleep Pod uses Deep Touch Pressure Therapy, cocooning you in calming comfort to help enhance sleep and reduce stress. It's a breathable, lightweight alternative to weighted blankets. Experience the best of both worlds with our open-foot design, allowing you to keep your feet snugly inside or freely outside for optimal movement and temperature control.</p>
+    <div class="acc" id="detailsAcc">
+      <div class="item"><div class="q">What's inside the box <span class="pm">+</span></div><div class="a"><div class="inner"><ul style="list-style:none;">
+        <li>✓ Uses science-backed Deep Touch Pressure Therapy</li>
+        <li>✓ Ultra soft HugStretch™ technology</li>
+        <li>✓ Machine washable and easy travel</li>
+        <li>✓ All the benefits of a weighted blanket without the hassle</li>
+        <li>✓ Breathable and lightweight</li>
+      </ul></div></div></div>
+    </div>
+  </section>
+
+  <!-- Which Sleep Pod comparison -->
+  <section class="lav-bg">
+    <h2 class="sec-h">Which Sleep Pod Is Right For You?</h2>
+    <table class="cmp">
+      <thead><tr><th></th><th>Sleep Pod</th><th>Sleep Pod Move</th><th>Hooded Move</th></tr></thead>
+      <tbody>
+        <tr><td>Compression Benefits</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>Breathable</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>Machine Washable</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr class="hl"><td>Opening For Feet</td><td><span class="no">✕</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>Snuggle Hood</td><td><span class="no">✕</span></td><td><span class="no">✕</span></td><td><span class="yes">✓</span></td></tr>
+      </tbody>
+    </table>
+    <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:10px;font-weight:700;">You're viewing the <b style="color:var(--purple);">Sleep Pod Move</b> — open-foot design for total freedom.</p>
+  </section>
+
+  <!-- See in action -->
+  <section>
+    <h2 class="sec-h">See Sleep Pod In Action</h2>
+    <div class="vidrow">
+      <div class="vcard"><video src="https://cdn.shopify.com/videos/c/o/v/65d16b26dc4249e88fb91f5787b158db.mp4#t=0.1" playsinline preload="metadata" muted loop></video><div class="vtag">▶ Watch</div><div class="vcap">New colors the whole family wants to live in 24/7</div><div class="vplay" onclick="playV(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
+      <div class="vcard"><video src="https://cdn.shopify.com/videos/c/o/v/7b728890c0444a7991bb784639637348.mp4#t=0.1" playsinline preload="metadata" muted loop></video><div class="vtag">▶ Watch</div><div class="vcap">Weighted blanket vs. Sleep Pod</div><div class="vplay" onclick="playV(this)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
+    </div>
+  </section>
+
+  <!-- How to use -->
+  <section class="lav-bg">
+    <h2 class="sec-h">How To Use Sleep Pod</h2>
+    <p style="font-size:14px;color:var(--muted);line-height:1.65;font-weight:500;text-align:center;max-width:340px;margin:0 auto;">While in bed, slip inside Sleep Pod so that the top seam is at a comfortable height. We recommend starting near your upper chest and working up to above your shoulders. The specialty fabric will stretch and compress, providing a calming, swaddling pressure around your body.</p>
+  </section>
+
+  <!-- Science -->
+  <section>
+    <div class="eyebrow">Backed By Science</div>
+    <h2 class="sec-h">The Science Behind Deep Touch Therapy</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div class="sc"><h4>Full 360° Compression Therapy</h4><p>Wraps around your entire body in a gentle compression from every angle.</p></div></div>
+      <div class="step"><div class="num">2</div><div class="sc"><h4>This sends relaxation signals to your brain</h4><p>This full-body gentle compression mimics the feeling of being hugged, stimulating serotonin receptors in your brain.</p></div></div>
+      <div class="step"><div class="num">3</div><div class="sc"><h4>A sense of calm washes over you</h4><p>The therapeutic touch eases the body's muscles, which naturally soothes the anxious mind as well.</p></div></div>
+      <div class="step"><div class="num">4</div><div class="sc"><h4>Promotes restful, rejuvenating sleep</h4><p>Once in this state, feelings of anxiety and stress take a backseat to tiredness, and you can fall asleep faster and stay asleep longer.</p></div></div>
+    </div>
+  </section>
+
+  <!-- Research benefits -->
+  <section class="lav-bg">
+    <h2 class="sec-h">The Research-Backed Benefits</h2>
+    <div class="rcards">
+      <div class="rcard"><h4>Reduces Stress</h4><p>The sensation of being cuddled lowers stress and overstimulation by reducing cortisol, making you feel calm and relaxed.</p></div>
+      <div class="rcard"><h4>Deep Sleep Activation</h4><p>The firm, comforting pressure of Deep Touch Therapy activates the body's parasympathetic nervous system, leading to a calmer state of mind at night.</p></div>
+      <div class="rcard"><h4>Serotonin Boost</h4><p>Our pods gently cocoon you, fostering serotonin production for a happier, contented feeling — perfect for anxious sleepers seeking comfort.</p></div>
+    </div>
+  </section>
+
+  <!-- Sleep Pod vs Weighted Blanket -->
+  <section>
+    <h2 class="sec-h">Sleep Pod vs. Weighted Blanket</h2>
+    <img src="https://hugsleep.com/cdn/shop/files/comparison_f6b909e3-dfbb-488a-83aa-f405f19dcdc7.png" alt="Sleep Pod vs Weighted Blanket" style="border-radius:16px;border:1px solid var(--line);">
+    <a href="#top" onclick="scrollTop()" style="display:block;text-align:center;background:var(--purple);color:#fff;font-weight:900;padding:15px;border-radius:11px;margin-top:18px;text-decoration:none;letter-spacing:.4px;">Shop Sleep Pod</a>
+  </section>
+
+  <!-- Reviews widget -->
+  <section class="lav-bg" id="reviews">
+    <h2 class="sec-h">Customer Reviews</h2>
+    <div class="rw-top">
+      <div class="rw-score"><div class="big">4.82</div><div class="st">★★★★★</div><div class="ct">1,465 reviews</div></div>
+      <div class="rw-hist">
+        <div class="rw-bar"><span class="lab">5 ★</span><span class="track"><span class="fill" style="width:88.8%"></span></span><span class="cnt">1301</span></div>
+        <div class="rw-bar"><span class="lab">4 ★</span><span class="track"><span class="fill" style="width:7%"></span></span><span class="cnt">102</span></div>
+        <div class="rw-bar"><span class="lab">3 ★</span><span class="track"><span class="fill" style="width:2.7%"></span></span><span class="cnt">40</span></div>
+        <div class="rw-bar"><span class="lab">2 ★</span><span class="track"><span class="fill" style="width:0.7%"></span></span><span class="cnt">10</span></div>
+        <div class="rw-bar"><span class="lab">1 ★</span><span class="track"><span class="fill" style="width:0.8%"></span></span><span class="cnt">12</span></div>
+      </div>
+    </div>
+    <div class="pills" id="pills">
+      <button class="on" data-f="all">All Reviews</button>
+      <button data-f="comfort">Comfort</button>
+      <button data-f="anxiety">Anxiety Relief</button>
+      <button data-f="temp">Temperature</button>
+      <button data-f="sleep">Improved Sleep</button>
+    </div>
+    <div class="rcard-list" id="revList"></div>
+  </section>
+
+  <!-- As Seen On / Shark Tank -->
+  <section>
+    <h2 class="sec-h">As Seen On Shark Tank</h2>
+    <div class="shark">
+      <img src="https://cdn.shopify.com/s/files/1/0013/6698/2692/files/NEWIMAGE.png" alt="Hug Sleep on Shark Tank with Mark Cuban and Lori Greiner">
+      <p style="font-size:13.5px;color:var(--muted);font-weight:500;line-height:1.6;margin-bottom:16px;">Hug Sleep founders Angie and Matt struck a deal with Mark Cuban and Lori Greiner on season 12 of Shark Tank.</p>
+      <div class="sq"><p>"I literally use it every night. I sleep so much better in my Hug Sleep."</p><div class="by">— Mark Cuban</div></div>
+      <div class="sq"><p>"I just put it on and it's very smooth, silky soft feeling and very stretchy."</p><div class="by">— Lori Greiner</div></div>
+    </div>
+  </section>
+
+  <!-- Press -->
+  <section class="lav-bg">
+    <div class="eyebrow">In The Press</div>
+    <h2 class="sec-h">What The Press Is Saying</h2>
+    <div class="press">
+      <div class="pc">"It's actually really soothing!"</div>
+      <div class="pc">"I recently replaced my weighted blanket with a Sleep Pod and I am never going back."</div>
+      <div class="pc">"A calming way to doze off and a less stressful way to wake up."</div>
+      <div class="pc">"I tried the $110 baby swaddle for adults. I'm sold."</div>
+      <div class="pc">"I'm genuinely obsessed with the unexpectedly amazing adult swaddle."</div>
+    </div>
+  </section>
+
+  <!-- FAQ + USP -->
+  <section>
+    <h2 class="sec-h">Everything You Need To Know</h2>
+    <div class="acc" id="faqAcc">
+      <div class="item"><div class="q">Shipping &amp; Returns <span class="pm">+</span></div><div class="a"><div class="inner">Orders are typically shipped within 24–48 hours of being placed. We offer a 30-night sleep guarantee.</div></div></div>
+      <div class="item"><div class="q">Care Guide <span class="pm">+</span></div><div class="a"><div class="inner">Sleep Pod does not require any specialized care. For best results, wash in warm water and tumble dry medium with Sleep Pod flipped inside out.</div></div></div>
+      <div class="item"><div class="q">In-Between Sizes? <span class="pm">+</span></div><div class="a"><div class="inner">If you are right between sizes and you are someone who likes to sleep while hugging pillows and/or between your legs, we would suggest sizing up.</div></div></div>
+    </div>
+    <div class="usp">
+      <div class="u"><h5>Compression Therapy</h5><p>Gentle pressure on the body reduces anxiety.</p></div>
+      <div class="u"><h5>Anti-Stress</h5><p>Experience deep relaxation. Wave goodbye to stress and overstimulation.</p></div>
+      <div class="u"><h5>Temp-Controlling</h5><p>Lightweight &amp; temperature regulating.</p></div>
+      <div class="u"><h5>Flexible &amp; Lightweight</h5><p>4-way stretch ultra-light fabric provides gentle calming pressure.</p></div>
+    </div>
+  </section>
+
+  <!-- Guarantee band -->
+  <div class="guar">
+    <img src="https://hugsleep.com/cdn/shop/files/30-night-trial.png" alt="30 Night Trial">
+    <h3>30-Night Sleep Trial</h3>
+    <p>Love it or get a refund. Sleep with your Sleep Pod for 30 nights — if it's not for you, send it back.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="foot">
+    <img class="fl" src="https://hugsleep.com/cdn/shop/files/newlogohug.png" alt="Hug Sleep">
+    <div>800,000+ better nights of sleep and counting.</div>
+    <div style="margin-top:10px;"><a href="#reviews">Reviews</a><a href="#top" onclick="scrollTop()">Shop</a><a href="#">Contact</a></div>
+    <div style="margin-top:14px;opacity:.5;font-size:11px;">© Hug Sleep Inc. · As seen on Shark Tank</div>
+  </footer>
+
+  <!-- Sticky buy bar (PRIMARY improvement) -->
+  <div class="sticky" id="sticky">
+    <div class="row">
+      <div class="si"><img src="https://cdn.shopify.com/s/files/1/0013/6698/2692/products/download_1.jpg" alt=""></div>
+      <div class="sm">
+        <div class="nm">Sleep Pod <span id="stkVariant" style="font-weight:700;color:var(--muted);">· M / Graphite</span></div>
+        <div class="pp"><span class="ws">$99.99</span><b>$89.99</b> · BOGO 50% off 2nd</div>
+      </div>
+      <button class="sbtn" onclick="addCart()">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Added to cart ✓</div>
+</div>
+
+<script>
+/* ---------- Gallery ---------- */
+const track=document.getElementById('gtrack');
+const slides=[...track.children];
+const dotsWrap=document.getElementById('dots');
+const thumbsWrap=document.getElementById('thumbs');
+slides.forEach((s,i)=>{
+  const d=document.createElement('b'); if(i===0)d.classList.add('on'); d.onclick=()=>track.scrollTo({left:track.clientWidth*i,behavior:'smooth'}); dotsWrap.appendChild(d);
+  const t=document.createElement('img'); t.src=s.querySelector('img').src; if(i===0)t.classList.add('on'); t.onclick=()=>track.scrollTo({left:track.clientWidth*i,behavior:'smooth'}); thumbsWrap.appendChild(t);
+});
+const dots=[...dotsWrap.children], thumbs=[...thumbsWrap.children];
+track.addEventListener('scroll',()=>{
+  const i=Math.round(track.scrollLeft/track.clientWidth);
+  dots.forEach((d,j)=>d.classList.toggle('on',j===i));
+  thumbs.forEach((t,j)=>t.classList.toggle('on',j===i));
+},{passive:true});
+
+/* ---------- Variant selection ---------- */
+let sel={size:'Medium',color:'Graphite'};
+document.querySelectorAll('#sizes button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#sizes button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); sel.size=b.dataset.s; document.getElementById('sizeVal').textContent=sel.size; syncVariant();
+});
+document.querySelectorAll('#colors button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#colors button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); sel.color=b.dataset.c; document.getElementById('colorVal').textContent=sel.color; syncVariant();
+});
+function syncVariant(){
+  const abbr={Small:'S',Medium:'M',Large:'L',XL:'XL'}[sel.size]||sel.size;
+  document.getElementById('stkVariant').textContent=`· ${abbr} / ${sel.color}`;
+}
+
+/* ---------- Qty ---------- */
+let qty=1;
+function qchg(d){qty=Math.max(1,qty+d);document.getElementById('qty').textContent=qty;}
+
+/* ---------- Cart toast ---------- */
+function addCart(){
+  const t=document.getElementById('toast');
+  t.textContent=`Added ${qty} × Sleep Pod (${sel.size} / ${sel.color}) ✓`;
+  t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+/* ---------- Accordions ---------- */
+document.querySelectorAll('.acc .q').forEach(q=>q.onclick=()=>{
+  const item=q.parentElement, a=q.nextElementSibling;
+  const open=item.classList.toggle('open');
+  a.style.maxHeight=open?a.scrollHeight+'px':'0';
+});
+
+/* ---------- Video play ---------- */
+function playV(btn){
+  const v=btn.previousElementSibling;
+  if(v.paused){v.muted=false;v.play();btn.classList.add('hide');}
+  else{v.pause();btn.classList.remove('hide');}
+  v.onpause=()=>btn.classList.remove('hide');
+}
+
+/* ---------- Reviews (real Judge.me + on-page reviews, verbatim) ---------- */
+const REVIEWS=[
+  {s:5,d:'Jun 15, 2026',t:'LOVE LOVE LOVE',b:"I purchased the original sleep pod and I love it. Sometimes I don't want my feet in the sac, so I thought I would try this one. I love it! It is easier for side and stomach sleeping, and easier for those who get up in the middle of the night to manage.",a:'Cece A',f:['comfort','sleep']},
+  {s:5,d:'2 weeks ago',t:'Better Sleep On The First Night!',b:"My teenage son absolutely LOVES his Hug Sleep pods!! He said he was shocked at the difference in his anxiety and sleep just on the first night using his pod. He has been using them for about two weeks now, and his sleep and mood have definitely improved!",a:'Ginger',f:['anxiety','sleep']},
+  {s:5,d:'3 weeks ago',t:'Buttery Soft',b:"It's buttery soft, lightweight, and provides just the right amount of compression. I can move freely but still feel securely hugged all night.",a:'Jennifer',f:['comfort']},
+  {s:5,d:'Apr 2026',t:'Perfect Temperature Regulation',b:"I am a woman of a certain age and sometimes get night sweats unlike anything I've ever experienced. The pod has been perfect for temperature regulation.",a:'Kari',f:['temp']},
+  {s:5,d:'Apr 2026',t:'Sleep More Deeply',b:"This is hands down the best thing I have ever tried for PTSD, including all sleep medications, routines, therapies, etc. I sleep so much more deeply but without the disturbing nightmares.",a:'AP',f:['sleep','anxiety']},
+  {s:5,d:'Mar 2026',t:'Panic Attacks Down',b:"I am diagnosed with ADHD, anxiety, depression and OCD. I used to get daily panic attacks in the AM/PM. Since using my sleep pod, my panic attacks are down to 1–2 a month.",a:'Sarah',f:['anxiety']},
+  {s:5,d:'Mar 2026',t:'Super Cozy',b:"Similar to a weighted blanket but without the weight and constriction. It hugs you gently but stays breathable and movable. Super cozy, I sleep really well with it on.",a:'Adam',f:['comfort','temp','sleep']},
+  {s:5,d:'Feb 2026',t:'Get Rid Of Your Weighted Blanket',b:"The Hug Sleep works great and is much more cool and comfortable than a weighted blanket. It's very much appreciated on hot summer nights!",a:'Morgan',f:['temp']},
+  {s:5,d:'Feb 2026',t:'Lessening Of Chronic Tension',b:"I don't feel as anxious anymore due to the lessening of all the chronic tension I carry. I can actually be at rest at night. I'd forgotten what that felt like.",a:'Felicia',f:['anxiety']},
+  {s:4,d:'Jan 2026',t:'Pure Bliss',b:"I absolutely love mine and can't sleep comfortably without it now. At first I was iffy on buying it because of the price but thank goodness for the pay in 4 installments option.",a:'Sean',f:['comfort','sleep']}
+];
+const revList=document.getElementById('revList');
+function renderReviews(filter){
+  const items=REVIEWS.filter(r=>filter==='all'||r.f.includes(filter));
+  revList.innerHTML=items.map(r=>`<div class="rev">
+    <div class="rh"><span class="rs">${'★'.repeat(r.s)}${'☆'.repeat(5-r.s)}</span><span class="rd">${r.d}</span></div>
+    <div class="rt">${r.t}</div><p>${r.b}</p>
+    <div class="ra">${r.a} <span class="vbadge">✔ VERIFIED BUYER</span></div>
+  </div>`).join('');
+}
+renderReviews('all');
+document.querySelectorAll('#pills button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#pills button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); renderReviews(b.dataset.f);
+});
+
+/* ---------- Sticky buy bar (scroll-driven via getBoundingClientRect) ---------- */
+const atc=document.getElementById('atc'), sticky=document.getElementById('sticky');
+function onScroll(){
+  const r=atc.getBoundingClientRect();
+  // show sticky once the main ATC has scrolled above the viewport
+  sticky.classList.toggle('show', r.bottom < 0);
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+window.addEventListener('resize',onScroll); onScroll();
+
+function scrollTop(){window.scrollTo({top:0,behavior:'smooth'});}
+function openGuide(){alert("Size Guide — S: under 5ft4 · M: 5ft4–5ft9 · L: 5ft9–6ft1 · XL: 6ft1+ · Between sizes? Size up.");}
+</script>
+</body>
+</html>
