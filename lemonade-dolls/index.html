@@ -147,6 +147,28 @@ a{color:inherit;text-decoration:none;}
 .csitem .nm{font-size:10.5px;line-height:1.25;padding:0 6px;min-height:26px;}
 .csitem .pr{font-size:12px;font-weight:600;margin-top:3px;}
 
+/* support proof */
+.support{background:var(--ink);color:#fff;padding:30px 20px 26px;}
+.support .kicker{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--lilac);margin-bottom:8px;}
+.support h2{font-family:var(--disp);font-size:30px;line-height:1;text-transform:uppercase;margin:0 0 9px;}
+.support .sublead{font-size:13px;line-height:1.55;color:#d8d2e4;margin:0 0 18px;}
+.support .sublead b{color:#fff;}
+.supportgrid{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px;}
+.support .proof{flex:0 0 42%;border-radius:12px;overflow:hidden;position:relative;}
+.support .proof img{aspect-ratio:3/4;object-fit:cover;width:100%;}
+.support .proof .pcap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(0,0,0,.75));
+  color:#fff;font-size:9.5px;line-height:1.3;padding:18px 8px 7px;}
+.support .pillars{flex:1;margin:0;padding:0;list-style:none;}
+.support .pillars li{position:relative;padding:0 0 13px 24px;font-size:12px;line-height:1.45;color:#d8d2e4;}
+.support .pillars li:before{content:"";position:absolute;left:0;top:4px;width:13px;height:13px;border-radius:50%;
+  background:var(--lilac);}
+.support .pillars li:after{content:"\2713";position:absolute;left:3px;top:3px;font-size:9px;color:var(--ink);font-weight:700;}
+.support .pillars b{color:#fff;}
+.support .guarantee{display:flex;align-items:center;gap:9px;border:1px solid rgba(255,255,255,.22);border-radius:10px;
+  padding:11px 13px;font-size:12px;line-height:1.4;color:#efeaf6;}
+.support .guarantee svg{width:18px;height:18px;flex:0 0 auto;color:var(--lilac);}
+.support .guarantee b{color:#fff;}
+
 /* reasons */
 .reasons{padding:6px 18px 22px;}
 .reasons h2{font-family:var(--disp);font-size:21px;letter-spacing:.4px;text-transform:uppercase;margin:0 0 10px;display:flex;align-items:center;gap:8px;}
@@ -276,7 +298,6 @@ a{color:inherit;text-decoration:none;}
       <span class="price">$68.00</span>
       <span class="bnpl"><span class="clearpay">Clearpay</span><span class="klarna">Klarna</span></span>
     </div>
-    <div class="bnpl-split">4 interest-free payments of <b>$17.00</b> with <span class="cp">Clearpay</span><span class="info">i</span></div>
   </div>
 
   <div class="hr"></div>
@@ -330,6 +351,29 @@ a{color:inherit;text-decoration:none;}
       <div class="payicons"><span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>APPLE PAY</span><span>G PAY</span><span>PAYPAL</span><span>KLARNA</span></div>
     </div>
   </div>
+
+  <!-- SUPPORT PROOF (new value section) -->
+  <section class="support">
+    <div class="kicker">The Innovation</div>
+    <h2>Real support.<br>No wire.</h2>
+    <p class="sublead">The One holds a fuller bust — <b>up to an HH cup</b> — with LD Lift Tech™ instead of an underwire. No digging, no spillage, no four-hour countdown to taking it off. Here's how it actually works.</p>
+    <div class="supportgrid">
+      <div class="proof">
+        <img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/The_One___High_Brief_4.jpg" alt="The One on Roxanne, a real 36 H">
+        <span class="pcap">Roxanne · real 36 H · unretouched</span>
+      </div>
+      <ul class="pillars">
+        <li><b>LD Lift Tech™</b> — our support innovation delivers natural lift and all-day hold, wire-free.</li>
+        <li><b>Internal power mesh</b> — lifts and contours so the weight is held, not hanging on the straps.</li>
+        <li><b>Signature central panel</b> — real separation and a defined, lifted shape.</li>
+        <li><b>Structured underband + padded hook &amp; eye</b> — a secure, smoothing fit you forget you're wearing.</li>
+      </ul>
+    </div>
+    <div class="guarantee">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div>Designed for <b>B–HH cups</b>. If it's not the one, <b>free returns &amp; easy size swaps</b> — so trying the wire-free thing is risk-free.</div>
+    </div>
+  </section>
 
   <!-- complete the set -->
   <div class="cset">
