@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>The One Signature Lace High Support Bra - Black – Lemonade Dolls</title>
+<style>
+/* ---- Brand fonts (harvested from lemonadedolls.com) ---- */
+@font-face{font-family:'ABCGravity';src:url('https://lemonadedolls.com/cdn/shop/files/ABCGravity-SemiCondensed.woff2') format('woff2');font-weight:900;font-display:swap;}
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root{
+  --lilac:#BB9EFF;        /* brand accent (announcement, CTA, --jdgm-primary-color) */
+  --lilac-soft:#EDE6FF;
+  --lilac-tint:#F6F2FE;
+  --ink:#211E1E;          /* near-black text rgb(33,30,30) */
+  --shop:#5A31F4;         /* Shop Pay */
+  --gold:#E1A23A;         /* review stars */
+  --line:#e7e3ef;
+  --muted:#6e6a76;
+  --disp:'ABCGravity','Arial Narrow',Inter,sans-serif;
+  --body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:var(--body);color:var(--ink);background:#d9d2e6;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+a{color:inherit;text-decoration:none;}
+
+.frame{max-width:390px;margin:0 auto;background:#fff;position:relative;min-height:100vh;overflow:hidden;}
+@media(min-width:600px){
+  body{padding:24px 0;}
+  .frame{box-shadow:0 18px 60px rgba(40,30,60,.30);border-radius:18px;min-height:auto;margin-bottom:24px;}
+}
+
+/* announcement + header */
+.announce{background:var(--lilac);color:var(--ink);text-align:center;font-size:11px;font-weight:600;
+  font-style:italic;letter-spacing:.5px;padding:8px 10px;white-space:nowrap;overflow:hidden;}
+.header{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;background:#fff;
+  position:sticky;top:0;z-index:40;border-bottom:1px solid var(--line);}
+.header .ico{width:21px;height:21px;stroke:var(--ink);stroke-width:1.7;fill:none;}
+.header .logo img{height:26px;width:auto;}
+.header .grp{display:flex;gap:15px;align-items:center;}
+
+/* gallery */
+.gallery{position:relative;}
+.gmain{position:relative;background:#efeaf6;}
+.gmain .slide{display:none;}
+.gmain .slide.on{display:block;}
+.gmain img{width:100%;aspect-ratio:3/4;object-fit:cover;}
+.gtag{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.85);backdrop-filter:blur(4px);
+  font-size:11px;font-weight:600;padding:6px 12px;border-radius:30px;border:1px solid rgba(33,30,30,.1);}
+.gthumbs{display:flex;gap:8px;overflow-x:auto;padding:10px 14px 4px;scrollbar-width:none;}
+.gthumbs::-webkit-scrollbar{display:none;}
+.gthumbs button{flex:0 0 58px;height:74px;border-radius:8px;overflow:hidden;border:2px solid transparent;background:#efeaf6;}
+.gthumbs button.on{border-color:var(--ink);}
+.gthumbs img{width:100%;height:100%;object-fit:cover;}
+
+/* product info */
+.pinfo{padding:14px 18px 0;}
+.ptitle{font-family:var(--disp);font-size:30px;line-height:.96;letter-spacing:.5px;text-transform:uppercase;margin:0 0 10px;}
+.prate{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+.stars{color:var(--gold);font-size:15px;letter-spacing:1px;}
+.prate a{font-size:12.5px;text-decoration:underline;color:var(--ink);}
+.pricerow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
+.price{font-size:20px;font-weight:600;}
+.bnpl{display:flex;gap:6px;}
+.bnpl span{font-size:10.5px;font-weight:700;padding:4px 9px;border-radius:20px;}
+.bnpl .clearpay{background:#b2fce4;color:#0a3a2c;}
+.bnpl .klarna{background:#ffb3c7;color:#1a1a1a;}
+.hr{height:1px;background:var(--line);margin:14px 18px;}
+
+/* size selectors */
+.sizes{padding:0 18px;}
+.sizelabel{display:flex;align-items:center;justify-content:space-between;margin:0 0 9px;}
+.sizelabel .l{font-size:12.5px;font-weight:600;letter-spacing:.3px;}
+.sizelabel .sg{font-size:12px;display:flex;align-items:center;gap:5px;text-decoration:underline;color:var(--ink);}
+.sizelabel .sg svg{width:14px;height:14px;}
+.sizegrid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
+.sizegrid button{min-width:46px;padding:11px 8px;border:1.5px solid var(--line);border-radius:9px;background:#fff;
+  font-size:13px;font-weight:500;transition:.12s;}
+.sizegrid button.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+
+/* FIT CUE — CRO improvement #2 */
+.fitcue{display:flex;gap:10px;align-items:flex-start;background:var(--lilac-tint);border:1px solid var(--lilac-soft);
+  border-radius:12px;padding:11px 13px;margin:-4px 18px 18px;}
+.fitcue svg{width:18px;height:18px;flex:0 0 auto;color:var(--shop);margin-top:1px;}
+.fitcue .ft{font-size:12px;line-height:1.45;color:#3a3640;}
+.fitcue .ft b{color:var(--ink);}
+.fitcue .ft a{text-decoration:underline;font-weight:600;}
+
+/* colour swatches */
+.colour{padding:0 18px;margin-bottom:16px;}
+.colourlabel{font-size:12.5px;font-weight:600;margin-bottom:9px;}
+.colourlabel span{font-weight:400;color:var(--muted);}
+.swatches{display:flex;gap:9px;}
+.swatches a{width:54px;height:64px;border-radius:8px;overflow:hidden;border:2px solid transparent;display:block;}
+.swatches a.on{border-color:var(--ink);}
+.swatches img{width:100%;height:100%;object-fit:cover;}
+
+/* qty + CTA */
+.buy{padding:0 18px;}
+.qtyrow{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.qtyrow .l{font-size:12.5px;font-weight:600;}
+.qty{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:9px;overflow:hidden;}
+.qty button{width:38px;height:40px;font-size:18px;}
+.qty span{width:34px;text-align:center;font-size:14px;}
+.atc{width:100%;background:var(--lilac);color:var(--ink);border:1.5px solid var(--ink);font-size:14px;font-weight:600;
+  letter-spacing:.4px;padding:15px;border-radius:11px;text-transform:uppercase;transition:.12s;}
+.atc:active{transform:translateY(1px);}
+
+/* TRUST STRIP — CRO improvement #1 */
+.trust{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:12px 0 12px;}
+.trust .t{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;line-height:1.15;}
+.trust .t svg{width:17px;height:17px;flex:0 0 auto;color:var(--shop);}
+
+.shoppay{width:100%;background:var(--shop);color:#fff;font-size:14px;font-weight:600;padding:14px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;gap:7px;margin-bottom:10px;}
+.shoppay .shop{font-weight:800;letter-spacing:.2px;}
+.paywrap{text-align:center;margin-bottom:18px;}
+.paywrap .pl{font-size:10.5px;color:var(--muted);margin-bottom:6px;}
+.payicons{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;}
+.payicons span{font-size:8px;font-weight:700;background:#f1eef7;color:#555;border:1px solid var(--line);border-radius:4px;padding:3px 5px;letter-spacing:.3px;}
+
+/* complete the set */
+.cset{background:var(--lilac-tint);border-radius:14px;padding:14px;margin:0 18px 22px;}
+.cset h3{font-family:var(--disp);font-size:15px;letter-spacing:.4px;text-transform:uppercase;margin:0 0 4px;}
+.cset .sub{font-size:11px;color:var(--muted);margin-bottom:11px;}
+.csrow{display:flex;gap:10px;}
+.csitem{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;text-align:center;padding-bottom:9px;}
+.csitem img{aspect-ratio:1/1;object-fit:cover;margin-bottom:6px;}
+.csitem .nm{font-size:10.5px;line-height:1.25;padding:0 6px;min-height:26px;}
+.csitem .pr{font-size:12px;font-weight:600;margin-top:3px;}
+
+/* reasons */
+.reasons{padding:6px 18px 22px;}
+.reasons h2{font-family:var(--disp);font-size:21px;letter-spacing:.4px;text-transform:uppercase;margin:0 0 10px;display:flex;align-items:center;gap:8px;}
+.reasons h2 svg{width:20px;height:20px;color:var(--lilac);}
+.rbadges{font-size:11.5px;font-weight:700;color:var(--ink);margin-bottom:12px;letter-spacing:.2px;}
+.rbadges span{color:var(--lilac);margin:0 5px;}
+.reasons ul{margin:0;padding:0;list-style:none;}
+.reasons li{display:flex;gap:9px;align-items:center;font-size:13px;margin-bottom:8px;}
+.reasons li svg{width:16px;height:16px;color:var(--shop);flex:0 0 auto;}
+
+/* accordions */
+.acc{border-top:1px solid var(--line);}
+.acc .item{border-bottom:1px solid var(--line);}
+.acc .q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 18px;
+  font-size:12.5px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;text-align:left;}
+.acc .q .pm{font-size:19px;transition:.2s;}
+.acc .item.open .q .pm{transform:rotate(45deg);}
+.acc .a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.acc .a .inner{padding:0 18px 16px;font-size:13px;line-height:1.55;color:#403c46;}
+.acc .a .inner b{color:var(--ink);}
+.acc .a ul{margin:8px 0 0;padding-left:18px;}
+.acc .a li{margin-bottom:4px;}
+
+/* reviews */
+.rev{padding:28px 18px 26px;background:var(--lilac-tint);}
+.rev h2{font-family:var(--disp);font-size:24px;letter-spacing:.5px;text-transform:uppercase;text-align:center;margin:0 0 18px;}
+.revsum{display:flex;gap:16px;align-items:center;margin-bottom:14px;}
+.revavg{text-align:center;flex:0 0 auto;}
+.revavg .big{font-family:var(--disp);font-size:36px;line-height:1;}
+.revavg .stars{font-size:14px;}
+.revavg .cnt{font-size:10.5px;color:var(--muted);margin-top:3px;}
+.hist{flex:1;}
+.histrow{display:flex;align-items:center;gap:7px;margin-bottom:3px;font-size:10px;color:var(--muted);}
+.histrow .lbl{width:26px;color:var(--gold);letter-spacing:-1px;}
+.histbar{flex:1;height:7px;border-radius:4px;background:#e3dcf2;overflow:hidden;}
+.histbar i{display:block;height:100%;background:var(--lilac);}
+.histrow .n{width:22px;text-align:right;}
+.rcard{border-top:1px solid var(--line);padding:14px 0;}
+.rhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;}
+.rname{font-size:12.5px;font-weight:600;color:#7a5fc0;}
+.rdate{font-size:10.5px;color:var(--muted);}
+.rstars{color:var(--gold);font-size:12px;letter-spacing:1px;margin-bottom:4px;}
+.rverif{font-size:9.5px;font-weight:700;background:var(--ink);color:#fff;padding:2px 6px;border-radius:3px;display:inline-block;margin-bottom:5px;}
+.rbody{font-size:12.5px;line-height:1.5;color:#403c46;}
+.revmore{display:block;width:100%;text-align:center;border:1.5px solid var(--ink);border-radius:30px;padding:12px;
+  font-size:12px;font-weight:600;letter-spacing:.4px;margin-top:16px;text-transform:uppercase;}
+
+/* community */
+.comm{padding:28px 0 26px;background:#fff;}
+.comm h2{font-family:var(--disp);font-size:23px;letter-spacing:.5px;text-transform:uppercase;text-align:center;margin:0 0 16px;}
+.commtrack{display:flex;gap:9px;overflow-x:auto;padding:0 18px 6px;scroll-snap-type:x mandatory;scrollbar-width:none;}
+.commtrack::-webkit-scrollbar{display:none;}
+.commtrack a{flex:0 0 150px;scroll-snap-align:center;border-radius:12px;overflow:hidden;position:relative;}
+.commtrack img{aspect-ratio:3/4;object-fit:cover;}
+.commtrack .ig{position:absolute;top:8px;right:8px;width:18px;height:18px;color:#fff;filter:drop-shadow(0 1px 2px rgba(0,0,0,.5));}
+
+/* footer */
+.foot{background:var(--ink);color:#cfc9d8;padding:28px 18px 92px;}
+.foot .logo{height:26px;margin-bottom:16px;filter:brightness(0) invert(1);}
+.footcols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.footcols h4{font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:#fff;margin:0 0 9px;}
+.footcols a{display:block;font-size:12px;color:#aaa3b6;margin-bottom:6px;}
+.footnote{font-size:11px;color:#7d7689;margin-top:20px;border-top:1px solid rgba(255,255,255,.12);padding-top:14px;}
+
+/* sticky bar (synced) */
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:390px;z-index:60;
+  background:#fff;border-top:1px solid var(--line);box-shadow:0 -4px 20px rgba(40,30,60,.1);padding:10px 12px;
+  display:flex;align-items:center;gap:11px;transition:transform .28s ease;}
+.sticky.show{transform:translateX(-50%) translateY(0);}
+.sticky .sthumb{width:42px;height:50px;border-radius:7px;overflow:hidden;flex:0 0 auto;background:#efeaf6;}
+.sticky .sinfo{flex:1;min-width:0;}
+.sticky .snm{font-size:11.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sticky .sprice{font-size:12px;color:var(--muted);}
+.sticky .satc{background:var(--lilac);color:var(--ink);border:1.5px solid var(--ink);font-size:12px;font-weight:600;
+  padding:11px 16px;border-radius:9px;flex:0 0 auto;text-transform:uppercase;letter-spacing:.3px;}
+.spacer{height:24px;}
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <div class="announce">The One Bra — Shop the innovation</div>
+
+  <header class="header">
+    <svg class="ico" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <a class="logo" href="#"><img src="https://lemonadedolls.com/cdn/shop/files/Lemonade_Logo_Black.png" alt="Lemonade Dolls" height="26"></a>
+    <div class="grp">
+      <svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+      <svg class="ico" viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+    </div>
+  </header>
+
+  <!-- gallery -->
+  <div class="gallery">
+    <div class="gmain" id="gmain">
+      <span class="gtag">Model wears 36 FF · Size 16</span>
+      <div class="slide on"><img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/The_One___Black_2.jpg" alt="The One bra on model"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/TheOne_Black.jpg" alt="The One bra on model"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/The_One___Black_5.jpg" alt="The One bra detail"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/The_One___Black_V_Brazilian_4.jpg" alt="The One set"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/THE_ONE-BRA-BLACK-FRONT-FLAT.jpg" alt="The One bra flat lay"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/THE_ONE-BRA-BLACK-BACK.jpg" alt="The One bra back"></div>
+    </div>
+    <div class="gthumbs" id="gthumbs">
+      <button class="on"><img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/The_One___Black_2.jpg" alt=""></button>
+      <button><img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/TheOne_Black.jpg" alt=""></button>
+      <button><img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/The_One___Black_5.jpg" alt=""></button>
+      <button><img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/The_One___Black_V_Brazilian_4.jpg" alt=""></button>
+      <button><img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/THE_ONE-BRA-BLACK-FRONT-FLAT.jpg" alt=""></button>
+      <button><img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/THE_ONE-BRA-BLACK-BACK.jpg" alt=""></button>
+    </div>
+  </div>
+
+  <!-- product info -->
+  <div class="pinfo">
+    <h1 class="ptitle">The One Signature Lace High Support Bra — Black</h1>
+    <div class="prate"><span class="stars">★★★★★</span><a href="#reviews">150 reviews</a></div>
+    <div class="pricerow">
+      <span class="price">$68.00</span>
+      <span class="bnpl"><span class="clearpay">Clearpay</span><span class="klarna">Klarna</span></span>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <!-- size selectors -->
+  <div class="sizes">
+    <div class="sizelabel">
+      <span class="l">Band Size</span>
+      <a class="sg" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v10H3zM7 7v4M11 7v6M15 7v4M19 7v6"/></svg>Size Guide</a>
+    </div>
+    <div class="sizegrid" id="bandgrid">
+      <button>30</button><button>32</button><button class="on">34</button><button>36</button>
+      <button>38</button><button>40</button><button>42</button><button>44</button>
+    </div>
+    <div class="sizelabel"><span class="l">Cup Size</span></div>
+    <div class="sizegrid" id="cupgrid">
+      <button>B</button><button class="on">C-D</button><button>DD-E</button>
+      <button>F-FF</button><button>G-GG</button><button>H-HH</button>
+    </div>
+  </div>
+
+  <!-- FIT CUE (CRO improvement #2) -->
+  <div class="fitcue">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+    <div class="ft"><b>Not sure of your size?</b> Most shoppers nail it with our <a href="#">size guide</a> — and every order ships with <b>free returns &amp; easy size swaps</b>, so it's risk-free to find your fit.</div>
+  </div>
+
+  <!-- colour -->
+  <div class="colour">
+    <div class="colourlabel">Colour <span>— Black</span></div>
+    <div class="swatches">
+      <a class="on" href="#"><img src="https://lemonadedolls.com/cdn/shop/files/The_One___Black_2.jpg" alt="Black"></a>
+      <a href="#"><img src="https://lemonadedolls.com/cdn/shop/files/TheOneBlue_Duo.jpg" alt="Blue"></a>
+      <a href="#"><img src="https://lemonadedolls.com/cdn/shop/files/THEONE-BRA-BRIEF-CORAL-FRONT-9.jpg" alt="Coral"></a>
+    </div>
+  </div>
+
+  <!-- qty + CTA -->
+  <div class="buy">
+    <div class="qtyrow">
+      <span class="l">Quantity</span>
+      <div class="qty"><button id="qminus">−</button><span id="qval">1</span><button id="qplus">+</button></div>
+    </div>
+    <button class="atc" id="atc">Add to cart</button>
+
+    <!-- TRUST STRIP (CRO improvement #1) -->
+    <div class="trust">
+      <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v4h4"/></svg>Free returns &amp; swaps</div>
+      <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Inclusive B–HH fit</div>
+      <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5 5.5.8-4 4 1 5.5L12 21l-5-2.7 1-5.5-4-4 5.5-.8z"/></svg>LD Lift Tech™ support</div>
+      <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>Pay in 3 · Clearpay</div>
+    </div>
+
+    <button class="shoppay">Buy with <span class="shop">shop</span> Pay</button>
+    <div class="paywrap">
+      <div class="pl">We accept</div>
+      <div class="payicons"><span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>APPLE PAY</span><span>G PAY</span><span>PAYPAL</span><span>KLARNA</span></div>
+    </div>
+  </div>
+
+  <!-- complete the set -->
+  <div class="cset">
+    <h3>Complete the set</h3>
+    <div class="sub">Save 10% at checkout when you add the matching bottoms</div>
+    <div class="csrow">
+      <div class="csitem">
+        <img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/TheOne_BlackVBrazilian2_c1998289-74b5-4f5c-b716-1a9b991b64b7.jpg" alt="V Brazilian">
+        <div class="nm">Signature Lace &amp; Mesh V Brazilian</div><div class="pr">$29.00</div>
+      </div>
+      <div class="csitem">
+        <img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/The_One___High_Brief_2.jpg" alt="High Waisted Brief">
+        <div class="nm">Signature Lace &amp; Mesh HW Brief</div><div class="pr">$29.00</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- reasons you'll be obsessed -->
+  <section class="reasons">
+    <h2><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>Reasons you'll be obsessed</h2>
+    <div class="rbadges">Free Returns <span>·</span> Pay in Instalments <span>·</span> Sustainable <span>·</span> No Retouching</div>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Elevated support with LD Lift Tech™</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Comfort that lasts all day</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Flattering, confidence-boosting shape</li>
+    </ul>
+  </section>
+
+  <!-- accordions -->
+  <div class="acc" id="acc">
+    <div class="item open"><button class="q">Description<span class="pm">+</span></button>
+      <div class="a"><div class="inner">The Signature Lace B–HH Bra is designed for elevated comfort and reliable support, combining delicate stretch lace with engineered structure for all busts. <b>Featuring LD Lift Tech™</b>, our signature support innovation, it delivers natural lift, shaping, and all-day hold with ease. A supportive underband creates a secure, smoothing fit, while internal power mesh enhances lift and contouring. The signature central panel provides natural separation and definition, complemented by softly padded hook &amp; eye fastenings. Finished with delicate picot lace detailing, it's lightweight, effortless to wear, and built for everyday comfort.
+        <ul>
+          <li>LD Lift Tech™ support system</li>
+          <li>Designed for B–HH cups</li>
+          <li>Supportive and comfortable underband</li>
+          <li>Internal power mesh for lift and shaping</li>
+          <li>Signature central panel for natural separation</li>
+          <li>Soft, padded hook &amp; eye closure</li>
+        </ul>
+      </div></div>
+    </div>
+    <div class="item"><button class="q">Shipping<span class="pm">+</span></button>
+      <div class="a"><div class="inner">We love making you happy, so all orders go out the door as quickly as possible. We're conservative with our estimated delivery times so we don't disappoint — and you can track every order from dispatch to doorstep. <b>Free UK shipping</b> available.</div></div>
+    </div>
+    <div class="item"><button class="q">Returns<span class="pm">+</span></button>
+      <div class="a"><div class="inner"><b>Free returns &amp; easy size swaps.</b> Not the right fit? Start a return in a couple of clicks and exchange for your perfect size — finding your fit is completely risk-free.</div></div>
+    </div>
+    <div class="item"><button class="q">Care Instructions<span class="pm">+</span></button>
+      <div class="a"><div class="inner">Hand wash cold or use a delicates bag on a gentle machine cycle. Do not tumble dry, iron, or bleach. Reshape and dry flat to keep the lace and LD Lift Tech™ structure in perfect condition.</div></div>
+    </div>
+  </div>
+
+  <!-- reviews -->
+  <section class="rev" id="reviews">
+    <h2>Customer Reviews</h2>
+    <div class="revsum">
+      <div class="revavg"><div class="big">4.82</div><div class="stars" style="color:var(--gold)">★★★★★</div><div class="cnt">150 reviews</div></div>
+      <div class="hist">
+        <div class="histrow"><span class="lbl">★★★★★</span><span class="histbar"><i style="width:89%"></i></span><span class="n">133</span></div>
+        <div class="histrow"><span class="lbl">★★★★</span><span class="histbar"><i style="width:7%"></i></span><span class="n">11</span></div>
+        <div class="histrow"><span class="lbl">★★★</span><span class="histbar"><i style="width:3%"></i></span><span class="n">4</span></div>
+        <div class="histrow"><span class="lbl">★★</span><span class="histbar"><i style="width:0%"></i></span><span class="n">0</span></div>
+        <div class="histrow"><span class="lbl">★</span><span class="histbar"><i style="width:1%"></i></span><span class="n">2</span></div>
+      </div>
+    </div>
+    <div class="rcard">
+      <div class="rhead"><span class="rname">Laura Webster</span><span class="rdate">11/06/26</span></div>
+      <div class="rverif">Verified</div>
+      <div class="rstars">★★★★★</div>
+      <div class="rbody">Comfy bra, wasn't sure of my size but I used the size chart and it was fine. Such a pretty blue colour too.</div>
+    </div>
+    <div class="rcard">
+      <div class="rhead"><span class="rname">Miriam Wichmann</span><span class="rdate">12/06/26</span></div>
+      <div class="rverif">Verified</div>
+      <div class="rstars">★★★★★</div>
+      <div class="rbody">Best bra I've ever owned. I have the blue and coral. Would love a white one!</div>
+    </div>
+    <div class="rcard">
+      <div class="rhead"><span class="rname">Vanessa Lambert</span><span class="rdate">12/06/26</span></div>
+      <div class="rverif">Verified</div>
+      <div class="rstars">★★★★★</div>
+      <div class="rbody">Love my bra and knickers — so comfy and the viral colour is fab.</div>
+    </div>
+    <div class="rcard">
+      <div class="rhead"><span class="rname">Emily Kitchen</span><span class="rdate">11/06/26</span></div>
+      <div class="rverif">Verified</div>
+      <div class="rstars">★★★★★</div>
+      <div class="rbody">Perfect!</div>
+    </div>
+    <div class="rcard">
+      <div class="rhead"><span class="rname">J.H.</span><span class="rdate">11/06/26</span></div>
+      <div class="rverif">Verified</div>
+      <div class="rstars">★★★★★</div>
+      <div class="rbody">Love the colour and fit.</div>
+    </div>
+    <a class="revmore" href="#">Read all 150 reviews</a>
+  </section>
+
+  <!-- community -->
+  <section class="comm">
+    <h2>As seen on our community</h2>
+    <div class="commtrack">
+      <a href="#"><img src="https://lemonadedolls.com/cdn/shop/files/COMMUNITY-SIGNATURE_LACE-MIDNIGHT_BLUE_5e57d9dc-2de9-49ad-a5c9-ab6f77333a1a.jpg" alt=""><svg class="ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      <a href="#"><img src="https://lemonadedolls.com/cdn/shop/files/Copy_of_Copy_of_SIGNATURE_LACE-PINK-4.jpg" alt=""></a>
+      <a href="#"><img src="https://lemonadedolls.com/cdn/shop/files/TRILOGY_LACE-DENIM-1.jpg" alt=""></a>
+      <a href="#"><img src="https://lemonadedolls.com/cdn/shop/files/SYNERGY-RED-1.jpg" alt=""></a>
+      <a href="#"><img src="https://lemonadedolls.com/cdn/shop/files/SIGNATURE_LACE-PASTEL_GREEN-1.jpg" alt=""></a>
+      <a href="#"><img src="https://lemonadedolls.com/cdn/shop/files/WICKED-PINK-3.jpg" alt=""></a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <img class="logo" src="https://lemonadedolls.com/cdn/shop/files/Lemonade_Logo_Black.png" alt="Lemonade Dolls">
+    <div class="footcols">
+      <div><h4>Shop</h4><a href="#">New In</a><a href="#">Bras</a><a href="#">Sets</a><a href="#">Knickers</a></div>
+      <div><h4>Help</h4><a href="#">Size Guide</a><a href="#">Shipping</a><a href="#">Returns</a><a href="#">Contact</a></div>
+    </div>
+    <div class="footnote">Feel-good lingerie that actually fits — inclusive sizing B–HH. Free returns &amp; easy swaps.</div>
+  </footer>
+
+  <div class="spacer"></div>
+
+  <!-- sticky bar (synced to selection) -->
+  <div class="sticky" id="sticky">
+    <div class="sthumb"><img src="https://cdn.shopify.com/s/files/1/0119/1070/9307/files/The_One___Black_2.jpg" alt=""></div>
+    <div class="sinfo">
+      <div class="snm">The One Bra · <span id="stSize">34 C-D</span></div>
+      <div class="sprice">$68.00 · Black</div>
+    </div>
+    <button class="satc" id="stAtc">Add to cart</button>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var band='34', cup='C-D';
+  function syncSticky(){ document.getElementById('stSize').textContent = band+' '+cup; }
+  // band/cup selectors
+  document.querySelectorAll('#bandgrid button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('#bandgrid button').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on'); band=b.textContent.trim(); syncSticky();
+    });
+  });
+  document.querySelectorAll('#cupgrid button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('#cupgrid button').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on'); cup=b.textContent.trim(); syncSticky();
+    });
+  });
+  // colour swatches
+  document.querySelectorAll('.swatches a').forEach(function(a){
+    a.addEventListener('click',function(e){e.preventDefault();document.querySelectorAll('.swatches a').forEach(function(x){x.classList.remove('on');});a.classList.add('on');});
+  });
+  // qty
+  var q=1; var qv=document.getElementById('qval');
+  document.getElementById('qplus').addEventListener('click',function(){q++;qv.textContent=q;});
+  document.getElementById('qminus').addEventListener('click',function(){if(q>1){q--;qv.textContent=q;}});
+  // gallery
+  var slides=document.querySelectorAll('#gmain .slide'), thumbs=document.querySelectorAll('#gthumbs button');
+  thumbs.forEach(function(t,i){t.addEventListener('click',function(){
+    slides.forEach(function(s){s.classList.remove('on');});thumbs.forEach(function(x){x.classList.remove('on');});
+    slides[i].classList.add('on');t.classList.add('on');
+  });});
+  // accordions
+  document.querySelectorAll('.acc .q').forEach(function(qb){
+    qb.addEventListener('click',function(){
+      var item=qb.parentElement, a=item.querySelector('.a');
+      var open=item.classList.toggle('open');
+      a.style.maxHeight=open?a.scrollHeight+'px':'0px';
+    });
+  });
+  // open default description
+  (function(){var d=document.querySelector('.acc .item.open .a'); if(d) d.style.maxHeight=d.scrollHeight+'px';})();
+  // sticky bar visibility
+  var atc=document.getElementById('atc'), sticky=document.getElementById('sticky');
+  function onScroll(){
+    var r=atc.getBoundingClientRect();
+    var nearFooter=document.querySelector('.foot').getBoundingClientRect().top < window.innerHeight-40;
+    sticky.classList.toggle('show', r.bottom<0 && !nearFooter);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  syncSticky(); onScroll();
+})();
+</script>
+</body>
+</html>
