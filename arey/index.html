@@ -9,23 +9,14 @@
   @font-face{font-family:'Greycliff';src:url('fonts/greycliff-cf-bold.woff2') format('woff2');font-weight:700;font-display:swap;}
   @font-face{font-family:'Freight';src:url('fonts/freight-display-pro.woff2') format('woff2');font-weight:400;font-display:swap;}
   @font-face{font-family:'Freight';src:url('fonts/freight-display-pro-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap;}
-
   :root{
-    --cream:#fbf9f5;
-    --ink:#1c1a17;
-    --soft:#6f6a62;
-    --line:#e7e2d8;
-    --accent:#1c1a17;
-    --green:#3f6b4e;
-    --gold:#b08d3f;
-    --serif:'Freight',Georgia,serif;
-    --sans:'Greycliff','Nunito Sans',-apple-system,sans-serif;
+    --cream:#fbf9f5;--ink:#1c1a17;--soft:#6f6a62;--line:#e7e2d8;--accent:#1c1a17;--green:#3f6b4e;--gold:#b08d3f;
+    --serif:'Freight',Georgia,serif;--sans:'Greycliff','Nunito Sans',-apple-system,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
   html{scroll-behavior:smooth;}
   body{font-family:var(--sans);color:var(--ink);background:#d8d4cc;line-height:1.5;-webkit-font-smoothing:antialiased;}
   img{max-width:100%;display:block;}
-  .serif{font-family:var(--serif);}
 
   .device{max-width:390px;margin:0 auto;background:var(--cream);position:relative;min-height:100vh;overflow:hidden;}
   @media(min-width:600px){body{padding:28px 0;}.device{border-radius:30px;box-shadow:0 30px 80px rgba(28,26,23,.25);min-height:auto;}}
@@ -40,7 +31,6 @@
   .icon-btn svg{width:21px;height:21px;}
   .icon-btn span{position:absolute;top:-7px;right:-8px;background:var(--ink);color:#fff;font-size:10px;font-weight:700;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;}
 
-  /* nav drawer (matches their mobile menu) */
   .nav-overlay{position:fixed;inset:0;background:rgba(28,26,23,.35);opacity:0;pointer-events:none;transition:.25s;z-index:70;}
   .nav-overlay.open{opacity:1;pointer-events:auto;}
   .nav-drawer{position:fixed;top:0;left:0;height:100%;width:86%;max-width:330px;background:var(--cream);z-index:71;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;overflow-y:auto;}
@@ -54,7 +44,6 @@
   .nav-drawer .nd-foot{margin-top:auto;padding:18px 20px;border-top:1px solid var(--line);font-size:12px;}
   .nav-drawer .nd-foot a{color:var(--soft);text-decoration:none;font-weight:600;}
 
-  /* gallery */
   .g-main{position:relative;background:#efeae0;aspect-ratio:1/1;overflow:hidden;}
   .g-main img,.g-main video{width:100%;height:100%;object-fit:cover;}
   .g-thumbs{display:flex;gap:8px;overflow-x:auto;padding:10px 16px 4px;scrollbar-width:none;}
@@ -65,16 +54,15 @@
   .g-thumbs .thumb .vtag{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(28,26,23,.25);}
   .g-thumbs .thumb .vtag svg{width:15px;height:15px;fill:#fff;}
 
-  /* buy box */
   .buy{padding:22px 20px 30px;}
-  .buy h1{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.05;letter-spacing:-.01em;margin-bottom:9px;}
+  .buy h1{font-family:var(--serif);font-weight:400;font-size:31px;line-height:1.08;letter-spacing:-.01em;margin-bottom:9px;}
   .rating{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:12px;}
   .stars{color:var(--ink);letter-spacing:1px;font-size:13px;}
   .rating a{color:var(--soft);text-decoration:underline;text-underline-offset:2px;}
   .subhead{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-bottom:20px;}
 
-  /* CHANGE 1 — engaging description (replaces the dense paragraph blob) */
-  .desc{margin-bottom:24px;}
+  /* CHANGE 1 — engaging description */
+  .desc{margin-bottom:18px;}
   .desc .lead{font-family:var(--serif);font-size:19px;line-height:1.4;margin-bottom:14px;}
   .desc .lead em{font-style:italic;}
   .desc .points{display:flex;flex-direction:column;gap:11px;margin-bottom:16px;}
@@ -87,7 +75,10 @@
   .desc .specs .chip{display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:50px;padding:6px 12px;font-size:11.5px;font-weight:700;}
   .desc .specs .chip svg{width:13px;height:13px;stroke:var(--ink);fill:none;stroke-width:1.8;}
 
-  /* CHANGE 2 — simplified, subscribe-first variant picker */
+  .pct-grey{font-size:12.5px;color:var(--soft);background:#f4efe5;border-radius:10px;padding:11px 14px;margin-bottom:20px;line-height:1.45;}
+  .pct-grey a{color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+
+  /* CHANGE 2 — simplified subscribe-first picker */
   .picker-h{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:11px;display:flex;justify-content:space-between;align-items:center;}
   .picker-h .sub-tag{font-size:11px;font-weight:700;color:var(--green);letter-spacing:0;text-transform:none;}
   .tiers{display:flex;flex-direction:column;gap:9px;}
@@ -104,17 +95,28 @@
   .tier .badge{position:absolute;right:14px;top:-9px;background:var(--ink);color:#fff;font-size:9px;font-weight:700;padding:2px 9px;border-radius:5px;letter-spacing:.05em;text-transform:uppercase;}
   .tier.best .badge{background:var(--gold);}
 
-  .picker-note{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--soft);margin:13px 0 4px;}
-  .picker-note svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2;}
+  /* free gifts with subscription (real module) */
+  .gifts{margin-top:14px;border:1px dashed #d8cba6;background:#faf5e9;border-radius:12px;padding:13px 14px;}
+  .gifts .gh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+  .gifts .gh .gt{font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;display:flex;align-items:center;gap:6px;}
+  .gifts .gh .gt svg{width:14px;height:14px;fill:var(--gold);}
+  .gifts .gh .val{font-size:11px;font-weight:700;color:var(--gold);background:#fff;border:1px solid #e7d8ad;border-radius:50px;padding:3px 9px;}
+  .gifts .grow{display:flex;gap:8px;}
+  .gifts .g{flex:1;text-align:center;}
+  .gifts .g img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:9px;background:#fff;border:1px solid #efe6cf;}
+  .gifts .g span{display:block;font-size:10px;color:var(--soft);margin-top:5px;}
+  .gifts.hide{display:none;}
 
   .atc{width:100%;border:none;border-radius:50px;background:var(--accent);color:#fff;font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.02em;padding:17px;cursor:pointer;transition:.15s;margin-top:14px;}
   .atc:active{transform:scale(.99);}
-  /* one-time stays minimized: a small text link, never a toggle */
   .onetime{display:block;text-align:center;margin-top:12px;font-size:12px;color:#9a958c;text-decoration:underline;text-underline-offset:2px;cursor:pointer;background:none;border:none;width:100%;font-family:var(--sans);}
-  .pills-note{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:16px;font-size:12px;color:var(--soft);border-top:1px solid var(--line);padding-top:15px;}
-  .pills-note svg{width:14px;height:14px;stroke:var(--soft);fill:none;stroke-width:1.6;}
+  .picker-note{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--soft);margin:13px 0 0;}
+  .picker-note svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2;}
 
-  /* generic sections */
+  .badges{display:flex;justify-content:center;gap:18px;margin-top:18px;border-top:1px solid var(--line);padding-top:16px;}
+  .badges img{height:46px;width:auto;opacity:.92;}
+
+  /* sections */
   section{padding:42px 20px;}
   .eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:14px;}
   h2.title{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.1;letter-spacing:-.01em;}
@@ -122,23 +124,25 @@
   .videoblock{margin-top:22px;border-radius:14px;overflow:hidden;background:#000;}
   .videoblock video{width:100%;display:block;}
 
-  /* proven results */
-  .testi{display:flex;flex-direction:column;gap:13px;margin-top:20px;}
-  .quote{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px;}
-  .quote .stars{font-size:13px;margin-bottom:9px;color:var(--ink);}
-  .quote .qt{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.35;}
-  .quote .who{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;font-size:12px;}
-  .quote .who .nm{font-weight:700;}
-  .quote .who .dur{color:var(--soft);font-size:11px;}
+  /* proven results — before/after carousel */
+  .pr-track{display:flex;gap:14px;overflow-x:auto;margin-top:22px;padding-bottom:8px;scroll-snap-type:x mandatory;scrollbar-width:none;}
+  .pr-track::-webkit-scrollbar{display:none;}
+  .pr-card{flex:0 0 86%;scroll-snap-align:center;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+  .pr-card .ba{width:100%;aspect-ratio:750/550;object-fit:cover;background:#efeae0;}
+  .pr-card .body{padding:15px 16px 17px;}
+  .pr-card .qt{font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.35;min-height:0;}
+  .pr-card .who{display:flex;justify-content:space-between;align-items:baseline;margin-top:11px;font-size:12px;}
+  .pr-card .who .nm{font-weight:700;}
+  .pr-card .who .dur{color:var(--soft);font-size:11px;}
+  .pr-hint{font-size:11px;color:var(--soft);margin-top:10px;text-align:center;}
 
-  /* how it works steps */
+  /* how it works */
   .hiw{background:#fff;}
   .steps{display:flex;flex-direction:column;gap:14px;margin-top:24px;}
   .step{display:flex;gap:14px;align-items:flex-start;}
-  .step .n{font-family:var(--serif);font-size:13px;font-weight:400;letter-spacing:.14em;color:var(--green);flex:0 0 auto;width:64px;padding-top:3px;text-transform:uppercase;}
+  .step .n{font-family:var(--serif);font-size:13px;letter-spacing:.14em;color:var(--green);flex:0 0 auto;width:64px;padding-top:3px;text-transform:uppercase;}
   .step .b{font-size:13.5px;color:var(--soft);line-height:1.55;border-left:1px solid var(--line);padding-left:14px;}
 
-  /* clinical */
   .clinical{background:var(--cream);}
   .cl-grid{display:flex;flex-direction:column;gap:13px;margin-top:24px;}
   .cl-card{border:1px solid var(--line);background:#fff;border-radius:14px;padding:20px;text-align:center;}
@@ -147,31 +151,47 @@
   .cl-card .sub{font-size:12px;color:var(--soft);margin-top:5px;}
   .cl-disc{font-size:10.5px;color:#a39e95;margin-top:18px;line-height:1.5;}
 
-  /* how to use */
   .use-steps{display:flex;flex-direction:column;gap:14px;margin-top:22px;}
   .use-step{display:flex;gap:13px;align-items:flex-start;}
   .use-step .num{font-family:var(--serif);font-size:22px;color:var(--green);line-height:1;width:24px;flex:0 0 auto;}
   .use-step p{font-size:13.5px;color:var(--soft);line-height:1.55;}
   .use-step b{color:var(--ink);}
 
+  /* reviews */
   .rev-head{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:16px;}
   .rev-head .big{font-family:var(--serif);font-size:42px;line-height:1;}
   .rev-head .stars{color:var(--ink);font-size:16px;}
   .rev-head .sub{font-size:12px;color:var(--soft);margin-top:3px;}
+  .rev-list{display:flex;flex-direction:column;gap:12px;margin-top:14px;}
+  .rev{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 16px;}
+  .rev .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
+  .rev .nm{font-weight:700;font-size:13px;}
+  .rev .vb{font-size:10px;color:var(--green);font-weight:700;}
+  .rev .stars{color:var(--ink);font-size:12px;}
+  .rev .bd{font-size:13px;color:#4a463f;line-height:1.5;}
+  .rev .meta{font-size:11px;color:var(--soft);margin-top:7px;}
 
-  .faq details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow:hidden;}
-  .faq summary{list-style:none;cursor:pointer;padding:15px 16px;font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;display:flex;justify-content:space-between;gap:10px;align-items:center;}
-  .faq summary::-webkit-details-marker{display:none;}
-  .faq summary .plus{font-size:20px;color:var(--green);font-weight:400;transition:.2s;}
-  .faq details[open] summary .plus{transform:rotate(45deg);}
-  .faq .ans{padding:0 16px 16px;font-size:13px;color:var(--soft);line-height:1.55;}
+  .faq details,.facts details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow:hidden;}
+  .faq summary,.facts summary{list-style:none;cursor:pointer;padding:15px 16px;font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;display:flex;justify-content:space-between;gap:10px;align-items:center;}
+  .faq summary::-webkit-details-marker,.facts summary::-webkit-details-marker{display:none;}
+  .faq summary .plus,.facts summary .plus{font-size:20px;color:var(--green);font-weight:400;transition:.2s;}
+  .faq details[open] summary .plus,.facts details[open] summary .plus{transform:rotate(45deg);}
+  .faq .ans,.facts .ans{padding:0 16px 16px;font-size:13px;color:var(--soft);line-height:1.55;}
+  .facts .ans ul{margin:6px 0 0 16px;}
+  .facts .ans li{margin-bottom:3px;}
 
-  footer{background:var(--ink);color:#bdb7ac;padding:34px 20px 40px;text-align:center;}
+  .firstbuy{background:var(--ink);color:#f3efe6;text-align:center;}
+  .firstbuy h2{font-family:var(--serif);font-weight:400;font-size:28px;color:#fff;}
+  .firstbuy p{color:#cfc8bc;font-size:13.5px;margin-top:11px;}
+  .firstbuy .em{display:flex;gap:8px;margin-top:18px;max-width:320px;margin-left:auto;margin-right:auto;}
+  .firstbuy .em input{flex:1;border:1px solid #46423c;background:#262320;color:#fff;border-radius:50px;padding:13px 16px;font-family:var(--sans);font-size:13px;}
+  .firstbuy .em button{border:none;background:#fff;color:var(--ink);border-radius:50px;padding:13px 18px;font-family:var(--sans);font-weight:700;font-size:13px;cursor:pointer;}
+
+  footer{background:var(--ink);color:#bdb7ac;padding:34px 20px 40px;text-align:center;border-top:1px solid #2c2823;}
   footer img{height:22px;margin:0 auto 14px;filter:brightness(0) invert(1);}
   footer p{font-size:11.5px;line-height:1.6;}
   footer .fine{margin-top:14px;font-size:10.5px;color:#7a746a;}
 
-  /* sticky cart */
   .sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:390px;z-index:60;background:rgba(251,249,245,.97);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -8px 28px rgba(28,26,23,.1);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:11px;transition:transform .32s cubic-bezier(.4,0,.2,1);}
   .sticky.show{transform:translateX(-50%) translateY(0);}
   .sticky img{width:44px;height:44px;border-radius:8px;object-fit:cover;flex:0 0 auto;border:1px solid var(--line);}
@@ -202,13 +222,10 @@
     </div>
   </header>
 
-  <!-- nav drawer (reproduces their mobile menu) -->
   <div class="nav-overlay" id="navOverlay"></div>
   <aside class="nav-drawer" id="navDrawer">
-    <div class="nd-top">
-      <img src="https://arey.com/cdn/shop/files/arey-logo-R.png" alt="Arey">
-      <button class="icon-btn" id="navClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-    </div>
+    <div class="nd-top"><img src="https://arey.com/cdn/shop/files/arey-logo-R.png" alt="Arey">
+      <button class="icon-btn" id="navClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
     <nav>
       <a href="#">Shop by Category <span class="chev">›</span></a>
       <a href="#">Shop by Goal <span class="chev">›</span></a>
@@ -224,11 +241,11 @@
   <div class="g-thumbs" id="gThumbs"></div>
 
   <div class="buy">
-    <h1>Not Today, Grey™</h1>
+    <h1>Not Today, Grey — Clinically Studied Grey Hair Supplement</h1>
     <div class="rating"><span class="stars">★★★★★</span><strong>4.3</strong><a href="#reviews">704 reviews</a></div>
     <div class="subhead">Slows Greys &nbsp;·&nbsp; Supports Repigmentation &nbsp;·&nbsp; Improves Density</div>
 
-    <!-- CHANGE 1: the dense description blob, rebuilt as an engaging, scannable block -->
+    <!-- CHANGE 1: engaging description -->
     <div class="desc">
       <p class="lead">Your foundation for long-term hair health — clinically backed to work <em>from the inside out</em>.</p>
       <div class="points">
@@ -242,45 +259,49 @@
       </div>
     </div>
 
-    <!-- CHANGE 2: simplified subscribe-first picker; one-time minimized as a small link -->
+    <div class="pct-grey">Arey works best on those who have <b>0–30% grey hair.</b> Not sure what percentage you are? <a href="#">Take the 30-second finder →</a></div>
+
+    <!-- CHANGE 2: simplified subscribe-first picker -->
     <div class="picker-h"><span>Choose your supply</span><span class="sub-tag" id="modeTag">Subscribe &amp; Save</span></div>
     <div class="tiers" id="tiers">
-      <div class="tier" data-supply="1" data-one="45" data-pct="15">
-        <span class="radio"></span>
-        <div class="row"><div><div class="name">1-Month Supply</div><div class="permo" data-permo></div></div>
-          <div class="price"><span class="now" data-now></span><s class="was" data-was></s></div></div>
-      </div>
-      <div class="tier active" data-supply="3" data-one="130" data-pct="20">
-        <span class="badge">Most Popular</span><span class="radio"></span>
-        <div class="row"><div><div class="name">3-Month Supply</div><div class="permo" data-permo></div></div>
-          <div class="price"><span class="now" data-now></span><s class="was" data-was></s></div></div>
-      </div>
-      <div class="tier best" data-supply="6" data-one="260" data-pct="25">
-        <span class="badge">Best Value</span><span class="radio"></span>
-        <div class="row"><div><div class="name">6-Month Supply</div><div class="permo" data-permo></div></div>
-          <div class="price"><span class="now" data-now></span><s class="was" data-was></s></div></div>
+      <div class="tier" data-supply="1" data-one="45" data-pct="15"><span class="radio"></span>
+        <div class="row"><div><div class="name">1-Month Supply</div><div class="permo" data-permo></div></div><div class="price"><span class="now" data-now></span><s class="was" data-was></s></div></div></div>
+      <div class="tier active" data-supply="3" data-one="130" data-pct="20"><span class="badge">Most Popular</span><span class="radio"></span>
+        <div class="row"><div><div class="name">3-Month Supply</div><div class="permo" data-permo></div></div><div class="price"><span class="now" data-now></span><s class="was" data-was></s></div></div></div>
+      <div class="tier best" data-supply="6" data-one="260" data-pct="25"><span class="badge">Best Value</span><span class="radio"></span>
+        <div class="row"><div><div class="name">6-Month Supply</div><div class="permo" data-permo></div></div><div class="price"><span class="now" data-now></span><s class="was" data-was></s></div></div></div>
+    </div>
+
+    <!-- free gifts with subscription (real $108 module) -->
+    <div class="gifts" id="gifts">
+      <div class="gh"><span class="gt"><svg viewBox="0 0 24 24"><path d="M20 7h-3.2A2.8 2.8 0 0012 3.4 2.8 2.8 0 007.2 7H4v4h16zM4 12v9h16v-9z"/></svg> Free gifts with subscription</span><span class="val">$108 value</span></div>
+      <div class="grow">
+        <div class="g"><img src="https://arey.com/cdn/shop/files/Scalp_Brush_1_April2026.jpg" alt="Scalp Brush"><span>Scalp Brush</span></div>
+        <div class="g"><img src="https://arey.com/cdn/shop/files/Scrub_1_March2026.jpg" alt="Scalp Scrub"><span>Scalp Scrub</span></div>
+        <div class="g"><img src="https://arey.com/cdn/shop/files/Cap_1.jpg" alt="Cap"><span>Arey Cap</span></div>
       </div>
     </div>
-    <div class="picker-note" id="pickerNote"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Free shipping · pause, skip or cancel anytime</div>
 
     <button class="atc" id="atc">Add to cart — <span id="atcPrice"></span></button>
     <button class="onetime" id="oneTimeToggle">Prefer a one-time order instead?</button>
+    <div class="picker-note" id="pickerNote"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Free shipping · pause, skip or cancel anytime</div>
 
-    <div class="pills-note"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6z"/></svg> Made in an NSF-certified facility</div>
+    <div class="badges">
+      <img src="https://cdn.shopify.com/s/files/1/0269/4696/1481/files/FDA_BADGE.png" alt="FDA registered">
+      <img src="https://cdn.shopify.com/s/files/1/0269/4696/1481/files/GMP_BADGE.png" alt="GMP certified">
+      <img src="https://cdn.shopify.com/s/files/1/0269/4696/1481/files/NSF_BADGE.png" alt="NSF certified">
+    </div>
   </div>
 
-  <!-- proven results -->
-  <section id="reviews">
+  <!-- proven results: before/after carousel -->
+  <section>
     <div class="eyebrow">Proven results</div>
     <h2 class="title">Real customers, real before &amp; afters</h2>
-    <div class="testi">
-      <div class="quote"><div class="stars">★★★★★</div><div class="qt">"Look at this!!!! Worked wonders! Unbelievable. Buy it. Significantly less grey at my temples."</div><div class="who"><span class="nm">Andrea A.</span><span class="dur">5 months on Not Today, Grey</span></div></div>
-      <div class="quote"><div class="stars">★★★★★</div><div class="qt">"WOW! Like truly, wow. The color is so much more vibrant and there is visibly less white."</div><div class="who"><span class="nm">Lily D.</span><span class="dur">1 year on Not Today, Grey</span></div></div>
-      <div class="quote"><div class="stars">★★★★★</div><div class="qt">"I'm hooked because I see results. My hair is noticeably less grey — my mom even asked me if I dyed it recently!"</div><div class="who"><span class="nm">Lisa De L.</span><span class="dur">6 months on Not Today, Grey</span></div></div>
-    </div>
+    <div class="pr-track" id="prTrack"></div>
+    <div class="pr-hint">← swipe through real customer before &amp; afters →</div>
   </section>
 
-  <!-- how it works (faithful 4-step ingredient mechanism) -->
+  <!-- how it works -->
   <section class="hiw" id="how">
     <div class="eyebrow">How it works</div>
     <h2 class="title">Grey hair, addressed from the inside out</h2>
@@ -290,9 +311,7 @@
       <div class="step"><div class="n">Energize</div><div class="b">Vitamin B12 and the Chinese herb Fo Ti fuel melanin production, while Iron supports the production of red blood cells.</div></div>
       <div class="step"><div class="n">Protect</div><div class="b">Paba, Vitamin D &amp; Copper help protect hair from premature grey, while Vitamin B7 improves the protein structure of hair.</div></div>
     </div>
-    <div class="videoblock">
-      <video controls muted playsinline preload="metadata" poster="https://cdn.shopify.com/s/files/1/0269/4696/1481/files/NTG_2_March2026.jpg" src="vid/v1.mp4"></video>
-    </div>
+    <div class="videoblock"><video controls muted playsinline preload="metadata" poster="https://cdn.shopify.com/s/files/1/0269/4696/1481/files/NTG_2_March2026.jpg" src="vid/v1.mp4"></video></div>
   </section>
 
   <!-- clinical -->
@@ -319,14 +338,29 @@
     </div>
   </section>
 
-  <!-- reviews -->
-  <section>
+  <!-- reviews: aggregate + real individual reviews -->
+  <section id="reviews">
     <div class="eyebrow">Customer reviews</div>
     <h2 class="title">Loved by 700+ customers</h2>
     <div class="rev-head">
       <div><div class="big">4.3</div><div class="stars">★★★★★</div></div>
       <div><div style="font-weight:700;font-size:15px;">704 verified reviews</div><div class="sub">powered by Okendo</div></div>
     </div>
+    <div class="rev-list">
+      <div class="rev"><div class="top"><span class="nm">Alyssa J. <span class="vb">✓ Verified</span></span><span class="stars">★★★★★</span></div><div class="bd">"Consistency is key to see results. I've been doing the System for over a year now and I can actually see the results."</div><div class="meta">Age 35–46 · 20–30% grey</div></div>
+      <div class="rev"><div class="top"><span class="nm">Robert S. <span class="vb">✓ Verified</span></span><span class="stars">★★★★★</span></div><div class="bd">"Hair color is getting more vivid."</div><div class="meta">Age 35–46 · reviewing Not Today, Grey</div></div>
+      <div class="rev"><div class="top"><span class="nm">Jacqueline T. <span class="vb">✓ Verified</span></span><span class="stars">★★★★★</span></div><div class="bd">"This has helped improve the condition of my hair and has helped with the color as well."</div></div>
+      <div class="rev"><div class="top"><span class="nm">Caterina D. <span class="vb">✓ Verified</span></span><span class="stars">★★★★★</span></div><div class="bd">"I enjoy taking this product and like the results so far!"</div><div class="meta">Age 47–56 · 30%+ grey</div></div>
+    </div>
+  </section>
+
+  <!-- supplement facts / key ingredients -->
+  <section class="facts">
+    <div class="eyebrow">What's inside</div>
+    <h2 class="title">Supplement facts</h2>
+    <details><summary>Key ingredients <span class="plus">+</span></summary><div class="ans">A daily blend of vitamins, minerals and antioxidants that support hair-pigment production:
+      <ul><li>Vitamins B6 &amp; B9 — foundation for absorption</li><li>Vitamin B5 &amp; Selenium — cell turnover + antioxidant defense</li><li>Vitamin B12, Fo Ti &amp; Iron — fuel melanin + red blood cells</li><li>Paba, Vitamin D &amp; Copper — protect against premature grey</li><li>Vitamin B7 (Biotin) — improves hair's protein structure</li></ul></div></details>
+    <details><summary>How to take <span class="plus">+</span></summary><div class="ans">Two capsules daily, ideally after a meal. Vegan &amp; gluten free. 60 capsules per bottle.</div></details>
   </section>
 
   <!-- faq -->
@@ -338,6 +372,13 @@
     <details><summary>How do I use it? <span class="plus">+</span></summary><div class="ans">Take two supplements each day, ideally after a meal. Stay consistent for 3–6 months and beyond — results build over time, especially in the early stages of greying.</div></details>
   </section>
 
+  <!-- first purchase CTA -->
+  <section class="firstbuy">
+    <h2>Save on your first purchase.</h2>
+    <p>Join our newsletter for exclusive offers, sneak peeks and savings on your first order.</p>
+    <form class="em" onsubmit="return false;"><input type="email" placeholder="Email address" aria-label="Email"><button>Sign up</button></form>
+  </section>
+
   <footer>
     <img src="https://arey.com/cdn/shop/files/arey-logo-R.png" alt="Arey">
     <p>The Wrinkle Cream® of Haircare.<br>Free shipping on subscriptions &amp; orders $100+ (US only).</p>
@@ -346,7 +387,7 @@
 
   <div class="sticky" id="sticky">
     <img src="https://cdn.shopify.com/s/files/1/0269/4696/1481/files/NTG_1_March2026.jpg" alt="">
-    <div class="si"><div class="t">Not Today, Grey™ · <span id="stickySupply">3-Month</span></div>
+    <div class="si"><div class="t">Not Today, Grey · <span id="stickySupply">3-Month</span></div>
       <div class="p"><span id="stickyPrice"></span> <s id="stickyWas"></s></div></div>
     <button id="atcSticky">Add</button>
   </div>
@@ -358,42 +399,54 @@
 (function(){
   var CDN='https://cdn.shopify.com/s/files/1/0269/4696/1481/files/';
   var media=[
-    {t:'img',f:'NTG_1_March2026.jpg'},
-    {t:'vid',poster:'NTG_2_March2026.jpg',vsrc:'vid/v1.mp4'},
-    {t:'img',f:'NTG_3_March2026.jpg'},
-    {t:'img',f:'NTG_4_March2026.jpg'},
-    {t:'img',f:'NTG_5_March2026.jpg'},
-    {t:'img',f:'NTG_6_March2026.jpg'},
-    {t:'img',f:'NTG_7_March2026.jpg'},
-    {t:'img',f:'NTG_9_March2026.jpg'},
-    {t:'img',f:'NTG_10_March2026.jpg'},
-    {t:'img',f:'NTG_11_March2026.jpg'},
-    {t:'img',f:'NTG_12_March2026.jpg'}
+    {t:'img',f:'NTG_1_March2026.jpg'},{t:'vid',poster:'NTG_2_March2026.jpg',vsrc:'vid/v1.mp4'},
+    {t:'img',f:'NTG_3_March2026.jpg'},{t:'img',f:'NTG_4_March2026.jpg'},{t:'img',f:'NTG_5_March2026.jpg'},
+    {t:'img',f:'NTG_6_March2026.jpg'},{t:'img',f:'NTG_7_March2026.jpg'},{t:'img',f:'NTG_9_March2026.jpg'},
+    {t:'img',f:'NTG_10_March2026.jpg'},{t:'img',f:'NTG_11_March2026.jpg'},{t:'img',f:'NTG_12_March2026.jpg'}
   ];
   var gThumbs=document.getElementById('gThumbs'),gMain=document.getElementById('gMain');
   var playSVG='<svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="12" r="11" fill="rgba(28,26,23,.5)"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg>';
   function show(i){var m=media[i];
     if(m.t==='img'){gMain.innerHTML='<img src="'+CDN+m.f+'" alt="Not Today, Grey">';}
     else{gMain.innerHTML='<video controls autoplay muted playsinline src="'+m.vsrc+'" poster="'+CDN+m.poster+'" style="width:100%;height:100%;object-fit:cover"></video>';}
-    [].forEach.call(gThumbs.children,function(c,j){c.classList.toggle('active',j===i);});
-  }
+    [].forEach.call(gThumbs.children,function(c,j){c.classList.toggle('active',j===i);});}
   media.forEach(function(m,i){var t=document.createElement('div');t.className='thumb'+(i===0?' active':'');
     t.innerHTML='<img src="'+CDN+(m.t==='img'?m.f:m.poster)+'" alt="">'+(m.t==='vid'?'<span class="vtag">'+playSVG+'</span>':'');
     t.onclick=function(){show(i);};gThumbs.appendChild(t);});
 
-  // state: subscribe is the default/dominant mode; one-time is minimized
+  // proven results before/after cards (real composite B/A images)
+  var AREY='https://arey.com/cdn/shop/files/';
+  var proven=[
+    {img:'NTG-Andrea-750x550_B_A_550x.jpg',nm:'Andrea A.',dur:'5 months',qt:'Look at this!!!! Worked wonders! Unbelievable. Buy it. Significantly less grey at my temples.'},
+    {img:'NTG-Lily-750x550_B_A_550x.jpg',nm:'Lily D.',dur:'1 year',qt:'WOW! Like truly, wow. The color is so much more vibrant and there is visibly less white.'},
+    {img:'NTG-LisaDeL-750x550_B_A_550x.jpg',nm:'Lisa De L.',dur:'6 months',qt:"I'm hooked because I see results. My hair is noticeably less grey — my mom even asked if I dyed it!"},
+    {img:'NTG-Lindsay-750x550_B_A_550x.jpg',nm:'Lindsay M.',dur:'4 months',qt:'You guys, I think Arey is working better than I thought!'},
+    {img:'NTG-LaraD-750x550_B_A_550x.jpg',nm:'Lara D.',dur:'1 year',qt:"This is working… it's definitely worth it. I don't have to dye my hair for 12–13 weeks now."},
+    {img:'NTG-Helma-750x550_B_A_550x.jpg',nm:'Helma R.',dur:'5 months',qt:'My sisters started taking Arey after seeing my results. Looking forward to less grey hairs!'},
+    {img:'NTG-Katey-750x550_B_A_550x.jpg',nm:'Katey',dur:'',qt:''},
+    {img:'NTG-Dick-750x550_B_A_550x.jpg',nm:'Dick',dur:'',qt:''},
+    {img:'NTG-Jonathan-750x550_B_A_550x.jpg',nm:'Jonathan',dur:'',qt:''},
+    {img:'NTG-DebG-750x550_B_A_550x.jpg',nm:'Deb G.',dur:'',qt:''},
+    {img:'NTG-SamC-750x550_B_A-notag_550x.jpg',nm:'Sam C.',dur:'',qt:''}
+  ];
+  var prTrack=document.getElementById('prTrack');
+  proven.forEach(function(p){var c=document.createElement('div');c.className='pr-card';
+    c.innerHTML='<img class="ba" src="'+AREY+p.img+'" alt="Before and after — '+p.nm+'">'+
+      '<div class="body">'+(p.qt?'<div class="qt">“'+p.qt+'”</div>':'')+
+      '<div class="who"><span class="nm">'+p.nm+'</span>'+(p.dur?'<span class="dur">'+p.dur+' on Not Today, Grey</span>':'')+'</div></div>';
+    prTrack.appendChild(c);});
+
+  // buy state — subscribe default/dominant; one-time minimized
   var state={supply:3, mode:'sub'};
   function money(n){return '$'+(Math.round(n*100)/100).toLocaleString(undefined,{minimumFractionDigits:(n%1?2:0),maximumFractionDigits:2});}
   function render(){
     document.querySelectorAll('#tiers .tier').forEach(function(t){
-      var one=+t.dataset.one, pct=+t.dataset.pct, months=+t.dataset.supply;
-      var price = state.mode==='sub' ? one*(1-pct/100) : one;
+      var one=+t.dataset.one,pct=+t.dataset.pct,months=+t.dataset.supply;
+      var price=state.mode==='sub'?one*(1-pct/100):one;
       t.querySelector('[data-now]').textContent=money(price);
-      var was=t.querySelector('[data-was]');
-      var permo=t.querySelector('[data-permo]');
+      var was=t.querySelector('[data-was]'),permo=t.querySelector('[data-permo]');
       if(state.mode==='sub'){was.textContent=money(one);was.style.display='';permo.textContent=money(price/months)+'/mo';}
-      else{was.style.display='none';permo.textContent=money(one/months)+'/mo';}
-    });
+      else{was.style.display='none';permo.textContent=money(one/months)+'/mo';}});
     var act=document.querySelector('#tiers .tier.active');
     var one=+act.dataset.one,pct=+act.dataset.pct,months=+act.dataset.supply;
     var price=state.mode==='sub'?one*(1-pct/100):one;
@@ -401,9 +454,10 @@
     document.getElementById('stickyPrice').textContent=money(price);
     document.getElementById('stickyWas').textContent=state.mode==='sub'?money(one):'';
     document.getElementById('stickySupply').textContent=months+'-Month';
-    document.getElementById('modeTag').textContent = state.mode==='sub'?'Subscribe & Save':'One-time order';
-    document.getElementById('pickerNote').style.display = state.mode==='sub'?'':'none';
-    document.getElementById('oneTimeToggle').textContent = state.mode==='sub'?'Prefer a one-time order instead?':'← Back to Subscribe & Save (best price)';
+    document.getElementById('modeTag').textContent=state.mode==='sub'?'Subscribe & Save':'One-time order';
+    document.getElementById('pickerNote').style.display=state.mode==='sub'?'':'none';
+    document.getElementById('gifts').classList.toggle('hide',state.mode!=='sub');
+    document.getElementById('oneTimeToggle').textContent=state.mode==='sub'?'Prefer a one-time order instead?':'← Back to Subscribe & Save (best price + free gifts)';
   }
   document.querySelectorAll('#tiers .tier').forEach(function(t){t.onclick=function(){
     document.querySelectorAll('#tiers .tier').forEach(function(x){x.classList.remove('active');});
@@ -419,13 +473,10 @@
   var toastEl=document.getElementById('toast'),tt;
   window.toast=function(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('show');},2400);};
 
-  // nav drawer
   var drawer=document.getElementById('navDrawer'),overlay=document.getElementById('navOverlay');
   function openNav(){drawer.classList.add('open');overlay.classList.add('open');}
   function closeNav(){drawer.classList.remove('open');overlay.classList.remove('open');}
-  document.getElementById('menuBtn').onclick=openNav;
-  document.getElementById('navClose').onclick=closeNav;
-  overlay.onclick=closeNav;
+  document.getElementById('menuBtn').onclick=openNav;document.getElementById('navClose').onclick=closeNav;overlay.onclick=closeNav;
   [...drawer.querySelectorAll('a')].forEach(function(a){a.addEventListener('click',function(){setTimeout(closeNav,120);});});
 
   var buy=document.querySelector('.buy'),sticky=document.getElementById('sticky');
