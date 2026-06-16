@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Not Today, Grey — Clinically Studied Grey Hair Supplement | Arey</title>
+<style>
+  @font-face{font-family:'Greycliff';src:url('fonts/greycliff-cf-regular.woff2') format('woff2');font-weight:400;font-display:swap;}
+  @font-face{font-family:'Greycliff';src:url('fonts/greycliff-cf-bold.woff2') format('woff2');font-weight:700;font-display:swap;}
+  @font-face{font-family:'Freight';src:url('fonts/freight-display-pro.woff2') format('woff2');font-weight:400;font-display:swap;}
+  @font-face{font-family:'Freight';src:url('fonts/freight-display-pro-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap;}
+
+  :root{
+    --cream:#fbf9f5;
+    --ink:#1c1a17;
+    --soft:#6f6a62;
+    --line:#e7e2d8;
+    --accent:#000000;
+    --green:#3f6b4e;
+    --serif:'Freight',Georgia,serif;
+    --sans:'Greycliff','Nunito Sans',-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);color:var(--ink);background:#d8d4cc;line-height:1.5;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  .serif{font-family:var(--serif);}
+
+  .device{max-width:390px;margin:0 auto;background:var(--cream);position:relative;min-height:100vh;overflow:hidden;}
+  @media(min-width:600px){
+    body{padding:28px 0;}
+    .device{border-radius:30px;box-shadow:0 30px 80px rgba(28,26,23,.25);min-height:auto;}
+  }
+
+  .topbar{background:var(--ink);color:#f3efe6;font-size:11px;letter-spacing:.04em;text-align:center;padding:8px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:400;}
+
+  header{position:sticky;top:0;z-index:40;background:rgba(251,249,245,.94);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line);}
+  header .logo{height:22px;width:auto;}
+  .icon-btn{background:none;border:none;color:var(--ink);cursor:pointer;display:flex;}
+  .icon-btn svg{width:21px;height:21px;}
+  .cart-dot{position:relative;}
+  .cart-dot span{position:absolute;top:-7px;right:-8px;background:var(--ink);color:#fff;font-size:10px;font-weight:700;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;}
+
+  /* gallery */
+  .gallery{padding:0;}
+  .g-main{position:relative;background:#efeae0;aspect-ratio:1/1;overflow:hidden;}
+  .g-main img,.g-main video{width:100%;height:100%;object-fit:cover;}
+  .g-thumbs{display:flex;gap:8px;overflow-x:auto;padding:10px 16px 4px;scrollbar-width:none;}
+  .g-thumbs::-webkit-scrollbar{display:none;}
+  .g-thumbs .thumb{flex:0 0 auto;width:56px;height:56px;border-radius:8px;overflow:hidden;border:1.5px solid transparent;cursor:pointer;position:relative;background:#efeae0;}
+  .g-thumbs .thumb.active{border-color:var(--ink);}
+  .g-thumbs .thumb img{width:100%;height:100%;object-fit:cover;}
+  .g-thumbs .thumb .vtag{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(28,26,23,.25);}
+  .g-thumbs .thumb .vtag svg{width:16px;height:16px;fill:#fff;}
+
+  /* buy box */
+  .buy{padding:22px 20px 32px;}
+  .buy h1{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.1;letter-spacing:-.01em;margin-bottom:10px;}
+  .rating{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:12px;}
+  .stars{color:var(--ink);letter-spacing:1px;font-size:14px;}
+  .rating a{color:var(--soft);text-decoration:underline;text-underline-offset:2px;}
+  .benefits{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--ink);margin-bottom:14px;text-transform:uppercase;}
+  .benefits span{display:flex;align-items:center;gap:5px;}
+  .benefits span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--green);}
+  .desc{font-size:14px;color:var(--soft);margin-bottom:20px;line-height:1.55;}
+
+  /* clinical proof strip — PRIMARY improvement, surfaced at the buy box */
+  .proof{border:1px solid var(--line);border-radius:14px;background:#fff;padding:15px 14px;margin-bottom:22px;}
+  .proof .ph{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+  .proof .ph svg{width:13px;height:13px;stroke:var(--green);fill:none;stroke-width:2;}
+  .proof .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;}
+  .proof .stat .n{font-family:var(--serif);font-size:26px;line-height:1;}
+  .proof .stat .l{font-size:9.5px;color:var(--soft);margin-top:5px;line-height:1.3;}
+  .proof .src{font-size:10px;color:#a39e95;margin-top:11px;text-align:center;}
+
+  .step-h{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px;color:var(--ink);}
+
+  /* purchase type toggle */
+  .ptype{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+  .ptype .opt{border:1.5px solid var(--line);background:#fff;border-radius:11px;padding:11px 10px;cursor:pointer;text-align:center;position:relative;transition:.15s;}
+  .ptype .opt.active{border-color:var(--ink);background:var(--ink);color:#fff;}
+  .ptype .opt .t{font-weight:700;font-size:13px;}
+  .ptype .opt .s{font-size:10.5px;margin-top:2px;opacity:.8;}
+  .ptype .opt .save{position:absolute;top:-8px;right:8px;background:var(--green);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px;letter-spacing:.03em;}
+
+  /* supply tiers */
+  .tiers{display:flex;flex-direction:column;gap:9px;margin-bottom:18px;}
+  .tier{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:13px 14px 13px 42px;position:relative;cursor:pointer;transition:.15s;}
+  .tier.active{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink);}
+  .tier .radio{position:absolute;left:14px;top:15px;width:18px;height:18px;border-radius:50%;border:2px solid #c7c2b8;}
+  .tier.active .radio{border-color:var(--ink);background:radial-gradient(circle,var(--ink) 0 5px,#fff 6px);}
+  .tier .row1{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+  .tier .name{font-weight:700;font-size:14px;}
+  .tier .price{font-weight:700;font-size:14.5px;white-space:nowrap;}
+  .tier .price s{color:#a7a298;font-weight:400;font-size:12px;margin-right:4px;}
+  .tier .row2{display:flex;justify-content:space-between;align-items:baseline;margin-top:4px;}
+  .tier .permo{font-size:12px;color:var(--green);font-weight:700;}
+  .tier .freq{font-size:11px;color:var(--soft);}
+  .tier .badge{position:absolute;right:12px;top:-8px;background:var(--ink);color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:5px;letter-spacing:.04em;text-transform:uppercase;}
+
+  .atc{width:100%;border:none;border-radius:50px;background:var(--accent);color:#fff;font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.02em;padding:17px;cursor:pointer;transition:.15s;}
+  .atc:active{transform:scale(.99);}
+  .subnote{text-align:center;font-size:11.5px;color:var(--soft);margin-top:11px;}
+  .quiz-link{display:block;text-align:center;margin-top:14px;font-size:13px;font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:3px;}
+  .pills-note{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:16px;font-size:12px;color:var(--soft);border-top:1px solid var(--line);padding-top:15px;}
+
+  /* generic sections */
+  section{padding:40px 20px;}
+  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:14px;}
+  h2.title{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.12;letter-spacing:-.01em;}
+  .lede{color:var(--soft);font-size:14.5px;margin-top:13px;line-height:1.6;}
+  .videoblock{margin-top:22px;border-radius:14px;overflow:hidden;background:#000;}
+  .videoblock video{width:100%;display:block;}
+
+  .clinical{background:#fff;}
+  .cl-grid{display:flex;flex-direction:column;gap:14px;margin-top:24px;}
+  .cl-card{border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;}
+  .cl-card .n{font-family:var(--serif);font-size:46px;line-height:1;}
+  .cl-card .l{font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-top:8px;}
+  .cl-card .sub{font-size:12px;color:var(--soft);margin-top:5px;}
+  .cl-disclaimer{font-size:10.5px;color:#a39e95;margin-top:18px;line-height:1.5;}
+
+  .how-steps{display:flex;flex-direction:column;gap:14px;margin-top:22px;}
+  .how-step{display:flex;gap:13px;align-items:flex-start;}
+  .how-step .num{font-family:var(--serif);font-size:22px;color:var(--green);line-height:1;flex:0 0 auto;width:26px;}
+  .how-step p{font-size:13.5px;color:var(--soft);line-height:1.55;}
+  .how-step b{color:var(--ink);font-weight:700;}
+
+  /* testimonials */
+  .testi{display:flex;flex-direction:column;gap:13px;margin-top:20px;}
+  .quote{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px;}
+  .quote .stars{font-size:13px;margin-bottom:9px;}
+  .quote .qt{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.35;}
+  .quote .who{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;font-size:12px;}
+  .quote .who .nm{font-weight:700;}
+  .quote .who .dur{color:var(--soft);font-size:11px;}
+
+  .rev-head{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:16px;}
+  .rev-head .big{font-family:var(--serif);font-size:42px;line-height:1;}
+  .rev-head .stars{font-size:16px;}
+  .rev-head .sub{font-size:12px;color:var(--soft);margin-top:3px;}
+
+  .science p{font-size:13.5px;color:var(--soft);line-height:1.6;margin-top:13px;}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+  .badges .b{border:1px solid var(--line);border-radius:50px;padding:7px 13px;font-size:11px;font-weight:700;letter-spacing:.02em;color:var(--ink);background:#fff;}
+
+  footer{background:var(--ink);color:#bdb7ac;padding:34px 20px 40px;text-align:center;}
+  footer img{height:22px;margin:0 auto 14px;filter:brightness(0) invert(1);}
+  footer p{font-size:11.5px;line-height:1.6;}
+  footer .fine{margin-top:14px;font-size:10.5px;color:#7a746a;}
+
+  /* sticky cart (parity — control has one) */
+  .sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:390px;z-index:60;background:rgba(251,249,245,.97);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -8px 28px rgba(28,26,23,.1);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:11px;transition:transform .32s cubic-bezier(.4,0,.2,1);}
+  .sticky.show{transform:translateX(-50%) translateY(0);}
+  .sticky img{width:44px;height:44px;border-radius:8px;object-fit:cover;flex:0 0 auto;border:1px solid var(--line);}
+  .sticky .si{flex:1;min-width:0;}
+  .sticky .si .t{font-weight:700;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .sticky .si .p{font-weight:700;font-size:13px;}
+  .sticky .si .p s{color:#a7a298;font-weight:400;font-size:11px;margin-left:4px;}
+  .sticky .si .pm{font-size:10.5px;color:var(--green);font-weight:700;}
+  .sticky button{border:none;border-radius:50px;background:var(--accent);color:#fff;font-family:var(--sans);font-weight:700;font-size:13px;padding:13px 18px;cursor:pointer;white-space:nowrap;}
+
+  .toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;font-size:13px;font-weight:600;padding:12px 18px;border-radius:12px;opacity:0;pointer-events:none;transition:.3s;z-index:80;max-width:330px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.3);}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+<div class="device" id="device">
+
+  <div class="topbar">Free shipping on subscriptions &amp; orders $100+ (US only)</div>
+
+  <header>
+    <img class="logo" src="https://arey.com/cdn/shop/files/arey-logo-R.png" alt="Arey" width="70" height="22">
+    <button class="icon-btn cart-dot" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M6 6 5 3H2"/></svg><span id="cartCount">0</span></button>
+  </header>
+
+  <!-- gallery -->
+  <div class="gallery">
+    <div class="g-main" id="gMain"><img id="gMainImg" src="https://cdn.shopify.com/s/files/1/0269/4696/1481/files/NTG_1_March2026.jpg" alt="Not Today, Grey"></div>
+    <div class="g-thumbs" id="gThumbs"></div>
+  </div>
+
+  <!-- buy box -->
+  <div class="buy">
+    <h1>Not Today, Grey™</h1>
+    <div class="rating"><span class="stars">★★★★★</span><strong>4.3</strong><a href="#reviews">704 reviews</a></div>
+    <div class="benefits"><span>Slows greys</span><span>Supports repigmentation</span><span>Improves density</span></div>
+    <div class="desc">A clinically backed daily supplement that slows grey hair growth, supports repigmentation, and promotes thicker, fuller hair — in as little as 3–6 months with consistent use in the early stages of greying. Just two pills a day. Flavorless, no aftertaste.</div>
+
+    <!-- PRIMARY improvement: clinical proof surfaced at the decision point -->
+    <div class="proof">
+      <div class="ph"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M21 12a9 9 0 1 1-6.2-8.5"/></svg> Proven in a double-blind clinical study</div>
+      <div class="grid">
+        <div class="stat"><div class="n">88%</div><div class="l">had fewer or no increase in grey hairs at 6 months</div></div>
+        <div class="stat"><div class="n">3×</div><div class="l">more saw fuller, thicker hair vs. placebo</div></div>
+        <div class="stat"><div class="n">−13%</div><div class="l">grey hair in the active group (vs. +10% placebo)</div></div>
+      </div>
+      <div class="src">6-month randomized, double-blind, placebo-controlled study · 173 subjects</div>
+    </div>
+
+    <!-- purchase type -->
+    <div class="step-h">Purchase options</div>
+    <div class="ptype" id="ptype">
+      <div class="opt active" data-type="sub"><span class="save">Save up to 25%</span><div class="t">Subscribe</div><div class="s">Delivered · pause anytime</div></div>
+      <div class="opt" data-type="one"><div class="t">One-time</div><div class="s">No commitment</div></div>
+    </div>
+
+    <!-- supply tiers (SECONDARY improvement: per-month value made explicit) -->
+    <div class="step-h">Choose your supply</div>
+    <div class="tiers" id="tiers">
+      <div class="tier" data-supply="1" data-one="45" data-subpct="15">
+        <span class="radio"></span>
+        <div class="row1"><span class="name">1-Month Supply</span><span class="price" data-price></span></div>
+        <div class="row2"><span class="permo" data-permo></span><span class="freq">Ships monthly</span></div>
+      </div>
+      <div class="tier active" data-supply="3" data-one="130" data-subpct="20">
+        <span class="badge">Most popular</span>
+        <span class="radio"></span>
+        <div class="row1"><span class="name">3-Month Supply</span><span class="price" data-price></span></div>
+        <div class="row2"><span class="permo" data-permo></span><span class="freq">Ships every 3 months</span></div>
+      </div>
+      <div class="tier" data-supply="6" data-one="260" data-subpct="25">
+        <span class="badge">Best value</span>
+        <span class="radio"></span>
+        <div class="row1"><span class="name">6-Month Supply</span><span class="price" data-price></span></div>
+        <div class="row2"><span class="permo" data-permo></span><span class="freq">Ships every 6 months</span></div>
+      </div>
+    </div>
+
+    <button class="atc" id="atc">Add to cart — <span id="atcPrice"></span></button>
+    <div class="subnote" id="subnote"></div>
+    <a class="quiz-link" href="#">What percentage grey are you? Take the 30-second finder →</a>
+    <div class="pills-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6f6a62" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg> Two pills a day · flavorless · no aftertaste</div>
+  </div>
+
+  <!-- what is it / video -->
+  <section>
+    <div class="eyebrow">What is it</div>
+    <h2 class="title">Your foundation for long-term hair health</h2>
+    <p class="lede">Our daily supplement delivers vitamins, minerals, and antioxidants to help slow the growth of grey hair and support repigmentation — while promoting thicker, fuller, healthier hair. For best results, use for 3–6 months and beyond.</p>
+    <div class="videoblock">
+      <video controls muted playsinline preload="metadata"
+        poster="https://cdn.shopify.com/s/files/1/0269/4696/1481/files/NTG_2_March2026.jpg"
+        src="vid/v1.mp4"></video>
+    </div>
+  </section>
+
+  <!-- clinical results -->
+  <section class="clinical">
+    <div class="eyebrow">Clinical results</div>
+    <h2 class="title">Studied with To The Root® — and clinically shown to work</h2>
+    <p class="lede">Not Today, Grey was studied alongside To The Root and together were clinically shown to reduce grey hair growth and improve overall hair health.</p>
+    <div class="cl-grid">
+      <div class="cl-card"><div class="n">88%</div><div class="l">Fewer or no increase in greys</div><div class="sub">after 6 months</div></div>
+      <div class="cl-card"><div class="n">3×</div><div class="l">More fuller, thicker hair with improved shine</div><div class="sub">vs. placebo group</div></div>
+      <div class="cl-card"><div class="n">−13%</div><div class="l">Decrease in grey hair (active group)</div><div class="sub">vs. 10% more in the placebo group</div></div>
+    </div>
+    <p class="cl-disclaimer">Results based on a 6-month, randomized, double-blind, placebo-controlled study of the effects of The System on the appearance of grey hair on 173 subjects, ages 28–65, all less than 25% grey. Results determined by blinded clinical counting and/or clinical photo grading.</p>
+  </section>
+
+  <!-- how to use -->
+  <section>
+    <div class="eyebrow">How to use</div>
+    <h2 class="title">Grey hair, addressed from the inside out</h2>
+    <div class="how-steps">
+      <div class="how-step"><span class="num">1</span><p>Take <b>two Not Today, Grey supplements each day</b> — this supplies your body with the vitamins, minerals and antioxidants that support production of hair pigment at the cellular level.</p></div>
+      <div class="how-step"><span class="num">2</span><p><b>Tip:</b> take the supplement after a meal, instead of on an empty stomach.</p></div>
+      <div class="how-step"><span class="num">3</span><p>Stay consistent for <b>3–6 months and beyond</b> — repigmentation and density build over time, especially in the early stages of greying.</p></div>
+    </div>
+  </section>
+
+  <!-- proven results / testimonials -->
+  <section id="reviews">
+    <div class="eyebrow">Proven results</div>
+    <h2 class="title">Real customers, real before &amp; afters</h2>
+    <div class="rev-head">
+      <div><div class="big">4.3</div><div class="stars">★★★★★</div></div>
+      <div><div style="font-weight:700;font-size:15px;">704 verified reviews</div><div class="sub">powered by Okendo</div></div>
+    </div>
+    <div class="testi">
+      <div class="quote"><div class="stars">★★★★★</div><div class="qt">"Look at this!!!! Worked wonders! Unbelievable. Buy it. Significantly less grey at my temples."</div><div class="who"><span class="nm">Andrea A.</span><span class="dur">5 months on Not Today, Grey</span></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><div class="qt">"WOW! Like truly, wow. The color is so much more vibrant and there is visibly less white."</div><div class="who"><span class="nm">Lily D.</span><span class="dur">1 year on Not Today, Grey</span></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><div class="qt">"I'm hooked because I see results. My hair is noticeably less grey — my mom even asked me if I dyed it recently!"</div><div class="who"><span class="nm">Lisa De L.</span><span class="dur">6 months on Not Today, Grey</span></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><div class="qt">"This is working… it's definitely worth it. I don't have to dye my hair for 12–13 weeks now."</div><div class="who"><span class="nm">Lara D.</span><span class="dur">1 year on Not Today, Grey</span></div></div>
+    </div>
+  </section>
+
+  <!-- science / quality -->
+  <section class="science">
+    <div class="eyebrow">The science &amp; quality</div>
+    <h2 class="title">Built on vitamins, minerals &amp; antioxidants</h2>
+    <p>Not Today, Grey supports the production of hair pigment at the cellular level — the biological process behind greying — with a daily blend of vitamins, minerals and antioxidants designed for long-term hair health.</p>
+    <div class="badges"><span class="b">Clinically studied</span><span class="b">Double-blind tested</span><span class="b">Flavorless</span><span class="b">Just 2 pills/day</span></div>
+  </section>
+
+  <footer>
+    <img src="https://arey.com/cdn/shop/files/arey-logo-R.png" alt="Arey">
+    <p>The Wrinkle Cream® of Haircare.<br>Free shipping on subscriptions &amp; orders $100+ (US only).</p>
+    <p class="fine">Concept redesign prototype for demonstration. Product imagery, video, reviews and copy belong to Arey.</p>
+  </footer>
+
+  <!-- sticky cart -->
+  <div class="sticky" id="sticky">
+    <img src="https://cdn.shopify.com/s/files/1/0269/4696/1481/files/NTG_1_March2026.jpg" alt="">
+    <div class="si">
+      <div class="t">Not Today, Grey™ · <span id="stickySupply">3-Month</span></div>
+      <div class="p"><span id="stickyPrice"></span> <s id="stickyOne"></s> <span class="pm" id="stickyPm"></span></div>
+    </div>
+    <button id="atcSticky">Add</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script>
+(function(){
+  var CDN='https://cdn.shopify.com/s/files/1/0269/4696/1481/files/';
+  // gallery media
+  var media=[
+    {t:'img',f:'NTG_1_March2026.jpg'},
+    {t:'vid',poster:'NTG_2_March2026.jpg',vsrc:'vid/v1.mp4'},
+    {t:'img',f:'NTG_3_March2026.jpg'},
+    {t:'img',f:'NTG_4_March2026.jpg'},
+    {t:'img',f:'NTG_5_March2026.jpg'},
+    {t:'img',f:'NTG_6_March2026.jpg'},
+    {t:'img',f:'NTG_7_March2026.jpg'},
+    {t:'img',f:'NTG_9_March2026.jpg'},
+    {t:'img',f:'NTG_10_March2026.jpg'},
+    {t:'img',f:'NTG_11_March2026.jpg'},
+    {t:'img',f:'NTG_12_March2026.jpg'}
+  ];
+  var gMain=document.getElementById('gMain'),gThumbs=document.getElementById('gThumbs');
+  var playSVG='<svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="12" r="11" fill="rgba(28,26,23,.5)"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg>';
+  function show(i){var m=media[i];
+    if(m.t==='img'){gMain.innerHTML='<img src="'+CDN+m.f+'" alt="Not Today, Grey">';}
+    else{gMain.innerHTML='<video controls autoplay muted playsinline src="'+m.vsrc+'" poster="'+CDN+m.poster+'" style="width:100%;height:100%;object-fit:cover"></video>';}
+    [].forEach.call(gThumbs.children,function(c,j){c.classList.toggle('active',j===i);});
+  }
+  media.forEach(function(m,i){var t=document.createElement('div');t.className='thumb'+(i===0?' active':'');
+    t.innerHTML='<img src="'+CDN+(m.t==='img'?m.f:m.poster)+'" alt="">'+(m.t==='vid'?'<span class="vtag">'+playSVG+'</span>':'');
+    t.onclick=function(){show(i);};gThumbs.appendChild(t);});
+
+  // pricing
+  var state={type:'sub',supply:3};
+  function money(n){return '$'+(Math.round(n*100)/100).toLocaleString(undefined,{minimumFractionDigits:(n%1?2:0),maximumFractionDigits:2});}
+  function calc(tierEl){
+    var one=+tierEl.dataset.one, pct=+tierEl.dataset.subpct, months=+tierEl.dataset.supply;
+    var price = state.type==='sub' ? one*(1-pct/100) : one;
+    return {price:price, one:one, permo:price/months, months:months, pct:pct};
+  }
+  function render(){
+    document.querySelectorAll('#tiers .tier').forEach(function(t){
+      var c=calc(t);
+      var pr=t.querySelector('[data-price]'), pm=t.querySelector('[data-permo]');
+      if(state.type==='sub'){pr.innerHTML='<s>'+money(c.one)+'</s>'+money(c.price);}
+      else{pr.innerHTML=money(c.price);}
+      pm.textContent=money(c.permo)+'/mo'+(state.type==='sub'?' · save '+c.pct+'%':'');
+    });
+    var active=document.querySelector('#tiers .tier.active'); var c=calc(active);
+    document.getElementById('atcPrice').textContent=money(c.price);
+    document.getElementById('subnote').textContent = state.type==='sub'
+      ? 'Subscription · ships every '+c.months+' month'+(c.months>1?'s':'')+' · free shipping · pause or cancel anytime'
+      : 'One-time purchase · no commitment';
+    document.getElementById('stickyPrice').textContent=money(c.price);
+    document.getElementById('stickyOne').textContent = state.type==='sub'?money(c.one):'';
+    document.getElementById('stickyPm').textContent=money(c.permo)+'/mo';
+    document.getElementById('stickySupply').textContent=c.months+'-Month';
+  }
+  document.querySelectorAll('#ptype .opt').forEach(function(o){o.onclick=function(){
+    document.querySelectorAll('#ptype .opt').forEach(function(x){x.classList.remove('active');});
+    o.classList.add('active');state.type=o.dataset.type;render();
+  };});
+  document.querySelectorAll('#tiers .tier').forEach(function(t){t.onclick=function(){
+    document.querySelectorAll('#tiers .tier').forEach(function(x){x.classList.remove('active');});
+    t.classList.add('active');state.supply=+t.dataset.supply;render();
+  };});
+
+  // add to cart
+  var count=0;
+  function add(){count++;document.getElementById('cartCount').textContent=count;
+    var c=calc(document.querySelector('#tiers .tier.active'));
+    toast('Added: '+c.months+'-Month '+(state.type==='sub'?'Subscription':'one-time')+' · '+money(c.price));
+  }
+  document.getElementById('atc').onclick=add;document.getElementById('atcSticky').onclick=add;
+
+  var toastEl=document.getElementById('toast'),tt;
+  window.toast=function(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('show');},2500);};
+
+  // sticky
+  var buy=document.querySelector('.buy'),sticky=document.getElementById('sticky');
+  function onScroll(){var r=buy.getBoundingClientRect();var foot=document.querySelector('footer').getBoundingClientRect();
+    sticky.classList.toggle('show', r.bottom<70 && foot.top>window.innerHeight-40);}
+  window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);onScroll();
+
+  render();
+})();
+</script>
+</body>
+</html>
