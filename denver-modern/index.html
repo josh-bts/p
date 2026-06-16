@@ -9,11 +9,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root{
-  --ink:#363336;          /* charcoal CTA/text rgb(54,51,54) */
+  --ink:#363336;
   --paper:#FFFFFF;
-  --warm:#F5F2EC;         /* warm light section bg */
-  --wood:#A87C52;         /* walnut accent */
-  --red:#7A1F24;          /* nav/sale accent */
+  --warm:#F5F2EC;
+  --wood:#A87C52;
+  --red:#7A1F24;
+  --green:#4f6b3a;
   --gold:#B9974A;
   --line:#e6e1d8;
   --muted:#7c776e;
@@ -28,10 +29,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 a{color:inherit;text-decoration:none;}
 
 .frame{max-width:390px;margin:0 auto;background:var(--paper);position:relative;min-height:100vh;overflow:hidden;}
-@media(min-width:600px){
-  body{padding:24px 0;}
-  .frame{box-shadow:0 18px 60px rgba(40,35,25,.30);min-height:auto;margin-bottom:24px;}
-}
+@media(min-width:600px){body{padding:24px 0;}.frame{box-shadow:0 18px 60px rgba(40,35,25,.30);min-height:auto;margin-bottom:24px;}}
 
 .utility{background:var(--ink);color:#e7e3da;text-align:center;font-size:10px;letter-spacing:.6px;padding:7px 10px;white-space:nowrap;overflow:hidden;}
 .utility b{color:#fff;}
@@ -46,13 +44,12 @@ a{color:inherit;text-decoration:none;}
 .gmain .slide{display:none;}
 .gmain .slide.on{display:block;}
 .gmain img{width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--warm);}
-.gbadge{position:absolute;top:12px;right:12px;background:var(--ink);color:#fff;font-size:10px;letter-spacing:1px;
-  text-transform:uppercase;padding:6px 11px;}
-.g360{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);font-size:10px;letter-spacing:.5px;
-  padding:6px 10px;border-radius:30px;border:1px solid var(--line);}
+.gbadge{position:absolute;top:12px;right:12px;background:var(--ink);color:#fff;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:6px 11px;z-index:2;}
+.g360{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);font-size:10px;letter-spacing:.5px;padding:6px 10px;border-radius:30px;border:1px solid var(--line);z-index:2;}
+.gfinish{position:absolute;bottom:12px;left:12px;background:rgba(255,255,255,.92);font-size:10.5px;letter-spacing:.3px;padding:6px 11px;border-radius:30px;border:1px solid var(--line);z-index:2;}
 .gthumbs{display:flex;gap:8px;overflow-x:auto;padding:10px 18px 4px;scrollbar-width:none;background:#fff;}
 .gthumbs::-webkit-scrollbar{display:none;}
-.gthumbs button{flex:0 0 58px;height:58px;border:1px solid var(--line);overflow:hidden;background:var(--warm);}
+.gthumbs button{flex:0 0 58px;height:58px;border:1px solid var(--line);overflow:hidden;background:var(--warm);padding:0;}
 .gthumbs button.on{border-color:var(--ink);}
 .gthumbs img{width:100%;height:100%;object-fit:cover;}
 
@@ -64,16 +61,15 @@ a{color:inherit;text-decoration:none;}
 .stars{color:var(--gold);font-size:14px;letter-spacing:1px;}
 .prate a{font-size:12px;text-decoration:underline;text-underline-offset:2px;}
 .price{font-size:21px;font-weight:600;margin-bottom:6px;}
-.price .from{font-size:12px;font-weight:400;color:var(--muted);}
+.price .perea{font-size:12px;font-weight:400;color:var(--muted);}
 
-/* FINANCING — CRO improvement #1 */
+/* financing */
 .finance{display:flex;align-items:center;gap:9px;background:var(--warm);border:1px solid var(--line);padding:10px 12px;margin:0 0 18px;}
 .finance svg{width:18px;height:18px;flex:0 0 auto;color:var(--ink);}
 .finance .ft{font-size:12px;line-height:1.4;}
-.finance .ft b{font-weight:600;}
-.finance .ft span{color:var(--muted);}
+.finance .ft b{font-weight:600;}.finance .ft span{color:var(--muted);}
 
-/* material selector */
+/* configurator */
 .config{padding:0 20px;}
 .cfglabel{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;}
 .cfglabel .l{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
@@ -86,39 +82,57 @@ a{color:inherit;text-decoration:none;}
 .swatch.on{outline:2px solid var(--ink);outline-offset:2px;}
 .swatch .tex{position:absolute;inset:0;}
 
-/* SWATCH CTA — CRO improvement #2 */
 .swatchcta{display:flex;gap:9px;align-items:center;background:#fff;border:1px dashed var(--wood);padding:10px 12px;margin:14px 0 18px;}
 .swatchcta svg{width:18px;height:18px;flex:0 0 auto;color:var(--wood);}
 .swatchcta .st{font-size:12px;line-height:1.4;}
-.swatchcta .st b{font-weight:600;}
-.swatchcta .st a{text-decoration:underline;font-weight:600;}
+.swatchcta .st b{font-weight:600;}.swatchcta .st a{text-decoration:underline;font-weight:600;}
 
-/* dowel + size */
+/* dowel — now visual w/ thumbnails that swap the gallery */
 .optrow{margin-bottom:16px;}
-.optrow .ol{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+.optrow .ol{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:7px;display:flex;align-items:center;gap:6px;}
+.optrow .ol .hint{font-size:10px;letter-spacing:0;text-transform:none;color:var(--wood);}
+.dowelbtns{display:flex;gap:10px;}
+.dowelbtns button{flex:1;border:1px solid var(--line);background:#fff;padding:8px;display:flex;align-items:center;gap:9px;transition:.12s;}
+.dowelbtns button.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);}
+.dowelbtns .dthumb{width:38px;height:38px;border-radius:50%;overflow:hidden;flex:0 0 auto;border:1px solid var(--line);}
+.dowelbtns .dthumb img{width:100%;height:100%;object-fit:cover;}
+.dowelbtns .dlbl{font-size:12.5px;font-weight:500;text-align:left;}
+.dowelbtns .dlbl small{display:block;font-size:10px;color:var(--muted);font-weight:400;}
+
 .optbtns{display:flex;gap:8px;}
 .optbtns button{flex:1;border:1px solid var(--line);background:#fff;padding:12px 8px;font-size:12.5px;transition:.12s;}
 .optbtns button.on{border-color:var(--ink);background:var(--ink);color:#fff;}
 .optbtns button .sub{display:block;font-size:10px;color:inherit;opacity:.7;margin-top:2px;}
 
-/* qty + CTA */
-.qtyrow{display:flex;gap:10px;margin:4px 0 12px;}
-.qty{display:flex;align-items:center;border:1px solid var(--ink);}
-.qty button{width:40px;height:50px;font-size:17px;}
-.qty span{width:30px;text-align:center;font-size:14px;}
-.atc{flex:1;background:var(--ink);color:#fff;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:15px;}
+/* PACK — buy more, save more (CRO improvement) */
+.pack{margin:18px 0 6px;}
+.packhead{display:flex;align-items:center;gap:7px;margin-bottom:9px;}
+.packhead .pl{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
+.packhead .promo{font-size:10px;font-weight:700;letter-spacing:.5px;background:var(--ink);color:#fff;padding:3px 8px;border-radius:20px;}
+.packgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.packtile{position:relative;border:1.5px solid var(--line);background:#fff;padding:12px 12px 11px;text-align:left;transition:.12s;}
+.packtile.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);}
+.packtile .pq{font-size:13.5px;font-weight:600;}
+.packtile .pt{font-size:13px;margin-top:3px;}
+.packtile .pe{font-size:11px;color:var(--muted);margin-top:1px;}
+.packtile .psave{display:inline-block;margin-top:7px;background:rgba(79,107,58,.12);color:var(--green);font-size:10.5px;font-weight:600;padding:2px 7px;border-radius:20px;}
+.packtile .ribbon{position:absolute;top:-9px;left:11px;background:var(--wood);color:#fff;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:3px 8px;border-radius:20px;}
+.packnudge{font-size:11.5px;color:var(--wood);margin-top:10px;display:flex;align-items:center;gap:7px;}
+.packnudge svg{width:15px;height:15px;flex:0 0 auto;}
+
+/* CTA */
+.atc{width:100%;background:var(--ink);color:#fff;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:16px;margin:14px 0 0;}
 .atc:active{opacity:.85;}
 
 /* trust row */
-.trust{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:0 20px 18px;}
+.trust{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:16px 20px 18px;}
 .trust .t{display:flex;gap:8px;align-items:center;font-size:11px;line-height:1.2;}
 .trust .t svg{width:16px;height:16px;flex:0 0 auto;color:var(--wood);}
 
 /* accordions */
 .acc{border-top:1px solid var(--line);margin:0 20px;}
 .acc .item{border-bottom:1px solid var(--line);}
-.acc .q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:15px 2px;
-  font-size:12px;letter-spacing:1px;text-transform:uppercase;text-align:left;}
+.acc .q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:15px 2px;font-size:12px;letter-spacing:1px;text-transform:uppercase;text-align:left;}
 .acc .q .pm{font-size:16px;transition:.2s;}
 .acc .item.open .q .pm{transform:rotate(45deg);}
 .acc .a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
@@ -148,8 +162,7 @@ a{color:inherit;text-decoration:none;}
 .footnote{font-size:11px;color:#7c776e;margin-top:20px;border-top:1px solid rgba(255,255,255,.12);padding-top:14px;}
 
 /* sticky */
-.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:390px;z-index:60;
-  background:#fff;border-top:1px solid var(--line);box-shadow:0 -4px 20px rgba(40,35,25,.1);padding:10px 14px;display:flex;align-items:center;gap:12px;transition:transform .28s ease;}
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(120%);width:100%;max-width:390px;z-index:60;background:#fff;border-top:1px solid var(--line);box-shadow:0 -4px 20px rgba(40,35,25,.1);padding:10px 14px;display:flex;align-items:center;gap:12px;transition:transform .28s ease;}
 .sticky.show{transform:translateX(-50%) translateY(0);}
 .sticky .sthumb{width:42px;height:42px;border:1px solid var(--line);flex:0 0 auto;overflow:hidden;background:var(--warm);}
 .sticky .sinfo{flex:1;min-width:0;}
@@ -173,24 +186,10 @@ a{color:inherit;text-decoration:none;}
     </div>
   </header>
 
-  <!-- gallery -->
+  <!-- gallery (JS-driven, swaps with dowel) -->
   <div class="gallery">
-    <div class="gmain" id="gmain">
-      <span class="g360">⟳ View 360°</span>
-      <span class="gbadge">Get the 4th Free</span>
-      <div class="slide on"><img src="https://cdn.shopify.com/s/files/1/0032/2351/9350/files/vail-counter-stool-charcoal-boucle-1_05390208-20e7-419a-8e0b-becbc3ecfc7d.webp" alt="Vail Counter Stool in Charcoal Boucle"></div>
-      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0032/2351/9350/files/charcoal-boucle-walnut-3_7cf64c98-9d4f-4713-ab9b-96431ba6b017.webp" alt="Vail Stool lifestyle"></div>
-      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0032/2351/9350/files/Charcoal-boucle-walnut-1_d0563278-f9c1-40d1-935c-651094f42d5c.webp" alt="Vail Stool detail"></div>
-      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0032/2351/9350/files/charcoal-boucle-walnut-6_274f7f7d-4fde-45b0-9712-cc6dd515b540.webp" alt="Vail Stool detail"></div>
-      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0032/2351/9350/files/Vail-Stool-PDP-Diagram_Updated-2_27_25_VLC-Charcoal-Boucle-WAL.webp" alt="Vail Stool dimensions"></div>
-    </div>
-    <div class="gthumbs" id="gthumbs">
-      <button class="on"><img src="https://cdn.shopify.com/s/files/1/0032/2351/9350/files/vail-counter-stool-charcoal-boucle-1_05390208-20e7-419a-8e0b-becbc3ecfc7d.webp" alt=""></button>
-      <button><img src="https://cdn.shopify.com/s/files/1/0032/2351/9350/files/charcoal-boucle-walnut-3_7cf64c98-9d4f-4713-ab9b-96431ba6b017.webp" alt=""></button>
-      <button><img src="https://cdn.shopify.com/s/files/1/0032/2351/9350/files/Charcoal-boucle-walnut-1_d0563278-f9c1-40d1-935c-651094f42d5c.webp" alt=""></button>
-      <button><img src="https://cdn.shopify.com/s/files/1/0032/2351/9350/files/charcoal-boucle-walnut-6_274f7f7d-4fde-45b0-9712-cc6dd515b540.webp" alt=""></button>
-      <button><img src="https://cdn.shopify.com/s/files/1/0032/2351/9350/files/Vail-Stool-PDP-Diagram_Updated-2_27_25_VLC-Charcoal-Boucle-WAL.webp" alt=""></button>
-    </div>
+    <div class="gmain" id="gmain"></div>
+    <div class="gthumbs" id="gthumbs"></div>
   </div>
 
   <!-- product info -->
@@ -198,36 +197,31 @@ a{color:inherit;text-decoration:none;}
     <h1 class="ptitle">Vail Counter &amp; Bar Stool</h1>
     <div class="pvendor">by Denver Modern</div>
     <div class="prate"><span class="stars">★★★★★</span><a href="#reviews">6 reviews</a></div>
-    <div class="price">$895.00 <span class="from">— $1,345 depending on material</span></div>
+    <div class="price">$895.00 <span class="perea">/ stool — $895–$1,345 by material</span></div>
 
-    <!-- FINANCING — CRO improvement #1 -->
     <div class="finance">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20"/></svg>
       <div class="ft"><b>Pay over time.</b> <span>Split it into easy payments with <b>Affirm</b> or <b>Shop Pay Installments</b> — choose your plan at checkout.</span></div>
     </div>
 
-    <!-- material configurator -->
     <div class="config">
       <div class="cfglabel"><span class="l">Main Material</span><a href="#">See material details ›</a></div>
       <div class="cfglabel"><span class="sel" id="matSel">Charcoal Boucle</span></div>
 
-      <div class="matgroup"><div class="gt">Bouclé</div><div class="swatchrow" data-group="boucle">
+      <div class="matgroup"><div class="gt">Bouclé</div><div class="swatchrow">
         <button class="swatch on" data-name="Charcoal Boucle"><span class="tex" style="background:#3a3a3c"></span></button>
         <button class="swatch" data-name="White Boucle"><span class="tex" style="background:#ece8e0"></span></button>
         <button class="swatch" data-name="Stone Boucle"><span class="tex" style="background:#b6ad9f"></span></button>
         <button class="swatch" data-name="Sand Boucle"><span class="tex" style="background:#cdbfa6"></span></button>
         <button class="swatch" data-name="Espresso Boucle"><span class="tex" style="background:#4a3a2e"></span></button>
       </div></div>
-
       <div class="matgroup"><div class="gt">Corduroy</div><div class="swatchrow">
         <button class="swatch" data-name="Cream Corduroy"><span class="tex" style="background:#e6dcc8"></span></button>
       </div></div>
-
       <div class="matgroup"><div class="gt">Linen</div><div class="swatchrow">
         <button class="swatch" data-name="Onyx Linen"><span class="tex" style="background:#2e2d2b"></span></button>
         <button class="swatch" data-name="Pearl Linen"><span class="tex" style="background:#ddd6c8"></span></button>
       </div></div>
-
       <div class="matgroup"><div class="gt">Leather</div><div class="swatchrow">
         <button class="swatch" data-name="Black Leather"><span class="tex" style="background:#1f1b18"></span></button>
         <button class="swatch" data-name="Stone Leather"><span class="tex" style="background:#9c8b76"></span></button>
@@ -235,24 +229,30 @@ a{color:inherit;text-decoration:none;}
         <button class="swatch" data-name="Cognac Leather"><span class="tex" style="background:#a86a3c"></span></button>
         <button class="swatch" data-name="Camel Leather"><span class="tex" style="background:#bd8c54"></span></button>
       </div></div>
-
       <div class="matgroup"><div class="gt">Performance Velvet</div><div class="swatchrow">
         <button class="swatch" data-name="Mushroom Velvet"><span class="tex" style="background:#8a7d72"></span></button>
       </div></div>
 
-      <!-- SWATCH CTA — CRO improvement #2 -->
       <div class="swatchcta">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
         <div class="st"><b>Not sure of the colour or texture?</b> <a href="#">Order free swatches</a> and feel the bouclé, linen &amp; leather in your own light before you commit.</div>
       </div>
 
+      <!-- DOWEL — visual, swaps the gallery -->
       <div class="optrow">
-        <div class="ol">Dowel (Wood)</div>
-        <div class="optbtns" id="dowel">
-          <button class="on" data-name="Walnut">Walnut</button>
-          <button data-name="White Oak">White Oak</button>
+        <div class="ol">Dowel (Wood) <span class="hint">— tap to see each finish</span></div>
+        <div class="dowelbtns" id="dowel">
+          <button class="on" data-name="Walnut">
+            <span class="dthumb"><img src="https://cdn.shopify.com/s/files/1/0032/2351/9350/files/vail-counter-stool-charcoal-boucle-1_05390208-20e7-419a-8e0b-becbc3ecfc7d.webp" alt="Walnut"></span>
+            <span class="dlbl">Walnut<small>Warm, deep brown</small></span>
+          </button>
+          <button data-name="White Oak">
+            <span class="dthumb"><img src="https://cdn.shopify.com/s/files/1/0032/2351/9350/files/vail-counter-CB-WO-2.webp" alt="White Oak"></span>
+            <span class="dlbl">White Oak<small>Light, natural blond</small></span>
+          </button>
         </div>
       </div>
+
       <div class="optrow">
         <div class="ol">Size</div>
         <div class="optbtns" id="size">
@@ -261,10 +261,19 @@ a{color:inherit;text-decoration:none;}
         </div>
       </div>
 
-      <div class="qtyrow">
-        <div class="qty"><button id="qm">−</button><span id="qv">1</span><button id="qp">+</button></div>
-        <button class="atc" id="atc">Add to Cart</button>
+      <!-- PACK — buy more, save more -->
+      <div class="pack">
+        <div class="packhead"><span class="pl">How many?</span><span class="promo">Every 4th stool free</span></div>
+        <div class="packgrid" id="packgrid">
+          <button class="packtile on" data-qty="1"><div class="pq">Single</div><div class="pt">$895</div><div class="pe">1 stool · $895 ea</div></button>
+          <button class="packtile" data-qty="2"><div class="pq">Pair</div><div class="pt">$1,790</div><div class="pe">2 stools · $895 ea</div></button>
+          <button class="packtile" data-qty="4"><span class="ribbon">Most popular</span><div class="pq">Set of 4</div><div class="pt">$2,685</div><div class="pe">$671 ea · 4th free</div><span class="psave">Save $895</span></button>
+          <button class="packtile" data-qty="6"><div class="pq">Set of 6</div><div class="pt">$4,475</div><div class="pe">$746 ea · 1 free</div><span class="psave">Save $895</span></button>
+        </div>
+        <div class="packnudge" id="packnudge"></div>
       </div>
+
+      <button class="atc" id="atc">Add to Cart — $895</button>
     </div>
   </div>
 
@@ -291,6 +300,7 @@ a{color:inherit;text-decoration:none;}
     <div class="item"><button class="q">FAQs<span class="pm">+</span></button>
       <div class="a"><div class="inner">
         <div class="faqq">How do I know which height I need — bar or counter?</div>Measure to the bottom of your counter or bar overhang. For standard counter height, measure ~35&quot;–36&quot; (choose Counter, 24&quot; seat); for bar height ~42&quot; (choose Bar, 30&quot; seat).
+        <div class="faqq">How does "get the 4th free" work?</div>Add four matching stools and your 4th is free — the discount applies automatically at checkout. Mix dowel and size freely.
         <div class="faqq">Are the covers removable?</div>The cover of the Vail Stools is non-removable.
         <div class="faqq">Can I get swatches first?</div>Yes — order free material swatches so you can see the bouclé, linen &amp; leather in your own space before deciding.
       </div></div>
@@ -300,10 +310,7 @@ a{color:inherit;text-decoration:none;}
   <!-- reviews -->
   <section class="rev" id="reviews">
     <h2>What owners say</h2>
-    <div class="revtop">
-      <span class="big">5.0</span>
-      <div><div class="stars">★★★★★</div><div class="cnt">Based on 6 reviews</div></div>
-    </div>
+    <div class="revtop"><span class="big">5.0</span><div><div class="stars">★★★★★</div><div class="cnt">Based on 6 reviews</div></div></div>
     <div class="revtopics"><span>Comfort</span><span>Quality</span><span>Customer Service</span><span>Leather</span></div>
     <div class="revsummary">Owners find the Vail <b>extremely comfortable</b> — a plush, soft bouclé seat with excellent cushioning for long sits at the island. Reviewers highlight the build <b>quality</b> and say the comfort <b>exceeds expectations and justifies the price</b>.</div>
   </section>
@@ -320,8 +327,8 @@ a{color:inherit;text-decoration:none;}
   <div class="spacer"></div>
 
   <div class="sticky" id="sticky">
-    <div class="sthumb"><img src="https://cdn.shopify.com/s/files/1/0032/2351/9350/files/vail-counter-stool-charcoal-boucle-1_05390208-20e7-419a-8e0b-becbc3ecfc7d.webp" alt=""></div>
-    <div class="sinfo"><div class="snm">Vail Counter &amp; Bar Stool</div><div class="sprice"><span id="stCfg">Charcoal Boucle · Walnut · Counter</span> — $895</div></div>
+    <div class="sthumb"><img id="stImg" src="https://cdn.shopify.com/s/files/1/0032/2351/9350/files/vail-counter-stool-charcoal-boucle-1_05390208-20e7-419a-8e0b-becbc3ecfc7d.webp" alt=""></div>
+    <div class="sinfo"><div class="snm">Vail Stool · <span id="stCfg">Charcoal Boucle · Walnut · Counter</span></div><div class="sprice" id="stPrice">Single — $895</div></div>
     <button class="satc" id="stAtc">Add to Cart</button>
   </div>
 
@@ -329,32 +336,82 @@ a{color:inherit;text-decoration:none;}
 
 <script>
 (function(){
-  var mat='Charcoal Boucle', dowel='Walnut', size='Counter';
-  function sync(){ document.getElementById('stCfg').textContent = mat+' · '+dowel+' · '+size; }
-  document.querySelectorAll('.swatch').forEach(function(s){
-    s.addEventListener('click',function(){
-      document.querySelectorAll('.swatch').forEach(function(x){x.classList.remove('on');});
-      s.classList.add('on'); mat=s.dataset.name; document.getElementById('matSel').textContent=mat; sync();
-    });
-  });
+  var PER=895; // per-stool base (Charcoal Boucle / Counter)
+  var mat='Charcoal Boucle', dowel='Walnut', size='Counter', qty=1;
+
+  var galleries={
+    'Walnut':[
+      'https://cdn.shopify.com/s/files/1/0032/2351/9350/files/vail-counter-stool-charcoal-boucle-1_05390208-20e7-419a-8e0b-becbc3ecfc7d.webp',
+      'https://cdn.shopify.com/s/files/1/0032/2351/9350/files/charcoal-boucle-walnut-3_7cf64c98-9d4f-4713-ab9b-96431ba6b017.webp',
+      'https://cdn.shopify.com/s/files/1/0032/2351/9350/files/Charcoal-boucle-walnut-1_d0563278-f9c1-40d1-935c-651094f42d5c.webp',
+      'https://cdn.shopify.com/s/files/1/0032/2351/9350/files/charcoal-boucle-walnut-6_274f7f7d-4fde-45b0-9712-cc6dd515b540.webp'
+    ],
+    'White Oak':[
+      'https://cdn.shopify.com/s/files/1/0032/2351/9350/files/vail-counter-CB-WO-2.webp',
+      'https://cdn.shopify.com/s/files/1/0032/2351/9350/files/vail-counter-CB-WO-1.webp',
+      'https://cdn.shopify.com/s/files/1/0032/2351/9350/files/vail-counter-CB-WO-4.webp'
+    ]
+  };
+  var gmain=document.getElementById('gmain'), gthumbs=document.getElementById('gthumbs');
+  function renderGallery(){
+    var imgs=galleries[dowel];
+    gmain.innerHTML='<span class="g360">&#10227; View 360&deg;</span><span class="gbadge">Get the 4th Free</span><span class="gfinish">Charcoal Bouclé · '+dowel+'</span>'+
+      imgs.map(function(u,i){return '<div class="slide'+(i===0?' on':'')+'"><img src="'+u+'" alt="Vail Stool in '+dowel+'"></div>';}).join('');
+    gthumbs.innerHTML=imgs.map(function(u,i){return '<button class="'+(i===0?'on':'')+'"><img src="'+u+'" alt=""></button>';}).join('');
+    var slides=gmain.querySelectorAll('.slide'), thumbs=gthumbs.querySelectorAll('button');
+    thumbs.forEach(function(t,i){t.addEventListener('click',function(){
+      slides.forEach(function(s){s.classList.remove('on');});thumbs.forEach(function(x){x.classList.remove('on');});
+      slides[i].classList.add('on');t.classList.add('on');});});
+    document.getElementById('stImg').src=imgs[0];
+  }
+
+  function money(n){return '$'+n.toLocaleString('en-US');}
+  function calc(n){var free=Math.floor(n/4);var total=(n-free)*PER;return {free:free,total:total,save:free*PER,ea:Math.round(total/n)};}
+  function sync(){
+    var c=calc(qty);
+    document.getElementById('stCfg').textContent=mat+' · '+dowel+' · '+size;
+    var label = qty===1?'Single':(qty===2?'Pair':'Set of '+qty);
+    document.getElementById('stPrice').textContent=label+' — '+money(c.total);
+    document.getElementById('atc').textContent = (qty===1?'Add to Cart — '+money(PER):'Add '+qty+' to Cart — '+money(c.total));
+    // nudge toward the next free stool
+    var nudge=document.getElementById('packnudge');
+    var rem=qty%4;
+    if(rem!==0){
+      var need=4-rem;
+      nudge.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>Add '+need+' more and your next stool is <b style="margin-left:3px">FREE</b>.';
+      nudge.style.display='flex';
+    } else {
+      nudge.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>Nice — you’re getting '+c.free+' stool'+(c.free>1?'s':'')+' free.';
+      nudge.style.display='flex';
+    }
+  }
+
+  document.querySelectorAll('.swatch').forEach(function(s){s.addEventListener('click',function(){
+    document.querySelectorAll('.swatch').forEach(function(x){x.classList.remove('on');});
+    s.classList.add('on');mat=s.dataset.name;document.getElementById('matSel').textContent=mat;sync();});});
+
   document.querySelectorAll('#dowel button').forEach(function(b){b.addEventListener('click',function(){
-    document.querySelectorAll('#dowel button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');dowel=b.dataset.name;sync();});});
+    document.querySelectorAll('#dowel button').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');dowel=b.dataset.name;renderGallery();sync();});});
+
   document.querySelectorAll('#size button').forEach(function(b){b.addEventListener('click',function(){
-    document.querySelectorAll('#size button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');size=b.dataset.name;sync();});});
-  var q=1,qv=document.getElementById('qv');
-  document.getElementById('qp').addEventListener('click',function(){q++;qv.textContent=q;});
-  document.getElementById('qm').addEventListener('click',function(){if(q>1){q--;qv.textContent=q;}});
-  var slides=document.querySelectorAll('#gmain .slide'),thumbs=document.querySelectorAll('#gthumbs button');
-  thumbs.forEach(function(t,i){t.addEventListener('click',function(){
-    slides.forEach(function(s){s.classList.remove('on');});thumbs.forEach(function(x){x.classList.remove('on');});
-    slides[i].classList.add('on');t.classList.add('on');});});
+    document.querySelectorAll('#size button').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');size=b.dataset.name;sync();});});
+
+  document.querySelectorAll('#packgrid button').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('#packgrid button').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');qty=parseInt(b.dataset.qty,10);sync();});});
+
   document.querySelectorAll('.acc .q').forEach(function(qb){qb.addEventListener('click',function(){
     var item=qb.parentElement,a=item.querySelector('.a');var open=item.classList.toggle('open');
     a.style.maxHeight=open?a.scrollHeight+'px':'0px';});});
   (function(){var d=document.querySelector('.acc .item.open .a');if(d)d.style.maxHeight=d.scrollHeight+'px';})();
+
   var atc=document.getElementById('atc'),sticky=document.getElementById('sticky');
   function onScroll(){var r=atc.getBoundingClientRect();var nf=document.querySelector('.foot').getBoundingClientRect().top<window.innerHeight-40;sticky.classList.toggle('show',r.bottom<0&&!nf);}
-  window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);sync();onScroll();
+  window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);
+
+  renderGallery(); sync(); onScroll();
 })();
 </script>
 </body>
