@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Cravin' Cricket | Dog Food for Gut Health &amp; Digestion – Jiminy's</title>
+<style>
+/* ---------- Brand fonts (harvested from jiminys.com) ---------- */
+@font-face{font-family:'NinetiesHeadliner';src:url('https://cdn.shopify.com/s/files/1/0582/2837/5706/files/Nineties-Headliner-Regular.woff') format('woff');font-display:swap;}
+@font-face{font-family:'NationalForest';src:url('https://cdn.shopify.com/s/files/1/0582/2837/5706/files/NationalForest-ExtraBold.woff') format('woff');font-weight:400 800;font-display:swap;}
+@font-face{font-family:'HindMadurai';src:url('https://jiminys.com/cdn/shop/t/88/assets/HindMadurai-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'HindMadurai';src:url('https://jiminys.com/cdn/shop/t/88/assets/HindMadurai-SemiBold.woff') format('woff');font-weight:600;font-display:swap;}
+
+/* ---------- Tokens (exact, harvested via getComputedStyle) ---------- */
+:root{
+  --cream:#FEFAE9;          /* body bg rgb(254,250,233) */
+  --navy:#243746;           /* rgb(36,55,70) */
+  --navy-pill:#313E48;      /* rgb(49,62,72) */
+  --cream-on-navy:#F7EFD5;  /* rgb(247,239,213) */
+  --green:#89B33A;          /* CTA rgb(137,179,58) */
+  --green-dk:#7aa033;
+  --teal:#00B4AA;
+  --lime:#95C93D;
+  --orange:#F58220;
+  --yellow:#FFB600;
+  --gold:#F2B100;           /* review stars */
+  --line:#e4dcc6;
+  --muted:#6f7a82;
+  --disp:'NinetiesHeadliner','Segoe UI',Arial,sans-serif;
+  --head:'NationalForest','Segoe UI',Arial,sans-serif;
+  --body:'HindMadurai',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:var(--body);
+  color:var(--navy);
+  background:#ddd3c0; /* neutral page bg behind the phone frame on desktop */
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
+a{color:inherit;text-decoration:none;}
+
+/* ---------- Phone frame ---------- */
+.frame{
+  max-width:390px;margin:0 auto;background:var(--cream);position:relative;
+  min-height:100vh;overflow:hidden;
+}
+@media(min-width:600px){
+  body{padding:24px 0;}
+  .frame{box-shadow:0 18px 60px rgba(20,30,40,.28);border-radius:18px;min-height:auto;margin-bottom:24px;}
+}
+
+/* ---------- Announcement + header ---------- */
+.announce{background:var(--navy);color:#fff;text-align:center;font-family:var(--head);
+  font-size:11px;letter-spacing:.6px;padding:8px 10px;white-space:nowrap;overflow:hidden;text-transform:uppercase;}
+.header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--cream);
+  position:sticky;top:0;z-index:40;border-bottom:1px solid rgba(36,55,70,.06);}
+.header .ico{width:22px;height:22px;stroke:var(--navy);stroke-width:1.7;fill:none;}
+.header .logo img{height:30px;width:auto;}
+.header .grp{display:flex;gap:16px;align-items:center;}
+
+/* ---------- Gallery ---------- */
+.gallery{padding:14px 16px 4px;}
+.gmain{background:#fff;border-radius:16px;overflow:hidden;position:relative;border:1px solid var(--line);}
+.gmain .slide{display:none;}
+.gmain .slide.on{display:block;}
+.gmain img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+.gbadge{position:absolute;top:12px;right:12px;background:var(--green);color:var(--navy);
+  font-family:var(--head);font-size:11px;letter-spacing:.4px;padding:6px 11px;border-radius:30px;}
+.gthumbs{display:flex;gap:9px;margin-top:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;}
+.gthumbs::-webkit-scrollbar{display:none;}
+.gthumbs button{flex:0 0 64px;height:64px;border-radius:11px;overflow:hidden;border:2px solid transparent;background:#fff;}
+.gthumbs button.on{border-color:var(--navy);}
+.gthumbs img{width:100%;height:100%;object-fit:cover;}
+
+/* ---------- Product info ---------- */
+.pinfo{padding:8px 18px 0;}
+.ptitle{font-family:var(--disp);font-size:30px;line-height:1;letter-spacing:2px;text-transform:uppercase;margin:8px 0 2px;color:var(--navy);}
+.psub{font-family:var(--head);font-size:12.5px;letter-spacing:.4px;color:var(--navy);text-transform:uppercase;opacity:.7;margin-bottom:8px;}
+.prate{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.stars{color:var(--gold);font-size:15px;letter-spacing:1px;}
+.prate a{font-size:13px;text-decoration:underline;color:var(--navy);}
+.pdesc{font-size:13.5px;line-height:1.5;color:#3c4a54;margin:0 0 14px;}
+
+/* ---------- Section label ---------- */
+.flabel{font-family:var(--head);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--navy);margin:0 0 8px;}
+
+/* ---------- Protein switcher ---------- */
+.protein{display:flex;gap:8px;padding:0 18px;margin-bottom:16px;}
+.protein button{flex:1;border:1px solid var(--navy-pill);background:transparent;color:var(--navy);
+  border-radius:9999px;padding:11px 6px;font-family:var(--head);font-size:12.5px;letter-spacing:.3px;transition:.15s;}
+.protein button.on{background:var(--navy-pill);color:#fff;}
+
+/* ---------- Size cards (CRO improvement #1) ---------- */
+.sizes{padding:0 18px;margin-bottom:18px;}
+.sizegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.sizecard{position:relative;border:1.5px solid var(--line);background:#fff;border-radius:13px;padding:12px 12px 11px;text-align:left;transition:.15s;}
+.sizecard.on{border-color:var(--green);box-shadow:0 0 0 3px rgba(137,179,58,.18);}
+.sizecard .sz{font-family:var(--head);font-size:14px;color:var(--navy);letter-spacing:.2px;}
+.sizecard .pr{font-size:15px;font-weight:600;margin-top:3px;}
+.sizecard .ppl{font-size:11.5px;color:var(--muted);margin-top:1px;}
+.sizecard .tag{position:absolute;top:-9px;left:11px;background:var(--teal);color:#fff;
+  font-family:var(--head);font-size:9.5px;letter-spacing:.4px;padding:3px 8px;border-radius:20px;text-transform:uppercase;}
+.sizecard .tag.best{background:var(--orange);}
+.sizecard .save{display:inline-block;margin-top:6px;background:rgba(137,179,58,.16);color:var(--green-dk);
+  font-size:10.5px;font-weight:600;padding:2px 7px;border-radius:20px;}
+
+/* ---------- Purchase options ---------- */
+.buy{padding:0 18px;}
+.popt{border:1.5px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;background:#fff;transition:.15s;}
+.popt.on{border-color:var(--navy);}
+.popt.sub.on{border-color:var(--navy);background:#fbfdf6;}
+.popthead{display:flex;align-items:center;gap:10px;}
+.radio{width:19px;height:19px;border-radius:50%;border:2px solid #b9c0c5;flex:0 0 auto;position:relative;}
+.popt.on .radio{border-color:var(--navy);}
+.popt.on .radio:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--navy);}
+.poptlabel{font-family:var(--head);font-size:14.5px;letter-spacing:.2px;flex:1;display:flex;align-items:center;gap:7px;}
+.savebadge{background:var(--navy);color:#fff;font-family:var(--head);font-size:10px;letter-spacing:.4px;padding:3px 8px;border-radius:20px;}
+.poptprice{text-align:right;font-size:13px;}
+.poptprice .was{color:var(--muted);text-decoration:line-through;display:block;font-size:11.5px;}
+.poptprice .now{font-weight:600;font-size:15px;}
+.subbenefits{margin:10px 0 0;padding:0;list-style:none;}
+.subbenefits li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:#3c4a54;margin-bottom:5px;}
+.subbenefits svg{width:15px;height:15px;flex:0 0 auto;color:var(--green);}
+.freq{margin-top:12px;}
+.freq .fl{font-size:11.5px;color:var(--muted);margin-bottom:6px;}
+.freqrow{display:flex;gap:8px;}
+.freqrow button{flex:1;border:1px solid var(--line);background:#fff;border-radius:9px;padding:10px 4px;font-family:var(--head);font-size:12.5px;color:var(--navy);transition:.15s;}
+.freqrow button.on{background:var(--navy-pill);color:#fff;border-color:var(--navy-pill);}
+
+/* ---------- CTA ---------- */
+.atc{width:100%;background:var(--green);color:var(--navy);font-family:var(--head);font-size:18px;letter-spacing:.4px;
+  padding:15px;border-radius:11px;margin:6px 0 8px;transition:.12s;}
+.atc:active{transform:translateY(1px);}
+.shipnote{text-align:center;font-size:12px;color:var(--muted);margin-bottom:16px;}
+
+/* ---------- benefit chips ---------- */
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 18px 18px;}
+.chip{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:9px 11px;font-size:11.5px;font-weight:600;color:var(--navy);line-height:1.15;}
+.chip .dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto;}
+
+/* ---------- accordions ---------- */
+.acc{border-top:1px solid var(--line);}
+.acc .item{border-bottom:1px solid var(--line);}
+.acc .q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:15px 18px;font-family:var(--head);font-size:13.5px;letter-spacing:.4px;text-transform:uppercase;color:var(--navy);text-align:left;}
+.acc .q .pm{font-size:20px;line-height:1;transition:.2s;}
+.acc .item.open .q .pm{transform:rotate(45deg);}
+.acc .a{max-height:0;overflow:hidden;transition:max-height .28s ease;}
+.acc .a .inner{padding:0 18px 16px;font-size:13px;line-height:1.55;color:#3c4a54;}
+
+/* ---------- navy education section ---------- */
+.dark{background:var(--navy);color:var(--cream-on-navy);padding:34px 18px;}
+.dark h2{font-family:var(--disp);font-size:30px;line-height:1.05;letter-spacing:1px;text-transform:uppercase;margin:0 0 14px;color:var(--cream-on-navy);}
+.dark p{font-size:13.5px;line-height:1.55;color:#d7dce0;margin:0 0 12px;}
+.fvideo{border-radius:16px;overflow:hidden;margin-bottom:18px;background:#000;position:relative;}
+.fvideo video{width:100%;display:block;aspect-ratio:9/11;object-fit:cover;}
+.dacc .item{border-bottom:1px solid rgba(255,255,255,.16);}
+.dacc .q{color:var(--cream-on-navy);padding:14px 2px;}
+.dacc .a .inner{padding:0 2px 14px;color:#cfd5da;}
+
+/* ---------- UGC carousel ---------- */
+.ugc{padding:30px 0 26px;background:var(--cream);}
+.ugc h2{font-family:var(--disp);font-size:27px;letter-spacing:1px;text-transform:uppercase;text-align:center;color:var(--navy);margin:0 0 16px;}
+.ugctrack{display:flex;gap:12px;overflow-x:auto;padding:0 18px 6px;scroll-snap-type:x mandatory;scrollbar-width:none;}
+.ugctrack::-webkit-scrollbar{display:none;}
+.ugccard{flex:0 0 200px;scroll-snap-align:center;border-radius:15px;overflow:hidden;background:#000;position:relative;}
+.ugccard video{width:100%;aspect-ratio:9/15;object-fit:cover;display:block;}
+.ugccard .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
+.ugccard .play span{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.82);display:flex;align-items:center;justify-content:center;}
+.ugccard .play svg{width:18px;height:18px;fill:var(--navy);margin-left:2px;}
+.dots{display:flex;gap:7px;justify-content:center;margin-top:14px;}
+.dots i{width:8px;height:8px;border-radius:50%;background:#cdc6b3;display:block;transition:.2s;}
+.dots i.on{background:var(--navy);width:20px;border-radius:5px;}
+
+/* ---------- science grid ---------- */
+.sci{background:var(--navy);padding:34px 18px 38px;}
+.sci h2{font-family:var(--disp);font-size:30px;letter-spacing:1px;text-transform:uppercase;text-align:center;color:var(--cream-on-navy);margin:0 0 24px;}
+.scigrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.scicard{border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:30px 12px 16px;text-align:center;position:relative;}
+.sciicon{position:absolute;top:-26px;left:50%;transform:translateX(-50%);width:52px;height:52px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;}
+.sciicon img{width:34px;height:34px;object-fit:contain;}
+.scicard h3{font-family:var(--head);font-size:12px;letter-spacing:.4px;text-transform:uppercase;color:var(--cream-on-navy);margin:0 0 8px;line-height:1.25;}
+.scicard p{font-size:11.5px;line-height:1.45;color:#c3cad0;margin:0 0 10px;}
+.scicard a{font-size:11px;text-decoration:underline;color:var(--cream-on-navy);}
+
+/* ---------- reviews ---------- */
+.rev{padding:32px 18px 30px;background:var(--cream);}
+.rev h2{font-family:var(--disp);font-size:26px;letter-spacing:1px;text-transform:uppercase;text-align:center;color:var(--navy);margin:0 0 20px;}
+.revsum{display:flex;gap:16px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:6px;}
+.revavg{text-align:center;flex:0 0 auto;}
+.revavg .big{font-family:var(--disp);font-size:40px;line-height:1;color:var(--navy);}
+.revavg .stars{font-size:15px;}
+.revavg .cnt{font-size:11px;color:var(--muted);margin-top:3px;}
+.hist{flex:1;}
+.histrow{display:flex;align-items:center;gap:7px;margin-bottom:3px;font-size:10.5px;color:var(--muted);}
+.histrow .lbl{width:30px;color:var(--gold);letter-spacing:-1px;}
+.histbar{flex:1;height:7px;border-radius:4px;background:#eadfca;overflow:hidden;}
+.histbar i{display:block;height:100%;background:var(--gold);}
+.histrow .n{width:24px;text-align:right;}
+.revfilters{display:flex;gap:7px;overflow-x:auto;padding:14px 0 4px;scrollbar-width:none;}
+.revfilters::-webkit-scrollbar{display:none;}
+.revfilters button{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:30px;padding:7px 13px;font-size:11.5px;color:var(--navy);}
+.revfilters button.on{background:var(--navy);color:#fff;border-color:var(--navy);}
+.rcard{border-bottom:1px solid var(--line);padding:16px 0;}
+.rcard.hide{display:none;}
+.rhead{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.ravatar{width:34px;height:34px;border-radius:50%;background:#e7ddc6;color:var(--navy);font-family:var(--head);font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+.rmeta{flex:1;}
+.rmeta .nm{font-size:13px;font-weight:600;}
+.rmeta .vb{font-size:10.5px;color:var(--green-dk);display:flex;align-items:center;gap:3px;}
+.rmeta .vb svg{width:11px;height:11px;}
+.rdate{font-size:11px;color:var(--muted);}
+.rstars{color:var(--gold);font-size:13px;letter-spacing:1px;margin-bottom:4px;}
+.rtitle{font-size:13px;font-weight:600;margin-bottom:3px;}
+.rbody{font-size:12.5px;line-height:1.5;color:#3c4a54;}
+.rreply{background:#f1ede0;border-radius:10px;padding:11px 12px;margin-top:10px;font-size:11.5px;line-height:1.5;color:#3c4a54;}
+.rreply b{color:var(--navy);}
+.revmore{display:block;width:100%;text-align:center;border:1.5px solid var(--navy);border-radius:30px;padding:12px;
+  font-family:var(--head);font-size:12.5px;letter-spacing:.4px;color:var(--navy);margin-top:16px;text-transform:uppercase;}
+
+/* ---------- cross sells ---------- */
+.xs{padding:30px 18px 34px;background:var(--cream);border-top:1px solid var(--line);}
+.xs h2{font-family:var(--disp);font-size:23px;letter-spacing:1px;text-transform:uppercase;text-align:center;color:var(--navy);margin:0 0 18px;}
+.xsgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.xscard{text-align:center;}
+.xscard .img{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:9px;}
+.xscard img{aspect-ratio:1/1;object-fit:cover;}
+.xscard .nm{font-size:12.5px;font-weight:600;line-height:1.3;min-height:32px;}
+.xscard .rc{font-size:10.5px;color:var(--muted);margin:3px 0;}
+.xscard .pr{font-size:13px;font-weight:600;margin-bottom:8px;}
+.xscard .sn{display:inline-block;border:1.5px solid var(--navy);border-radius:30px;padding:8px 20px;font-family:var(--head);font-size:11px;letter-spacing:.4px;color:var(--navy);text-transform:uppercase;}
+
+/* ---------- footer ---------- */
+.foot{background:var(--navy);color:#cfd5da;padding:30px 18px 90px;}
+.foot .logo{height:34px;margin-bottom:16px;filter:brightness(0) invert(1);opacity:.95;}
+.footcols{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.footcols h4{font-family:var(--head);font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:#fff;margin:0 0 9px;}
+.footcols a{display:block;font-size:12px;color:#aeb6bd;margin-bottom:6px;}
+.footnote{font-size:11px;color:#7e8890;margin-top:22px;border-top:1px solid rgba(255,255,255,.12);padding-top:16px;}
+
+/* ---------- sticky bar (CRO improvement #2 — synced to selected price) ---------- */
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:390px;z-index:60;
+  background:#d8efe8;border-top:1px solid #bfe0d6;padding:10px 12px;display:flex;align-items:center;gap:11px;
+  transform:translateX(-50%) translateY(120%);transition:transform .28s ease;}
+.sticky.show{transform:translateX(-50%) translateY(0);}
+.sticky .sthumb{width:44px;height:44px;border-radius:9px;overflow:hidden;background:#fff;flex:0 0 auto;border:1px solid #cfe5dc;}
+.sticky .sinfo{flex:1;min-width:0;}
+.sticky .snm{font-family:var(--head);font-size:12px;color:var(--navy);letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sticky .sprice{font-size:12px;color:var(--navy);}
+.sticky .sprice .swas{text-decoration:line-through;color:#7d8a83;margin-right:5px;}
+.sticky .sprice .ssave{color:var(--green-dk);font-weight:600;margin-left:5px;}
+.sticky .satc{background:var(--green);color:var(--navy);font-family:var(--head);font-size:13px;letter-spacing:.3px;
+  padding:12px 16px;border-radius:9px;flex:0 0 auto;}
+
+.spacer{height:30px;}
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <!-- announcement -->
+  <div class="announce">Free shipping on orders $25+</div>
+
+  <!-- header -->
+  <header class="header">
+    <svg class="ico" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <a class="logo" href="#"><img src="https://jiminys.com/cdn/shop/files/Jiminys_Logo_Insect_Protein_Dog_Food_400x.png" width="120" height="30" alt="Jiminy's"></a>
+    <div class="grp">
+      <svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+      <svg class="ico" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
+    </div>
+  </header>
+
+  <!-- gallery -->
+  <div class="gallery">
+    <div class="gmain" id="gmain">
+      <span class="gbadge">Saves 99.2K+ gal water/yr</span>
+      <div class="slide on"><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/Cravin_Cricket_Front_3_5_lb.png" alt="Cravin' Cricket front of bag"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/9_9ed16746-de02-432e-a65b-fbcb4e65ebb2.png" alt="Cravin' Cricket lifestyle"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/10_7d229c8b-da31-42dd-aa60-54ff18a19791.png" alt="Cravin' Cricket lifestyle"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/11_c5fa9194-7fce-43fa-a60c-c72d031cc58d.png" alt="What's in the bag"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/12_2f8d6e4b-ef82-4082-a14c-156f06968f9c.png" alt="Cravin' Cricket detail"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/13_73dfad4d-b7ad-44b8-a52f-3ed7fb2130de.png" alt="Cravin' Cricket detail"></div>
+      <div class="slide"><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/Cravin_Cricket_back_of_bag.png" alt="Cravin' Cricket back of bag"></div>
+    </div>
+    <div class="gthumbs" id="gthumbs">
+      <button class="on"><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/Cravin_Cricket_Front_3_5_lb.png" alt=""></button>
+      <button><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/9_9ed16746-de02-432e-a65b-fbcb4e65ebb2.png" alt=""></button>
+      <button><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/10_7d229c8b-da31-42dd-aa60-54ff18a19791.png" alt=""></button>
+      <button><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/11_c5fa9194-7fce-43fa-a60c-c72d031cc58d.png" alt=""></button>
+      <button><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/12_2f8d6e4b-ef82-4082-a14c-156f06968f9c.png" alt=""></button>
+      <button><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/13_73dfad4d-b7ad-44b8-a52f-3ed7fb2130de.png" alt=""></button>
+      <button><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/Cravin_Cricket_back_of_bag.png" alt=""></button>
+    </div>
+  </div>
+
+  <!-- product info -->
+  <div class="pinfo">
+    <h1 class="ptitle">Cravin' Cricket</h1>
+    <div class="psub">Crickets, Sweet Potato &amp; Quinoa Recipe</div>
+    <div class="prate">
+      <span class="stars">★★★★★</span>
+      <a href="#reviews">82 reviews</a>
+    </div>
+    <p class="pdesc">Gassy dog? Gross poops? Pup just seem…off? The answer could be crickets — yes, really. Cravin' Cricket is formulated by veterinarians to support your dog's digestive health and overall wellness: naturally prebiotic, highly digestible, nutrient-dense, and gentle on sensitive stomachs.</p>
+  </div>
+
+  <!-- protein switcher -->
+  <div class="flabel" style="padding:0 18px;">Protein</div>
+  <div class="protein">
+    <button class="on">Cravin' Cricket</button>
+    <button>Good Grub</button>
+    <button>Rotation Diet</button>
+  </div>
+
+  <!-- SIZE CARDS — CRO improvement #1 -->
+  <div class="sizes">
+    <div class="flabel">Size — bigger bags, better value</div>
+    <div class="sizegrid" id="sizegrid">
+      <button class="sizecard on" data-i="0" data-price="21.95" data-size="3.5 lb bag">
+        <div class="sz">3.5 lb bag</div><div class="pr">$21.95</div><div class="ppl">$6.27 / lb</div>
+      </button>
+      <button class="sizecard" data-i="1" data-price="49.95" data-size="10 lb bag">
+        <div class="sz">10 lb bag</div><div class="pr">$49.95</div><div class="ppl">$5.00 / lb</div>
+        <span class="save">−20% / lb</span>
+      </button>
+      <button class="sizecard" data-i="2" data-price="98.95" data-size="24 lb bag">
+        <span class="tag best">Best value</span>
+        <div class="sz">24 lb bag</div><div class="pr">$98.95</div><div class="ppl">$4.12 / lb</div>
+        <span class="save">−34% / lb</span>
+      </button>
+      <button class="sizecard" data-i="3" data-price="189.00" data-size="2-pack · 24 lb">
+        <span class="tag">Stock up</span>
+        <div class="sz">2-pack · 24 lb</div><div class="pr">$189.00</div><div class="ppl">$3.94 / lb</div>
+        <span class="save">−37% / lb</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- purchase options -->
+  <div class="buy">
+    <div class="popt sub on" id="optSub" data-mult="0.7">
+      <div class="popthead">
+        <span class="radio"></span>
+        <span class="poptlabel">Subscribe &amp; save <span class="savebadge">Save 30%</span></span>
+        <span class="poptprice"><span class="was" id="subWas">$21.95</span><span class="now" id="subNow">$15.37</span></span>
+      </div>
+      <ul class="subbenefits">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>30% off now and 10% off repeat deliveries</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Adjust, skip, swap, or cancel anytime</li>
+      </ul>
+      <div class="freq">
+        <div class="fl">Deliver every:</div>
+        <div class="freqrow" id="freqrow">
+          <button class="on">4 weeks</button>
+          <button>6 weeks</button>
+          <button>12 weeks</button>
+        </div>
+      </div>
+    </div>
+    <div class="popt" id="optOne" data-mult="1">
+      <div class="popthead">
+        <span class="radio"></span>
+        <span class="poptlabel">One-time purchase</span>
+        <span class="poptprice"><span class="now" id="oneNow">$21.95</span></span>
+      </div>
+    </div>
+
+    <button class="atc" id="atc">Add to Cart — $15.37</button>
+    <div class="shipnote">Free shipping on all orders $25+</div>
+  </div>
+
+  <!-- benefit chips (text from the bag's USP marks) -->
+  <div class="chips">
+    <div class="chip"><span class="dot" style="background:var(--yellow)"></span>Highly digestible</div>
+    <div class="chip"><span class="dot" style="background:var(--teal)"></span>Prebiotics for gut health</div>
+    <div class="chip"><span class="dot" style="background:var(--orange)"></span>Fiber for solid stool</div>
+    <div class="chip"><span class="dot" style="background:var(--lime)"></span>Great for food sensitivity</div>
+  </div>
+
+  <!-- accordions -->
+  <div class="acc" id="acc1">
+    <div class="item"><button class="q">Ingredients<span class="pm">+</span></button>
+      <div class="a"><div class="inner"><b>Full Ingredient List:</b> Dried Crickets, Oats, Sweet Potato, Brown Rice, Chickpeas, Potato Protein, Quinoa, Dried Yeast, Sunflower Oil (preserved with mixed tocopherols), Peas, Ground Grain Sorghum, Dried Plain Beet Pulp, Natural Vegetable Flavor, Flaxseed, Brewers Dried Yeast, Marine Microalgae Oil, Fructooligosaccharide, Turmeric, Citric Acid (preservative), Rosemary Extract, Green Tea Extract.<br><br><b>Vitamins:</b> Vitamin E Supplement, Niacin, D-Calcium Pantothenate, Vitamin A Supplement, Riboflavin Supplement, Thiamine Mononitrate, Pyridoxine Hydrochloride, Vitamin B12 Supplement, Vitamin D3 Supplement, Folic Acid, Choline Chloride.<br><br><b>Minerals:</b> Salt, Dicalcium Phosphate, Ferrous Sulfate, Zinc Proteinate, and trace minerals.</div></div>
+    </div>
+    <div class="item"><button class="q">Nutrition<span class="pm">+</span></button>
+      <div class="a"><div class="inner"><b>Guaranteed Analysis:</b><br>• Crude Protein (min) 25%<br>• Crude Fat (min) 14%<br>• Crude Fiber (max) 5%<br>• Moisture (max) 10%<br><br><b>Calorie Content (calculated):</b><br>• Metabolizable Energy: 3,595 kcal/kg<br>• Metabolizable Energy: 407 kcal/cup</div></div>
+    </div>
+    <div class="item"><button class="q">How we make it<span class="pm">+</span></button>
+      <div class="a"><div class="inner">Our food is developed alongside veterinarians and PhDs in animal nutrition to deliver balanced, science-based nutrition for dogs, meeting all AAFCO standards. Every ingredient is carefully selected for the specific health benefits it provides — all without the use of common allergens like corn, wheat, soy, or poultry.<br><br>Our food is made in the USA, minimally processed, and baked at lower temperatures to preserve nutrients and flavor. Throughout the process, we perform rigorous quality checks to ensure safety and consistency. And before any recipe reaches your dog's bowl, it passes the ultimate test: palatability, to make sure they love the taste.</div></div>
+    </div>
+  </div>
+
+  <!-- gut health education -->
+  <section class="dark">
+    <div class="fvideo">
+      <video src="https://jiminys.com/cdn/shop/videos/c/vp/4a5540aee85b40ad86d6185f727dc6f4/4a5540aee85b40ad86d6185f727dc6f4.HD-1080p-7.2Mbps-80890556.mp4"
+             poster="https://jiminys.com/cdn/shop/files/preview_images/4a5540aee85b40ad86d6185f727dc6f4.thumbnail.0000000000_1400x.jpg"
+             controls playsinline preload="none"></video>
+    </div>
+    <h2>Because gut health impacts more than just digestion</h2>
+    <p>Chronic digestive upset is one of the most common signs of a food allergy or sensitivity in dogs. But poor gut health means more than just gross poops and room-clearing gas.</p>
+    <p>The gut is where nutrients are absorbed, the immune system is regulated, inflammation begins (or calms), skin health is influenced, and energy is supported. So when your dog's gut health is out of balance, symptoms show up everywhere — loose stool, itchy skin, ear infections, low energy, and more. This food is designed to help rebalance your dog's gut, one bite at a time.</p>
+    <div class="acc dacc" id="acc2" style="margin-top:8px;">
+      <div class="item"><button class="q">Packed with Nutrients &amp; Antioxidants<span class="pm">+</span></button>
+        <div class="a"><div class="inner">Cricket protein is naturally rich in essential amino acids, B-vitamins, healthy fats, and antioxidants that support your dog's overall health and vitality.</div></div></div>
+      <div class="item"><button class="q">Supports a Balanced Gut<span class="pm">+</span></button>
+        <div class="a"><div class="inner">Naturally rich in chitin, a prebiotic fiber, to help nourish good gut bacteria and support healthy digestion.</div></div></div>
+      <div class="item"><button class="q">Supports Brain Health<span class="pm">+</span></button>
+        <div class="a"><div class="inner">Powered by plant-based DHA from marine microalgae oil to help support brain health and everyday mental sharpness.</div></div></div>
+      <div class="item"><button class="q">Free of Common Allergens<span class="pm">+</span></button>
+        <div class="a"><div class="inner">Crafted without common allergens such as chicken, beef, fish, wheat, soy, and corn to help minimize food-related sensitivities.</div></div></div>
+      <div class="item"><button class="q">More Sustainable<span class="pm">+</span></button>
+        <div class="a"><div class="inner">Cricket protein uses far less land, water, and greenhouse gases than traditional meat, making it better for your dog and the planet.</div></div></div>
+    </div>
+  </section>
+
+  <!-- UGC carousel -->
+  <section class="ugc">
+    <h2>Real stories, real results</h2>
+    <div class="ugctrack" id="ugctrack">
+      <div class="ugccard"><video src="https://videos.gotolstoy.com/public/5c0997dc-24ec-4d7f-825c-c53b71c63c79/76e2cb56-25eb-4099-82f8-1e99d82d016c/76e2cb56-25eb-4099-82f8-1e99d82d016c_640.mp4" poster="https://videos.gotolstoy.com/public/5c0997dc-24ec-4d7f-825c-c53b71c63c79/76e2cb56-25eb-4099-82f8-1e99d82d016c/76e2cb56-25eb-4099-82f8-1e99d82d016c.0000000.jpg" controls playsinline preload="none" muted></video><div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div></div>
+      <div class="ugccard"><video src="https://cdn.shopify.com/videos/c/vp/3e0552823cfa47e79a42aa1d8498b0c7/3e0552823cfa47e79a42aa1d8498b0c7.HD-720p-4.5Mbps-60025040.mp4" poster="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/preview_images/3e0552823cfa47e79a42aa1d8498b0c7.thumbnail.0000000000.jpg" controls playsinline preload="none" muted></video><div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div></div>
+      <div class="ugccard"><video src="https://cdn.shopify.com/videos/c/vp/02a219efa77a49dca4711aa5c00b3d02/02a219efa77a49dca4711aa5c00b3d02.HD-720p-4.5Mbps-60025058.mp4" poster="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/preview_images/02a219efa77a49dca4711aa5c00b3d02.thumbnail.0000000000.jpg" controls playsinline preload="none" muted></video><div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div></div>
+      <div class="ugccard"><video src="https://videos.gotolstoy.com/public/5c0997dc-24ec-4d7f-825c-c53b71c63c79/3fb68f5a-35d2-431d-9d11-390dbfbd787f/3fb68f5a-35d2-431d-9d11-390dbfbd787f_640.mp4" poster="https://videos.gotolstoy.com/public/5c0997dc-24ec-4d7f-825c-c53b71c63c79/3fb68f5a-35d2-431d-9d11-390dbfbd787f/3fb68f5a-35d2-431d-9d11-390dbfbd787f.0000000.jpg" controls playsinline preload="none" muted></video><div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div></div>
+      <div class="ugccard"><video src="https://cdn.shopify.com/videos/c/vp/23fdd37623fe43ce895ab1fe3641648c/23fdd37623fe43ce895ab1fe3641648c.SD-480p-0.9Mbps-86270345.mp4" poster="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/preview_images/23fdd37623fe43ce895ab1fe3641648c.thumbnail.0000000000.jpg" controls playsinline preload="none" muted></video><div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div></div>
+    </div>
+    <div class="dots" id="ugcdots"></div>
+  </section>
+
+  <!-- backed by science -->
+  <section class="sci">
+    <h2>Backed by science</h2>
+    <div class="scigrid">
+      <div class="scicard"><div class="sciicon" style="background:var(--teal)"><img src="https://jiminys.com/cdn/shop/files/Jiminy_s_Icons_2025_Beige_Microbiome.png" alt=""></div>
+        <h3>Naturally Prebiotic</h3><p>Crickets are naturally prebiotic, which means they boost healthy gut bacteria, improve gut microbiome balance, and help with healthier poops.</p><a href="#">Read the study</a></div>
+      <div class="scicard"><div class="sciicon" style="background:var(--lime)"><img src="https://jiminys.com/cdn/shop/files/Jiminy_s_Icons_2025_Beige_Allergy_Relief.png" alt=""></div>
+        <h3>Great for Food-Sensitive Dogs</h3><p>Made with a hypoallergenic, novel protein and free from common allergens including chicken, wheat, corn, and soy — perfect for dogs with food intolerances and allergies.</p><a href="#">Read the study</a></div>
+      <div class="scicard"><div class="sciicon" style="background:var(--orange)"><img src="https://jiminys.com/cdn/shop/files/Jiminy_s_Icons_2025_Beige_Gut_Health.png" alt=""></div>
+        <h3>Better Poop &amp; Less Gas</h3><p>The natural fiber in Cravin' Cricket supports healthy digestion, promoting solid stools (better health for them and easy pick-up for you) as well as less room-clearing gas.</p><a href="#">Read the study</a></div>
+      <div class="scicard"><div class="sciicon" style="background:var(--yellow)"><img src="https://jiminys.com/cdn/shop/files/Jiminy_s_Icons_2025_Beige_Digestion_1.png" alt=""></div>
+        <h3>Easy-to-Digest Superfood</h3><p>Cricket protein is highly digestible for dogs (a part of wild dogs' natural diets!). High in omegas, fiber, iron, and vitamins — a key tool for a longer, healthier life.</p><a href="#">Read the study</a></div>
+    </div>
+  </section>
+
+  <!-- reviews -->
+  <section class="rev" id="reviews">
+    <h2>What people (+pups) are saying</h2>
+    <div class="revsum">
+      <div class="revavg">
+        <div class="big">4.8</div>
+        <div class="stars" style="color:var(--gold)">★★★★★</div>
+        <div class="cnt">82 reviews</div>
+      </div>
+      <div class="hist">
+        <div class="histrow"><span class="lbl">★★★★★</span><span class="histbar"><i style="width:89%"></i></span><span class="n">(73)</span></div>
+        <div class="histrow"><span class="lbl">★★★★</span><span class="histbar"><i style="width:7%"></i></span><span class="n">(6)</span></div>
+        <div class="histrow"><span class="lbl">★★★</span><span class="histbar"><i style="width:1%"></i></span><span class="n">(1)</span></div>
+        <div class="histrow"><span class="lbl">★★</span><span class="histbar"><i style="width:0%"></i></span><span class="n">(0)</span></div>
+        <div class="histrow"><span class="lbl">★</span><span class="histbar"><i style="width:2%"></i></span><span class="n">(2)</span></div>
+      </div>
+    </div>
+    <div class="revfilters" id="revfilters">
+      <button class="on" data-f="all">All reviews</button>
+      <button data-f="5">5 ★ only</button>
+      <button data-f="photo">Most helpful</button>
+      <button data-f="recent">Most recent</button>
+    </div>
+
+    <div id="revlist">
+      <div class="rcard" data-r="5">
+        <div class="rhead"><div class="ravatar">K</div><div class="rmeta"><div class="nm">Kristen</div><div class="vb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>Verified Buyer</div></div><div class="rdate">11/11/2025</div></div>
+        <div class="rstars">★★★★★</div>
+        <div class="rtitle">My dogs do better on this food than any other kibble — even better than home-cooked meals</div>
+        <div class="rbody">The title says it all. Unbelievably, my dogs are happier and healthier on this food than on literally anything else I've ever fed them. My pitt mix has allergies; this is the only food she doesn't react to. And she literally leaps around like a puppy when it's time to eat. My little guy has chronic tummy issues — all his issues have improved dramatically on this food. I just can't say enough good things.</div>
+        <div class="rreply"><b>Jiminy's replied:</b> Hi Kristen! Wow, thank you so much for sharing this! Knowing that your pittie's allergies have cleared up and your little guy's overall health has improved truly means the world to us. ❤️</div>
+      </div>
+      <div class="rcard" data-r="5">
+        <div class="rhead"><div class="ravatar">C</div><div class="rmeta"><div class="nm">C.H.</div><div class="vb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>Verified Buyer</div></div><div class="rdate">06/08/2026</div></div>
+        <div class="rstars">★★★★★</div>
+        <div class="rbody">My Daisy absolutely LOVES this food. She gained 3 pounds in 2 months and she's thrilled — I really think it's helping her diet. Her vet was surprised by the ingredients, and when I told her how it had performed for 4 years, she relaxed about it. Her teeth are great. Her labs are great. Everything is great. I love this food.</div>
+      </div>
+      <div class="rcard" data-r="5">
+        <div class="rhead"><div class="ravatar">D</div><div class="rmeta"><div class="nm">Dana</div><div class="vb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>Verified Buyer</div></div><div class="rdate">04/16/2026</div></div>
+        <div class="rstars">★★★★★</div>
+        <div class="rbody">Best food for sensitive dogs. Our dog has a lot of digestive and skin allergies. Since we have found Jiminy's food, he is so much better. And a big plus is that he really likes the food as well. I can't recommend it enough!</div>
+      </div>
+      <div class="rcard" data-r="5">
+        <div class="rhead"><div class="ravatar">S</div><div class="rmeta"><div class="nm">Sarah</div><div class="vb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>Verified Buyer</div></div><div class="rdate">05/24/2026</div></div>
+        <div class="rstars">★★★★★</div>
+        <div class="rbody">My dog loves this brand of food. It has helped him with itchiness, since most dog food he was allergic to.</div>
+      </div>
+      <div class="rcard" data-r="1">
+        <div class="rhead"><div class="ravatar">K</div><div class="rmeta"><div class="nm">Kathryn</div><div class="vb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>Verified Buyer</div></div><div class="rdate">05/30/2026</div></div>
+        <div class="rstars" style="color:var(--gold)">★☆☆☆☆</div>
+        <div class="rbody">I didn't know it had oats in it — my dog can't have any grain. Very disappointed.</div>
+      </div>
+    </div>
+    <a class="revmore" href="#">Read all 82 reviews</a>
+  </section>
+
+  <!-- FAQ -->
+  <section class="rev" style="padding-top:20px;">
+    <h2>Frequently asked questions</h2>
+    <div class="acc" id="acc3" style="border-top:none;">
+      <div class="item"><button class="q" style="text-transform:none;">What is the main protein source in Cravin' Cricket?<span class="pm">+</span></button>
+        <div class="a"><div class="inner">Cravin' Cricket features cricket protein as its first ingredient — a novel, high-quality, gut-friendly, and hypoallergenic protein source.</div></div></div>
+      <div class="item"><button class="q" style="text-transform:none;">How does this food support digestive wellness?<span class="pm">+</span></button>
+        <div class="a"><div class="inner">Cricket protein acts as a natural prebiotic, feeding the healthy gut bacteria — which improves digestibility, reduces gas, and results in firmer stools.</div></div></div>
+      <div class="item"><button class="q" style="text-transform:none;">Is it suitable for dogs with sensitivities or allergies?<span class="pm">+</span></button>
+        <div class="a"><div class="inner">Yes. Crickets are considered a novel, hypoallergenic protein, making this formula an excellent alternative for dogs with sensitivities to more common proteins.</div></div></div>
+      <div class="item"><button class="q" style="text-transform:none;">What are the nutritional highlights?<span class="pm">+</span></button>
+        <div class="a"><div class="inner">Great for dogs with gut issues or allergies. Crude Protein (min) 25%, Crude Fat (min) 14%, Crude Fiber (max) 5%, ~407 kcal per cup. Rich in taurine, iron, omegas, fiber, and essential vitamins &amp; minerals.</div></div></div>
+      <div class="item"><button class="q" style="text-transform:none;">Does this food support environmental sustainability?<span class="pm">+</span></button>
+        <div class="a"><div class="inner">Absolutely. Choosing cricket protein significantly reduces water consumption and greenhouse gas emissions compared to traditional meats — one resource cites saving 99,200+ gallons of water annually.</div></div></div>
+    </div>
+  </section>
+
+  <!-- cross sells -->
+  <section class="xs">
+    <h2>Your pup might also like…</h2>
+    <div class="xsgrid">
+      <div class="xscard">
+        <div class="img"><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/94_e02ecbe7-7f29-4c4a-9bfe-e52741ef24de.png" alt="Cinnamon Dental Chews"></div>
+        <div class="nm">Cinnamon Dental Chews — Medium</div>
+        <div class="rc">★★★★★ 39 reviews</div>
+        <div class="pr">From $19.99</div>
+        <span class="sn">Shop now</span>
+      </div>
+      <div class="xscard">
+        <div class="img"><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/Chewy_3_Flavor_Variety_Pack_08e70847-449d-4d8e-8794-4166e39a285b.png" alt="Chewy Low Calorie Dog Treats 3 Pack Bundle"></div>
+        <div class="nm">Chewy Low Calorie Treats — 3 Pack</div>
+        <div class="rc">★★★★★ 109 reviews</div>
+        <div class="pr">$28.50</div>
+        <span class="sn">Shop now</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="foot">
+    <img class="logo" src="https://jiminys.com/cdn/shop/files/Jiminys_Logo_Insect_Protein_Dog_Food_400x.png" alt="Jiminy's">
+    <div class="footcols">
+      <div><h4>Shop</h4><a href="#">Food</a><a href="#">Treats</a><a href="#">Dental Chews</a><a href="#">Bundle + Save</a></div>
+      <div><h4>Learn</h4><a href="#">Why insects?</a><a href="#">Calculate impact</a><a href="#">Our story</a><a href="#">Rewards program</a></div>
+    </div>
+    <div class="footnote">Wholesome dog food &amp; treats made from insect protein. Made in the USA · AAFCO complete &amp; balanced.</div>
+  </footer>
+
+  <div class="spacer"></div>
+
+  <!-- sticky bar — CRO improvement #2 (synced to the selected price) -->
+  <div class="sticky" id="sticky">
+    <div class="sthumb"><img src="https://cdn.shopify.com/s/files/1/0582/2837/5706/files/Cravin_Cricket_Front_3_5_lb.png" alt=""></div>
+    <div class="sinfo">
+      <div class="snm">Cravin' Cricket · <span id="stSize">3.5 lb bag</span></div>
+      <div class="sprice"><span class="swas" id="stWas">$21.95</span><span id="stNow">$15.37</span><span class="ssave" id="stSave">Save 30%</span></div>
+    </div>
+    <button class="satc" id="stAtc">Add to Cart</button>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  // ---------- state ----------
+  // pct = percent of the regular price charged (70 = subscribe, 30% off; 100 = one-time)
+  var state = { price:21.95, size:'3.5 lb bag', pct:70 };
+
+  // integer-cent math, round half up — matches the live store ($21.95 → $15.37)
+  function calc(price, pct){ return Math.round(Math.round(price*100) * pct / 100); }
+  function money(cents){ return '$'+(cents/100).toFixed(2); }
+  function render(){
+    var pc = Math.round(state.price*100);
+    var selCents = calc(state.price, state.pct);
+    var subCents = calc(state.price, 70);
+    // subscribe row
+    document.getElementById('subWas').textContent = money(pc);
+    document.getElementById('subNow').textContent = money(subCents);
+    document.getElementById('oneNow').textContent = money(pc);
+    // CTA
+    document.getElementById('atc').textContent = 'Add to Cart — '+money(selCents);
+    // sticky (synced to selection — the fix)
+    document.getElementById('stSize').textContent = state.size;
+    document.getElementById('stNow').textContent = money(selCents);
+    var subscribed = state.pct < 100;
+    document.getElementById('stWas').style.display = subscribed ? 'inline' : 'none';
+    document.getElementById('stWas').textContent = money(pc);
+    document.getElementById('stSave').style.display = subscribed ? 'inline' : 'none';
+  }
+
+  // ---------- size cards ----------
+  document.querySelectorAll('#sizegrid .sizecard').forEach(function(c){
+    c.addEventListener('click', function(){
+      document.querySelectorAll('#sizegrid .sizecard').forEach(function(x){x.classList.remove('on');});
+      c.classList.add('on');
+      state.price = parseFloat(c.dataset.price);
+      state.size = c.dataset.size;
+      render();
+    });
+  });
+
+  // ---------- purchase options ----------
+  var optSub = document.getElementById('optSub'), optOne = document.getElementById('optOne');
+  function setOpt(sub){
+    optSub.classList.toggle('on', sub);
+    optOne.classList.toggle('on', !sub);
+    state.pct = sub ? 70 : 100;
+    render();
+  }
+  optSub.querySelector('.popthead').addEventListener('click', function(){ setOpt(true); });
+  optOne.querySelector('.popthead').addEventListener('click', function(){ setOpt(false); });
+
+  // frequency pills
+  document.querySelectorAll('#freqrow button').forEach(function(b){
+    b.addEventListener('click', function(e){
+      e.stopPropagation();
+      document.querySelectorAll('#freqrow button').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      setOpt(true);
+    });
+  });
+
+  // ---------- protein switcher ----------
+  document.querySelectorAll('.protein button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.protein button').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+    });
+  });
+
+  // ---------- gallery ----------
+  var slides = document.querySelectorAll('#gmain .slide');
+  var thumbs = document.querySelectorAll('#gthumbs button');
+  thumbs.forEach(function(t,i){
+    t.addEventListener('click', function(){
+      slides.forEach(function(s){s.classList.remove('on');});
+      thumbs.forEach(function(x){x.classList.remove('on');});
+      slides[i].classList.add('on'); t.classList.add('on');
+    });
+  });
+
+  // ---------- accordions ----------
+  document.querySelectorAll('.acc .q').forEach(function(q){
+    q.addEventListener('click', function(){
+      var item = q.parentElement;
+      var a = item.querySelector('.a');
+      var open = item.classList.toggle('open');
+      a.style.maxHeight = open ? a.scrollHeight+'px' : '0px';
+    });
+  });
+
+  // ---------- review filters ----------
+  document.querySelectorAll('#revfilters button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#revfilters button').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      var f = b.dataset.f;
+      document.querySelectorAll('#revlist .rcard').forEach(function(c){
+        var show = (f==='all'||f==='recent'||f==='photo') ? true : (c.dataset.r===f);
+        c.classList.toggle('hide', !show);
+      });
+    });
+  });
+
+  // ---------- UGC carousel dots ----------
+  var track = document.getElementById('ugctrack');
+  var cards = track.querySelectorAll('.ugccard');
+  var dotsWrap = document.getElementById('ugcdots');
+  cards.forEach(function(_,i){ var d=document.createElement('i'); if(i===0)d.classList.add('on'); dotsWrap.appendChild(d); });
+  var dots = dotsWrap.querySelectorAll('i');
+  track.addEventListener('scroll', function(){
+    var idx = Math.round(track.scrollLeft / (cards[0].offsetWidth + 12));
+    dots.forEach(function(d,i){ d.classList.toggle('on', i===idx); });
+  });
+  // hide the static play overlay once a video starts
+  cards.forEach(function(c){
+    var v=c.querySelector('video'), pl=c.querySelector('.play');
+    v.addEventListener('play', function(){ pl.style.display='none'; });
+  });
+
+  // ---------- sticky bar visibility (scroll listener vs getBoundingClientRect) ----------
+  var atcBtn = document.getElementById('atc');
+  var sticky = document.getElementById('sticky');
+  function onScroll(){
+    var r = atcBtn.getBoundingClientRect();
+    // show once the main Add-to-Cart has scrolled above the viewport
+    var past = r.bottom < 0;
+    var nearFooter = document.querySelector('.foot').getBoundingClientRect().top < window.innerHeight - 40;
+    sticky.classList.toggle('show', past && !nearFooter);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+
+  render();
+  onScroll();
+})();
+</script>
+</body>
+</html>
