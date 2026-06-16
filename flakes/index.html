@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Night Shift - Flakes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0c2340;
+  --navy-2:#102a4c;
+  --navy-3:#16345c;
+  --cream:#f2f1ec;
+  --coral:#ee5e3e;
+  --teal:#1aa9b5;
+  --muted:rgba(242,241,236,.66);
+  --line:rgba(242,241,236,.16);
+  --frameW:390px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{font-family:'Hanken Grotesk',sans-serif;color:var(--cream);background:var(--navy);line-height:1.55;font-weight:400;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:300;line-height:1.08;letter-spacing:-.4px;}
+button{font-family:inherit;cursor:pointer;border:none;}
+a{color:inherit;text-decoration:none;}
+
+.frame{max-width:var(--frameW);margin:0 auto;background:var(--navy);position:relative;overflow-x:hidden;min-height:100vh;}
+@media(min-width:600px){
+  body{background:#070f1c;padding:24px 0;}
+  .frame{box-shadow:0 22px 70px rgba(0,0,0,.5);border-radius:24px;overflow:hidden;}
+}
+
+.announce{background:var(--navy-3);color:var(--cream);font-size:11.5px;font-weight:600;letter-spacing:.6px;text-align:center;padding:9px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;}
+.announce a{text-decoration:underline;}
+
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--navy);position:sticky;top:0;z-index:60;}
+.hdr .burger{display:flex;flex-direction:column;gap:5px;width:24px;}
+.hdr .burger span{height:2px;background:var(--cream);border-radius:2px;}
+.hdr .logo{height:26px;width:auto;}
+.hdr .cart{position:relative;width:24px;color:var(--cream);}
+.hdr .cart b{position:absolute;top:-6px;right:-8px;background:var(--coral);color:#fff;font-size:10px;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+
+/* gallery */
+.gallery{position:relative;background:var(--navy-2);}
+.gtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;}
+.gtrack::-webkit-scrollbar{display:none;}
+.gslide{flex:0 0 100%;scroll-snap-align:center;aspect-ratio:1/1;background:var(--navy-2);}
+.gslide img{width:100%;height:100%;object-fit:cover;}
+.dots{display:flex;gap:7px;justify-content:center;padding:14px 0 4px;}
+.dots b{width:7px;height:7px;border-radius:50%;background:rgba(242,241,236,.28);transition:.2s;}
+.dots b.on{background:var(--coral);width:20px;border-radius:4px;}
+
+.buy{padding:16px 18px 8px;}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
+h1.title{font-size:42px;font-weight:300;margin-bottom:9px;}
+.revline{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:16px;}
+.revline .stars{color:var(--coral);letter-spacing:1px;font-size:14px;}
+.revline span{color:var(--muted);}
+
+/* proof strip (primary improvement) */
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px;}
+.proof .p{border:1px solid var(--line);border-radius:10px;padding:10px 4px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;min-height:66px;justify-content:center;}
+.proof .p svg{width:18px;height:18px;color:var(--teal);}
+.proof .p .n{font-size:13px;font-weight:700;font-family:'Hanken Grotesk';line-height:1;}
+.proof .p .l{font-size:8.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;line-height:1.2;}
+
+/* purchase options (subscribe default, reproduced) */
+.opt{border:1.5px solid var(--line);border-radius:12px;margin-bottom:11px;overflow:hidden;cursor:pointer;transition:.15s;}
+.opt.on{border-color:var(--coral);}
+.opt .oh{display:flex;align-items:center;gap:11px;padding:14px;}
+.opt.on .oh{background:rgba(238,94,62,.08);}
+.opt .radio{flex:0 0 20px;width:20px;height:20px;border-radius:50%;border:2px solid rgba(242,241,236,.4);position:relative;transition:.15s;}
+.opt.on .radio{border-color:var(--coral);}
+.opt.on .radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--coral);}
+.opt .ot{flex:1;}
+.opt .ot b{font-size:14.5px;font-weight:700;font-family:'Hanken Grotesk';display:block;}
+.opt .ot small{font-size:11.5px;color:var(--muted);}
+.opt .op{text-align:right;}
+.opt .op .pr{font-size:18px;font-weight:700;font-family:'Hanken Grotesk';}
+.opt .op .save{display:block;font-size:9.5px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.3px;}
+.opt .bullets{padding:0 14px 14px 45px;display:none;}
+.opt.on .bullets{display:block;}
+.opt .bullets li{list-style:none;font-size:12px;color:var(--muted);margin:5px 0;display:flex;gap:8px;align-items:flex-start;}
+.opt .bullets li svg{flex:0 0 13px;width:13px;height:13px;color:var(--teal);margin-top:3px;}
+.opt .bullets li b{color:var(--cream);font-weight:600;}
+
+.atc{width:100%;background:var(--coral);color:#fff;font-weight:700;font-size:16px;padding:17px;border-radius:8px;font-family:'Hanken Grotesk';letter-spacing:.3px;transition:.12s;margin-top:3px;}
+.atc:active{transform:scale(.985);}
+.ships{text-align:center;font-size:11.5px;color:var(--muted);margin-top:11px;letter-spacing:.3px;}
+
+section{padding:34px 18px;}
+.sec-h{font-size:30px;font-weight:300;text-align:center;margin-bottom:8px;}
+.sec-sub{text-align:center;font-size:13.5px;color:var(--muted);margin-bottom:24px;max-width:320px;margin-left:auto;margin-right:auto;}
+.sec-eye{text-align:center;font-size:10.5px;font-weight:700;letter-spacing:2.4px;color:var(--teal);text-transform:uppercase;margin-bottom:10px;}
+
+/* marquee */
+.mq-wrap{background:var(--coral);color:#fff;overflow:hidden;white-space:nowrap;padding:11px 0;}
+.mq{display:inline-block;animation:scroll 22s linear infinite;font-size:12.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.mq span{margin:0 18px;}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* benefit cards */
+.bc{display:flex;flex-direction:column;gap:13px;}
+.bcard{border:1px solid var(--line);border-radius:14px;padding:20px;}
+.bcard h4{font-size:20px;font-weight:400;margin-bottom:6px;}
+.bcard p{font-size:13px;color:var(--muted);line-height:1.5;}
+
+/* statement band */
+.statement{text-align:center;padding:40px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.statement h3{font-size:26px;font-weight:300;line-height:1.2;}
+.statement p{font-size:13.5px;color:var(--muted);margin-top:12px;}
+.statement .feats{display:flex;justify-content:center;gap:22px;margin-top:20px;flex-wrap:wrap;}
+.statement .feats div{font-size:11px;font-weight:600;color:var(--teal);text-transform:uppercase;letter-spacing:.6px;}
+
+/* ingredients */
+.ing{display:flex;flex-direction:column;gap:1px;border-top:1px solid var(--line);}
+.icard{padding:18px 4px;border-bottom:1px solid var(--line);}
+.icard h4{font-size:15px;font-weight:700;font-family:'Hanken Grotesk';letter-spacing:.5px;color:var(--cream);margin-bottom:5px;}
+.icard p{font-size:13px;color:var(--muted);line-height:1.5;}
+
+/* timeline */
+.tl{position:relative;}
+.tl .step{display:flex;gap:16px;padding-bottom:26px;position:relative;}
+.tl .step:not(:last-child)::before{content:"";position:absolute;left:6px;top:14px;bottom:0;width:1.5px;background:var(--line);}
+.tl .dot{flex:0 0 13px;width:13px;height:13px;border-radius:50%;background:var(--coral);margin-top:4px;z-index:1;}
+.tl .tc .ph{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:1px;text-transform:uppercase;}
+.tl .tc h4{font-size:19px;font-weight:400;margin:3px 0 6px;}
+.tl .tc p{font-size:12.5px;color:var(--muted);line-height:1.5;}
+
+/* comparison */
+.cmp{border:1px solid var(--line);border-radius:16px;overflow:hidden;}
+.cmp .ch{display:grid;grid-template-columns:1.4fr 1fr 1fr;}
+.cmp .ch div{padding:14px 10px;text-align:center;font-size:12px;font-weight:700;font-family:'Hanken Grotesk';}
+.cmp .ch .us{background:var(--coral);color:#fff;}
+.cmp .ch .them{background:var(--navy-3);color:var(--muted);}
+.cmp .row{display:grid;grid-template-columns:1.4fr 1fr 1fr;border-top:1px solid var(--line);}
+.cmp .row div{padding:13px 10px;font-size:12px;display:flex;align-items:center;justify-content:center;text-align:center;}
+.cmp .row .lab{justify-content:flex-start;color:var(--cream);font-weight:500;}
+.cmp .row .y{color:var(--teal);font-weight:700;}
+.cmp .row .n{color:rgba(242,241,236,.3);}
+
+/* doctor */
+.doc{border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center;}
+.doc .nm{font-family:'Fraunces';font-size:24px;font-weight:300;margin-bottom:10px;}
+.doc p{font-size:13px;color:var(--muted);line-height:1.6;}
+
+/* review */
+.rev{border:1px solid var(--line);border-radius:14px;padding:18px;}
+.rev .rs{color:var(--coral);letter-spacing:1px;font-size:13px;}
+.rev .rt{font-size:13px;color:var(--muted);font-weight:600;margin:3px 0 8px;}
+.rev p{font-size:13.5px;color:var(--cream);line-height:1.55;}
+.rev .who{margin-top:10px;font-size:12.5px;font-weight:700;font-family:'Hanken Grotesk';}
+.rev .who span{color:var(--teal);font-size:10px;margin-left:6px;letter-spacing:.4px;}
+
+/* footer */
+.foot{padding:30px 18px 96px;text-align:center;border-top:1px solid var(--line);}
+.foot img{height:24px;margin:0 auto 14px;}
+.foot .links{display:flex;justify-content:center;gap:20px;font-size:12px;color:var(--muted);margin-bottom:16px;}
+.foot .dis{font-size:10px;color:rgba(242,241,236,.4);line-height:1.5;max-width:330px;margin:0 auto;}
+
+/* sticky (conversion improvement) */
+.sticky{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(130%);width:100%;max-width:var(--frameW);background:var(--navy-2);border-top:1px solid var(--line);box-shadow:0 -8px 26px rgba(0,0,0,.4);padding:11px 14px calc(11px + env(safe-area-inset-bottom));z-index:90;transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:12px;}
+.sticky.show{transform:translateX(-50%) translateY(0);}
+.sticky img{width:42px;height:42px;border-radius:7px;object-fit:cover;flex:0 0 42px;background:var(--navy-3);}
+.sticky .si{flex:1;min-width:0;}
+.sticky .si .nm{font-family:'Fraunces';font-size:15px;font-weight:400;line-height:1;}
+.sticky .si .pp{font-size:11.5px;color:var(--muted);font-weight:500;margin-top:2px;}
+.sticky .si .pp b{color:var(--cream);font-weight:700;}
+.sticky .sbtn{flex:0 0 auto;background:var(--coral);color:#fff;font-weight:700;font-size:13.5px;padding:13px 20px;border-radius:7px;font-family:'Hanken Grotesk';}
+
+.toast{position:fixed;top:14px;left:50%;transform:translateX(-50%) translateY(-160%);background:var(--cream);color:var(--navy);padding:12px 20px;border-radius:30px;font-size:13px;font-weight:700;z-index:120;transition:transform .3s;box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.toast.show{transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+<div class="frame" id="frame">
+
+  <div class="announce">End Dandruff &amp; Get 30% Off + Free Shipping &middot; <a href="#buy" onclick="goBuy(event)">Shop Now</a></div>
+
+  <header class="hdr">
+    <div class="burger"><span></span><span></span><span></span></div>
+    <img class="logo" src="https://www.byeflakes.com/cdn/shop/files/Flakes_Brand-Identity_Logo_0a7f4cab-a68d-412e-b308-2c0501bf21fb.png?width=240" alt="Flakes" height="26">
+    <div class="cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg><b>0</b></div>
+  </header>
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <div class="gtrack" id="gtrack">
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0665/9106/4385/files/Screenshot2025-11-20at12.46.51PM.png?width=820" alt="Night Shift serum and box" loading="eager"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0665/9106/4385/files/d73111ae4e8ac8510a352971ba2e0d5236de8b15_1.jpg?width=820" alt="Night Shift serum"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0665/9106/4385/files/NS-PDP-3.jpg?width=820" alt="Night Shift dropper"></div>
+      <div class="gslide"><img src="https://cdn.shopify.com/s/files/1/0665/9106/4385/files/e07464698bfd4da8669a09b7199b07597d46354f.jpg?width=820" alt="Night Shift in use"></div>
+    </div>
+    <div class="dots" id="dots"></div>
+  </div>
+
+  <!-- Buy zone -->
+  <div class="buy" id="buy">
+    <div class="eyebrow">Hair Growth &amp; Scalp Health Serum</div>
+    <h1 class="title">Night Shift</h1>
+    <div class="revline"><span class="stars">★★★★★</span><span>Dermatologist-designed · Over 1M bottles sold</span></div>
+
+    <!-- proof strip (brought up to the buy decision) -->
+    <div class="proof">
+      <div class="p"><span class="n">1M+</span><span class="l">Bottles Sold</span></div>
+      <div class="p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 20l-4.9 2.6.9-5.5-4-3.9L9.5 7z"/></svg><span class="l">Dermatologist Designed</span></div>
+      <div class="p"><span class="n">2%</span><span class="l">Pyrithione Zinc</span></div>
+      <div class="p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span class="l">Free Scalp Brush</span></div>
+    </div>
+
+    <!-- subscribe default (reproduced exactly) -->
+    <div class="opt on" data-o="sub" data-p="60" onclick="pick(this)">
+      <div class="oh">
+        <div class="radio"></div>
+        <div class="ot"><b>AutoRenew &amp; Save 20%</b><small>60-Day Supply</small></div>
+        <div class="op"><span class="pr">$60</span><span class="save">Save 20%</span></div>
+      </div>
+      <ul class="bullets">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Free shipping <b>($5 value)</b></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Free scalp brush with first shipment <b>($15 value)</b></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Ships every 60 days</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Skip, modify, or cancel anytime</li>
+      </ul>
+    </div>
+    <div class="opt" data-o="once" data-p="75" onclick="pick(this)">
+      <div class="oh">
+        <div class="radio"></div>
+        <div class="ot"><b>One-Time Purchase</b><small>Not ready to commit yet?</small></div>
+        <div class="op"><span class="pr">$75</span></div>
+      </div>
+    </div>
+
+    <button class="atc" id="atc" onclick="addCart()">Add to Cart — <span id="atcPrice">$60</span></button>
+    <div class="ships">Ships in 3–5 business days due to high demand</div>
+  </div>
+
+  <!-- Marquee -->
+  <div class="mq-wrap"><div class="mq">
+    <span>Dermatologist Designed &amp; Tested ✷</span><span>No Sulfates or Harsh Ingredients ✷</span><span>100% Natural Fragrance ✷</span><span>2% Pyrithione Zinc ✷</span>
+    <span>Dermatologist Designed &amp; Tested ✷</span><span>No Sulfates or Harsh Ingredients ✷</span><span>100% Natural Fragrance ✷</span><span>2% Pyrithione Zinc ✷</span>
+  </div></div>
+
+  <!-- Dual action -->
+  <section>
+    <div class="sec-eye">Dual-Action Serum for Hair Growth</div>
+    <h2 class="sec-h">Tackle shedding from every angle.</h2>
+    <div class="sec-sub">Healthy hair starts with a healthy scalp, and Night Shift does both — the first-of-its-kind serum that nourishes your scalp, stimulates hair growth, and fights stubborn dandruff spots.</div>
+    <div class="bc">
+      <div class="bcard"><h4>Target stubborn areas</h4><p>Contains 2% pyrithione zinc for targeted and immediate dandruff treatment in flare-up areas.</p></div>
+      <div class="bcard"><h4>Get fuller, thicker hair</h4><p>Our active ingredients give your scalp the environment ready to stimulate hair growth.</p></div>
+      <div class="bcard"><h4>Build a healthy scalp</h4><p>Night Shift clears out buildup &amp; primes your scalp for hair growth. The result? A clean, hydrated &amp; healthy foundation for your hair to thrive.</p></div>
+    </div>
+  </section>
+
+  <!-- Statement -->
+  <div class="statement">
+    <h3>A formula cleaner than<br>a monk's conscience.</h3>
+    <p>No sulfates, parabens, PEGs, or any harsh ingredients.<br>Over a million bottles sold. Consistently rated 5 stars.</p>
+    <div class="feats"><div>✓ Dermatologist Designed</div><div>✓ Clinically Studied</div></div>
+  </div>
+
+  <!-- Ingredients -->
+  <section>
+    <div class="sec-eye">Meet Our Hero Ingredients</div>
+    <h2 class="sec-h">Backed by the actives.</h2>
+    <div class="sec-sub">Clinically studied ingredients designed for hair growth &amp; scalp health.</div>
+    <div class="ing">
+      <div class="icard"><h4>PIROCTONE OLAMINE</h4><p>Clinically studied to help reduce shedding and support thicker-looking hair.</p></div>
+      <div class="icard"><h4>SAW PALMETTO</h4><p>Helps support fuller-looking hair by addressing DHT at the scalp level.</p></div>
+      <div class="icard"><h4>BIOTIN PEPTIDES</h4><p>Supports stronger-feeling strands and improved follicle anchoring for denser-looking hair.</p></div>
+      <div class="icard"><h4>COPPER PEPTIDES</h4><p>Helps support healthy-looking hair density and overall scalp revitalization.</p></div>
+      <div class="icard"><h4>NIACINAMIDE</h4><p>Helps strengthen the scalp barrier and support a healthier environment for hair.</p></div>
+      <div class="icard"><h4>HYALURONIC ACID</h4><p>Deeply hydrates the scalp so it stays comfortable, balanced, and ready for healthy hair growth.</p></div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section style="background:var(--navy-2);">
+    <div class="sec-eye">What to Expect</div>
+    <h2 class="sec-h">Fuller, thicker hair in 6 months.</h2>
+    <div class="sec-sub"></div>
+    <div class="tl">
+      <div class="step"><div class="dot"></div><div class="tc"><div class="ph">1–2 Months</div><h4>Rebuild the foundation</h4><p>Nutrients work behind the scenes to rebuild your foundation &amp; nourish your scalp. Your scalp regains its health &amp; is primed for hair growth.</p></div></div>
+      <div class="step"><div class="dot"></div><div class="tc"><div class="ph">3–4 Months</div><h4>Address the root causes</h4><p>Starts to address the root causes of shedding and decreased scalp coverage. More visible results — less shedding and fuller scalp coverage.</p></div></div>
+      <div class="step"><div class="dot"></div><div class="tc"><div class="ph">5–6 Months</div><h4>Your hair is back</h4><p>Your hair is back &amp; better than ever — visibly thicker, fuller, and fast-growing hair.</p></div></div>
+      <div class="step"><div class="dot"></div><div class="tc"><div class="ph">6+ Months</div><h4>You'll love your hair again</h4><p>Confidence, unlocked.</p></div></div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section>
+    <div class="sec-eye">Backed by Science</div>
+    <h2 class="sec-h">Growth without the compromise.</h2>
+    <div class="sec-sub">While harsh drugs try to fight hair loss, Night Shift focuses on the foundation — clearing buildup, calming irritation, and strengthening the skin barrier. No prescription required.</div>
+    <div class="cmp">
+      <div class="ch"><div></div><div class="us">Flakes</div><div class="them">Minoxidil / Finasteride</div></div>
+      <div class="row"><div class="lab">Multi-targeted</div><div class="y">✓</div><div class="n">—</div></div>
+      <div class="row"><div class="lab">Doesn't impact sex drive</div><div class="y">✓</div><div class="n">—</div></div>
+      <div class="row"><div class="lab">For scalp &amp; hair health</div><div class="y">✓</div><div class="n">—</div></div>
+      <div class="row"><div class="lab">Clinically studied ingredients</div><div class="y">✓</div><div class="y">✓</div></div>
+      <div class="row"><div class="lab">Non-greasy</div><div class="y">✓</div><div class="n">—</div></div>
+    </div>
+  </section>
+
+  <!-- Doctor -->
+  <section style="background:var(--navy-2);">
+    <div class="doc">
+      <div class="sec-eye">Chief Science Officer</div>
+      <div class="nm">Dr. Bobby Buka</div>
+      <p>Flakes teamed up with Dr. Bobby Buka to create the best-smelling, clean, safe, and most effective product possible. He is the founder and CEO of The Dermatology Specialists — a full-service dermatology practice with 30+ locations across NYC — and is the Chief Science Officer at Flakes.</p>
+    </div>
+  </section>
+
+  <!-- Review -->
+  <section>
+    <div class="sec-eye">Real Reviews From Real Scalps</div>
+    <h2 class="sec-h">The early word.</h2>
+    <div class="sec-sub"></div>
+    <div class="rev">
+      <div class="rs">★★★★★</div>
+      <div class="rt">Using for 3 weeks so far</div>
+      <p>"I've been using it for about 3 weeks now and I definitely don't see any more flakes. I really love this — gained a lot of confidence back."</p>
+      <div class="who">Jake <span>✔ VERIFIED · RECOMMENDS THIS PRODUCT</span></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="foot">
+    <img src="https://www.byeflakes.com/cdn/shop/files/Flakes_Brand-Identity_Logo_0a7f4cab-a68d-412e-b308-2c0501bf21fb.png?width=200" alt="Flakes">
+    <div class="links"><a href="#">Shop</a><a href="#">How It Works</a><a href="#">Reviews</a><a href="#">Contact</a></div>
+    <div class="dis">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.</div>
+  </footer>
+
+  <!-- Sticky buy bar (conversion improvement) -->
+  <div class="sticky" id="sticky">
+    <img src="https://cdn.shopify.com/s/files/1/0665/9106/4385/files/Screenshot2025-11-20at12.46.51PM.png?width=120" alt="">
+    <div class="si"><div class="nm">Night Shift</div><div class="pp"><span id="stkOpt">AutoRenew · 60-day</span> · <b id="stkPrice">$60</b></div></div>
+    <button class="sbtn" onclick="addCart()">Add to Cart</button>
+  </div>
+
+  <div class="toast" id="toast">Added to cart ✓</div>
+</div>
+
+<script>
+const track=document.getElementById('gtrack');
+const slides=[...track.children];
+const dotsWrap=document.getElementById('dots');
+slides.forEach((s,i)=>{const d=document.createElement('b');if(i===0)d.classList.add('on');d.onclick=()=>track.scrollTo({left:track.clientWidth*i,behavior:'smooth'});dotsWrap.appendChild(d);});
+const dots=[...dotsWrap.children];
+track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.clientWidth);dots.forEach((d,j)=>d.classList.toggle('on',j===i));},{passive:true});
+
+let sel={opt:'sub',price:60};
+function pick(el){
+  document.querySelectorAll('.opt').forEach(x=>x.classList.remove('on'));
+  el.classList.add('on'); sel.opt=el.dataset.o; sel.price=+el.dataset.p;
+  document.getElementById('atcPrice').textContent='$'+sel.price;
+  document.getElementById('stkPrice').textContent='$'+sel.price;
+  document.getElementById('stkOpt').textContent = sel.opt==='sub' ? 'AutoRenew · 60-day' : 'One-time';
+}
+function addCart(){const t=document.getElementById('toast');t.textContent=(sel.opt==='sub'?'Subscription':'One-time')+' added — $'+sel.price+' ✓';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+function goBuy(e){if(e)e.preventDefault();document.getElementById('buy').scrollIntoView({behavior:'smooth'});}
+
+const buy=document.getElementById('buy'), sticky=document.getElementById('sticky');
+function onScroll(){const r=buy.getBoundingClientRect();sticky.classList.toggle('show', r.bottom<0);}
+window.addEventListener('scroll',onScroll,{passive:true});
+window.addEventListener('resize',onScroll); onScroll();
+</script>
+</body>
+</html>
